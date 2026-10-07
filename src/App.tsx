@@ -27,6 +27,7 @@ import {
   Sparkles,
   TrendingUp,
   ArrowRight,
+  ArrowLeft,
   Zap,
   Activity,
   Share2,
@@ -104,46 +105,50 @@ interface AdSenseSlotProps {
 }
 
 function AdSenseSlot({ format }: AdSenseSlotProps) {
+  useEffect(() => {
+    try {
+      if (typeof window !== 'undefined' && (window as any).adsbygoogle) {
+        ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({});
+      }
+    } catch (err) {
+      // Quiet fail if AdBlock or offline
+    }
+  }, []);
+
   let layoutClasses = "";
-  let dimensionsText = "";
   if (format === 'horizontal') {
-    layoutClasses = "w-full min-h-[90px] sm:min-h-[120px] max-h-[150px] bg-[#121215]/80 border border-[#D4AF37]/25 flex flex-col items-center justify-center p-3 sm:p-4 rounded-2xl relative overflow-hidden";
-    dimensionsText = "728 x 90 / 970 x 250 Banner";
+    layoutClasses = "w-full min-h-[90px] sm:min-h-[110px] bg-[#0B0B0C] border border-[#D4AF37]/20 hover:border-[#D4AF37]/40 flex flex-col items-center justify-center p-3 rounded-xl relative overflow-hidden";
   } else if (format === 'in-feed') {
-    layoutClasses = "w-full min-h-[150px] bg-[#121215]/90 border border-zinc-800 flex flex-col items-center justify-center p-6 rounded-2xl relative overflow-hidden";
-    dimensionsText = "In-Feed / Akış İçi Doğal Reklam";
+    layoutClasses = "w-full min-h-[130px] bg-[#0B0B0C] border border-zinc-800 hover:border-[#D4AF37]/35 flex flex-col items-center justify-center p-4 rounded-xl relative overflow-hidden";
   } else if (format === 'sidebar') {
-    layoutClasses = "w-full min-h-[250px] bg-[#121215]/80 border border-[#D4AF37]/20 flex flex-col items-center justify-center p-5 rounded-2xl relative overflow-hidden";
-    dimensionsText = "300 x 250 / 300 x 600 Skyscraper";
+    layoutClasses = "w-full min-h-[220px] bg-[#0B0B0C] border border-zinc-800 hover:border-[#D4AF37]/40 flex flex-col items-center justify-center p-4 rounded-xl relative overflow-hidden";
   }
 
   return (
-    <div className={`${layoutClasses} transition-all duration-300 group hover:border-[#D4AF37]/50 shadow-md`}>
-      <div className="absolute top-2 left-2 text-[8px] font-mono tracking-widest text-[#D4AF37]/60 uppercase font-black">
+    <div className={`${layoutClasses} transition-all duration-300 shadow-sm`}>
+      <div className="absolute top-2 left-3 text-[7px] font-mono tracking-widest text-[#D4AF37]/75 uppercase font-bold">
         SPONSORLU BAĞLANTI
       </div>
-      <div className="absolute top-2 right-2 flex gap-1">
-        <span className="w-1 h-1 bg-[#D4AF37]/60 rounded-full" />
-        <span className="w-1 h-1 bg-[#D4AF37]/60 rounded-full" />
-      </div>
 
-      <div className="text-center space-y-2 p-4">
-        <div className="flex items-center justify-center gap-1.5 text-[10px] font-mono text-zinc-500 font-bold uppercase">
-          <Sparkles size={11} className="text-[#D4AF37]/70" />
-          <span>Google AdSense</span>
+      <ins 
+        className="adsbygoogle"
+        style={{ display: 'block', width: '100%', textAlign: 'center' }}
+        data-ad-client="ca-pub-3491674088074440"
+        data-ad-slot="1234567890"
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+      />
+
+      <div className="text-center space-y-1 p-1 pt-2">
+        <div className="flex items-center justify-center gap-1 text-[9px] font-mono text-zinc-500 uppercase">
+          <span>Google AdSense Partner (ca-pub-3491674088074440)</span>
         </div>
-        <h5 className="text-[11px] sm:text-xs font-serif font-semibold text-zinc-300 leading-tight">
+        <h5 className="text-[11px] sm:text-xs font-serif font-bold text-zinc-200 leading-tight">
           Yapay Zeka ve Finans Sektörüne Özel Yatırım Çözümleri
         </h5>
-        <p className="text-[10px] text-zinc-500 font-sans max-w-sm line-clamp-1">
-          webdehepseek.com/adsense-partner-solutions
-        </p>
-        <span className="inline-block text-[9px] font-mono text-[#D4AF37] px-2 py-0.5 bg-[#D4AF37]/10 rounded border border-[#D4AF37]/25">
-          {dimensionsText}
-        </span>
       </div>
 
-      <div className="absolute bottom-1 right-2 text-[8px] font-mono text-zinc-600">Ad</div>
+      <div className="absolute bottom-1 right-2 text-[7px] font-mono text-zinc-600">AD</div>
     </div>
   );
 }
@@ -157,7 +162,7 @@ function AffiliateCtaCard({ layout = 'sidebar' }: AffiliateCtaCardProps) {
   const product = {
     title: "NeuroAnalytica AI v4.0",
     description: "Finansal makro analizler ve piyasa duygu durum tespiti için geliştirilmiş en gelişmiş otonom yapay zeka aracı.",
-    discountNote: "%20 Erken Erişim İndirimi + 14 Gün Deneme",
+    discountNote: "%20 Erken Erişim İndirimi",
     link: "https://neuroanalytica.ai/referral=webdehepseek",
     imageUrl: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=400&q=80"
   };
@@ -170,43 +175,43 @@ function AffiliateCtaCard({ layout = 'sidebar' }: AffiliateCtaCardProps) {
 
   if (layout === 'inline') {
     return (
-      <div className="p-5 my-6 bg-gradient-to-br from-[#121215] to-[#1c1a14] border-2 border-dashed border-[#D4AF37] rounded-3xl space-y-4 shadow-xl relative overflow-hidden">
-        <div className="absolute top-0 right-0 bg-[#D4AF37] text-black font-serif font-black px-4 py-1 rounded-bl-2xl text-[9px] uppercase tracking-widest animate-pulse">
-          SATIŞ ORTAKLIĞI
+      <div className="p-5 my-6 bg-[#0B0B0C] border border-[#D4AF37]/30 rounded-xl space-y-4 shadow-md relative overflow-hidden">
+        <div className="absolute top-0 right-0 bg-[#D4AF37] text-black font-mono font-bold px-3 py-0.5 text-[8px] uppercase tracking-widest">
+          TAVSİYE BAĞLANTISI
         </div>
         
-        <div className="flex flex-col sm:flex-row gap-5 items-center">
-          <img src={product.imageUrl} alt={product.title} className="w-24 h-24 object-cover rounded-2xl border border-zinc-800 shrink-0" />
-          <div className="space-y-2 flex-grow">
+        <div className="flex flex-col sm:flex-row gap-4 items-center">
+          <img src={product.imageUrl} alt={product.title} className="w-16 h-16 object-cover rounded-lg border border-zinc-800 shrink-0" />
+          <div className="space-y-1.5 flex-grow">
             <div className="flex items-center gap-2">
-              <span className="px-2 py-0.5 bg-[#D4AF37]/15 text-[#D4AF37] border border-[#D4AF37]/30 text-[9px] font-extrabold rounded uppercase tracking-wider">
-                ÖNERİLEN ARAÇ
+              <span className="text-[9px] font-mono text-[#D4AF37] uppercase tracking-wider font-extrabold">
+                ÖNERİLEN SEKTÖR ARACI
               </span>
               {product.discountNote && (
-                <span className="text-[10px] text-emerald-400 font-bold font-mono">
+                <span className="text-[9px] text-emerald-400 font-mono font-bold">
                   {product.discountNote}
                 </span>
               )}
             </div>
-            <h4 className="text-base font-serif font-bold text-white leading-tight">
+            <h4 className="text-sm font-serif font-bold text-white leading-tight">
               {product.title}
             </h4>
-            <p className="text-xs text-zinc-400 leading-relaxed font-sans font-medium">
+            <p className="text-xs text-zinc-400 leading-relaxed font-sans">
               {product.description}
             </p>
           </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-3 border-t border-zinc-800">
-          <span className="text-[10px] text-zinc-500 font-mono">
-            *Bu bağlantı üzerinden yapılan üyeliklerden komisyon kazanılabilir.
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-3 border-t border-zinc-800 text-[10px] text-zinc-500 font-mono">
+          <span>
+            *Bu bağlantı ile yapılan üyeliklerden yayınımıza katkı sağlanmaktadır.
           </span>
           <button 
             onClick={handleCtaClick}
-            className="px-5 py-2 bg-[#D4AF37] text-black text-xs font-black rounded-xl hover:brightness-110 shadow-md uppercase transition-all flex items-center gap-1 shrink-0"
+            className="px-4 py-1.5 bg-[#D4AF37] text-black text-[10px] font-bold rounded-lg hover:brightness-110 uppercase transition-all flex items-center gap-1 shrink-0"
           >
-            <span>Hemen İncele / Ücretsiz Dene</span>
-            <ExternalLink size={12} />
+            <span>Hemen İncele</span>
+            <ExternalLink size={10} />
           </button>
         </div>
       </div>
@@ -214,26 +219,26 @@ function AffiliateCtaCard({ layout = 'sidebar' }: AffiliateCtaCardProps) {
   }
 
   return (
-    <div className="p-5 bg-gradient-to-b from-[#121215] to-[#0B0B0C] border border-zinc-800 hover:border-[#D4AF37]/40 rounded-3xl space-y-4 shadow-xl relative overflow-hidden transition-all duration-300">
-      <div className="flex items-center justify-between border-b border-zinc-800 pb-2.5">
-        <span className="px-2.5 py-0.5 bg-[#D4AF37]/15 text-[#D4AF37] border border-[#D4AF37]/30 text-[9px] font-extrabold rounded uppercase tracking-wider">
+    <div className="p-4 bg-[#0B0B0C] border border-zinc-800 hover:border-[#D4AF37]/45 rounded-xl space-y-3.5 shadow-sm relative overflow-hidden transition-all duration-300">
+      <div className="flex items-center justify-between border-b border-zinc-800 pb-2">
+        <span className="text-[9px] font-mono text-[#D4AF37] uppercase tracking-wider font-bold">
           ÖNERİLEN ARAÇ
         </span>
-        <span className="text-[9px] font-mono text-zinc-500 uppercase">Affiliate</span>
+        <span className="text-[8px] font-mono text-zinc-500 uppercase">Affiliate</span>
       </div>
 
-      <img src={product.imageUrl} alt={product.title} className="w-full h-36 object-cover rounded-xl border border-zinc-800 shadow-md" />
+      <img src={product.imageUrl} alt={product.title} className="w-full h-28 object-cover rounded-lg border border-zinc-800" />
 
-      <div className="space-y-2 text-xs">
-        <h4 className="font-serif font-bold text-white text-sm">
+      <div className="space-y-1.5 text-xs">
+        <h4 className="font-serif font-bold text-white text-xs">
           {product.title}
         </h4>
-        <p className="text-zinc-400 leading-relaxed font-sans text-xs">
+        <p className="text-zinc-400 leading-relaxed font-sans text-[11px]">
           {product.description}
         </p>
         
         {product.discountNote && (
-          <div className="p-2 bg-emerald-950/40 border border-emerald-500/20 text-emerald-400 text-[10px] font-mono font-bold rounded-lg text-center">
+          <div className="p-1.5 bg-emerald-950/20 border border-emerald-500/20 text-emerald-400 text-[9px] font-mono font-bold rounded text-center">
             🎁 {product.discountNote}
           </div>
         )}
@@ -241,11 +246,48 @@ function AffiliateCtaCard({ layout = 'sidebar' }: AffiliateCtaCardProps) {
 
       <button 
         onClick={handleCtaClick}
-        className="w-full py-2.5 bg-[#D4AF37] text-black font-extrabold text-xs rounded-xl hover:brightness-110 shadow-md transition-all uppercase flex items-center justify-center gap-1.5"
+        className="w-full py-2 bg-[#D4AF37] text-black font-bold text-[10px] rounded-lg hover:brightness-110 shadow-sm transition-all uppercase flex items-center justify-center gap-1"
       >
-        <span>Hemen İncele / Dene</span>
-        <ExternalLink size={13} />
+        <span>İncele / Dene</span>
+        <ExternalLink size={10} />
       </button>
+    </div>
+  );
+}
+
+// Mobile Sticky Anchor Ad Banner (ShiftDelete Style)
+function StickyAnchorBanner() {
+  const [isDismissed, setIsDismissed] = useState(false);
+
+  if (isDismissed) return null;
+
+  return (
+    <div className="fixed bottom-0 left-0 right-0 z-40 bg-[#0B0B0C]/95 border-t border-[#D4AF37]/30 shadow-2xl backdrop-blur-md px-3 py-2.5 transition-all">
+      <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
+        <div className="flex items-center gap-2 overflow-hidden flex-1">
+          <span className="px-2 py-0.5 bg-[#D4AF37] text-black text-[9px] font-extrabold rounded shrink-0 uppercase tracking-wider">
+            SPONSOR
+          </span>
+          <p className="text-[11px] text-zinc-300 font-medium truncate font-sans">
+            WebdeHepSeeK ayrıcalıkları ile SaaS, Kripto ve Finans dünyasının en yeni fırsatlarını keşfedin.
+          </p>
+        </div>
+        <div className="flex items-center gap-2 shrink-0">
+          <button 
+            onClick={() => window.open('https://pagead2.googlesyndication.com', '_blank')}
+            className="px-3 py-1 bg-[#D4AF37] text-black text-[10px] font-bold rounded-lg hover:brightness-110 shrink-0 uppercase font-sans shadow-sm"
+          >
+            İncele
+          </button>
+          <button 
+            onClick={() => setIsDismissed(true)}
+            className="p-1 text-zinc-400 hover:text-white rounded-full bg-zinc-800 shrink-0 transition-colors"
+            title="Reklamı Kapat"
+          >
+            <X size={14} />
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
@@ -253,10 +295,13 @@ function AffiliateCtaCard({ layout = 'sidebar' }: AffiliateCtaCardProps) {
 export default function App() {
   // Navigation Tabs
   const [activeTab, setActiveTab] = useState<'news' | 'nav' | 'analytics' | 'system' | 'ai' | 'wp' | 'legal'>('news');
+  const [showAdminTabs, setShowAdminTabs] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedSubcategory, setSelectedSubcategory] = useState<string | null>(null);
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
   const [selectedNewsArticle, setSelectedNewsArticle] = useState<NewsItem | null>(null);
+  const [isAiSummaryExpanded, setIsAiSummaryExpanded] = useState(false);
+  const [isCommentsExpanded, setIsCommentsExpanded] = useState(false);
   const [newsList, setNewsList] = useState<NewsItem[]>(MOCK_NEWS);
   const [isRefreshingFeed, setIsRefreshingFeed] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -362,6 +407,18 @@ export default function App() {
   const [isPausedAudio, setIsPausedAudio] = useState(false);
   const [audioProgress, setAudioProgress] = useState(0); // percentage
 
+  const getDynamicReadTime = (news: NewsItem): string => {
+    let text = `${news.title} ${news.excerpt}`;
+    if (news.sections && news.sections.length > 0) {
+      news.sections.forEach(sec => {
+        text += ` ${sec.heading} ${sec.body}`;
+      });
+    }
+    const words = text.trim().split(/\s+/).filter(w => w.length > 0).length;
+    const minutes = Math.max(1, Math.ceil(words / 200));
+    return `${minutes} dk`;
+  };
+
   const getArticleTextToSpeak = (article: NewsItem) => {
     let text = `${article.title}. ${article.excerpt}. `;
     if (article.sections && article.sections.length > 0) {
@@ -392,10 +449,26 @@ export default function App() {
     utterance.lang = 'tr-TR';
 
     const voices = window.speechSynthesis.getVoices();
-    const trVoice = voices.find(v => v.lang.startsWith('tr'));
-    if (trVoice) {
-      utterance.voice = trVoice;
+    // Try to find a premium/natural Turkish voice first
+    let trVoice = voices.find(v => v.lang.toLowerCase().startsWith('tr') && (v.name.toLowerCase().includes('natural') || v.name.toLowerCase().includes('premium')));
+    
+    // Fallback to high-quality vendor Turkish voices
+    if (!trVoice) {
+      trVoice = voices.find(v => v.lang.toLowerCase().startsWith('tr') && (v.name.toLowerCase().includes('google') || v.name.toLowerCase().includes('microsoft') || v.name.toLowerCase().includes('tolga') || v.name.toLowerCase().includes('yelda') || v.name.toLowerCase().includes('seda')));
     }
+    
+    // Fallback to any tr voice
+    if (!trVoice) {
+      trVoice = voices.find(v => v.lang.toLowerCase().startsWith('tr'));
+    }
+
+    if (!trVoice) {
+      showToast("Cihazınızda Türkçe doğal ses motoru bulunamadı. Robotik ses çıkışı engellendi.");
+      return;
+    }
+    utterance.voice = trVoice;
+    utterance.rate = 1.0;
+    utterance.pitch = 1.0;
 
     utterance.onstart = () => {
       setIsPlayingAudio(true);
@@ -413,6 +486,7 @@ export default function App() {
       console.error("Speech Synthesis Error:", e);
       setIsPlayingAudio(false);
       setIsPausedAudio(false);
+      showToast("Ses motoru başlatılamadı. Tarayıcı izinlerini kontrol edin.");
     };
 
     utterance.onboundary = (event) => {
@@ -422,8 +496,13 @@ export default function App() {
       }
     };
 
-    window.speechSynthesis.speak(utterance);
-    showToast("Seslendirme başlatıldı (tr-TR).");
+    try {
+      window.speechSynthesis.speak(utterance);
+      showToast(`Seslendirme başlatıldı (${trVoice.name}).`);
+    } catch (err) {
+      console.error("Failed to execute speak:", err);
+      showToast("Ses okuma başlatılamadı. Tarayıcı ses ayarlarını kontrol edin.");
+    }
   };
 
   const pauseSpeech = () => {
@@ -471,7 +550,11 @@ export default function App() {
       "Bilim & Uzay": ["bilim", "uzay", "nasa", "spacex", "mars", "starship", "fizik", "genetik", "crispr", "neuralink", "teleskop", "füzyon"],
       "Eğitim & Kariyer": ["eğitim", "kariyer", "sertifika", "mülakat", "cv", "linkedin", "ders", "okul", "akademi", "kurs", "kodlama"],
       "Emlak & Lüks Yatırım": ["emlak", "konut", "gayrimenkul", "luxury", "lüks", "reit", "arsa", "villa", "daire", "rezidans", "proptech"],
-      "Otomotiv & Mobilite": ["otomotiv", "araba", "otomobil", "togg", "ev", "elektrikli araç", "batarya", "sürüş", "otonom", "sedan", "suv", "motor"]
+      "Otomotiv & Mobilite": ["otomotiv", "araba", "otomobil", "togg", "ev", "elektrikli araç", "batarya", "sürüş", "otonom", "sedan", "suv", "motor"],
+      "SaaS & Bulut Yazılımları": ["saas", "crm", "bulut", "hosting", "sunucu", "api", "entegrasyon", "veritabanı", "depolama", "yazılım", "analitik", "otomasyon", "workflow"],
+      "Kişisel Finans & Sigorta": ["kredi", "faiz", "mevduat", "kasko", "sigorta", "bes", "emeklilik", "fon", "yatırım", "vergi", "borç", "skor", "birikim"],
+      "Siber Güvenlik & Veri Koruma": ["antivirüs", "vpn", "siber", "güvenlik", "veri", "koruma", "phishing", "phising", "phish", "firewall", "zero trust", "kvkk", "gdpr", "hacking", "penetrasyon", "ransomware", "fidye"],
+      "Yapay Zeka Araç Rehberi": ["metin", "görsel", "video", "kodlama", "ses", "müzik", "sunum", "tasarım", "çeviri", "verimlilik", "arama", "keşif", "tool", "araç", "rehber"]
     };
 
     Object.entries(categoryKeywords).forEach(([catName, keywords]) => {
@@ -586,7 +669,7 @@ export default function App() {
   const [isClassifying, setIsClassifying] = useState(false);
 
   // Google Analytics & Search Console Integration State
-  const [ga4Id, setGa4Id] = useState(() => typeof localStorage !== 'undefined' ? localStorage.getItem('whsk_ga4_id') || '' : '');
+  const [ga4Id, setGa4Id] = useState(() => typeof localStorage !== 'undefined' ? localStorage.getItem('whsk_ga4_id') || 'G-J8QMESNXY7' : 'G-J8QMESNXY7');
   const [gscTag, setGscTag] = useState(() => typeof localStorage !== 'undefined' ? localStorage.getItem('whsk_gsc_tag') || '' : '');
   const [gtmId, setGtmId] = useState(() => typeof localStorage !== 'undefined' ? localStorage.getItem('whsk_gtm_id') || '' : '');
 
@@ -601,28 +684,39 @@ export default function App() {
   useEffect(() => {
     const interval = setInterval(() => {
       setLiveRates(prev => prev.map(rate => {
-        const delta = (Math.random() - 0.48) * 0.15;
-        const currentVal = parseFloat(rate.value.replace(/[^0-9.]/g, '')) || 100;
-        const newVal = (currentVal * (1 + delta / 100)).toFixed(2);
+        const delta = (Math.random() - 0.48) * 0.12;
+        let numericValue = parseFloat(rate.value.replace(/\./g, '').replace(/,/g, '.').replace(/[^0-9.]/g, '')) || 100;
+        numericValue = numericValue * (1 + (delta / 100));
+        
+        let formattedValue = '';
+        if (rate.symbol === 'BIST100') {
+          formattedValue = numericValue.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        } else if (rate.symbol === 'ALTIN') {
+          formattedValue = Math.round(numericValue).toLocaleString('tr-TR') + ' ₺';
+        } else {
+          formattedValue = numericValue.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ₺';
+        }
+
         return {
           ...rate,
+          value: formattedValue,
           change: `${delta >= 0 ? '+' : ''}${delta.toFixed(2)}%`,
           isPositive: delta >= 0
         };
       }));
-      setLiveFearGreed(prev => Math.min(95, Math.max(65, prev + Math.floor((Math.random() - 0.45) * 3))));
-    }, 6000);
+      setLiveFearGreed(prev => Math.min(85, Math.max(55, prev + Math.floor((Math.random() - 0.48) * 2))));
+    }, 8000);
     return () => clearInterval(interval);
   }, []);
 
   // Dynamic Document Page Title Sync
   useEffect(() => {
     if (selectedNewsArticle) {
-      document.title = `${selectedNewsArticle.title} | WebdeHepSeeK Journal`;
+      document.title = `${selectedNewsArticle.title} | WebdeHepSeek`;
     } else if (selectedCategory) {
-      document.title = `${selectedCategory} Gündemi | WebdeHepSeeK Journal`;
+      document.title = `${selectedCategory} Gündemi | WebdeHepSeek`;
     } else {
-      document.title = `WebdeHepSeeK | Global Tech, Finance & AI Journal`;
+      document.title = `WebdeHepSeek | Teknoloji & Finans Haber Portalı`;
     }
   }, [selectedNewsArticle, selectedCategory]);
 
@@ -636,6 +730,7 @@ export default function App() {
 
   // Cleanup speech synthesis when article changes or closes
   useEffect(() => {
+    setArticleScrollProgress(0);
     return () => {
       if (typeof window !== 'undefined' && window.speechSynthesis) {
         window.speechSynthesis.cancel();
@@ -1088,7 +1183,7 @@ export default function App() {
                   WebdeHep<span className="gold-gradient-text">SeeK</span>
                 </h1>
                 <p className="text-[9px] uppercase tracking-widest font-mono text-[#D4AF37]">
-                  Global Tech, Finance & AI Journal
+                  Teknoloji & Finans Haber Portalı
                 </p>
               </div>
             </div>
@@ -1097,13 +1192,13 @@ export default function App() {
             <nav className="hidden lg:flex items-center space-x-1">
               {[
                 { id: 'news', label: language === 'TR' ? 'Haber Akışı' : 'News Feed', icon: Newspaper },
-                { id: 'nav', label: language === 'TR' ? '14 Kategori' : '14 Categories', icon: LayoutGrid },
-                { id: 'analytics', label: language === 'TR' ? 'Google Konsolu' : 'Google Console', icon: BarChart2 },
-                { id: 'system', label: language === 'TR' ? 'Sistem Metrikleri' : 'System Metrics', icon: Shield },
+                { id: 'nav', label: language === 'TR' ? '18 Kategori' : '18 Categories', icon: LayoutGrid },
+                { id: 'analytics', label: language === 'TR' ? 'Google Konsolu' : 'Google Console', icon: BarChart2, isAdmin: true },
+                { id: 'system', label: language === 'TR' ? 'Sistem Metrikleri' : 'System Metrics', icon: Shield, isAdmin: true },
                 { id: 'ai', label: language === 'TR' ? 'AI Analiz' : 'AI Classifier', icon: Zap },
-                { id: 'wp', label: 'WordPress Export', icon: FileJson },
+                { id: 'wp', label: 'WordPress Export', icon: FileJson, isAdmin: true },
                 { id: 'legal', label: 'Kurumsal & KVKK', icon: Scale }
-              ].map((item) => (
+              ].filter(item => !item.isAdmin || showAdminTabs).map((item) => (
                 <button
                   key={item.id}
                   onClick={() => {
@@ -1345,13 +1440,13 @@ export default function App() {
           >
             {[
               { id: 'news', label: 'Haber Akışı', icon: Newspaper },
-              { id: 'nav', label: 'Kategoriler (140 Alt Başlık)', icon: LayoutGrid },
-              { id: 'analytics', label: 'Google Analitik Konsolu', icon: BarChart2 },
-              { id: 'system', label: 'Sistem Metrikleri', icon: Shield },
+              { id: 'nav', label: 'Kategoriler (180 Alt Başlık)', icon: LayoutGrid },
+              { id: 'analytics', label: 'Google Analitik Konsolu', icon: BarChart2, isAdmin: true },
+              { id: 'system', label: 'Sistem Metrikleri', icon: Shield, isAdmin: true },
               { id: 'ai', label: 'AI Analiz & Sınıflandırma', icon: Zap },
-              { id: 'wp', label: 'WordPress Export', icon: FileJson },
+              { id: 'wp', label: 'WordPress Export', icon: FileJson, isAdmin: true },
               { id: 'legal', label: 'Kurumsal & Yasal Metinler', icon: Scale }
-            ].map((item) => (
+            ].filter(item => !item.isAdmin || showAdminTabs).map((item) => (
               <button
                 key={item.id}
                 onClick={() => {
@@ -1556,9 +1651,11 @@ export default function App() {
 
                             <div className="pt-4 border-t border-zinc-800/80 flex items-center justify-between text-xs text-zinc-400">
                               <div className="flex items-center gap-2">
-                                <span className="font-semibold text-white truncate max-w-[160px]">{news.author}</span>
+                                <span className="font-semibold text-white truncate max-w-[140px]">{news.author}</span>
                                 <span className="text-zinc-600">•</span>
                                 <span className="text-[10px] font-mono text-zinc-500">{news.date}</span>
+                                <span className="text-zinc-600">•</span>
+                                <span className="px-1.5 py-0.2 bg-[#D4AF37]/10 text-[#D4AF37] border border-[#D4AF37]/20 rounded text-[9px] font-mono font-bold shrink-0">{getDynamicReadTime(news)}</span>
                               </div>
                               <span className="text-[#D4AF37] font-bold text-xs flex items-center gap-1">
                                 <span>Oku</span>
@@ -1660,7 +1757,7 @@ export default function App() {
                           <div className="p-4 space-y-2">
                             <div className="flex items-center justify-between text-[10px] text-zinc-500 font-mono">
                               <span>{news.date}</span>
-                              <span>{news.readTime} okuma</span>
+                              <span className="bg-[#D4AF37]/10 text-[#D4AF37] px-1.5 py-0.5 rounded font-bold">{getDynamicReadTime(news)} okuma</span>
                             </div>
                             <h4 className="text-sm font-bold text-white group-hover:text-[#D4AF37] transition-colors leading-snug line-clamp-2">
                               {news.title}
@@ -1695,66 +1792,171 @@ export default function App() {
                         </h3>
                       </div>
 
-                      {/* Horizontal Card Row List */}
-                      <div className="space-y-4">
-                        {filteredNews.slice(0, 12).map((news) => (
-                          <div 
-                            key={`row-${news.id}`}
-                            onClick={() => setSelectedNewsArticle(news)}
-                            className="bg-[#121215] border border-zinc-800 hover:border-[#D4AF37]/80 rounded-2xl p-4 sm:p-5 transition-all cursor-pointer group flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 shadow-xl"
-                          >
-                            <div className="w-full sm:w-48 h-32 rounded-xl overflow-hidden shrink-0 relative">
-                              <img 
-                                src={news.imageUrl} 
-                                alt={news.title}
-                                loading="lazy"
-                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
-                              />
-                              <span className="absolute top-2 left-2 px-2 py-0.5 bg-black/80 text-[9px] font-bold text-[#D4AF37] rounded">
-                                {news.subcategory}
-                              </span>
-                            </div>
+                      {/* Category-based Bento Grid / Flat row view */}
+                      {!selectedCategory && !selectedSubcategory && !selectedTag && !searchQuery && !onlyBookmarks ? (
+                        <div className="space-y-8">
+                          {/* Bento Grid layout of category blocks */}
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            {SITE_STRUCTURE.map((cat) => {
+                              // Get news articles matching this category
+                              const catNews = newsList.filter(news => news.category === cat.name);
+                              if (catNews.length === 0) return null;
 
-                            <div className="flex-grow space-y-2">
-                              <div className="flex items-center gap-2 text-[10px] text-zinc-400 font-mono">
-                                <span className="text-[#D4AF37] font-bold">{news.category}</span>
-                                <span>•</span>
-                                <span className="text-zinc-300">{news.subcategory}</span>
-                                <span>•</span>
-                                <span>{news.date}</span>
-                              </div>
+                              const featuredArticle = catNews[0];
+                              const secondaryArticles = catNews.slice(1, 3);
 
-                              <h4 className="text-base sm:text-lg font-bold text-white group-hover:text-[#D4AF37] transition-colors leading-snug">
-                                {news.title}
-                              </h4>
+                              return (
+                                <div 
+                                  key={`cat-bento-${cat.id}`}
+                                  className="bg-[#121215] border border-zinc-800 hover:border-[#D4AF37]/50 rounded-3xl p-5 space-y-4 shadow-xl transition-all flex flex-col justify-between group"
+                                >
+                                  <div className="space-y-3">
+                                    {/* Category Header */}
+                                    <div className="flex items-center justify-between border-b border-zinc-800/80 pb-2.5">
+                                      <div className="flex items-center gap-2">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
+                                        <h4 className="font-serif font-bold text-white text-xs uppercase tracking-wider">
+                                          {cat.name}
+                                        </h4>
+                                      </div>
+                                      <button 
+                                        onClick={() => {
+                                          setSelectedCategory(cat.name);
+                                          window.scrollTo({ top: 400, behavior: 'smooth' });
+                                        }}
+                                        className="text-[10px] font-mono text-[#D4AF37] hover:underline flex items-center gap-1"
+                                      >
+                                        <span>Tümünü Gör</span>
+                                        <ArrowRight size={10} />
+                                      </button>
+                                    </div>
 
-                              <p className="text-xs text-zinc-400 line-clamp-2 leading-relaxed">
-                                {news.excerpt}
-                              </p>
+                                    {/* Primary Featured Article of Category */}
+                                    {featuredArticle && (
+                                      <div 
+                                        onClick={() => setSelectedNewsArticle(featuredArticle)}
+                                        className="flex flex-col sm:flex-row gap-3 items-start cursor-pointer hover:bg-zinc-900/40 p-2 rounded-2xl transition-colors"
+                                      >
+                                        <img 
+                                          src={featuredArticle.imageUrl} 
+                                          alt={featuredArticle.title}
+                                          loading="lazy"
+                                          className="w-full sm:w-28 h-20 object-cover rounded-xl shrink-0 border border-zinc-800"
+                                        />
+                                        <div className="space-y-1.5 flex-grow">
+                                          <span className="text-[9px] font-mono text-zinc-400">
+                                            {featuredArticle.subcategory}
+                                          </span>
+                                          <h5 className="text-xs font-serif font-bold text-white hover:text-[#D4AF37] transition-colors leading-snug line-clamp-2">
+                                            {featuredArticle.title}
+                                          </h5>
+                                          <div className="flex items-center gap-1.5 text-[9px] text-zinc-500 font-mono">
+                                            <span>{featuredArticle.author}</span>
+                                            <span>·</span>
+                                            <span>{getDynamicReadTime(featuredArticle)}</span>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    )}
 
-                              <div className="text-[11px] text-zinc-300 font-medium pt-1">
-                                Yazar: <span className="text-white font-semibold">{news.author}</span>
-                              </div>
-                            </div>
+                                    {/* Secondary List Articles */}
+                                    {secondaryArticles.length > 0 && (
+                                      <div className="space-y-2 pt-1 border-t border-zinc-800/50">
+                                        {secondaryArticles.map(article => (
+                                          <div 
+                                            key={`bento-sub-${article.id}`}
+                                            onClick={() => setSelectedNewsArticle(article)}
+                                            className="flex items-center justify-between gap-3 py-1 px-2 hover:bg-zinc-900/30 rounded-lg cursor-pointer transition-colors"
+                                          >
+                                            <div className="flex items-center gap-2 overflow-hidden">
+                                              <span className="text-[#D4AF37] text-xs">▪</span>
+                                              <span className="text-xs font-serif text-zinc-300 hover:text-[#D4AF37] transition-colors truncate max-w-[190px] sm:max-w-[280px]">
+                                                {article.title}
+                                              </span>
+                                            </div>
+                                            <span className="text-[9px] font-mono text-zinc-500 shrink-0">
+                                              {getDynamicReadTime(article)}
+                                            </span>
+                                          </div>
+                                        ))}
+                                      </div>
+                                    )}
+                                  </div>
 
-                            <div className="flex items-center gap-3 shrink-0 self-end sm:self-center">
-                              <button 
-                                onClick={(e) => toggleBookmark(news.id, e)}
-                                className={cn(
-                                  "p-2 rounded-xl border transition-colors",
-                                  bookmarkedIds.includes(news.id) ? "bg-[#D4AF37] text-black border-[#D4AF37]" : "bg-[#0B0B0C] text-zinc-400 border-zinc-800 hover:text-white"
-                                )}
-                              >
-                                <Bookmark size={14} />
-                              </button>
-                              <span className="text-xs font-bold text-[#D4AF37] group-hover:underline flex items-center gap-1">
-                                <span>Oku</span>
-                                <ArrowRight size={14} />
-                              </span>
-                            </div>
+                                  {/* Quick Info / Card Footer */}
+                                  <div className="flex items-center justify-between text-[10px] text-zinc-500 font-mono pt-2 border-t border-zinc-800/40">
+                                    <span>{catNews.length} Analiz Yayını</span>
+                                    {featuredArticle && <span>Duygu: {featuredArticle.sentiment || "Nötr"}</span>}
+                                  </div>
+                                </div>
+                              );
+                            })}
                           </div>
-                        ))}
-                      </div>
+                        </div>
+                      ) : (
+                        /* Flat row list when any filters or search are active */
+                        <div className="space-y-4">
+                          {filteredNews.slice(0, 12).map((news) => (
+                            <div 
+                              key={`row-${news.id}`}
+                              onClick={() => setSelectedNewsArticle(news)}
+                              className="bg-[#121215] border border-zinc-800 hover:border-[#D4AF37]/80 rounded-2xl p-4 sm:p-5 transition-all cursor-pointer group flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 shadow-xl"
+                            >
+                              <div className="w-full sm:w-48 h-32 rounded-xl overflow-hidden shrink-0 relative">
+                                <img 
+                                  src={news.imageUrl} 
+                                  alt={news.title}
+                                  loading="lazy"
+                                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                                />
+                                <span className="absolute top-2 left-2 px-2 py-0.5 bg-black/80 text-[9px] font-bold text-[#D4AF37] rounded">
+                                  {news.subcategory}
+                                </span>
+                              </div>
+
+                              <div className="flex-grow space-y-2">
+                                <div className="flex items-center gap-2 text-[10px] text-zinc-400 font-mono">
+                                  <span className="text-[#D4AF37] font-bold">{news.category}</span>
+                                  <span>•</span>
+                                  <span className="text-zinc-300">{news.subcategory}</span>
+                                  <span>•</span>
+                                  <span>{news.date}</span>
+                                  <span>•</span>
+                                  <span className="px-1.5 py-0.2 bg-[#D4AF37]/10 text-[#D4AF37] border border-[#D4AF37]/20 rounded text-[9px] font-bold shrink-0">{getDynamicReadTime(news)} okuma</span>
+                                </div>
+
+                                <h4 className="text-base sm:text-lg font-bold text-white group-hover:text-[#D4AF37] transition-colors leading-snug">
+                                  {news.title}
+                                </h4>
+
+                                <p className="text-xs text-zinc-400 line-clamp-2 leading-relaxed">
+                                  {news.excerpt}
+                                </p>
+
+                                <div className="text-[11px] text-zinc-300 font-medium pt-1">
+                                  Yazar: <span className="text-white font-semibold">{news.author}</span>
+                                </div>
+                              </div>
+
+                              <div className="flex items-center gap-3 shrink-0 self-end sm:self-center">
+                                <button 
+                                  onClick={(e) => toggleBookmark(news.id, e)}
+                                  className={cn(
+                                    "p-2 rounded-xl border transition-colors",
+                                    bookmarkedIds.includes(news.id) ? "bg-[#D4AF37] text-black border-[#D4AF37]" : "bg-[#0B0B0C] text-zinc-400 border-zinc-800 hover:text-white"
+                                  )}
+                                >
+                                  <Bookmark size={14} />
+                                </button>
+                                <span className="text-xs font-bold text-[#D4AF37] group-hover:underline flex items-center gap-1">
+                                  <span>Oku</span>
+                                  <ArrowRight size={14} />
+                                </span>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      )}
                     </section>
                   </div>
 
@@ -1951,457 +2153,585 @@ export default function App() {
               </div>
             </section>
 
-            {/* Article Detail Reader Modal */}
+            {/* ULUSLARARASI HABER AJANSI STANDARTLARINDA TAM EKRAN HABER OKUMA SAYFASI */}
             <AnimatePresence>
               {selectedNewsArticle && (
-                <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
-                  <motion.div 
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
-                    className="bg-[#121215] border-2 border-[#D4AF37] max-w-3xl w-full rounded-3xl overflow-hidden shadow-2xl max-h-[90vh] flex flex-col justify-between"
-                  >
-                    {/* Article Reading Progress Bar */}
-                    <div className="w-full bg-zinc-800 h-1">
-                      <div className="bg-[#D4AF37] h-1 transition-all duration-300" style={{ width: '65%' }} />
-                    </div>
+                <motion.div 
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 15 }}
+                  className="fixed inset-0 z-50 bg-[#0B0B0C] text-white overflow-y-auto w-full min-h-screen font-sans"
+                >
+                  {/* 1. OKUMA İLERLEME ÇUBUĞU */}
+                  <div className="fixed top-0 left-0 right-0 z-50 h-1 bg-zinc-900">
+                    <div 
+                      className="h-1 bg-[#D4AF37] transition-all duration-150" 
+                      style={{ width: `${articleScrollProgress}%` }} 
+                    />
+                  </div>
 
-                    {/* Modal Top Bar */}
-                    <div className="p-6 border-b border-zinc-800 flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <span className="px-2.5 py-1 bg-[#D4AF37] text-black text-[10px] font-extrabold rounded-full">
-                          {selectedNewsArticle.category}
-                        </span>
-                        <span className="text-xs font-mono text-zinc-400">
-                          {selectedNewsArticle.subcategory}
-                        </span>
-                        {selectedNewsArticle.sentiment && (
-                          <span className="px-2 py-0.5 bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 text-[10px] font-bold rounded-full">
-                            {selectedNewsArticle.sentiment}
-                          </span>
-                        )}
-                      </div>
-                      
-                      <div className="flex items-center gap-3">
-                        {/* Font Size Selector with Persistence */}
-                        <div className="hidden sm:flex items-center gap-1 bg-[#0B0B0C] border border-zinc-800 rounded-lg p-1 text-[11px] font-mono">
+                  {/* ANA CONTAINER */}
+                  <div 
+                    className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6 pb-28"
+                    onScroll={(e) => {
+                      const target = e.currentTarget;
+                      const scrollTop = target.scrollTop;
+                      const scrollHeight = target.scrollHeight;
+                      const clientHeight = target.clientHeight;
+                      const totalScroll = scrollHeight - clientHeight;
+                      if (totalScroll > 0) {
+                        setArticleScrollProgress((scrollTop / totalScroll) * 100);
+                      }
+                    }}
+                  >
+                    {/* 2. ÜST AKSİYON BAR VE REKLAM */}
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between border-b border-zinc-800/80 pb-4">
+                        {/* ← Tüm Haberler Butonu */}
+                        <button 
+                          onClick={() => {
+                            setSelectedNewsArticle(null);
+                            setIsAiSummaryExpanded(false);
+                            setAudioProgress(0);
+                            stopSpeech();
+                          }}
+                          className="inline-flex items-center gap-2 px-4 py-2 bg-[#121215] border border-zinc-700 hover:border-[#D4AF37] hover:text-[#D4AF37] text-zinc-200 text-xs font-bold rounded-xl transition-all shadow-md group"
+                        >
+                          <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform text-[#D4AF37]" />
+                          <span>← Tüm Haberler</span>
+                        </button>
+
+                        {/* Metin Boyutu & Paylaş */}
+                        <div className="flex items-center gap-3">
+                          <div className="flex items-center gap-1 bg-[#121215] border border-zinc-800 rounded-xl p-1 text-xs font-mono">
+                            <button 
+                              onClick={() => changeArticleFontSize('sm')}
+                              className={cn("px-2 py-1 rounded font-bold transition-colors", articleFontSize === 'sm' ? "bg-[#D4AF37] text-black" : "text-zinc-400 hover:text-white")}
+                              title="Küçük Metin"
+                            >
+                              A-
+                            </button>
+                            <button 
+                              onClick={() => changeArticleFontSize('md')}
+                              className={cn("px-2 py-1 rounded font-bold transition-colors", articleFontSize === 'md' ? "bg-[#D4AF37] text-black" : "text-zinc-400 hover:text-white")}
+                              title="Normal Metin"
+                            >
+                              A
+                            </button>
+                            <button 
+                              onClick={() => changeArticleFontSize('lg')}
+                              className={cn("px-2 py-1 rounded font-bold transition-colors", articleFontSize === 'lg' ? "bg-[#D4AF37] text-black" : "text-zinc-400 hover:text-white")}
+                              title="Büyük Metin"
+                            >
+                              A+
+                            </button>
+                          </div>
+
                           <button 
-                            onClick={() => changeArticleFontSize('sm')}
-                            className={cn("px-2 py-0.5 rounded font-bold", articleFontSize === 'sm' ? "bg-[#D4AF37] text-black" : "text-zinc-400 hover:text-white")}
+                            onClick={() => handleCopy(selectedNewsArticle.canonicalUrl || 'https://webdehepseek.com', "Makale bağlantısı")}
+                            className="p-2 bg-[#121215] border border-zinc-800 hover:border-[#D4AF37] text-zinc-300 hover:text-[#D4AF37] rounded-xl transition-all"
+                            title="Bağlantıyı Kopyala"
                           >
-                            A-
-                          </button>
-                          <button 
-                            onClick={() => changeArticleFontSize('md')}
-                            className={cn("px-2 py-0.5 rounded font-bold", articleFontSize === 'md' ? "bg-[#D4AF37] text-black" : "text-zinc-400 hover:text-white")}
-                          >
-                            A
-                          </button>
-                          <button 
-                            onClick={() => changeArticleFontSize('lg')}
-                            className={cn("px-2 py-0.5 rounded font-bold", articleFontSize === 'lg' ? "bg-[#D4AF37] text-black" : "text-zinc-400 hover:text-white")}
-                          >
-                            A+
+                            <Share2 size={16} />
                           </button>
                         </div>
+                      </div>
 
-                        <button 
-                          onClick={() => setSelectedNewsArticle(null)}
-                          className="p-1.5 text-zinc-400 hover:text-white rounded-full bg-zinc-800"
-                        >
-                          <X size={18} />
-                        </button>
+                      {/* Üst Yatay Reklam Bandı */}
+                      <div className="w-full">
+                        <AdSenseSlot format="horizontal" />
                       </div>
                     </div>
 
-                    <div className="p-6 space-y-6 overflow-y-auto font-sans">
-                      {/* Breadcrumbs Navigation */}
-                      <nav className="flex items-center gap-2 text-xs font-mono text-zinc-400 border-b border-zinc-800 pb-3">
-                        <span>Anasayfa</span>
-                        <ChevronRight size={10} />
-                        <span>{selectedNewsArticle.category}</span>
-                        <ChevronRight size={10} />
-                        <span className="text-[#D4AF37]">{selectedNewsArticle.subcategory}</span>
-                      </nav>
+                    {/* BREADCRUMB NAVİGASYON YOLU */}
+                    <nav className="flex items-center gap-2 text-xs font-mono text-zinc-400 border-b border-zinc-800/60 pb-3">
+                      <button 
+                        onClick={() => {
+                          setSelectedNewsArticle(null);
+                          setSelectedCategory(null);
+                          setSelectedSubcategory(null);
+                        }}
+                        className="hover:text-[#D4AF37] transition-colors"
+                      >
+                        Ana Sayfa
+                      </button>
+                      <ChevronRight size={10} className="text-zinc-600" />
+                      <button 
+                        onClick={() => {
+                          setSelectedCategory(selectedNewsArticle.category);
+                          setSelectedSubcategory(null);
+                          setSelectedNewsArticle(null);
+                        }}
+                        className="hover:text-[#D4AF37] transition-colors"
+                      >
+                        {selectedNewsArticle.category}
+                      </button>
+                      <ChevronRight size={10} className="text-zinc-600" />
+                      <span className="text-[#D4AF37] font-semibold truncate max-w-xs sm:max-w-md">
+                        {selectedNewsArticle.subcategory}
+                      </span>
+                    </nav>
 
-                      {/* Image with Lightbox Trigger */}
+                    {/* KATEGORİ VE AI İLE ÖZETLE BUTONU */}
+                    <div className="flex items-center justify-between gap-3 flex-wrap">
+                      <div className="flex items-center gap-2">
+                        <span className="px-3.5 py-1 bg-[#D4AF37] text-black text-xs font-black rounded-lg uppercase tracking-wider shadow-sm">
+                          {selectedNewsArticle.category}
+                        </span>
+                        <span className="text-xs font-mono text-zinc-400 font-bold bg-[#121215] px-3 py-1 rounded-lg border border-zinc-800">
+                          {selectedNewsArticle.subcategory}
+                        </span>
+                      </div>
+
+                      <button 
+                        onClick={() => setIsAiSummaryExpanded(!isAiSummaryExpanded)}
+                        className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-[#D4AF37]/15 border border-[#D4AF37]/50 text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black text-xs font-extrabold rounded-xl transition-all shadow-sm"
+                      >
+                        <Sparkles size={14} />
+                        <span>{isAiSummaryExpanded ? 'AI Özetini Gizle' : 'AI ile Özetle'}</span>
+                      </button>
+                    </div>
+
+                    {/* AÇILIR AI MADDELİ ÖZET KARTI */}
+                    {isAiSummaryExpanded && (
+                      <motion.div 
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="p-4 bg-[#121215] border-l-4 border-[#D4AF37] rounded-r-2xl space-y-2.5 shadow-xl"
+                      >
+                        <span className="text-xs font-bold text-[#D4AF37] flex items-center gap-1.5 uppercase font-mono tracking-wider">
+                          <Sparkles size={14} />
+                          <span>3 Maddede Yapay Zeka Özeti:</span>
+                        </span>
+                        <ul className="text-xs text-zinc-200 space-y-1.5 list-disc list-inside font-sans leading-relaxed">
+                          <li>{selectedNewsArticle.excerpt}</li>
+                          <li>Sektör liderleri ve analistler açısından stratejik dönüşüm ile pazar fırsatları değerlendirilmiştir.</li>
+                          <li>Gelişme, küresel ölçekte ilgili kategorideki dijital altyapı ve finans adımlarını doğrudan etkilemektedir.</li>
+                        </ul>
+                      </motion.div>
+                    )}
+
+                    {/* MANŞET BAŞLIK */}
+                    <h1 className="text-2xl sm:text-4xl font-serif font-extrabold text-white leading-tight sm:leading-snug tracking-tight">
+                      {selectedNewsArticle.title}
+                    </h1>
+
+                    {/* SPOT (GİRİŞ) PARAGRAFI */}
+                    <p className="text-base sm:text-lg text-zinc-300 font-medium leading-relaxed border-l-4 border-[#D4AF37] pl-4 italic bg-[#121215]/50 py-3 rounded-r-xl">
+                      {selectedNewsArticle.excerpt}
+                    </p>
+
+                    {/* KÜNYE SATIRI */}
+                    <div className="flex flex-wrap items-center justify-between gap-4 p-4 bg-[#121215] border border-zinc-800/80 rounded-2xl text-xs">
+                      <div 
+                        onClick={() => {
+                          const matchAuth = AUTHORS_LIST.find(a => a.name === selectedNewsArticle.author) || AUTHORS_LIST[0];
+                          setSelectedAuthorProfile(matchAuth);
+                        }}
+                        className="flex items-center gap-3 cursor-pointer group"
+                      >
+                        <div className="w-10 h-10 rounded-full bg-[#D4AF37] text-black font-serif font-extrabold flex items-center justify-center text-base shrink-0 group-hover:scale-105 transition-transform shadow-md">
+                          {selectedNewsArticle.author.slice(0, 1)}
+                        </div>
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <span className="font-bold text-white text-sm group-hover:text-[#D4AF37] transition-colors">
+                              {selectedNewsArticle.author}
+                            </span>
+                            <span className="text-[10px] bg-zinc-800 text-[#D4AF37] px-2 py-0.5 rounded font-mono font-semibold">
+                              {selectedNewsArticle.authorTitle || 'Kıdemli Yazar'}
+                            </span>
+                          </div>
+                          <span className="text-[11px] text-zinc-400 font-mono block">
+                            {selectedNewsArticle.date} • 10:30 TSI
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center gap-3 text-zinc-400 font-mono text-xs">
+                        <span className="px-2.5 py-1 bg-[#0B0B0C] border border-zinc-800 text-[#D4AF37] font-bold rounded-lg flex items-center gap-1.5">
+                          <Clock size={13} />
+                          <span>{getDynamicReadTime(selectedNewsArticle)} Okuma</span>
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* KAPAK GÖRSELİ VE AÇIKLAMA METNİ */}
+                    <div className="space-y-2">
                       <div 
                         onClick={() => setSelectedLightboxImage(selectedNewsArticle.imageUrl)}
-                        className="relative group cursor-pointer overflow-hidden rounded-2xl border border-zinc-800 shadow-md"
+                        className="relative group cursor-pointer overflow-hidden rounded-2xl border border-zinc-800 shadow-2xl"
                       >
                         <img 
                           src={selectedNewsArticle.imageUrl} 
                           alt={selectedNewsArticle.title}
-                          className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
+                          className="w-full h-72 sm:h-96 object-cover group-hover:scale-102 transition-transform duration-500"
                         />
-                        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-bold gap-2">
+                        <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-bold gap-2">
                           <ExternalLink size={16} className="text-[#D4AF37]" />
-                          <span>Görseli Tam Ekran Büyüt (Lightbox)</span>
+                          <span>Görseli Tam Ekran Büyüt</span>
                         </div>
                       </div>
+                      <span className="text-[11px] text-zinc-500 italic block font-sans text-center">
+                        Haber Kapak Görseli: {selectedNewsArticle.title}
+                      </span>
+                    </div>
 
-                      <div className="space-y-2">
-                        <h2 className="text-2xl font-serif font-bold text-white leading-tight">
-                          {selectedNewsArticle.title}
-                        </h2>
-                        <div className="flex flex-wrap items-center gap-3 text-xs text-zinc-400 font-mono pt-1 border-b border-zinc-800 pb-3">
-                          <span className="text-white font-semibold">Yazar: {selectedNewsArticle.author}</span>
-                          <span>•</span>
-                          <span>Tarih: {selectedNewsArticle.date}</span>
-                          <span>•</span>
-                          <span className="text-[#D4AF37]">{selectedNewsArticle.readTime} Okuma Süresi</span>
+                    {/* SESLİ MAKALE DİNLEME (TTS) */}
+                    <div className="bg-[#121215] border border-[#D4AF37]/30 rounded-2xl p-4 space-y-3 shadow-md">
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div className="flex items-center gap-3">
+                          <div className="p-2 bg-[#D4AF37]/10 border border-[#D4AF37]/30 rounded-xl text-[#D4AF37]">
+                            <Volume2 size={20} className="animate-pulse" />
+                          </div>
+                          <div>
+                            <span className="text-xs font-bold text-white block">AI Sesli Makale Dinle (TTS)</span>
+                            <span className="text-[10px] text-zinc-400">Tarayıcı içi Türkçe (tr-TR) doğal ses motoru</span>
+                          </div>
                         </div>
+                        <span className="text-xs font-mono text-[#D4AF37] font-bold">
+                          İlerleme: %{audioProgress}
+                        </span>
                       </div>
 
-                      {/* EXECUTIVE SUMMARY BOX */}
-                      {selectedNewsArticle.executiveSummary && (
-                        <div className="p-4 bg-gradient-to-r from-[#121215] via-[#1c1a14] to-[#121215] border-l-4 border-[#D4AF37] rounded-r-2xl space-y-1 shadow-md">
-                          <span className="text-xs font-serif font-bold text-[#D4AF37] uppercase tracking-wider block">
-                            ⚡ Yönetici Özeti (Executive Summary):
-                          </span>
-                          <p className="text-xs text-zinc-200 leading-relaxed font-sans">
-                            {selectedNewsArticle.executiveSummary}
+                      <div className="flex flex-wrap items-center gap-2 pt-1">
+                        <button 
+                          onClick={() => {
+                            if (isPlayingAudio && !isPausedAudio) {
+                              pauseSpeech();
+                            } else {
+                              playSpeech(selectedNewsArticle);
+                            }
+                          }}
+                          className="flex items-center gap-1.5 px-3.5 py-2 bg-[#D4AF37] text-black text-[11px] font-extrabold rounded-xl hover:brightness-110 shadow-md transition-all uppercase"
+                        >
+                          {isPlayingAudio && !isPausedAudio ? (
+                            <>
+                              <Pause size={13} />
+                              <span>Duraklat</span>
+                            </>
+                          ) : (
+                            <>
+                              <Play size={13} className="ml-0.5" />
+                              <span>Dinle</span>
+                            </>
+                          )}
+                        </button>
+
+                        <button 
+                          onClick={stopSpeech}
+                          disabled={!isPlayingAudio && audioProgress === 0}
+                          className="flex items-center gap-1.5 px-3.5 py-2 bg-[#0B0B0C] text-zinc-300 border border-zinc-800 hover:border-[#D4AF37] hover:text-white text-[11px] font-bold rounded-xl transition-all uppercase disabled:opacity-50 disabled:pointer-events-none"
+                        >
+                          <Square size={12} />
+                          <span>Durdur</span>
+                        </button>
+
+                        <button 
+                          onClick={() => restartSpeech(selectedNewsArticle)}
+                          className="flex items-center gap-1.5 px-3.5 py-2 bg-[#0B0B0C] text-zinc-300 border border-zinc-800 hover:border-[#D4AF37] hover:text-white text-[11px] font-bold rounded-xl transition-all uppercase"
+                        >
+                          <RotateCcw size={12} />
+                          <span>Başa Sar</span>
+                        </button>
+                      </div>
+
+                      <div className="w-full h-1.5 bg-zinc-800 rounded-full overflow-hidden">
+                        <div 
+                          className="h-full bg-[#D4AF37] transition-all duration-300" 
+                          style={{ width: `${audioProgress}%` }}
+                        />
+                      </div>
+                    </div>
+
+                    {/* İÇİNDEKİLER */}
+                    {selectedNewsArticle.sections && selectedNewsArticle.sections.length > 0 && (
+                      <div className="bg-[#121215] border border-[#D4AF37]/30 rounded-2xl p-4 space-y-2">
+                        <span className="text-xs font-serif font-bold text-[#D4AF37] flex items-center gap-2">
+                          <List size={14} />
+                          <span>İçindekiler & Başlıklar</span>
+                        </span>
+                        <ul className="space-y-1.5 text-xs text-zinc-300">
+                          {selectedNewsArticle.sections.map((sec) => (
+                            <li key={sec.id}>
+                              <button 
+                                onClick={() => {
+                                  const element = document.getElementById(sec.id);
+                                  if (element) {
+                                    element.scrollIntoView({ behavior: 'smooth' });
+                                  }
+                                }}
+                                className="hover:text-[#D4AF37] text-left transition-colors font-sans block w-full py-0.5"
+                              >
+                                • {sec.heading}
+                              </button>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                    {/* HABER GÖVDESİ VE ADSENSE / AFFILIATE GELİR ALANLARI */}
+                    <div className={cn(
+                      "text-zinc-200 leading-relaxed space-y-6 font-serif",
+                      articleFontSize === 'sm' ? 'text-sm' : articleFontSize === 'lg' ? 'text-xl' : 'text-base sm:text-lg'
+                    )}>
+                      {selectedNewsArticle.sections ? (
+                        selectedNewsArticle.sections.map((sec, idx) => (
+                          <React.Fragment key={sec.id}>
+                            <div id={sec.id} className="space-y-3 pt-2">
+                              <h3 className="text-xl sm:text-2xl font-serif font-bold text-white border-b border-zinc-800 pb-2">
+                                {sec.heading}
+                              </h3>
+                              <p className="text-zinc-300 leading-relaxed font-sans">
+                                {sec.body}
+                              </p>
+                            </div>
+
+                            {/* 2. PARAGRAFTAN/BÖLÜMDEN SONRA DOĞAL ADSENSE YATAY REKLAM ALANI */}
+                            {idx === 1 && (
+                              <div className="space-y-6 my-8 font-sans">
+                                <AdSenseSlot format="in-feed" />
+                                <AffiliateCtaCard layout="inline" />
+                              </div>
+                            )}
+                          </React.Fragment>
+                        ))
+                      ) : (
+                        <div className="space-y-4 font-sans text-zinc-300">
+                          <p>
+                            WebdeHepSeeK Yayın Grubu tarafından derlenen bu özel haber, sektördeki en son gelişmeleri, piyasa verilerini ve uzman görüşlerini kapsamlı bir şekilde okuyuculara sunmaktadır.
                           </p>
+                          <div className="my-6">
+                            <AdSenseSlot format="in-feed" />
+                          </div>
+                          <p>
+                            Kategori genelinde gerçekleşen stratejik hamleler, uluslararası piyasa aktörleri ve teknoloji liderlerinin yeni nesil vizyonlarıyla doğrudan şekillenmektedir.
+                          </p>
+                          <div className="my-6">
+                            <AffiliateCtaCard layout="inline" />
+                          </div>
                         </div>
                       )}
+                    </div>
 
-                      {/* AUDIO PLAYER TTS WIDGET */}
-                      <div className="bg-[#0B0B0C] border border-[#D4AF37]/40 rounded-2xl p-4 space-y-3 shadow-inner">
-                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                          <div className="flex items-center gap-3">
-                            <div className="p-2 bg-[#D4AF37]/10 border border-[#D4AF37]/30 rounded-xl text-[#D4AF37]">
-                              <Volume2 size={20} className="animate-pulse" />
-                            </div>
-                            <div>
-                              <span className="text-xs font-bold text-white block">AI Sesli Makale Dinle (TTS)</span>
-                              <span className="text-[10px] text-zinc-400">Tarayıcı içi Türkçe (tr-TR) doğal ses motoru</span>
-                            </div>
-                          </div>
-                          <span className="text-xs font-mono text-[#D4AF37] font-bold">
-                            İlerleme: %{audioProgress}
-                          </span>
+                    {/* PAYLAŞIM VE GOOGLE NEWS TAKİP ROZETİ */}
+                    <div className="pt-6 border-t border-zinc-800 space-y-4">
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#121215] border border-zinc-800 p-4 rounded-2xl">
+                        <div className="flex items-center gap-2 text-xs font-bold text-white">
+                          <Share2 size={16} className="text-[#D4AF37]" />
+                          <span>Bu Haberi Paylaşın:</span>
                         </div>
-
-                        {/* Control Buttons Bar */}
-                        <div className="flex flex-wrap items-center gap-2 pt-1">
-                          {/* Dinle / Duraklat */}
+                        <div className="flex flex-wrap items-center gap-2">
                           <button 
-                            onClick={() => {
-                              if (isPlayingAudio && !isPausedAudio) {
-                                pauseSpeech();
-                              } else {
-                                playSpeech(selectedNewsArticle);
-                              }
-                            }}
-                            className="flex items-center gap-1.5 px-3 py-2 bg-[#D4AF37] text-black text-[11px] font-extrabold rounded-xl hover:brightness-110 shadow-md transition-all uppercase"
+                            onClick={() => window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(selectedNewsArticle.title + ' ' + (selectedNewsArticle.canonicalUrl || 'https://webdehepseek.com'))}`, '_blank')}
+                            className="px-3 py-1.5 bg-emerald-600/20 border border-emerald-500/40 hover:bg-emerald-600 hover:text-white text-emerald-400 text-xs font-bold rounded-xl transition-all"
                           >
-                            {isPlayingAudio && !isPausedAudio ? (
-                              <>
-                                <Pause size={13} />
-                                <span>Duraklat</span>
-                              </>
-                            ) : (
-                              <>
-                                <Play size={13} className="ml-0.5" />
-                                <span>Dinle</span>
-                              </>
-                            )}
+                            WhatsApp
                           </button>
-
-                          {/* Durdur */}
                           <button 
-                            onClick={stopSpeech}
-                            disabled={!isPlayingAudio && audioProgress === 0}
-                            className="flex items-center gap-1.5 px-3 py-2 bg-[#121215] text-zinc-300 border border-zinc-800 hover:border-[#D4AF37] hover:text-white text-[11px] font-bold rounded-xl shadow-md transition-all uppercase disabled:opacity-50 disabled:pointer-events-none"
+                            onClick={() => window.open(`https://t.me/share/url?url=${encodeURIComponent(selectedNewsArticle.canonicalUrl || 'https://webdehepseek.com')}&text=${encodeURIComponent(selectedNewsArticle.title)}`, '_blank')}
+                            className="px-3 py-1.5 bg-sky-600/20 border border-sky-500/40 hover:bg-sky-600 hover:text-white text-sky-400 text-xs font-bold rounded-xl transition-all"
                           >
-                            <Square size={12} />
-                            <span>Durdur</span>
+                            Telegram
                           </button>
-
-                          {/* Başa Sar */}
                           <button 
-                            onClick={() => restartSpeech(selectedNewsArticle)}
-                            className="flex items-center gap-1.5 px-3 py-2 bg-[#121215] text-zinc-300 border border-zinc-800 hover:border-[#D4AF37] hover:text-white text-[11px] font-bold rounded-xl shadow-md transition-all uppercase"
-                          >
-                            <RotateCcw size={12} />
-                            <span>Başa Sar</span>
-                          </button>
-                        </div>
-
-                        {/* Progress bar */}
-                        <div className="w-full h-1.5 bg-zinc-800 rounded-full overflow-hidden">
-                          <div 
-                            className="h-full bg-[#D4AF37] transition-all duration-300" 
-                            style={{ width: `${audioProgress}%` }}
-                          />
-                        </div>
-                      </div>
-
-                      {/* One-Click Share Tray */}
-                      <div className="flex items-center justify-between bg-[#0B0B0C] border border-zinc-800 p-3 rounded-2xl text-xs">
-                        <span className="text-zinc-400 font-mono flex items-center gap-1.5">
-                          <Share2 size={14} className="text-[#D4AF37]" />
-                          <span>Makaleyi Paylaş:</span>
-                        </span>
-                        <div className="flex items-center gap-2">
-                          <button 
-                            onClick={() => handleCopy(`https://twitter.com/intent/tweet?text=${encodeURIComponent(selectedNewsArticle.title)}`, "Twitter bağlantısı")}
-                            className="px-2.5 py-1 bg-zinc-800 hover:bg-[#D4AF37] hover:text-black rounded-lg text-[10px] font-bold text-zinc-200 transition-colors"
+                            onClick={() => window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(selectedNewsArticle.title)}&url=${encodeURIComponent(selectedNewsArticle.canonicalUrl || 'https://webdehepseek.com')}`, '_blank')}
+                            className="px-3 py-1.5 bg-zinc-800 hover:bg-[#D4AF37] hover:text-black text-zinc-200 text-xs font-bold rounded-xl transition-all"
                           >
                             X (Twitter)
                           </button>
                           <button 
-                            onClick={() => handleCopy(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(selectedNewsArticle.canonicalUrl || '')}`, "LinkedIn bağlantısı")}
-                            className="px-2.5 py-1 bg-zinc-800 hover:bg-[#D4AF37] hover:text-black rounded-lg text-[10px] font-bold text-zinc-200 transition-colors"
+                            onClick={() => window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(selectedNewsArticle.canonicalUrl || 'https://webdehepseek.com')}`, '_blank')}
+                            className="px-3 py-1.5 bg-zinc-800 hover:bg-[#D4AF37] hover:text-black text-zinc-200 text-xs font-bold rounded-xl transition-all"
                           >
                             LinkedIn
                           </button>
                           <button 
                             onClick={() => handleCopy(selectedNewsArticle.canonicalUrl || 'https://webdehepseek.com', "Makale bağlantısı")}
-                            className="px-2.5 py-1 bg-[#D4AF37] text-black font-bold text-[10px] rounded-lg hover:brightness-110 transition-colors"
+                            className="px-3 py-1.5 bg-[#D4AF37] text-black font-extrabold text-xs rounded-xl hover:brightness-110 transition-all"
                           >
                             Link Kopyala
                           </button>
                         </div>
                       </div>
 
-                      {/* Table of Contents (İçindekiler) */}
-                      {selectedNewsArticle.sections && selectedNewsArticle.sections.length > 0 && (
-                        <div className="bg-[#0B0B0C] border border-[#D4AF37]/30 rounded-2xl p-4 space-y-2">
-                          <span className="text-xs font-serif font-bold text-[#D4AF37] flex items-center gap-2">
-                            <List size={14} />
-                            <span>İçindekiler & Başlıklar</span>
-                          </span>
-                          <ul className="space-y-1 text-xs text-zinc-300">
-                            {selectedNewsArticle.sections.map((sec) => (
-                              <li key={sec.id}>
-                                <a href={`#${sec.id}`} className="hover:text-[#D4AF37] transition-colors">
-                                  {sec.heading}
-                                </a>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-
-                      {/* Article Body Content */}
-                      <div className={cn(
-                        "text-zinc-300 leading-relaxed space-y-4 font-serif",
-                        articleFontSize === 'sm' ? 'text-xs' : articleFontSize === 'lg' ? 'text-base' : 'text-sm'
-                      )}>
-                        <p className="font-semibold text-white leading-relaxed text-base italic border-l-2 border-[#D4AF37] pl-3">
-                          {selectedNewsArticle.excerpt}
-                        </p>
-                        
-                        {selectedNewsArticle.sections ? (
-                          selectedNewsArticle.sections.map((sec, idx) => (
-                            <React.Fragment key={sec.id}>
-                              <div id={sec.id} className="space-y-2 pt-2">
-                                <h3 className="text-base font-serif font-bold text-[#D4AF37]">
-                                  {sec.heading}
-                                </h3>
-                                <p className="text-zinc-300 leading-relaxed">
-                                  {sec.body}
-                                </p>
-                              </div>
-                              {/* Automatically inject AdSense Slot and Affiliate CTA Card after the 2nd section (idx === 1) */}
-                              {idx === 1 && (
-                                <div className="space-y-6 my-6">
-                                  <AdSenseSlot format="in-feed" />
-                                  <AffiliateCtaCard layout="inline" />
-                                </div>
-                              )}
-                            </React.Fragment>
-                          ))
-                        ) : (
-                          <>
-                            <p>
-                              WebdeHepSeeK Yayın Grubu tarafından derlenen bu özel analiz, sektördeki en son gelişmeleri, piyasa verilerini ve uzman görüşlerini tek bir potada sunmaktadır.
-                            </p>
-                            <div className="my-6">
-                              <AdSenseSlot format="in-feed" />
-                            </div>
-                            <p>
-                              Kategori genelinde gerçekleşen trend dönüşümleri, uluslararası piyasa aktörleri ve teknoloji liderlerinin stratejik adımlarıyla doğrudan bağlantılıdır.
-                            </p>
-                            <div className="my-6">
-                              <AffiliateCtaCard layout="inline" />
-                            </div>
-                          </>
-                        )}
-                      </div>
-
-                      {/* INTERACTIVE EMOJI REACTIONS */}
-                      <div className="p-4 bg-[#0B0B0C] border border-[#D4AF37]/30 rounded-2xl space-y-2">
-                        <span className="text-xs font-serif font-bold text-white block">Bu Makaleye Tepki Ver:</span>
+                      {/* GOOGLE NEWS TAKİP ROZETİ */}
+                      <div className="flex items-center justify-between bg-[#121215] border border-[#D4AF37]/30 p-4 rounded-2xl">
                         <div className="flex items-center gap-3">
-                          <button 
-                            onClick={() => handleReaction(selectedNewsArticle.id, 'like')}
-                            className="flex items-center gap-1.5 px-3 py-1.5 bg-zinc-900 hover:bg-[#D4AF37] hover:text-black rounded-xl text-xs font-bold text-zinc-200 transition-colors"
-                          >
-                            <span>👍 Beğen</span>
-                            <span className="text-[10px] font-mono opacity-80">({(reactionsState[selectedNewsArticle.id]?.like || selectedNewsArticle.reactions?.like || 240)})</span>
-                          </button>
-                          <button 
-                            onClick={() => handleReaction(selectedNewsArticle.id, 'analytic')}
-                            className="flex items-center gap-1.5 px-3 py-1.5 bg-zinc-900 hover:bg-[#D4AF37] hover:text-black rounded-xl text-xs font-bold text-zinc-200 transition-colors"
-                          >
-                            <span>📊 Analitik</span>
-                            <span className="text-[10px] font-mono opacity-80">({(reactionsState[selectedNewsArticle.id]?.analytic || selectedNewsArticle.reactions?.analytic || 110)})</span>
-                          </button>
-                          <button 
-                            onClick={() => handleReaction(selectedNewsArticle.id, 'mindblown')}
-                            className="flex items-center gap-1.5 px-3 py-1.5 bg-zinc-900 hover:bg-[#D4AF37] hover:text-black rounded-xl text-xs font-bold text-zinc-200 transition-colors"
-                          >
-                            <span>😲 Şaşırtıcı</span>
-                            <span className="text-[10px] font-mono opacity-80">({(reactionsState[selectedNewsArticle.id]?.mindblown || selectedNewsArticle.reactions?.mindblown || 95)})</span>
-                          </button>
-                        </div>
-                      </div>
-
-                      {/* CORRECTION & UPDATE LOG */}
-                      {selectedNewsArticle.correctionLog && (
-                        <div className="p-3 bg-amber-950/30 border border-amber-500/30 rounded-xl text-xs text-amber-200 space-y-1">
-                          <span className="font-bold flex items-center gap-1 text-[#D4AF37]">
-                            <CheckCircle size={13} />
-                            Düzeltme & Güncelleme Günlüğü:
-                          </span>
-                          <p className="text-[11px] font-mono opacity-90">{selectedNewsArticle.correctionLog}</p>
-                        </div>
-                      )}
-
-                      {/* AUTHOR BIO CARD */}
-                      <div 
-                        onClick={() => {
-                          const matchAuth = AUTHORS_LIST.find(a => a.name === selectedNewsArticle.author) || AUTHORS_LIST[0];
-                          setSelectedAuthorProfile(matchAuth);
-                        }}
-                        className="p-4 bg-[#0B0B0C] border border-zinc-800 hover:border-[#D4AF37] rounded-2xl flex items-start gap-4 shadow-md cursor-pointer transition-all group"
-                      >
-                        <div className="w-12 h-12 rounded-full bg-[#D4AF37] text-black font-serif font-extrabold flex items-center justify-center text-lg shrink-0 group-hover:scale-105 transition-transform">
-                          {selectedNewsArticle.author.slice(0, 1)}
-                        </div>
-                        <div className="space-y-1 text-xs">
-                          <div className="flex items-center gap-2">
-                            <span className="font-bold text-white text-sm group-hover:text-[#D4AF37] transition-colors">{selectedNewsArticle.author}</span>
-                            <span className="text-[10px] bg-zinc-800 text-[#D4AF37] px-2 py-0.5 rounded font-mono">
-                              {selectedNewsArticle.authorTitle || 'Kıdemli Yazar'}
-                            </span>
+                          <div className="p-2 bg-[#D4AF37]/10 rounded-xl text-[#D4AF37]">
+                            <Globe size={20} />
                           </div>
-                          <p className="text-zinc-400 leading-relaxed">
-                            {selectedNewsArticle.authorBio || 'WebdeHepSeeK Yayın Grubu bünyesinde teknoloji, finans ve pazar analizleri hazırlayan uzman editör.'}
-                          </p>
-                          <span className="text-[10px] text-[#D4AF37] font-bold block pt-1">Yazarın Tüm Makalelerini İncele →</span>
+                          <div>
+                            <span className="text-xs font-bold text-white block">Google News Yayın Akışı</span>
+                            <span className="text-[10px] text-zinc-400">Gelişmeleri Google Haberler uygulamasında anlık takip edin</span>
+                          </div>
                         </div>
+                        <a 
+                          href="https://news.google.com" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="px-4 py-2 bg-[#D4AF37] text-black text-xs font-extrabold rounded-xl hover:brightness-110 transition-all shrink-0 uppercase"
+                        >
+                          Google News'e Ekle
+                        </a>
                       </div>
+                    </div>
 
-                      {/* LIVE COMMENT & MODERATION SECTION */}
-                      <div className="pt-4 border-t border-zinc-800 space-y-4">
-                        <div className="flex items-center justify-between">
-                          <h4 className="text-sm font-serif font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                            <MessageSquare size={16} className="text-[#D4AF37]" />
-                            <span>Okur Yorumları & Tartışma ({commentsList.filter(c => c.newsId === selectedNewsArticle.id).length})</span>
-                          </h4>
+                    {/* YAZAR BİYOGRAFİ KARTI */}
+                    <div 
+                      onClick={() => {
+                        const matchAuth = AUTHORS_LIST.find(a => a.name === selectedNewsArticle.author) || AUTHORS_LIST[0];
+                        setSelectedAuthorProfile(matchAuth);
+                      }}
+                      className="p-5 bg-[#121215] border border-zinc-800 hover:border-[#D4AF37] rounded-2xl flex items-start gap-4 shadow-md cursor-pointer transition-all group my-6"
+                    >
+                      <div className="w-12 h-12 rounded-full bg-[#D4AF37] text-black font-serif font-extrabold flex items-center justify-center text-lg shrink-0 group-hover:scale-105 transition-transform">
+                        {selectedNewsArticle.author.slice(0, 1)}
+                      </div>
+                      <div className="space-y-1 text-xs">
+                        <div className="flex items-center gap-2">
+                          <span className="font-bold text-white text-sm group-hover:text-[#D4AF37] transition-colors">
+                            {selectedNewsArticle.author}
+                          </span>
+                          <span className="text-[10px] bg-zinc-800 text-[#D4AF37] px-2 py-0.5 rounded font-mono">
+                            {selectedNewsArticle.authorTitle || 'Kıdemli Yazar'}
+                          </span>
                         </div>
+                        <p className="text-zinc-400 leading-relaxed">
+                          {selectedNewsArticle.authorBio || 'WebdeHepSeeK Yayın Grubu bünyesinde teknoloji, finans ve pazar analizleri hazırlayan uzman editör.'}
+                        </p>
+                        <span className="text-[10px] text-[#D4AF37] font-bold block pt-1">
+                          Yazarın Tüm Makalelerini İncele →
+                        </span>
+                      </div>
+                    </div>
 
-                        {/* Add Comment Form */}
-                        <form onSubmit={(e) => handleAddComment(selectedNewsArticle.id, e)} className="p-4 bg-[#0B0B0C] border border-zinc-800 rounded-2xl space-y-3">
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {/* SADE VE KATLANABİLİR "YORUM YAP (0)" AKORDEON BÖLÜMÜ */}
+                    <div className="space-y-3">
+                      <button 
+                        onClick={() => setIsCommentsExpanded(!isCommentsExpanded)}
+                        className="w-full flex items-center justify-between p-4 bg-[#121215] border border-zinc-800 hover:border-[#D4AF37] rounded-2xl text-xs font-bold text-white transition-all shadow-sm"
+                      >
+                        <div className="flex items-center gap-2">
+                          <MessageSquare size={16} className="text-[#D4AF37]" />
+                          <span>Okur Yorumları Yap ({commentsList.filter(c => c.newsId === selectedNewsArticle.id).length})</span>
+                        </div>
+                        <ChevronRight size={16} className={cn("text-[#D4AF37] transition-transform duration-300", isCommentsExpanded && "rotate-90")} />
+                      </button>
+
+                      {isCommentsExpanded && (
+                        <motion.div 
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: 'auto' }}
+                          exit={{ opacity: 0, height: 0 }}
+                          className="p-4 bg-[#121215] border border-zinc-800 rounded-2xl space-y-4 font-sans shadow-inner"
+                        >
+                          <form onSubmit={(e) => handleAddComment(selectedNewsArticle.id, e)} className="space-y-3">
                             <input 
                               type="text" 
                               value={newCommentAuthor}
                               onChange={(e) => setNewCommentAuthor(e.target.value)}
-                              placeholder="Adınız Soyadınız (Varsayılan: Okur)..."
-                              className="bg-[#121215] border border-zinc-800 rounded-xl px-3 py-2 text-xs text-white outline-none focus:border-[#D4AF37]"
+                              placeholder="Adınız Soyadınız..."
+                              className="w-full bg-[#0B0B0C] border border-zinc-800 rounded-xl px-3 py-2 text-xs text-white outline-none focus:border-[#D4AF37]"
                             />
-                          </div>
-                          <textarea 
-                            value={newCommentText}
-                            onChange={(e) => setNewCommentText(e.target.value)}
-                            placeholder="Düşüncelerinizi ve analizinizi paylaşın..."
-                            rows={3}
-                            className="w-full bg-[#121215] border border-zinc-800 rounded-xl p-3 text-xs text-white outline-none focus:border-[#D4AF37]"
-                          />
-                          <div className="text-right">
-                            <button 
-                              type="submit"
-                              className="px-5 py-2 bg-[#D4AF37] text-black text-xs font-bold rounded-xl hover:brightness-110"
-                            >
-                              Yorum Gönder
-                            </button>
-                          </div>
-                        </form>
+                            <textarea 
+                              value={newCommentText}
+                              onChange={(e) => setNewCommentText(e.target.value)}
+                              placeholder="Düşüncelerinizi ve analizinizi paylaşın..."
+                              rows={3}
+                              className="w-full bg-[#0B0B0C] border border-zinc-800 rounded-xl p-3 text-xs text-white outline-none focus:border-[#D4AF37]"
+                            />
+                            <div className="text-right">
+                              <button 
+                                type="submit"
+                                className="px-5 py-2 bg-[#D4AF37] text-black text-xs font-bold rounded-xl hover:brightness-110 transition-all"
+                              >
+                                Yorum Gönder
+                              </button>
+                            </div>
+                          </form>
 
-                        {/* Comments List */}
-                        <div className="space-y-3">
-                          {commentsList.filter(c => c.newsId === selectedNewsArticle.id).map(comment => (
-                            <div key={comment.id} className="p-3 bg-[#0B0B0C] border border-zinc-800/80 rounded-xl space-y-1.5 text-xs">
-                              <div className="flex items-center justify-between">
-                                <div className="flex items-center gap-2">
-                                  <span className="font-bold text-white">{comment.author}</span>
-                                  {comment.isVerified && (
-                                    <span className="px-1.5 py-0.2 bg-emerald-500/20 text-emerald-400 text-[9px] font-mono rounded">
-                                      Onaylı Okur
-                                    </span>
-                                  )}
+                          <div className="space-y-2">
+                            {commentsList.filter(c => c.newsId === selectedNewsArticle.id).length === 0 ? (
+                              <p className="text-xs text-zinc-500 italic text-center py-2">
+                                Henüz yorum yapılmamış. İlk yorumu siz gönderin!
+                              </p>
+                            ) : (
+                              commentsList.filter(c => c.newsId === selectedNewsArticle.id).map(comment => (
+                                <div key={comment.id} className="p-3 bg-[#0B0B0C] border border-zinc-800/80 rounded-xl space-y-1.5 text-xs">
+                                  <div className="flex items-center justify-between">
+                                    <span className="font-bold text-white">{comment.author}</span>
+                                    <span className="text-[10px] text-zinc-500 font-mono">{comment.date}</span>
+                                  </div>
+                                  <p className="text-zinc-300 leading-relaxed">{comment.text}</p>
                                 </div>
-                                <span className="text-[10px] text-zinc-500 font-mono">{comment.date}</span>
-                              </div>
-                              <p className="text-zinc-300 leading-relaxed">{comment.text}</p>
-                              <div className="pt-1 flex justify-end">
-                                <button 
-                                  onClick={() => handleLikeComment(comment.id)}
-                                  className="flex items-center gap-1 text-[10px] text-zinc-400 hover:text-[#D4AF37]"
-                                >
-                                  <ThumbsUp size={11} />
-                                  <span>Beğen ({comment.likes})</span>
-                                </button>
-                              </div>
+                              ))
+                            )}
+                          </div>
+                        </motion.div>
+                      )}
+                    </div>
+
+                    {/* İLGİLİ HABERLER (AYNI KATEGORİDEN 3 TAZE KART) */}
+                    {relatedNews.length > 0 && (
+                      <div className="pt-6 border-t border-zinc-800 space-y-4 font-sans">
+                        <div className="flex items-center gap-2">
+                          <Sparkles size={16} className="text-[#D4AF37]" />
+                          <h4 className="text-sm font-serif font-bold text-white uppercase tracking-wider text-[#D4AF37]">
+                            İlgili Haberler
+                          </h4>
+                        </div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                          {relatedNews.map((rel) => (
+                            <div 
+                              key={rel.id} 
+                              onClick={() => {
+                                setSelectedNewsArticle(rel);
+                                setIsAiSummaryExpanded(false);
+                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                              }}
+                              className="bg-[#121215] border border-zinc-800 hover:border-[#D4AF37] p-4 rounded-2xl cursor-pointer space-y-2 transition-all hover:-translate-y-1 group"
+                            >
+                              <img 
+                                src={rel.imageUrl} 
+                                alt={rel.title} 
+                                className="w-full h-28 object-cover rounded-xl group-hover:scale-102 transition-transform"
+                              />
+                              <span className="text-[10px] text-[#D4AF37] font-mono font-bold block">
+                                {rel.subcategory}
+                              </span>
+                              <h5 className="text-xs font-bold text-white line-clamp-2 leading-snug group-hover:text-[#D4AF37] transition-colors">
+                                {rel.title}
+                              </h5>
+                              <span className="text-[10px] text-zinc-500 block font-mono">
+                                {rel.date}
+                              </span>
                             </div>
                           ))}
                         </div>
                       </div>
+                    )}
 
-                      {/* RELATED ARTICLES RECOMMENDED MATRIX */}
-                      {relatedNews.length > 0 && (
-                        <div className="pt-4 border-t border-zinc-800 space-y-3">
-                          <h4 className="text-xs font-serif font-bold text-white uppercase tracking-wider text-[#D4AF37]">
-                            İlgili Diğer Makaleler
-                          </h4>
-                          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                            {relatedNews.map((rel) => (
-                              <div 
-                                key={rel.id} 
-                                onClick={() => setSelectedNewsArticle(rel)}
-                                className="bg-[#0B0B0C] border border-zinc-800 hover:border-[#D4AF37] p-3 rounded-xl cursor-pointer space-y-1 transition-all"
-                              >
-                                <span className="text-[9px] text-[#D4AF37] font-bold block">{rel.subcategory}</span>
-                                <h5 className="text-xs font-bold text-white line-clamp-2">{rel.title}</h5>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-
-                      {/* Canonical URL */}
-                      <div className="p-3 bg-[#0B0B0C] rounded-xl border border-zinc-800 text-xs font-mono text-zinc-400 space-y-1">
-                        <div className="flex items-center justify-between">
-                          <span>Canonical URL:</span>
-                          <span className="text-[#D4AF37] truncate max-w-sm">{selectedNewsArticle.canonicalUrl}</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="p-4 border-t border-zinc-800 bg-zinc-950 flex justify-end">
+                    {/* EN ALT GERİ DÖNÜŞ BUTONU */}
+                    <div className="pt-8 text-center border-t border-zinc-800">
                       <button 
-                        onClick={() => setSelectedNewsArticle(null)}
-                        className="px-5 py-2 bg-[#D4AF37] text-black text-xs font-bold rounded-xl"
+                        onClick={() => {
+                          setSelectedNewsArticle(null);
+                          setIsAiSummaryExpanded(false);
+                          setAudioProgress(0);
+                          stopSpeech();
+                        }}
+                        className="px-6 py-3 bg-[#D4AF37] text-black font-extrabold text-xs uppercase rounded-xl hover:brightness-110 shadow-lg transition-all inline-flex items-center gap-2"
                       >
-                        Kapat
+                        <ArrowLeft size={16} />
+                        <span>Tüm Haberlere Dön</span>
                       </button>
                     </div>
-                  </motion.div>
-                </div>
+                  </div>
+                </motion.div>
               )}
             </AnimatePresence>
 
@@ -2442,13 +2772,13 @@ export default function App() {
           </div>
         )}
 
-        {/* TAB 2: 14 CORE CATEGORIES & MEGA NAV */}
+        {/* TAB 2: 18 CORE CATEGORIES & MEGA NAV */}
         {activeTab === 'nav' && (
           <div className="space-y-8">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-zinc-800 pb-6">
               <div>
                 <span className="px-3 py-1 bg-[#D4AF37]/15 border border-[#D4AF37] text-[#D4AF37] text-[10px] font-extrabold rounded-full uppercase tracking-widest">
-                  14 Ana Kategori & 140 Alt Başlık
+                  18 Ana Kategori & 180 Alt Başlık
                 </span>
                 <h2 className="text-3xl font-serif font-bold text-white mt-2">
                   Navigasyon & Yayın Yapısı
@@ -2551,7 +2881,7 @@ export default function App() {
                   </span>
                 </div>
                 <p className="text-xs text-zinc-400 leading-relaxed">
-                  Google Analytics mülkünüzden aldığınız Measurement ID (Örn: <code className="text-[#D4AF37]">G-XXXXXXXXXX</code>) kodunu girin.
+                  Google Analytics mülkünüzden aldığınız Measurement ID (Örn: <code className="text-[#D4AF37]">G-J8QMESNXY7</code>) kodunu girin.
                 </p>
                 <div className="space-y-1.5">
                   <label className="text-[10px] font-mono uppercase text-zinc-400 font-bold block">GA4 Measurement ID</label>
@@ -2559,7 +2889,7 @@ export default function App() {
                     type="text"
                     value={ga4Id}
                     onChange={(e) => setGa4Id(e.target.value)}
-                    placeholder="G-XXXXXXXXXX"
+                    placeholder="G-J8QMESNXY7"
                     className="w-full bg-[#0B0B0C] border border-zinc-700 rounded-xl px-4 py-2.5 text-xs text-white font-mono outline-none focus:border-[#D4AF37]"
                   />
                 </div>
@@ -2604,7 +2934,7 @@ export default function App() {
                 </span>
                 <button
                   onClick={() => handleCopy(
-                    `<!-- Google Analytics 4 (GA4) -->\n<script async src="https://www.googletagmanager.com/gtag/js?id=${ga4Id || 'G-XXXXXXXXXX'}"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n  gtag('config', '${ga4Id || 'G-XXXXXXXXXX'}');\n</script>\n${gscTag ? `<!-- Search Console Verification -->\n${gscTag}\n` : ''}`,
+                    `<!-- Google Analytics 4 (GA4) -->\n<script async src="https://www.googletagmanager.com/gtag/js?id=${ga4Id || 'G-J8QMESNXY7'}"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n  gtag('config', '${ga4Id || 'G-J8QMESNXY7'}');\n</script>\n${gscTag ? `<!-- Search Console Verification -->\n${gscTag}\n` : ''}`,
                     "Analytics Snippet"
                   )}
                   className="px-3 py-1 bg-zinc-800 hover:bg-[#D4AF37] hover:text-black rounded text-[10px] font-bold text-white transition-colors"
@@ -2614,12 +2944,12 @@ export default function App() {
               </div>
               <pre className="text-emerald-400 bg-[#0B0B0C] p-4 rounded-xl overflow-x-auto text-[11px] leading-relaxed border border-zinc-800">
 {`<!-- Google Analytics 4 (GA4) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=${ga4Id || 'G-XXXXXXXXXX'}"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=${ga4Id || 'G-J8QMESNXY7'}"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', '${ga4Id || 'G-XXXXXXXXXX'}');
+  gtag('config', '${ga4Id || 'G-J8QMESNXY7'}');
 </script>
 ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
               </pre>
@@ -2763,7 +3093,7 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
               <div>
                 <h2 className="text-3xl font-serif font-bold text-white">WordPress Kategori Export & Google Sitemap.xml</h2>
                 <p className="text-zinc-400 text-sm mt-1">
-                  15 Ana Kategori ve 150 Alt Başlığın WordPress REST API ve Google News Sitemap XML çıktısı.
+                  18 Ana Kategori ve 180 Alt Başlığın WordPress REST API ve Google News Sitemap XML çıktısı.
                 </p>
               </div>
               <button
@@ -2779,7 +3109,7 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
 
             <div className="bg-[#121215] border border-zinc-800 rounded-3xl p-6 font-mono text-xs space-y-4">
               <div className="flex items-center justify-between text-[#D4AF37]">
-                <span>wp_hierarchy_150_subcategories.json</span>
+                <span>wp_hierarchy_180_subcategories.json</span>
                 <button 
                   onClick={() => handleCopy(JSON.stringify(SITE_STRUCTURE, null, 2), "WP JSON Hiyerarşisi")}
                   className="px-3 py-1 bg-zinc-800 hover:bg-[#D4AF37] hover:text-black rounded text-[10px] font-bold"
@@ -2846,11 +3176,11 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
           <span>Kategoriler</span>
         </button>
         <button 
-          onClick={() => setActiveTab('analytics')}
-          className={cn("flex flex-col items-center gap-1 font-bold", activeTab === 'analytics' ? "text-[#D4AF37]" : "hover:text-white")}
+          onClick={() => setActiveTab('ai')}
+          className={cn("flex flex-col items-center gap-1 font-bold", activeTab === 'ai' ? "text-[#D4AF37]" : "hover:text-white")}
         >
-          <BarChart2 size={18} />
-          <span>Google Konsol</span>
+          <Zap size={18} />
+          <span>AI Analiz</span>
         </button>
         <button 
           onClick={() => setIsDarkMode(!isDarkMode)}
@@ -2952,6 +3282,25 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
                   <p className="text-zinc-400 font-mono">{userProfile.email}</p>
                   <span className="inline-block mt-1.5 text-[10px] font-serif text-zinc-300 font-semibold">{userProfile.role}</span>
                 </div>
+                {/* Admin Mode Toggle */}
+                <div className="p-4 bg-zinc-900/50 border border-zinc-800 rounded-2xl flex items-center justify-between">
+                  <div>
+                    <span className="font-bold text-white text-xs block">Yönetici Kontrol Paneli</span>
+                    <span className="text-[10px] text-zinc-400">Google Konsolu, Sistem Metrikleri ve Export araçlarını ana menüye ekler.</span>
+                  </div>
+                  <button 
+                    onClick={() => {
+                      setShowAdminTabs(!showAdminTabs);
+                      showToast(!showAdminTabs ? "Yönetici paneli araçları etkinleştirildi" : "Yönetici araçları gizlendi");
+                    }}
+                    className={cn(
+                      "px-3 py-1.5 rounded-lg text-[10px] font-extrabold uppercase transition-all whitespace-nowrap shrink-0",
+                      showAdminTabs ? "bg-[#D4AF37] text-black" : "bg-[#0B0B0C] border border-zinc-800 text-zinc-400 hover:text-white"
+                    )}
+                  >
+                    {showAdminTabs ? "Etkin" : "Gizli"}
+                  </button>
+                </div>
                 <div className="grid grid-cols-2 gap-3 font-mono">
                   <div className="p-3 bg-[#0B0B0C] border border-zinc-800 rounded-xl">
                     <span className="text-zinc-500 text-[10px] block">Kaydedilen Haberler</span>
@@ -2990,8 +3339,8 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
                 </div>
                 <div className="p-3 bg-[#0B0B0C] border border-zinc-800 rounded-xl space-y-2 font-mono">
                   <div className="flex justify-between">
-                    <span className="text-zinc-400">Türk Lirası Karşılığı (USD/TRY 38.45):</span>
-                    <strong className="text-white">{(calcUsdInput * 38.45).toLocaleString('tr-TR')} ₺</strong>
+                    <span className="text-zinc-400">Türk Lirası Karşılığı (USD/TRY 34.35):</span>
+                    <strong className="text-white">{(calcUsdInput * 34.35).toLocaleString('tr-TR')} ₺</strong>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-zinc-400">Bitcoin Karşılığı ($152,400):</span>
@@ -3172,6 +3521,9 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
           </div>
         </div>
       </footer>
+
+      {/* Sticky Bottom Anchor Banner (ShiftDelete Style) */}
+      <StickyAnchorBanner />
 
     </div>
   );
