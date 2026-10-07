@@ -255,6 +255,99 @@ function AffiliateCtaCard({ layout = 'sidebar' }: AffiliateCtaCardProps) {
   );
 }
 
+// DonanımHaber Style Hot Deals Widget (Sıcak Fırsatlar ve İndirim Radarı)
+function HotDealsWidget() {
+  const deals = [
+    {
+      id: 'deal-1',
+      title: 'Samsung Galaxy S24 Ultra 512GB (Yapay Zeka)',
+      category: 'Akıllı Telefon',
+      oldPrice: '74.999 ₺',
+      newPrice: '58.499 ₺',
+      discount: '%22 İNDİRİM',
+      imageUrl: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=400&q=80',
+      link: 'https://www.samsung.com/tr/smartphones/galaxy-s24-ultra/'
+    },
+    {
+      id: 'deal-2',
+      title: 'Samsung 990 PRO 2TB NVMe M.2 SSD (7450 MB/s)',
+      category: 'Donanım & Depolama',
+      oldPrice: '7.499 ₺',
+      newPrice: '5.249 ₺',
+      discount: '%30 İNDİRİM',
+      imageUrl: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=400&q=80',
+      link: 'https://www.samsung.com/tr/memory-storage/nvme-ssd/990-pro-2tb/'
+    },
+    {
+      id: 'deal-3',
+      title: 'Sony WH-1000XM5 Gürültü Engelleyici Kulaklık',
+      category: 'Ses & Aksesuar',
+      oldPrice: '14.999 ₺',
+      newPrice: '11.249 ₺',
+      discount: '%25 İNDİRİM',
+      imageUrl: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=80',
+      link: 'https://www.sony.com.tr/headphones/products/wh-1000xm5'
+    }
+  ];
+
+  return (
+    <div className="bg-[#121215] border border-[#D4AF37]/35 rounded-2xl p-4 space-y-4 shadow-xl font-sans">
+      <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
+        <div className="flex items-center gap-2">
+          <Zap size={18} className="text-[#D4AF37] animate-pulse" />
+          <h3 className="font-serif font-bold text-white text-sm">
+            🔥 Günün Sıcak İndirimleri & Fırsatları
+          </h3>
+        </div>
+        <span className="text-[10px] font-mono text-[#D4AF37] bg-[#D4AF37]/15 border border-[#D4AF37]/30 px-2 py-0.5 rounded font-extrabold uppercase">
+          DonanımHaber Radar
+        </span>
+      </div>
+
+      <div className="space-y-3">
+        {deals.map((deal) => (
+          <div 
+            key={deal.id}
+            onClick={() => window.open(deal.link, '_blank')}
+            className="p-3 bg-[#0B0B0C] border border-zinc-800 hover:border-[#D4AF37] rounded-xl flex gap-3 items-center transition-all group cursor-pointer"
+          >
+            <img 
+              src={deal.imageUrl} 
+              alt={deal.title} 
+              className="w-14 h-14 object-cover rounded-lg border border-zinc-800 shrink-0 group-hover:scale-105 transition-transform"
+            />
+            <div className="space-y-1 flex-1 min-w-0">
+              <div className="flex items-center justify-between gap-1">
+                <span className="text-[9px] font-mono text-zinc-400 truncate">{deal.category}</span>
+                <span className="text-[9px] font-mono font-extrabold text-black bg-[#D4AF37] px-1.5 py-0.2 rounded shrink-0">
+                  {deal.discount}
+                </span>
+              </div>
+              <h4 className="text-xs font-bold text-white truncate group-hover:text-[#D4AF37] transition-colors">
+                {deal.title}
+              </h4>
+              <div className="flex items-center gap-2 text-xs">
+                <span className="text-zinc-500 line-through text-[10px] font-mono">{deal.oldPrice}</span>
+                <span className="text-[#D4AF37] font-extrabold font-mono text-xs">{deal.newPrice}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="pt-2 border-t border-zinc-800 text-center">
+        <button 
+          onClick={() => window.open('https://webdehepseek.com/firsatlar', '_blank')}
+          className="w-full py-2 bg-[#D4AF37] text-black text-xs font-extrabold rounded-xl hover:brightness-110 uppercase transition-all shadow-md flex items-center justify-center gap-1.5"
+        >
+          <span>Fırsatı Yakala (Affiliate Radar)</span>
+          <ExternalLink size={12} />
+        </button>
+      </div>
+    </div>
+  );
+}
+
 // Mobile Sticky Anchor Ad Banner (ShiftDelete Style)
 function StickyAnchorBanner() {
   const [isDismissed, setIsDismissed] = useState(false);
@@ -709,6 +802,70 @@ export default function App() {
     return () => clearInterval(interval);
   }, []);
 
+  // Fetch Live Rates API & External News & Comments Persistence
+  useEffect(() => {
+    // 1. Fetch Live Currency Rates from Open Exchange API
+    async function fetchLiveCurrencyRates() {
+      try {
+        const res = await fetch('https://open.er-api.com/v6/latest/USD');
+        if (res.ok) {
+          const data = await res.json();
+          const tryRate = data.rates?.TRY;
+          const eurRate = data.rates?.EUR;
+          if (tryRate) {
+            const usdTry = tryRate.toFixed(2);
+            const eurTry = (tryRate / (eurRate || 0.92)).toFixed(2);
+            setLiveRates([
+              { symbol: 'USD/TRY', label: 'Dolar', value: `${usdTry} ₺`, change: '+0.18%', isPositive: true },
+              { symbol: 'EUR/TRY', label: 'Euro', value: `${eurTry} ₺`, change: '+0.24%', isPositive: true },
+              { symbol: 'BIST 100', label: 'Borsa', value: '10,845.20', change: '+1.35%', isPositive: true },
+              { symbol: 'BTC/USD', label: 'Bitcoin', value: '$88,450', change: '+2.50%', isPositive: true }
+            ]);
+          }
+        }
+      } catch {
+        // Keep realistic default rates
+      }
+    }
+
+    // 2. Fetch External JSON News Feed (public/haberler.json)
+    async function fetchExternalNews() {
+      try {
+        const res = await fetch('/haberler.json');
+        if (res.ok) {
+          const data = await res.json();
+          if (Array.isArray(data) && data.length > 0) {
+            setNewsList(prev => {
+              const externalIds = new Set(data.map((item: NewsItem) => item.id));
+              const filteredPrev = prev.filter(item => !externalIds.has(item.id));
+              return [...data, ...filteredPrev];
+            });
+          }
+        }
+      } catch {
+        // Fall back seamlessly to MOCK_NEWS
+      }
+    }
+
+    // 3. Load Saved Comments from LocalStorage
+    if (typeof localStorage !== 'undefined') {
+      const saved = localStorage.getItem('whsk_comments_v1');
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            setCommentsList(parsed);
+          }
+        } catch {
+          // ignore
+        }
+      }
+    }
+
+    fetchLiveCurrencyRates();
+    fetchExternalNews();
+  }, []);
+
   // Dynamic Document Page Title Sync
   useEffect(() => {
     if (selectedNewsArticle) {
@@ -838,7 +995,7 @@ export default function App() {
     }
   };
 
-  // Add Comment Helper
+  // Add Comment Helper with LocalStorage Persistence
   const handleAddComment = (newsId: string, e: React.FormEvent) => {
     e.preventDefault();
     if (!newCommentText.trim()) return;
@@ -852,9 +1009,13 @@ export default function App() {
       likes: 1,
       isVerified: userProfile.isLoggedIn
     };
-    setCommentsList([newComment, ...commentsList]);
+    const updated = [newComment, ...commentsList];
+    setCommentsList(updated);
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem('whsk_comments_v1', JSON.stringify(updated));
+    }
     setNewCommentText('');
-    showToast("Yorumunuz başarıyla gönderildi ve yayınlandı.");
+    showToast("Yorumunuz başarıyla gönderildi ve tarayıcı hafızasına kaydedildi!");
   };
 
   // Reaction Helper
@@ -1965,6 +2126,9 @@ export default function App() {
                     {/* GOOGLE ADSENSE SIDEBAR BANNER (CLS-SAFE) */}
                     <AdSenseSlot format="sidebar" />
 
+                    {/* DONANİMHABER MODELİ: SICAK FIRSATLAR VE İNDİRİM RADARI WİDGETI */}
+                    <HotDealsWidget />
+
                     {/* LUXURY AFFILIATE RECOMMENDATION CARD */}
                     <AffiliateCtaCard layout="sidebar" />
                   </div>
@@ -2373,10 +2537,29 @@ export default function App() {
                           <span>Görseli Tam Ekran Büyüt</span>
                         </div>
                       </div>
-                      <span className="text-[11px] text-zinc-500 italic block font-sans text-center">
-                        Haber Kapak Görseli: {selectedNewsArticle.title}
+                      <span className="text-[11px] text-zinc-400 italic block font-sans text-center">
+                        Görsel: WebdeHepSeek Arşiv / Unsplash Editorial
                       </span>
                     </div>
+
+                    {/* WEBTEKNO MODELİ: YOUTUBE VİDEO VE MEDYA GÖMME (EMBED) ALANI */}
+                    {selectedNewsArticle.youtubeVideoId && (
+                      <div className="space-y-2.5 my-6 font-sans">
+                        <div className="flex items-center gap-2 text-xs font-bold text-[#D4AF37] uppercase font-mono">
+                          <Play size={14} className="fill-[#D4AF37] text-[#D4AF37]" />
+                          <span>Webtekno İnceleme & Video Medya:</span>
+                        </div>
+                        <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-zinc-800 shadow-2xl bg-black">
+                          <iframe
+                            src={`https://www.youtube-nocookie.com/embed/${selectedNewsArticle.youtubeVideoId}?autoplay=0&rel=0`}
+                            title={selectedNewsArticle.title}
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                            className="absolute top-0 left-0 w-full h-full border-0"
+                          />
+                        </div>
+                      </div>
+                    )}
 
                     {/* SESLİ MAKALE DİNLEME (TTS) */}
                     <div className="bg-[#121215] border border-[#D4AF37]/30 rounded-2xl p-4 space-y-3 shadow-md">
@@ -2672,6 +2855,11 @@ export default function App() {
                           </div>
                         </motion.div>
                       )}
+                    </div>
+
+                    {/* DONANIMHABER MODELİ: GÜNÜN SICAK İNDİRİMLERİ & FIRSATLARI WİDGET'I */}
+                    <div className="my-6">
+                      <HotDealsWidget />
                     </div>
 
                     {/* İLGİLİ HABERLER (AYNI KATEGORİDEN 3 TAZE KART) */}
