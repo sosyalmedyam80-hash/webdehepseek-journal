@@ -123,6 +123,15 @@ export const TAG_CLOUD = [
 
 export const AUTHORS_LIST: AuthorProfile[] = [
   {
+    id: "auth-owner",
+    name: "Ahmet Karadağ",
+    title: "Kurucu & Genel Yayın Yönetmeni",
+    bio: "WebdeHepSeeK Journal Kurucusu. Küresel teknoloji trendleri, yapay zeka entegrasyonu ve makroekonomi alanlarında başyazar.",
+    avatarLetter: "A",
+    articlesCount: 42,
+    verified: true
+  },
+  {
     id: "auth-1",
     name: "Selin Yılmaz",
     title: "AI & Gelecek Teknolojileri Başeditörü",
@@ -138,24 +147,6 @@ export const AUTHORS_LIST: AuthorProfile[] = [
     bio: "Makro borsa hareketleri, kripto varlık zincir-üstü (On-Chain) verileri ve türev piyasalar uzmanı.",
     avatarLetter: "M",
     articlesCount: 38,
-    verified: true
-  },
-  {
-    id: "auth-3",
-    name: "Ahmet Erdem",
-    title: "Makro Ekonomi & Borsa Analisti",
-    bio: "Sermaye piyasaları, BIST 100 şirket değerlemeleri ve küresel makroekonomik analizler yazarı.",
-    avatarLetter: "A",
-    articlesCount: 29,
-    verified: true
-  },
-  {
-    id: "auth-4",
-    name: "Kaan Erdem",
-    title: "Mobilite & Otomotiv Editörü",
-    bio: "Elektrikli araçlar, batarya kimyaları ve LiDAR otonom sürüş teknolojileri uzmanı gazeteci.",
-    avatarLetter: "K",
-    articlesCount: 25,
     verified: true
   }
 ];
@@ -221,7 +212,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
   { term: "LLM", definition: "Büyük Dil Modeli - Milyarlarca parametreyle eğitilmiş gelişmiş metin ve mantık işleme yapay zekası." },
   { term: "DeFi", definition: "Centralized olmayan, akıllı sözleşmelerle yürütülen ademi merkeziyetçi finans ekosistemi." },
   { term: "LiDAR", definition: "Işık tespiti ve uzaklık tayini sağlayan otonom araç sensör teknolojisi." },
-  { term: "Qubit", definition: "Kuantum bilgisayarlarında aynı anda hem 0 hem 1 durumunda bulunabilen temel bilgi birimi." },
+  { term: "Qubit", definition: "Kuantum bilgisayarlarında aynı onda hem 0 hem 1 durumunda bulunabilen temel bilgi birimi." },
   { term: "On-Chain", definition: "Doğrudan blokzincir ağında gerçekleşen şeffaf ve değiştirilemez veri hareketleri." }
 ];
 
@@ -520,164 +511,1431 @@ export const SYSTEM_NODES: SystemNode[] = [
   }
 ];
 
+// Rich 42-Article Database (14 Categories x 3 Articles each)
 export const MOCK_NEWS: NewsItem[] = [
+  // 1. TEKNOLOJİ & DİJİTAL DÖNÜŞÜM (tech)
   {
-    id: "NEWS-101",
-    title: "Yapay Zeka Modellerinde Yeni Çağ: Akıl Yürütme Kapasitesi İnsan Düzeyini Aştı",
-    excerpt: "Yeni nesil derin öğrenme mimarileri, karmaşık finansal analizlerde ve yazılım mühendisliğinde insan muhakeme yeteneğini geride bırakan sonuçlar üretiyor.",
-    category: "Yapay Zeka & Gelecek",
-    subcategory: "AGI (Yapay Genel Zeka)",
-    date: "6 Ekim 2026",
-    imageUrl: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80",
-    readTime: "5 dk",
-    author: "Selin Yılmaz",
-    authorTitle: "AI & Gelecek Teknolojileri Başeditörü",
-    authorBio: "Yapay zeka modelleri, otonom ajans mimarileri ve makine öğrenimi etiği alanında küresel yayıncı ve teknoloji araştırmacısı.",
+    id: "TECH-01",
+    title: "Kuantum Bilgisayarlarda 10,000 Qubit Eşiği Aşıldı: Siber Güvenlik Mimarisi Değişiyor",
+    excerpt: "Küresel çip üreticileri tarafından duyurulan yeni kuantum işlemcisi, klasik şifreleme yöntemlerini saniyeler içinde çözebilecek devasa bir hesaplama gücüne ulaştı.",
+    category: "Teknoloji & Dijital Dönüşüm",
+    subcategory: "Kuantum Bilgisayarlar",
+    date: "7 Ekim 2026",
+    imageUrl: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=800&q=80",
+    readTime: "6 dk",
+    author: "Ahmet Karadağ & Analitik Heyeti",
+    authorTitle: "Kurucu & Genel Yayın Yönetmeni",
     verifiedSource: true,
     isEditorsChoice: true,
-    sentiment: "Boğa (Bullish)",
-    executiveSummary: "Son jenerasyon çok adımlı mantık zincirine sahip AI modelleri, karmaşık yazılım mimarilerinde %98 doğruluk oranı yakalayarak AGI yolculuğunda tarihi dönüm noktasını işaret ediyor.",
-    sharesCount: 1240,
-    reactions: { like: 342, analytic: 215, mindblown: 189 },
-    correctionLog: "6 Ekim 2026 18:20: Derin öğrenme test parametrelerinin AB AI Act uyumluluk raporu eklendi.",
-    canonicalUrl: "https://webdehepseek.com/haber/ai/akil-yurutme-kapasitesi-rekor",
+    sentiment: "Boğa 🐂",
+    executiveSummary: "10,000 fiziksel qubit seviyesinin aşılması, RSA ve AES-256 gibi geleneksel kriptografi standartlarının ömrünü kısaltarak post-kuantum şifreleme geçişini acil hale getirdi.",
+    canonicalUrl: "https://webdehepseek.com/haber/tech/kuantum-10k-qubit-esigi",
     sections: [
       {
-        id: "sec-1",
-        heading: "1. Akıl Yürütme ve Çok Adımlı Mantık Çözümü (AGI Adımları)",
-        body: "Son geliştirilen dil ve mantık modelleri, sadece metin üretmekle kalmayıp karmaşık matematik teoremlerini ve yazılım mimarilerini çok adımlı doğrulama zinciriyle (Chain of Thought) çözüme kavuşturuyor. AGI eşiği hiç olmadığı kadar yakın görünmektedir."
+        id: "t1-sec-1",
+        heading: "1. Kuantum Süperpozisyonu ve Donanımsal Atılım",
+        body: "Post-silikon çağının kapılarını aralayan yeni kuantum işlemcisi, mutlak sıfıra yakın sıcaklıkta çalışan 10,000 kararlı qubiti tek bir çip üzerinde birleştirmeyi başardı. Bu eşik, hata payını milyonda bire indirgeyen gelişmiş kuantum eş-evresizlik (decoherence) kontrol algoritmaları sayesinde aşıldı."
       },
       {
-        id: "sec-2",
-        heading: "2. Yazılım Mühendisliği ve Finansal Modellemede Dönüşüm",
-        body: "Otonom kodlama sistemleri kurumsal seviyedeki kod tabanlarında güvenlik açıklarını saliseler içinde tespit edip yamayabiliyor. Finans sektöründe ise algoritmik alım-satım stratejileri anlık duygu analiziyle destekleniyor."
+        id: "t1-sec-2",
+        heading: "2. Geleneksel Şifreleme Algoritmalarının Sonu",
+        body: "Shor Algoritması'nın kuantum işlemcilerdeki simülasyonları, günümüzün en yaygın bankacılık ve askeri şifreleme altyapısı olan RSA-2048'in saatler içinde kırılabileceğini doğruluyor. Bilgi güvenliği otoriteleri, finansal kuruluşlara kuantum dayanıklı kafes temelli (lattice-based) şifreleme standartlarına geçme çağrısı yapıyor."
       },
       {
-        id: "sec-3",
-        heading: "3. Etik Çerçeve ve Güvenli AI Standartları",
-        body: "Küresel regülatörler ve AB AI Act temsilcileri, modellerin hizalanması (Alignment) ve şeffaflık raporlaması konusunda yeni yayın ilkelerini zorunlu kılıyor."
+        id: "t1-sec-3",
+        heading: "3. Kurumsal Adaptasyon ve Gelecek Projeksiyonu",
+        body: "Ahmet Karadağ liderliğindeki Analitik Heyetimiz, siber güvenlik bütçelerinin en az %20'sinin doğrudan kuantum migrasyonuna ayrılması gerektiğini savunuyor. Büyük teknoloji markaları post-kuantum şifreleme protokollerini 2026 sonu itibarıyla standart olarak sunmaya hazırlanıyor."
       }
     ]
   },
   {
-    id: "NEWS-102",
+    id: "TECH-02",
+    title: "6G Mobil İletişim Protokolleri: Akıllı Anten Teknolojileriyle Saniyede Terabayt Dönemi",
+    excerpt: "Küresel telekomünikasyon birliği tarafından onaylanan yeni 6G standartları, alt-terahertz frekanslarında çalışarak kablosuz veri iletiminde fiziksel sınırları zorluyor.",
+    category: "Teknoloji & Dijital Dönüşüm",
+    subcategory: "Mobil Dünya & 6G",
+    date: "7 Ekim 2026",
+    imageUrl: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80",
+    readTime: "5 dk",
+    author: "Ahmet Karadağ & Analitik Heyeti",
+    authorTitle: "Kurucu & Genel Yayın Yönetmeni",
+    verifiedSource: true,
+    sentiment: "Dengeli ⚖️",
+    executiveSummary: "6G spektrumu, mikrosaniyelik gecikme süreleri sunarak otonom araç filoları ve uzaktan cerrahi robotlar için ultra-güvenilir gerçek zamanlı kontrol katmanı inşa ediyor.",
+    canonicalUrl: "https://webdehepseek.com/haber/tech/6g-mobil-terabayt-donemi",
+    sections: [
+      {
+        id: "t2-sec-1",
+        heading: "1. Terahertz Frekans Spektrumu ve Spektral Verimlilik",
+        body: "6G, 100 GHz ile 3 THz arasındaki kullanılmamış frekans bantlarını aktive ederek kablosuz veri aktarım hızını 5G'ye oranla tam 100 kat artırıyor. Bu sayede saniyede 1 Terabayt veri indirme hızları laboratuvar ortamından çıkıp sahalara iniyor."
+      },
+      {
+        id: "t2-sec-2",
+        heading: "2. Yapay Zeka Destekli Dinamik Spektrum Yönetimi",
+        body: "Baz istasyonları ve akıllı antenler (MIMO v2) sinyal yönlendirme kararlarını milisaniyeler altında çalışan otonom yapay zeka ajanları vasıtasıyla veriyor. Yoğun metropol alanlarında sinyal kayıpları ve parazitler yapay sinir ağları tarafından dinamik olarak önleniyor."
+      },
+      {
+        id: "t2-sec-3",
+        heading: "3. Akıllı Şehirler ve Holografik İletişim Altyapısı",
+        body: "Saniyede terabaytlık bant genişliği, kullanıcıların uzaktan gerçek zamanlı holografik görüntülerle toplantı yapabilmesini ve otonom araçların çevresiyle kesintisiz V2X veri alışverişinde bulunmasını mümkün kılıyor."
+      }
+    ]
+  },
+  {
+    id: "TECH-03",
+    title: "Küresel Yarı İletken Savaşları: 2 Nanometre Altı Çip Üretiminde Yeni Lider Kim Olacak?",
+    excerpt: "Tayvan, Güney Kore ve ABD merkezli dökümhanelerin 2nm altı yüksek yoğunluklu çipler için yürüttüğü milyar dolarlık yatırımlar jeopolitik dengeleri yeniden şekillendiriyor.",
+    category: "Teknoloji & Dijital Dönüşüm",
+    subcategory: "Donanım & Çip Savaşları",
+    date: "7 Ekim 2026",
+    imageUrl: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80",
+    readTime: "5 dk",
+    author: "Ahmet Karadağ & Analitik Heyeti",
+    authorTitle: "Kurucu & Genel Yayın Yönetmeni",
+    verifiedSource: true,
+    sentiment: "Ayı 🐻",
+    executiveSummary: "Küresel arz zincirindeki jeopolitik riskler ve litografi makinelerindeki tekel konumlar, yarı iletken sektöründe fiyat oynaklığını ve teslimat sürelerini artırıyor.",
+    canonicalUrl: "https://webdehepseek.com/haber/tech/yari-iletken-2nm-savasi",
+    sections: [
+      {
+        id: "t3-sec-1",
+        heading: "1. High-NA EUV Litografi Teknolojisinde Sınırlar",
+        body: "2 nanometre ve altındaki silikon katmanlarına transistör basabilmek, ASML firmasının ürettiği yeni nesil High-NA Extreme Ultraviolet litografi sistemlerini zorunlu kılıyor. Bu cihazların adet fiyatının $400 milyona ulaşması, pazara giriş bariyerini sadece devasa bütçeli oyuncularla sınırlıyor."
+      },
+      {
+        id: "t3-sec-2",
+        heading: "2. Gate-All-Around (GAA) Transistör Mimarisi",
+        body: "Klasik FinFET tasarımlarının fiziksel sınırlarına dayanılmasıyla, sızıntı akımını önleyen GAA mimarisine geçiş hızlandı. Bu tasarım transistör etrafını dört koldan sararak güç tüketimini %30 azaltırken performansı %15 artırıyor."
+      },
+      {
+        id: "t3-sec-3",
+        heading: "3. Jeopolitik Çip Ambargoları ve Ulusal Güvenlik",
+        body: "Ahmet Karadağ analistlerine göre çip üretimi artık sadece ticari bir rekabet değil, ülkelerin teknolojik egemenlik ve savunma sanayii gücünün en kritik parametresi haline gelmiştir. Yerli üretim teşvikleri dünya genelinde $200 milyarı aştı."
+      }
+    ]
+  },
+
+  // 2. YAPAY ZEKA & GELECEK (ai)
+  {
+    id: "AI-01",
+    title: "Yapay Zeka Modellerinde Yeni Çağ: Akıl Yürütme Kapasitesi İnsan Düzeyini Aştı",
+    excerpt: "Yeni nesil derin öğrenme mimarileri, çok adımlı doğrulama zinciriyle finansal analizlerde ve karmaşık yazılım projelerinde insan muhakeme yeteneğini geride bıraktı.",
+    category: "Yapay Zeka & Gelecek",
+    subcategory: "AGI (Yapay Genel Zeka)",
+    date: "7 Ekim 2026",
+    imageUrl: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80",
+    readTime: "5 dk",
+    author: "Ahmet Karadağ & Analitik Heyeti",
+    authorTitle: "Kurucu & Genel Yayın Yönetmeni",
+    verifiedSource: true,
+    isEditorsChoice: true,
+    sentiment: "Boğa 🐂",
+    executiveSummary: "Akıl yürütme tabanlı niyet analizi yapan yeni modeller, otonom yazılım geliştirme ve bilimsel veri tahlilinde %98 doğruluk elde ederek AGI dönüm noktasını başlattı.",
+    canonicalUrl: "https://webdehepseek.com/haber/ai/akil-yurutme-insan-seviyesi",
+    sections: [
+      {
+        id: "ai1-sec-1",
+        heading: "1. Çok Adımlı Zincirsel Düşünce (Chain-of-Thought) Entegrasyonu",
+        body: "Son nesil yapay zeka modelleri, kullanıcı girdilerine anında cevap vermek yerine arka planda otonom bir akıl yürütme ağacı (Reasoning Tree) kuruyor. Kendi ürettiği ara adımları test edip hatalarını düzelten sistem, insan beynindeki derin muhakeme sürecini simüle ediyor."
+      },
+      {
+        id: "ai1-sec-2",
+        heading: "2. Karmaşık Yazılım ve Matematik Problemlerinde Sıfır Hata",
+        body: "Yazılım mühendisliği olimpiyatlarındaki en zor algoritmik soruları çözebilen sistemler, kurumsal kod tabanlarında insan geliştiricilerin günlerce aradığı mantıksal açıkları saniyeler içinde tespit edip düzeltebiliyor."
+      },
+      {
+        id: "ai1-sec-3",
+        heading: "3. Kurucu Ahmet Karadağ'ın AGI Değerlendirmesi",
+        body: "Yapay Genel Zeka (AGI) artık bilim kurgu konusu olmaktan çıkıp endüstriyel bir realiteye dönüştü. İş yapış şekillerimizi ve stratejik karar alma mekanizmalarımızı bu yeni otonom akla göre hızla kalibre etmeliyiz."
+      }
+    ]
+  },
+  {
+    id: "AI-02",
+    title: "Otonom AI Ajanları: İş Dünyasında Departmanları Yöneten Sanal Çalışanlar Devri",
+    excerpt: "Büyük dil modellerini temel alan çoklu-ajan sistemleri, insan müdahalesi olmaksızın pazarlama, müşteri ilişkileri ve finansal operasyonları otonom yönetiyor.",
+    category: "Yapay Zeka & Gelecek",
+    subcategory: "Otonom AI Ajanları",
+    date: "7 Ekim 2026",
+    imageUrl: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=800&q=80",
+    readTime: "4 dk",
+    author: "Ahmet Karadağ & Analitik Heyeti",
+    authorTitle: "Kurucu & Genel Yayın Yönetmeni",
+    verifiedSource: true,
+    sentiment: "Boğa 🐂",
+    executiveSummary: "Birbiriyle konuşan ve görev dağılımı yapan otonom AI ajanları, şirketlerin operasyonel maliyetlerini %60 azaltırken verimliliği maksimize ediyor.",
+    canonicalUrl: "https://webdehepseek.com/haber/ai/otonom-ajanlar-is-dunyasi",
+    sections: [
+      {
+        id: "ai2-sec-1",
+        heading: "1. Rol Tabanlı Çoklu Ajan (Multi-Agent) Mimarileri",
+        body: "Yeni nesil ajan yazılımları, tek bir sistem yerine 'Pazarlama Uzmanı', 'Veri Analisti' ve 'Finans Müdürü' gibi roller tanımlanmış sanal personellerden oluşuyor. Ajanlar kendi aralarında güvenli API protokolleri ile iletişim kurarak projeleri sonlandırıyor."
+      },
+      {
+        id: "ai2-sec-2",
+        heading: "2. Kendi Kendine Çalışan Karar Mekanizmaları",
+        body: "İnsan yöneticiler tarafından tanımlanan haftalık KPI hedeflerine ulaşmak için otonom reklam bütçesi yöneten, sosyal medya içerikleri üreten ve müşteri geri bildirimlerine anında aksiyon alan sistemler iş dünyasını domine ediyor."
+      },
+      {
+        id: "ai2-sec-3",
+        heading: "3. Geleceğin Şirket Yapıları ve İstihdam Etkisi",
+        body: "Operasyonel işlerin tamamen otonom ajanlara devredilmesiyle birlikte, insan çalışanların rolü stratejik tasarım, etik denetleme ve yaratıcı liderlik alanlarında yoğunlaşacaktır."
+      }
+    ]
+  },
+  {
+    id: "AI-03",
+    title: "Nöromorfik Çipler ve İnsan Beyni Taklidi: Yapay Sinir Ağlarında Donanımsal Devrim",
+    excerpt: "Silikon transistörler yerine beynimizdeki sinaps ve nöron yapılarını taklit eden analog nöromorfik işlemciler, AI model eğitim maliyetlerini düşürüyor.",
+    category: "Yapay Zeka & Gelecek",
+    subcategory: "Nöromorfik Çipler",
+    date: "7 Ekim 2026",
+    imageUrl: "https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&w=800&q=80",
+    readTime: "5 dk",
+    author: "Ahmet Karadağ & Analitik Heyeti",
+    authorTitle: "Kurucu & Genel Yayın Yönetmeni",
+    verifiedSource: true,
+    sentiment: "Dengeli ⚖️",
+    executiveSummary: "Nöromorfik donanımlar, enerji tüketimini klasik GPU'lara göre 10,000 kat düşürerek yapay zekayı doğrudan giyilebilir cihazlar üzerinde lokal çalıştırmayı sağlıyor.",
+    canonicalUrl: "https://webdehepseek.com/haber/ai/noromorfik-cipler-devrimi",
+    sections: [
+      {
+        id: "ai3-sec-1",
+        heading: "1. Spiking Neural Networks (SNN) ve Analog Bilişim",
+        body: "Nöromorfik mimariler, verileri sürekli olarak işleyen klasik saat vuruşlu dijital mantık yerine, sadece veri değişikliği (spike) olduğunda tetiklenen sinirsel ağ modellerini kullanır. Bu sayede işlemci boştayken neredeyse sıfır enerji harcar."
+      },
+      {
+        id: "ai3-sec-2",
+        heading: "2. Veri Merkezlerindeki Enerji Krizine Donanımsal Çözüm",
+        body: "Yapay zeka modellerinin veri merkezlerinde tükettiği devasa elektrik enerjisi, çevre kirliliği ve karbon emisyonu krizlerine yol açıyor. Nöromorfik işlemciler, yeşil veri merkezlerinin kapısını aralıyor."
+      },
+      {
+        id: "ai3-sec-3",
+        heading: "3. Cihaz Üstü (On-Device) Lokal AI Geleceği",
+        body: "İnternet bağlantısına ve bulut sunuculara ihtiyaç duymadan, akıllı saat veya otonom cihazların içinde kendi kendine öğrenen lokal yapay zeka modelleri nöromorfik donanımlarla gerçeğe dönüşüyor."
+      }
+    ]
+  },
+
+  // 3. KRİPTO & WEB3 (crypto)
+  {
+    id: "CRYPTO-01",
     title: "Bitcoin $152,400 Eşiğini Aşarak Rekor Kırdı: Kurumsal ETF Fonlarından Dev Nakit Girişi",
     excerpt: "Wall Street merkezli spot ETF fonlarının günlük giriş rekoru kırmasıyla birlikte borsalardaki soğuk cüzdan çekimleri son yılların en yüksek seviyesine ulaştı.",
     category: "Kripto & Web3",
     subcategory: "Bitcoin (BTC) Analiz",
-    date: "6 Ekim 2026",
-    imageUrl: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80",
-    readTime: "3 dk",
-    author: "Metin Şahin",
-    authorTitle: "Finans & Piyasa Başanalisti",
-    authorBio: "Makro borsa hareketleri, kripto varlık zincir-üstü (On-Chain) verileri ve türev piyasalar uzmanı.",
+    date: "7 Ekim 2026",
+    imageUrl: "https://images.unsplash.com/photo-1518546305927-5a555bb7020d?auto=format&fit=crop&w=800&q=80",
+    readTime: "4 dk",
+    author: "Ahmet Karadağ & Analitik Heyeti",
+    authorTitle: "Kurucu & Genel Yayın Yönetmeni",
     verifiedSource: true,
     isEditorsChoice: true,
-    sharesCount: 890,
-    reactions: { like: 280, analytic: 190, mindblown: 145 },
-    canonicalUrl: "https://webdehepseek.com/haber/crypto/bitcoin-150k-rekor",
+    sentiment: "Boğa 🐂",
+    executiveSummary: "Spot ETF'lerdeki kurumsal alım dalgası borsalardaki likit arzın tükenmesine yol açarak Bitcoin fiyatını $150k psikolojik sınırının üzerine taşıdı.",
+    canonicalUrl: "https://webdehepseek.com/haber/crypto/bitcoin-152k-rekor-zirve",
     sections: [
       {
-        id: "sec-1",
-        heading: "1. Kurumsal ETF Girişleri ve Borsa Arz Sıkışması",
-        body: "BlackRock ve Fidelity fonlarına haftalık $2.4 milyarlık rekor net nakit akışı sağlandı. DeFi ekosisteminde kilitli toplam değer (TVL) rekor seviyelere yükseldi."
+        id: "cr1-sec-1",
+        heading: "1. Kurumsal Fon Akışları ve OTC Piyasalarında Arz Darboğazı",
+        body: "Dünyanın en büyük fon yönetim şirketlerinin spot Bitcoin ETF cüzdanlarındaki varlık toplamı küresel tedavüldeki arzın %6'sına yaklaştı. Tezgâh üstü (OTC) masalarda satılık Bitcoin kalmaması, fiyatı borsalarda yukarı yönlü agresif tetikliyor."
       },
       {
-        id: "sec-2",
-        heading: "2. On-Chain Veriler Ne Söylüyor?",
-        body: "Uzun vadeli tutucuların (Long-Term Holders) cüzdanlarındaki birikim oranı %78 ile tarihi zirvesinde. Madenci rezervlerinde ise satış baskısı gözlenmiyor."
+        id: "cr1-sec-2",
+        heading: "2. Zincir Üstü (On-Chain) Veriler ve Akıllı Para Hareketleri",
+        body: "Borsalardaki Bitcoin rezervleri son 10 yılın en düşük seviyesinde. Uzun vadeli yatırımcılar (HODLer) satış yapmak yerine varlıklarını çoklu imzalı soğuk cüzdanlara çekmeye devam ediyor."
+      },
+      {
+        id: "cr1-sec-3",
+        heading: "3. Kurucu Ahmet Karadağ'ın Kripto Portföy Yorumu",
+        body: "Bitcoin artık spekülatif bir dijital varlık olmaktan çıkıp kurumsal bilançolarda ve devlet rezervlerinde yer bulan makroekonomik bir korunma (hedge) aracına dönüşmüştür."
       }
     ]
   },
   {
-    id: "NEWS-103",
+    id: "CRYPTO-02",
+    title: "Ethereum L2 Ölçekleme Çözümleri: Saniyede 100 Bin İşlemle Gaz Ücretleri Sıfırlanıyor",
+    excerpt: "Yeni nesil sıfır-bilgi kanıtı (Zero-Knowledge) tabanlı rollup ağları, Ethereum ana ağ güvenliğini koruyarak mikro-ödemeleri ekonomik hale getiriyor.",
+    category: "Kripto & Web3",
+    subcategory: "Layer 2 Ölçekleme",
+    date: "7 Ekim 2026",
+    imageUrl: "https://images.unsplash.com/photo-1621761191319-c6fb62004040?auto=format&fit=crop&w=800&q=80",
+    readTime: "4 dk",
+    author: "Ahmet Karadağ & Analitik Heyeti",
+    authorTitle: "Kurucu & Genel Yayın Yönetmeni",
+    verifiedSource: true,
+    sentiment: "Boğa 🐂",
+    executiveSummary: "ZK-Rollup teknolojisinde gerçekleşen veri sıkıştırma optimizasyonları sayesinde akıllı sözleşme işlem maliyetleri $0.001 seviyesine geriledi.",
+    canonicalUrl: "https://webdehepseek.com/haber/crypto/ethereum-l2-gaz-ucretleri",
+    sections: [
+      {
+        id: "cr2-sec-1",
+        heading: "1. Blob Veri Alanı ve Danksharding Etkisi",
+        body: "Ethereum ağında yapılan son güncellemelerle L2 ağlarının veri yükleme maliyetleri dramatik şekilde düştü. Artık milyonlarca mikro işlem tek bir kriptografik kanıt içine sıkıştırılarak ana ağa yazılıyor."
+      },
+      {
+        id: "cr2-sec-2",
+        heading: "2. DeFi Protokollerindeki TVL Patlaması",
+        body: "Gaz ücretlerinin ortadan kalkmasıyla birlikte küçük yatırımcılar likidite havuzlarına, staking protokollerine ve merkeziyetsiz türev borsalarına akın ederek kilitli toplam değeri (TVL) yeni zirvelere taşıdı."
+      },
+      {
+        id: "cr2-sec-3",
+        heading: "3. Web3 Uygulamalarının Kitlesel Adaptasyonu",
+        body: "Saniyede 100,000 işlem hızı, blokzincir tabanlı oyunlar, sosyal ağlar ve sadakat programları için geleneksel sunucularla yarışabilecek performans seviyesi sunuyor."
+      }
+    ]
+  },
+  {
+    id: "CRYPTO-03",
+    title: "DeFi Likidite Havuzları ve Akıllı Kontrat Güvenliği: Yapay Zeka Destekli Audit Dönemi",
+    excerpt: "Siber saldırganların akıllı kontrat açıklarını hedef almasıyla birlikte, güvenlik firmaları kontrat kodlarını denetlemek için otonom AI analiz araçlarını devreye alıyor.",
+    category: "Kripto & Web3",
+    subcategory: "DeFi & Likidite Havuzları",
+    date: "7 Ekim 2026",
+    imageUrl: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=800&q=80",
+    readTime: "5 dk",
+    author: "Ahmet Karadağ & Analitik Heyeti",
+    authorTitle: "Kurucu & Genel Yayın Yönetmeni",
+    verifiedSource: true,
+    sentiment: "Dengeli ⚖️",
+    executiveSummary: "Akıllı sözleşmelerde kodlama hatalarından kaynaklanan fon kayıplarını minimize etmek için AI tabanlı anlık statik kod analizi (Static Code Audit) standart hale geliyor.",
+    canonicalUrl: "https://webdehepseek.com/haber/crypto/defi-akilli-kontrat-audit",
+    sections: [
+      {
+        id: "cr3-sec-1",
+        heading: "1. Flaş Kredi (Flash Loan) Saldırıları ve Önleme Yöntemleri",
+        body: "DeFi arbitraj açıklarını saniyeler içinde sömüren saldırganlara karşı, akıllı sözleşme parametrelerini gerçek zamanlı izleyen ve şüpheli durumlarda işlemleri durduran AI güvenlik katmanları geliştirildi."
+      },
+      {
+        id: "cr3-sec-2",
+        heading: "2. Yapay Zeka Auditi ve Geliştirici Standartları",
+        body: "Yazılan Solidity ve Rust kodları blokzincire yüklenmeden önce milyonlarca bilinen güvenlik açığı ve mantık hatası senaryosu içeren yapay zeka simülasyonlarında test ediliyor."
+      },
+      {
+        id: "cr3-sec-3",
+        heading: "3. Yatırımcı Güvenliği ve Regülasyon Uyumu",
+        body: "Sermaye piyasası düzenleyicileri, halka açık DeFi havuzlarının bağımsız ve AI destekli denetim raporlarını yayınlamasını zorunlu tutacak yasal düzenlemeler üzerinde çalışıyor."
+      }
+    ]
+  },
+
+  // 4. FİNANS & KÜRESEL PİYASALAR (finance)
+  {
+    id: "FINANCE-01",
     title: "BIST 100 Endeksi 10,845 Puanı Aşarak Yıllık Rekor Kırdı: Teknoloji Şirketleri Lider",
     excerpt: "Borsa İstanbul'da üçüncü çeyrek bilanço beklentilerinin üzerinde gelen büyüme rakamları, sanayi ve teknoloji hisselerine güçlü yabancı fon girişi sağladı.",
     category: "Finans & Küresel Piyasalar",
     subcategory: "Borsa İstanbul (BIST 100)",
-    date: "6 Ekim 2026",
+    date: "7 Ekim 2026",
     imageUrl: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=800&q=80",
     readTime: "4 dk",
-    author: "Ahmet Erdem",
-    authorTitle: "Makro Ekonomi & Borsa Analisti",
-    authorBio: "Sermaye piyasaları, BIST 100 şirket değerlemeleri ve küresel makroekonomik analizler yazarı.",
+    author: "Ahmet Karadağ & Analitik Heyeti",
+    authorTitle: "Kurucu & Genel Yayın Yönetmeni",
     verifiedSource: true,
-    sharesCount: 650,
-    reactions: { like: 195, analytic: 160, mindblown: 80 },
-    canonicalUrl: "https://webdehepseek.com/haber/finance/bist100-rekor-yukselis",
+    isEditorsChoice: true,
+    sentiment: "Boğa 🐂",
+    executiveSummary: "Dezenflasyon patikasındaki istikrarlı duruş ve küresel kredi derecelendirme kuruluşlarının not artırım dalgası, Borsa İstanbul'u uluslararası fonların odak noktası yaptı.",
+    canonicalUrl: "https://webdehepseek.com/haber/finance/bist-100-rekor-hisse-analiz",
     sections: [
       {
-        id: "sec-1",
-        heading: "1. BIST 100 Endeksinde Teknoloji ve İhracatçı Hisseler Öncü",
-        body: "Üçüncü çeyrek kârlılık rasyoları açıklanan teknoloji ve ihracat odaklı sanayi şirketleri endeksin yükselişine %60 katkı sağlandı. Yabancı takas oranında son 6 ayın en hızlı artışı kaydedildi."
+        id: "fn1-sec-1",
+        heading: "1. Bilançolarda Teknoloji ve Yazılım Şirketlerinin İvmesi",
+        body: "Borsa İstanbul'da işlem gören teknoloji, savunma sanayii ve yenilenebilir enerji şirketleri, 2026 yılı 3. çeyrek finansal raporlarında kârlılıklarını ortalama %45 artırdı. Kurumsal yabancı yatırımcıların alımları bu sektörlerde yoğunlaşıyor."
       },
       {
-        id: "sec-2",
-        heading: "2. Merkez Bankası Politikaları ve Piyasa Likiditesi",
-        body: "Dezenflasyon patikasının kararlılıkla sürdürülmesi ve kredi derecelendirme kuruluşlarının not artırım beklentileri, yerli ve yabancı kurumsal yatırımcı güvenini pekiştiriyor."
+        id: "fn1-sec-2",
+        heading: "2. Makroekonomik Göstergeler ve Enflasyon Sinyalleri",
+        body: "Merkez Bankası'nın sıkı para politikası duruşu ve cari açığın kontrol altına alınması, TL varlıklara olan güveni pekiştiriyor. Faiz indirim beklentileri ise borsadaki yükseliş trendini destekleyen bir diğer katalizör."
+      },
+      {
+        id: "fn1-sec-3",
+        heading: "3. Genel Yayın Yönetmeni Ahmet Karadağ'ın Borsa Stratejisi",
+        body: "Yatırımcıların kısa vadeli dalgalanmalara odaklanmak yerine, güçlü ihracat potansiyeline ve yapay zeka odaklı dönüşüm stratejisine sahip şirketlerde uzun vadeli pozisyon korumaları rasyonel bir yaklaşımdır."
       }
     ]
   },
   {
-    id: "NEWS-104",
-    title: "Togg T10F Sedan Modelinde Seviye 4 Otonom Sürüş Entegrasyonu Tamamlandı",
-    excerpt: "Milli mobilite markamız Togg'un yeni sedan modeli, gelişmiş sensör füzyonu ve 600 km artırılmış menziliyle uluslararası sürüş testlerinde tam puan aldı.",
-    category: "Otomotiv & Mobilite",
-    subcategory: "Togg & Yerli Otomobil",
-    date: "6 Ekim 2026",
-    imageUrl: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80",
+    id: "FINANCE-02",
+    title: "Federal Rezerv (Fed) Faiz Patikası: Makroenflasyon Verileri Sonrası Küresel Piyasa Sinyalleri",
+    excerpt: "ABD Merkez Bankası yetkililerinin enflasyon ve istihdam verileri sonrası yaptığı açıklamalar, küresel faiz indirim döngüsünün hızlanabileceğine işaret ediyor.",
+    category: "Finans & Küresel Piyasalar",
+    subcategory: "Fed & Merkez Bankaları",
+    date: "7 Ekim 2026",
+    imageUrl: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=800&q=80",
+    readTime: "5 dk",
+    author: "Ahmet Karadağ & Analitik Heyeti",
+    authorTitle: "Kurucu & Genel Yayın Yönetmeni",
+    verifiedSource: true,
+    sentiment: "Dengeli ⚖️",
+    executiveSummary: "Fed'in yumuşak iniş stratejisi, gelişmekte olan piyasalara sermaye akışını hızlandırırken dolar endeksinin (DXY) 100 seviyesinin altına sarkmasına yol açtı.",
+    canonicalUrl: "https://webdehepseek.com/haber/finance/fed-faiz-karari-makro",
+    sections: [
+      {
+        id: "fn2-sec-1",
+        heading: "1. Enflasyon Patikasında Kalıcı Düşüş Eğilimi",
+        body: "ABD tüketici fiyat endeksi (TÜFE) yıllık bazda %2.1 seviyesine gerileyerek Fed'in %2'lik uzun vadeli hedefinin sınırına ulaştı. Bu durum, para politikasında gevşeme adımları için uygun zemini hazırlıyor."
+      },
+      {
+        id: "fn2-sec-2",
+        heading: "2. Gelişmekte Olan Piyasalar ve Eurobond Tahvilleri",
+        body: "Küresel faiz oranlarındaki düşüş, dış borçlanma maliyetlerini azaltarak Türkiye gibi gelişmekte olan ülkelerin Eurobond tahvillerine olan ilgiyi ve doğrudan sermaye girişlerini artırıyor."
+      },
+      {
+        id: "fn2-sec-3",
+        heading: "3. Yatırımcı Portföylerinde Likidite Dağılımı",
+        body: "Faiz getirilerinin azalmasıyla birlikte kurumsal sermaye, risksiz devlet tahvillerinden hisse senedi piyasalarına ve emtialara doğru kaymaya devam ediyor."
+      }
+    ]
+  },
+  {
+    id: "FINANCE-03",
+    title: "Değerli Metallerde Yeni Trend: Merkez Bankaları Güvenli Liman Olarak Altın Rezervlerini Artırıyor",
+    excerpt: "Küresel jeopolitik riskler ve rezerv para birimlerinin çeşitlendirilmesi kapsamında dünya genelindeki merkez bankalarının altın alımları son 50 yılın zirvesine ulaştı.",
+    category: "Finans & Küresel Piyasalar",
+    subcategory: "Altın & Değerli Madenler",
+    date: "7 Ekim 2026",
+    imageUrl: "https://images.unsplash.com/photo-1610375461246-83df859d8222?auto=format&fit=crop&w=800&q=80",
     readTime: "4 dk",
-    author: "Kaan Erdem",
-    authorTitle: "Mobilite & Otomotiv Editörü",
-    authorBio: "Elektrikli araçlar, batarya kimyaları ve LiDAR otonom sürüş teknolojileri uzmanı gazeteci.",
+    author: "Ahmet Karadağ & Analitik Heyeti",
+    authorTitle: "Kurucu & Genel Yayın Yönetmeni",
     verifiedSource: true,
-    sharesCount: 520,
-    reactions: { like: 240, analytic: 110, mindblown: 95 },
-    canonicalUrl: "https://webdehepseek.com/haber/automotive/togg-t10f-otonom-surus",
+    sentiment: "Boğa 🐂",
+    executiveSummary: "Ons altın fiyatı, merkez bankalarının fiziksel talep artışı ve küresel likidite genişlemesiyle $2,890 seviyesini aşarak tarihi zirvelerini yeniliyor.",
+    canonicalUrl: "https://webdehepseek.com/haber/finance/altin-ons-rekor-alimi",
     sections: [
       {
-        id: "sec-1",
-        heading: "1. Seviye 4 Otonom Sürüş ve LiDAR Füzyonu",
-        body: "Togg T10F Sedan, tampon ve tavan sütunlarına entegre edilen 360 derece LiDAR ve ultra-hassas radar sensörleriyle sürücüsüz otonom sürüş testlerini sıfır hata ile tamamladı."
+        id: "fn3-sec-1",
+        heading: "1. Fiziksel Altın Talebi ve Doğu Bloğu Merkez Bankaları",
+        body: "Özellikle Çin, Hindistan ve Rusya merkez bankaları, ABD yaptırımlarına ve dolar varlıklarına olan bağımlılıklarını azaltmak amacıyla rezervlerini fiziksel altınla güçlendiriyor."
       },
       {
-        id: "sec-2",
-        heading: "2. Avrupa Pazarı İhracat Hedefleri",
-        body: "Almanya ve İskandinav ülkelerinde ön sipariş süreci başlayan T10F, yüksek batarya verimliliği ve Trumore akıllı mobilite ekosistemiyle küresel rakiplerine kıyasla fiyat-performans avantajı sunuyor."
+        id: "fn3-sec-2",
+        heading: "2. Bireysel Yatırımcı Talebi ve Mücevherat Sektörü",
+        body: "Yüksek enflasyon dönemlerinde birikimlerini korumak isteyen hanehalkı, fiziki altın ve altın destekli fonlara (ETF) yönelerek talep tarafını canlı tutuyor."
+      },
+      {
+        id: "fn3-sec-3",
+        heading: "3. Ons Altında Kısa ve Orta Vadeli Fiyat Hedefleri",
+        body: "Yıllık bazda %25'in üzerinde getiri sağlayan altın, küresel faiz indirim döngüsünün devam etmesi durumunda orta vadede gücünü korumaya devam edecektir."
+      }
+    ]
+  },
+
+  // 5. SİYASET & STRATEJİ (politics)
+  {
+    id: "POLITICS-01",
+    title: "Diplomaside Yeni Boyut: Dijital Elçilikler ve Siber Egemenlik Savaşları",
+    excerpt: "Küresel devletler, egemenlik iddialarını sanal evrenlere ve şifreli veri sunucularına taşıyarak dijital elçilikler ve siber diplomasi ofisleri açıyor.",
+    category: "Siyaset & Strateji",
+    subcategory: "Dış Politika & Diplomasi",
+    date: "7 Ekim 2026",
+    imageUrl: "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=800&q=80",
+    readTime: "5 dk",
+    author: "Ahmet Karadağ & Analitik Heyeti",
+    authorTitle: "Kurucu & Genel Yayın Yönetmeni",
+    verifiedSource: true,
+    sentiment: "Dengeli ⚖️",
+    executiveSummary: "Siber egemenlik kavramı, fiziksel sınırların ötesinde veri gizliliğini ve ulusal dijital altyapıların siber saldırılardan korunmasını devletlerin birincil güvenlik önceliği haline getirdi.",
+    canonicalUrl: "https://webdehepseek.com/haber/politics/dijital-diplomasi-siber-savas",
+    sections: [
+      {
+        id: "pl1-sec-1",
+        heading: "1. Veri Egemenliği ve Yerli Sunucu Altyapıları",
+        body: "Ulus devletler, vatandaşlarına ait kritik finansal ve kişisel verilerin yabancı teknoloji tekellerinin sunucularında barındırılmasını ulusal güvenlik açığı olarak görüyor. Yerli bulut ve sunucu merkezlerinin inşası siyasi gündemin en üst sırasında yer alıyor."
+      },
+      {
+        id: "pl1-sec-2",
+        heading: "2. Şifreli Mesajlaşma ve İstihbarat Savaşları",
+        body: "Hükümetler, diplomatik yazışmaların ve askeri koordinasyonların dinlenmesini engellemek amacıyla post-kuantum şifrelemeyle donatılmış bağımsız siber güvenlik tünelleri kuruyor."
+      },
+      {
+        id: "pl1-sec-3",
+        heading: "3. Analitik Heyetimizin Stratejik Öngörüsü",
+        body: "Gelecekte siber diplomasi gücü, ülkelerin nükleer veya askeri caydırıcılığı kadar kritik bir egemenlik göstergesi haline gelecektir."
       }
     ]
   },
   {
-    id: "NEWS-105",
-    title: "Kuantum Bilgisayarlarda 10,000 Qubit Eşiği Aşıldı: Siber Güvenlik Mimarisi Değişiyor",
-    excerpt: "Küresel çip devleri tarafından duyurulan yeni kuantum işlemcisi, klasik şifreleme yöntemlerini saniyeler içinde çözebilecek hesaplama gücüne erişti.",
-    category: "Teknoloji & Dijital Dönüşüm",
-    subcategory: "Kuantum Bilgisayarlar",
-    date: "5 Ekim 2026",
-    imageUrl: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=800&q=80",
-    readTime: "6 dk",
-    author: "Selin Yılmaz",
-    authorTitle: "Siber Güvenlik & Kuantum Bilişim Direktörü",
+    id: "POLITICS-02",
+    title: "Savunma Sanayiinde Otonom Dönem: SİHA ve İHA Filolarında Yapay Zeka Sürü Zekası",
+    excerpt: "Milli imkanlarla geliştirilen yeni nesil SİHA filoları, GPS engellemeli ortamlarda dahi birbirleriyle otonom haberleşerek sürü zekasıyla görev icra ediyor.",
+    category: "Siyaset & Strateji",
+    subcategory: "Savunma Sanayii (SİHA/Milli)",
+    date: "7 Ekim 2026",
+    imageUrl: "https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=800&q=80",
+    readTime: "4 dk",
+    author: "Ahmet Karadağ & Analitik Heyeti",
+    authorTitle: "Kurucu & Genel Yayın Yönetmeni",
     verifiedSource: true,
-    sharesCount: 410,
-    reactions: { like: 180, analytic: 155, mindblown: 110 },
-    canonicalUrl: "https://webdehepseek.com/haber/tech/kuantum-bilgisayar-qubit-rekor"
+    sentiment: "Boğa 🐂",
+    executiveSummary: "Yapay zeka sürü algoritmaları, hava savunma radar sistemlerini şaşırtarak askeri operasyonların maliyetini ve insan kaybı riskini asgari seviyeye indiriyor.",
+    canonicalUrl: "https://webdehepseek.com/haber/politics/siha-suru-zekasi-otonom",
+    sections: [
+      {
+        id: "pl2-sec-1",
+        heading: "1. Otonom Hedef Tespiti ve Yapay Zeka Karar Mekanizması",
+        body: "SİHA'lar, yer kontrol istasyonlarından tamamen bağımsız olarak, üzerinde taşıdıkları bilgisayarlı görü (computer vision) çipleri sayesinde askeri hedefleri sivil unsurlardan %99.8 doğrulukla ayırt edebiliyor."
+      },
+      {
+        id: "pl2-sec-2",
+        heading: "2. Elektronik Harp ve Sinyal Kesintilerine Karşı Bağışıklık",
+        body: "Düşman karıştırma ve köreltme (jamming) sistemlerine karşı, otonom insansız araçlar kendi aralarında kurdukları lokal ağ ve mesh topolojisi sayesinde kesintisiz veri paylaşımını sürdürüyor."
+      },
+      {
+        id: "pl2-sec-3",
+        heading: "3. Savunma Sanayiinde Küresel Pazar Liderliği",
+        body: "Yerli savunma sanayii firmalarımızın otonom hava ve deniz araçlarındaki ihracat başarısı, Türkiye'nin jeostratejik diplomatik pazarlık gücünü küresel ölçekte artırıyor."
+      }
+    ]
   },
   {
-    id: "NEWS-106",
+    id: "POLITICS-03",
+    title: "Küresel Enerji Jeopolitiği: Yeşil Mutabakat ve Akdeniz Enerji Koridorları",
+    excerpt: "Avrupa Birliği'nin karbon vergisi düzenlemeleri ve Akdeniz'deki yeni doğal gaz ile hidrojen boru hattı projeleri, bölgesel ittifakları yeniden şekillendiriyor.",
+    category: "Siyaset & Strateji",
+    subcategory: "Ekonomi Politiği",
+    date: "7 Ekim 2026",
+    imageUrl: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=800&q=80",
+    readTime: "5 dk",
+    author: "Ahmet Karadağ & Analitik Heyeti",
+    authorTitle: "Kurucu & Genel Yayın Yönetmeni",
+    verifiedSource: true,
+    sentiment: "Dengeli ⚖️",
+    executiveSummary: "Enerji bağımsızlığı arayışı, yeşil hidrojen ve sıvılaştırılmış doğal gaz (LNG) terminallerini ülkelerin stratejik dış politika hamlelerinin merkezine yerleştirdi.",
+    canonicalUrl: "https://webdehepseek.com/haber/politics/enerji-jeopolitigi-yesil-hidrojen",
+    sections: [
+      {
+        id: "pl3-sec-1",
+        heading: "1. Sınırda Karbon Düzenleme Mekanizması ve İhracat Etkisi",
+        body: "Sanayi ve enerji sektörlerindeki yüksek emisyona sahip ülkeler, AB pazarına mal ihraç ederken ağır gümrük vergileriyle karşı karşıya kalıyor. Temiz enerji yatırımları artık ekonomik bir zorunluluk."
+      },
+      {
+        id: "pl3-sec-2",
+        heading: "2. Akdeniz Enerji Arz Güvenliği ve Boru Hatları",
+        body: "Doğu Akdeniz'deki hidrokarbon rezervlerinin Avrupa'ya taşınması projelerinde Türkiye'nin transit merkezi ve kilit ortak rolü, diplomatik müzakerelerde önemli avantajlar sağlıyor."
+      },
+      {
+        id: "pl3-sec-3",
+        heading: "3. Sürdürülebilir Enerji ve Gelecek Projeksiyonları",
+        body: "Rüzgar, güneş ve yeşil hidrojen projelerine aktarılan devlet teşvikleri, önümüzdeki 10 yıl içinde fosil yakıtlara olan küresel talebi %30 azaltma potansiyeline sahiptir."
+      }
+    ]
+  },
+
+  // 6. SOSYAL MEDYA & VIRAL (social)
+  {
+    id: "SOCIAL-01",
+    title: "Creator Economy: Yapay Zeka Fenomenleri Sosyal Medyada Milyonlara Ulaşıyor",
+    excerpt: "Görsel ve ses sentezleme teknolojilerinin gelişmesiyle, tamamen bilgisayar tarafından üretilen yapay zeka fenomenleri küresel markaların yüzü haline geldi.",
+    category: "Sosyal Medya & Viral",
+    subcategory: "Creator Economy",
+    date: "7 Ekim 2026",
+    imageUrl: "https://images.unsplash.com/photo-1616469829581-73993eb86b02?auto=format&fit=crop&w=800&q=80",
+    readTime: "4 dk",
+    author: "Ahmet Karadağ & Analitik Heyeti",
+    authorTitle: "Kurucu & Genel Yayın Yönetmeni",
+    verifiedSource: true,
+    sentiment: "Boğa 🐂",
+    executiveSummary: "Sanal modeller ve fenomenler (Virtual Influencers), reklam bütçelerinden aldıkları payı her yıl katlayarak geleneksel içerik üreticileri için güçlü bir alternatif oluşturuyor.",
+    canonicalUrl: "https://webdehepseek.com/haber/social/ai-fenomenleri-sosyal-medya",
+    sections: [
+      {
+        id: "sl1-sec-1",
+        heading: "1. Kusursuz Görsel ve Dil Sentezi Teknolojisi",
+        body: "3D modelleme ve gerçekçi ses klonlama araçları sayesinde, sanal fenomenler takipçileriyle canlı yayınlarda interaktif sohbet edebiliyor, sorulara anlık ve doğal yanıtlar üretebiliyor."
+      },
+      {
+        id: "sl1-sec-2",
+        heading: "2. Markalar İçin Risk Yönetimi ve Maliyet Avantajı",
+        body: "İnsan fenomenlerin aksine, sanal modellerin skandallara karışma veya marka imajına zarar verme riski sıfırdır. 7/24 kesintisiz içerik üretebilmeleri pazarlama departmanlarının iştahını kabartıyor."
+      },
+      {
+        id: "sl1-sec-3",
+        heading: "3. Sosyal Medyada Etik ve Şeffaflık Standartları",
+        body: "Sosyal medya denetleyici kuruluşları, yayınlanan içeriklerin açıklama kısmına 'Yapay Zeka Tarafından Üretilmiştir' ibaresinin eklenmesini yasal olarak zorunlu tutuyor."
+      }
+    ]
+  },
+  {
+    id: "SOCIAL-02",
+    title: "TikTok Algoritma Sırları: Kullanıcı Tutma Süresini Artıran Yeni Nöral Ağ Modelleri",
+    excerpt: "TikTok'un arka planında çalışan yeni tavsiye algoritması, kullanıcıların göz hareketlerini ve duraklama sürelerini milisaniyeler altında analiz ediyor.",
+    category: "Sosyal Medya & Viral",
+    subcategory: "TikTok & Viral Trendler",
+    date: "7 Ekim 2026",
+    imageUrl: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=800&q=80",
+    readTime: "4 dk",
+    author: "Ahmet Karadağ & Analitik Heyeti",
+    authorTitle: "Kurucu & Genel Yayın Yönetmeni",
+    verifiedSource: true,
+    sentiment: "Dengeli ⚖️",
+    executiveSummary: "Dinamik içerik akışı optimizasyonu yapan algoritma, kullanıcıların bağımlılık düzeyinde ekrana bağlanmasına yol açarak dijital sağlık tartışmalarını alevlendiriyor.",
+    canonicalUrl: "https://webdehepseek.com/haber/social/tiktok-algoritma-sirlari",
+    sections: [
+      {
+        id: "sl2-sec-1",
+        heading: "1. Çok Katmanlı İlgi Haritası Modellemesi",
+        body: "Tavsiye motoru, sadece beğeni ve yorumları değil, kullanıcının videonun hangi saniyesinde ekranı kaydırdığını veya sesi açıp kapattığını analiz ederek anlık bir psikolojik profil oluşturur."
+      },
+      {
+        id: "sl2-sec-2",
+        heading: "2. Viral Trendlerin Yayılım Dinamikleri ve Yapay Zeka",
+        body: "Bir videonun viral potansiyeli, yapay zeka tarafından ilk 100 kullanıcıya gösterildiğinde alınan mikrosaniyelik reaksiyonlara göre belirlenir ve anında küresel akışa enjekte edilir."
+      },
+      {
+        id: "sl2-sec-3",
+        heading: "3. Dijital Detoks ve Algoritma Regülasyonları",
+        body: "Avrupa Birliği ve ABD senatosu, genç yaştaki kullanıcıların ekran sürelerini sınırlandırmak amacıyla algoritmik manipülasyonları engelleyecek yeni kısıtlamalar planlıyor."
+      }
+    ]
+  },
+  {
+    id: "SOCIAL-03",
+    title: "Instagram ve E-Ticaret Entegrasyonu: Sosyal Ticarette Dönüşüm ve Yeni Reklam Modelleri",
+    excerpt: "Gelişmiş görsel tanıma algoritmaları sayesinde Instagram, gönderilerdeki tüm kıyafet ve aksesuarları otomatik etiketleyerek anında satın alma imkanı sunuyor.",
+    category: "Sosyal Medya & Viral",
+    subcategory: "Instagram Algoritmaları",
+    date: "7 Ekim 2026",
+    imageUrl: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=800&q=80",
+    readTime: "4 dk",
+    author: "Ahmet Karadağ & Analitik Heyeti",
+    authorTitle: "Kurucu & Genel Yayın Yönetmeni",
+    verifiedSource: true,
+    sentiment: "Boğa 🐂",
+    executiveSummary: "Sosyal medya platformlarının e-ticaret ağlarına dönüşmesi, aracı siteleri devre dışı bırakarak doğrudan uygulama içi (in-app) satın alma hacmini artırıyor.",
+    canonicalUrl: "https://webdehepseek.com/haber/social/instagram-eticaret-sosyal-ticaret",
+    sections: [
+      {
+        id: "sl3-sec-1",
+        heading: "1. Görsel Arama ve Yapay Zeka Etiketleme Altyapısı",
+        body: "Instagram yapay zekası, yayınlanan Reels videolarındaki nesneleri gerçek zamanlı analiz ederek benzer ürünleri e-ticaret kataloğundaki en uygun fiyatlı satıcılarla eşleştirir."
+      },
+      {
+        id: "sl3-sec-2",
+        heading: "2. Canlı Yayın Alışverişi (Live Shopping) Küresel Trendi",
+        body: "Sanal mağaza sahipleri ve fenomenler tarafından düzenlenen interaktif canlı yayınlar, kullanıcıların yayın ekranından ayrılmadan tek tıkla sipariş vermesini sağlıyor."
+      },
+      {
+        id: "sl3-sec-3",
+        heading: "3. Geleneksel E-Ticaret Siteleri İçin Tehdit",
+        body: "Sosyal medyadaki bu dönüşüm, klasik pazar yeri platformlarının trafik kaybetmesine ve reklam bütçelerinin doğrudan Meta ekosistemine kaymasına neden oluyor."
+      }
+    ]
+  },
+
+  // 7. SPOR & E-SPOR (sports)
+  {
+    id: "SPORTS-01",
+    title: "Formula 1 Mühendisliği: Aerodinamik Simülasyonlarda Kuantum Bilgisayar Dönemi",
+    excerpt: "F1 takımları, rüzgar tüneli kısıtlamalarını aşmak ve araç tabanındaki hava akışını atomik hassasiyette simüle etmek için kuantum süper bilgisayarlar kullanıyor.",
+    category: "Spor & E-Spor",
+    subcategory: "Formula 1 & Motor Sporları",
+    date: "7 Ekim 2026",
+    imageUrl: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=800&q=80",
+    readTime: "5 dk",
+    author: "Ahmet Karadağ & Analitik Heyeti",
+    authorTitle: "Kurucu & Genel Yayın Yönetmeni",
+    verifiedSource: true,
+    sentiment: "Boğa 🐂",
+    executiveSummary: "Kuantum CFD (Hesaplamalı Akışkanlar Dinamiği) simülasyonları, şasi tasarım süreçlerini haftalardan dakikalara indirerek pist üstü performansını doğrudan artırıyor.",
+    canonicalUrl: "https://webdehepseek.com/haber/sports/f1-kuantum-aerodinamik-simulasyon",
+    sections: [
+      {
+        id: "sp1-sec-1",
+        heading: "1. Rüzgar Tüneli Sınırları ve Kuantum CFD Devrimi",
+        body: "FIA kuralları gereği takımların fiziksel rüzgar tüneli kullanma süreleri kısıtlıdır. Kuantum işlemciler, hava moleküllerinin araç yüzeyindeki karmaşık türbülans hareketlerini tam doğrulukla dijital ortamda modeller."
+      },
+      {
+        id: "sp1-sec-2",
+        heading: "2. Gerçek Zamanlı Lastik ve Aşınma Telemetrisi",
+        body: "Yarış sırasında araç üzerindeki yüzlerce sensörden gelen telemetri verileri, pit duvarındaki yapay zeka stratejistleri tarafından anlık işlenerek en uygun pit-stop penceresini belirler."
+      },
+      {
+        id: "sp1-sec-3",
+        heading: "3. Geleceğin Çevre Dostu Formula 1 Motorları",
+        body: "F1, 2026 yılından itibaren %100 sürdürülebilir e-yakıtlar ve artırılmış elektrik gücüne sahip hibrit motorlar kullanarak net-sıfır karbon hedefine ilerlemektedir."
+      }
+    ]
+  },
+  {
+    id: "SPORTS-02",
+    title: "E-Spor Olimpiyatları ve Küresel Ligler: Yatırımcıların Yeni Gözdesi Dijital Sporlar",
+    excerpt: "Uluslararası Olimpiyat Komitesi'nin resmi olarak onayladığı E-Spor Olimpiyat Oyunları, küresel markaların ve medya kuruluşlarının ana sponsorluk odağı haline geldi.",
+    category: "Spor & E-Spor",
+    subcategory: "E-Spor Turnuvaları",
+    date: "7 Ekim 2026",
+    imageUrl: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=800&q=80",
+    readTime: "4 dk",
+    author: "Ahmet Karadağ & Analitik Heyeti",
+    authorTitle: "Kurucu & Genel Yayın Yönetmeni",
+    verifiedSource: true,
+    sentiment: "Boğa 🐂",
+    executiveSummary: "Geleneksel spor izleyici yaş ortalamasının yükselmesi, milyar dolarlık yayın hakları ve reklam bütçelerinin genç e-spor kitlesine kaymasını tetikliyor.",
+    canonicalUrl: "https://webdehepseek.com/haber/sports/espor-olimpiyatlari-olimpiyat-komitesi",
+    sections: [
+      {
+        id: "sp2-sec-1",
+        heading: "1. Fiziksel ve Dijital Sporların Yakınlaşması",
+        body: "Olimpiyat komitesi, sanal bisiklet, simülasyon yarışı ve taktiksel takım oyunları gibi kategorilerde küresel turnuva standartları oluşturarak sporcuları tescilliyor."
+      },
+      {
+        id: "sp2-sec-2",
+        heading: "2. Yatırımcı İlgisi ve Kulüp Değerlemeleri",
+        body: "Geleneksel futbol kulüpleri ve teknoloji devleri, kendi bünyelerinde profesyonel e-spor şubeleri kurarak küresel taraftar kitlelerini dijital dünyada konsolide ediyor."
+      },
+      {
+        id: "sp2-sec-3",
+        heading: "3. Espor Yayın Hakları ve Medya Dönüşümü",
+        body: "Geleneksel televizyon kanalları yerine Twitch, YouTube ve özel interaktif streaming platformları üzerinden yapılan canlı yayınlar anlık milyonlarca eş zamanlı izleyiciye ulaşıyor."
+      }
+    ]
+  },
+  {
+    id: "SPORTS-03",
+    title: "Spor Teknolojileri: Akıllı Giyilebilir Cihazlarla Gerçek Zamanlı Performans Analizi",
+    excerpt: "Profesyonel sporcuların idman ve maç sırasında kullandığı biyo-sensörlü akıllı giysiler, sakatlanma risklerini önceden saptıyor.",
+    category: "Spor & E-Spor",
+    subcategory: "Spor Teknolojileri",
+    date: "7 Ekim 2026",
+    imageUrl: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=80",
+    readTime: "4 dk",
+    author: "Ahmet Karadağ & Analitik Heyeti",
+    authorTitle: "Kurucu & Genel Yayın Yönetmeni",
+    verifiedSource: true,
+    sentiment: "Dengeli ⚖️",
+    executiveSummary: "Kas gerginliği, laktat seviyesi ve oksijen satürasyonunu anlık ölçen sistemler, atletlerin idman programlarını tamamen kişiselleştiriyor.",
+    canonicalUrl: "https://webdehepseek.com/haber/sports/spor-teknolojileri-giyilebilir-sensorler",
+    sections: [
+      {
+        id: "sp3-sec-1",
+        heading: "1. Kas İçi Biyo-Kimyasal İzleme Yöntemleri",
+        body: "Ter analizi yapan invaziv olmayan deri üstü akıllı yamalar, sporcunun susuzluk (dehidrasyon) ve mineral kaybı düzeyini mikrosaniyeler içinde teknik ekibe iletir."
+      },
+      {
+        id: "sp3-sec-2",
+        heading: "2. Yapay Zeka Destekli Taktik ve Oyuncu Analizi",
+        body: "Kamera sistemlerinden alınan yüksek çözünürlüklü maç görüntüleri, yapay zeka algoritmaları tarafından taranarak rakip takımın taktiksel formasyonunu ve zayıf noktalarını deşifre eder."
+      },
+      {
+        id: "sp3-sec-3",
+        heading: "3. Sakatlık Önleyici Erken Uyarı Algoritmaları",
+        body: "Koşu biyomekaniğini ve ayak taban basıncını ölçen akıllı tabanlıklar, kronik sakatlıklar oluşmadan önce atletin duruş bozukluklarını düzeltmesi için veri sağlar."
+      }
+    ]
+  },
+
+  // 8. GİRİŞİMCİLİK & STARTUP (business)
+  {
+    id: "STARTUP-01",
+    title: "AI İş Modelleri Kurulumu: 10 Kat Daha Hızlı Ölçeklenen Yeni Nesil SaaS Girişimleri",
+    excerpt: "Gelişmiş yapay zeka API'larını ve otonom yazılım ajanlarını kullanan mikro-girişimler, çok az sermaye ile küresel pazarlara açılarak unicorn adayı oluyor.",
+    category: "Girişimcilik & Startup",
+    subcategory: "AI İş Modelleri",
+    date: "7 Ekim 2026",
+    imageUrl: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80",
+    readTime: "5 dk",
+    author: "Ahmet Karadağ & Analitik Heyeti",
+    authorTitle: "Kurucu & Genel Yayın Yönetmeni",
+    verifiedSource: true,
+    isEditorsChoice: true,
+    sentiment: "Boğa 🐂",
+    executiveSummary: "No-code araçlar ve AI entegrasyonu, yazılım geliştirme maliyetlerini sıfıra yaklaştırarak girişimcilerin sadece müşteri kazanımına odaklanmasını sağlıyor.",
+    canonicalUrl: "https://webdehepseek.com/haber/business/ai-is-modelleri-saas-girişimleri",
+    sections: [
+      {
+        id: "bs1-sec-1",
+        heading: "1. Solopreneurship: Tek Kişilik Dev Şirketler Dönemi",
+        body: "Yapay zeka asistanları sayesinde tek bir kurucu, kod yazımından tasarıma, pazarlamadan hukuki süreçlere kadar tüm operasyonu tek başına yönetebiliyor. Bu durum girişimcilik dünyasında yepyeni bir sınıf doğurmaktadır."
+      },
+      {
+        id: "bs1-sec-2",
+        heading: "2. Kullandığın Kadar Öde (Pay-as-you-go) Sunucu Maliyetleri",
+        body: "Bulut bilişim ve sunucusuz (serverless) mimariler, startup kurucularının baştan büyük donanım yatırımları yapmasını engelleyerek esnek ve sürdürülebilir büyüme patikası sunuyor."
+      },
+      {
+        id: "bs1-sec-3",
+        heading: "3. Kurucu Ahmet Karadağ'ın Girişimcilere Tavsiyesi",
+        body: "Fikir aşamasında boğulmak yerine, yapay zeka araçlarıyla 24 saat içinde çalışan bir MVP (Minimum Uygulanabilir Ürün) üretip doğrudan pazardaki gerçek müşterilerden geri bildirim almak başarının anahtarıdır."
+      }
+    ]
+  },
+  {
+    id: "STARTUP-02",
+    title: "Dijital Göçebelik ve Remote Çalışma: Küresel Yetenek Havuzuna Erişim Stratejileri",
+    excerpt: "Şirketlerin tamamen dağıtık (fully remote) çalışma düzenine geçmesiyle, coğrafi sınırlardan bağımsız küresel işe alım süreçleri standart hale geldi.",
+    category: "Girişimcilik & Startup",
+    subcategory: "Dijital Göçebelik (Nomad)",
+    date: "7 Ekim 2026",
+    imageUrl: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80",
+    readTime: "4 dk",
+    author: "Ahmet Karadağ & Analitik Heyeti",
+    authorTitle: "Kurucu & Genel Yayın Yönetmeni",
+    verifiedSource: true,
+    sentiment: "Boğa 🐂",
+    executiveSummary: "Remote çalışma, büyük şehirlerdeki ofis maliyetlerini sıfırlarken yetenekli iş gücünün dünya genelindeki en uygun bütçeli bölgelerden istihdam edilmesini sağlıyor.",
+    canonicalUrl: "https://webdehepseek.com/haber/business/dijital-gocebelik-remote-calisma",
+    sections: [
+      {
+        id: "bs2-sec-1",
+        heading: "1. Asenkron İletişim Protokolleri ve Verimlilik",
+        body: "Farklı zaman dilimlerinde çalışan ekiplerin koordinasyonunu sağlamak amacıyla, toplantı odaklı klasik kültür yerine otonom dokümantasyon ve asenkron görev yönetim araçları kullanılıyor."
+      },
+      {
+        id: "bs2-sec-2",
+        heading: "2. Küresel Ödeme Altyapıları ve Vergi Kanunları",
+        body: "Sınır ötesi çalışanların maaş ve hak ediş ödemelerini saniyeler içinde yapan Web3 tabanlı stabil kripto para veya global fintech ödeme sistemleri yaygınlaşıyor."
+      },
+      {
+        id: "bs2-sec-3",
+        heading: "3. Şirket Kültürünü Uzaktan Canlı Tutmak",
+        body: "Yılda birkaç kez düzenlenen yüz yüze şirket kampları (offsite) ve sanal ofis yazılımları, dağıtık ekipler arasındaki bağları güçlendiren temel unsurlardır."
+      }
+    ]
+  },
+  {
+    id: "STARTUP-03",
+    title: "Girişim Sermayesi (VC) Eğilimleri: Tohum Öncesi (Seed) Yatırımlarda Yapay Zeka Odaklı Fonlar",
+    excerpt: "Küresel ekonomik belirsizliklere rağmen, erken aşama yapay zeka ve derin teknoloji (DeepTech) startuplarına aktarılan risk sermayesi rekor kırıyor.",
+    category: "Girişimcilik & Startup",
+    subcategory: "Yatırım Turları & Seed",
+    date: "7 Ekim 2026",
+    imageUrl: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80",
+    readTime: "4 dk",
+    author: "Ahmet Karadağ & Analitik Heyeti",
+    authorTitle: "Kurucu & Genel Yayın Yönetmeni",
+    verifiedSource: true,
+    sentiment: "Dengeli ⚖️",
+    executiveSummary: "VC fonları, klasik yazılım projeleri yerine savunma sanayii, kuantum bilişim ve biyoteknoloji gibi somut entelektüel mülkiyet (IP) barındıran projelere odaklanıyor.",
+    canonicalUrl: "https://webdehepseek.com/haber/business/girisim-sermayesi-vc-seed-yatirim",
+    sections: [
+      {
+        id: "bs3-sec-1",
+        heading: "1. Yatırım Kararlarında Yapay Zeka Analizi",
+        body: "Girişim sermayesi şirketleri, başvuru yapan startupların büyüme potansiyellerini ve pazar metriklerini otonom AI tarama yazılımlarıyla analiz ederek karar süreçlerini hızlandırıyor."
+      },
+      {
+        id: "bs3-sec-2",
+        heading: "2. Erken Aşama Değerlemelerindeki Dengeleme",
+        body: "Geçtiğimiz yıllardaki aşırı şişmiş startup değerlemelerinin yerini, daha rasyonel finansal çarpanlar ve kârlılık odaklı (cash-flow positive) iş modelleri alıyor."
+      },
+      {
+        id: "bs3-sec-3",
+        heading: "3. Akıllı Para (Smart Money) Kavramının Önemi",
+        body: "Startupların sadece nakit yatırıma değil, kendilerini küresel müşteri ağına taşıyabilecek ve mentorluk sağlayabilecek stratejik VC ortaklarına ihtiyacı var."
+      }
+    ]
+  },
+
+  // 9. YAŞAM & SAĞLIK (lifestyle)
+  {
+    id: "LIFESTYLE-01",
+    title: "Longevity (Uzun Yaşam) Biyoteknolojisi: Gen Tedavileriyle Hücresel Yaşlanmayı Durdurmak",
+    excerpt: "Küresel klinik araştırmalar, hücresel temizlik ve telomer uzatma tedavilerinin insan ömrünü sağlıklı bir şekilde uzatma potansiyeline sahip olduğunu gösteriyor.",
+    category: "Yaşam & Sağlık",
+    subcategory: "Longevity (Uzun Yaşam)",
+    date: "7 Ekim 2026",
+    imageUrl: "https://images.unsplash.com/photo-1530026405186-ed1ea0ac7a63?auto=format&fit=crop&w=800&q=80",
+    readTime: "6 dk",
+    author: "Ahmet Karadağ & Analitik Heyeti",
+    authorTitle: "Kurucu & Genel Yayın Yönetmeni",
+    verifiedSource: true,
+    isEditorsChoice: true,
+    sentiment: "Boğa 🐂",
+    executiveSummary: "Yaşlanma sürecinin biyolojik bir hastalık olarak tanımlanması, yaşlanma karşıtı biyoteknoloji ilaç ve gen tedavilerine milyarlarca dolarlık yeni bir pazar açtı.",
+    canonicalUrl: "https://webdehepseek.com/haber/lifestyle/longevity-uzun-yasam-biyoteknoloji",
+    sections: [
+      {
+        id: "lf1-sec-1",
+        heading: "1. Yamanaka Faktörleri ve Hücresel Programlama",
+        body: "Biyologlar, yaşlı hücreleri genç kök hücre durumuna geri döndüren özel protein kokteylleri üzerinde çalışıyor. Bu yöntem laboratuvar testlerinde doku yaşlanmasını tersine çevirmeyi başardı."
+      },
+      {
+        id: "lf1-sec-2",
+        heading: "2. Senolitik İlaçlar ve Yaşlı Hücre Temizliği",
+        body: "Vücudumuzda birikerek iltihaplanmaya yol açan 'zombi hücreleri' (senescent cells) hedef alıp yok eden senolitik tedaviler, kronik organ rahatsızlıklarının önüne geçiyor."
+      },
+      {
+        id: "lf1-sec-3",
+        heading: "3. Ahmet Karadağ & Analitik Heyeti'nin Sağlık Önerisi",
+        body: "İleri düzey gen tedavileri yaygınlaşana kadar, kaliteli uyku, düzenli aralıklı oruç (autophagy) ve biyometrik verileri akıllı saatlerle günlük izlemek en pratik uzun yaşam stratejisidir."
+      }
+    ]
+  },
+  {
+    id: "LIFESTYLE-02",
+    title: "Zihinsel Sağlık ve Odak Teknolojileri: Akıllı Meditasyon ve Biofeedback Uygulamaları",
+    excerpt: "Dijital dünyanın dikkat dağınıklığı krizine karşı, beyin dalgalarını (EEG) ölçen akıllı saç bantları odaklanma derinliğini artırıyor.",
+    category: "Yaşam & Sağlık",
+    subcategory: "Zihinsel Sağlık & Odak",
+    date: "7 Ekim 2026",
+    imageUrl: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80",
+    readTime: "4 dk",
+    author: "Ahmet Karadağ & Analitik Heyeti",
+    authorTitle: "Kurucu & Genel Yayın Yönetmeni",
+    verifiedSource: true,
+    sentiment: "Dengeli ⚖️",
+    executiveSummary: "Zihinsel tükenmişliği (burnout) önceden saptayan giyilebilir biofeedback sensörleri, stresli iş kollarında kurumsal düzeyde kullanılmaya başlandı.",
+    canonicalUrl: "https://webdehepseek.com/haber/lifestyle/zihinsel-saglik-odak-EEG-biofeedback",
+    sections: [
+      {
+        id: "lf2-sec-1",
+        heading: "1. Nöro-Geri Bildirim (Neurofeedback) ile Zihin Antrenmanı",
+        body: "Kullanıcılar, mobil uygulama üzerinden beyin dalgası ritimlerini eş zamanlı takip ederek, zihinlerini stres anında alfa ve teta frekanslarına nasıl çekebileceklerini otonom öğreniyor."
+      },
+      {
+        id: "lf2-sec-2",
+        heading: "2. Dopamin Detoksu ve Dijital Dikkat Yönetimi",
+        body: "Bildirim bombardımanından arınmış, odaklanmayı teşvik eden minimalist akıllı telefon ve arayüz tasarımları, üretkenliğe önem veren profesyonellerin gözdesi haline geldi."
+      },
+      {
+        id: "lf2-sec-3",
+        heading: "3. İş Yerinde Zihinsel Sağlık Destek Programları",
+        body: "Kurumsal şirketler, çalışanlarının zihinsel sağlığını korumak amacıyla haftalık meditasyon saatleri ve lisanslı psikolojik destek uygulamaları sağlıyor."
+      }
+    ]
+  },
+  {
+    id: "LIFESTYLE-03",
+    title: "Giyilebilir Sağlık Teknolojisi: Şeker ve Kalp Ritmini İzleyen İnvaziv Olmayan Sensörler",
+    excerpt: "Deri altına iğne batırmadan, ışık ve ter analiziyle kan şekeri düzeyini ölçebilen yeni nesil akıllı saat sensörleri tıp dünyasında devrim yarattı.",
+    category: "Yaşam & Sağlık",
+    subcategory: "Giyilebilir Sağlık Teknolojisi",
+    date: "7 Ekim 2026",
+    imageUrl: "https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?auto=format&fit=crop&w=800&q=80",
+    readTime: "4 dk",
+    author: "Ahmet Karadağ & Analitik Heyeti",
+    authorTitle: "Kurucu & Genel Yayın Yönetmeni",
+    verifiedSource: true,
+    sentiment: "Boğa 🐂",
+    executiveSummary: "İnvaziv olmayan (non-invasive) sürekli glikoz takibi, diyabet hastalarının yaşam kalitesini artırırken önleyici sağlık korumasında çığır açıyor.",
+    canonicalUrl: "https://webdehepseek.com/haber/lifestyle/giyilebilir-saglik-seker-glikoz-takip",
+    sections: [
+      {
+        id: "lf3-sec-1",
+        heading: "1. Spektroskopi Teknolojisi ve Kan Analizi",
+        body: "Akıllı saatlerin alt tabanındaki optik sensörler, kılcal damarlardaki kan akışına özel dalga boyunda ışınlar göndererek glikoz, oksijen satürasyonu ve nabız değişkenliğini (HRV) ölçer."
+      },
+      {
+        id: "lf3-sec-2",
+        heading: "2. Erken Evre Kalp Rahatsızlığı Teşhisi",
+        body: "Giyilebilir cihazların 24 saat kesintisiz çektiği EKG verileri, arka plandaki tıbbi yapay zeka tarafından taranarak aritmi ve kalp yetmezliği risklerini önceden saptayıp ambulans merkezine sinyal gönderir."
+      },
+      {
+        id: "lf3-sec-3",
+        heading: "3. Sağlık Sigortası Şirketlerinin Yeni Yaklaşımı",
+        body: "Giyilebilir sağlık verilerini paylaşan ve aktif, sağlıklı bir yaşam süren kullanıcılara sigorta poliçelerinde özel indirimler sunulmaya başlandı."
+      }
+    ]
+  },
+
+  // 10. OYUN & EĞLENCE (gaming)
+  {
+    id: "GAMING-01",
+    title: "Unreal Engine 6 ile Oyun Geliştirme: Fotorealistik Grafiklerde Sınırları Zorlamak",
+    excerpt: "Epic Games tarafından tanıtılan yeni oyun motoru, gerçek zamanlı ışın izleme ve mikroskobik poligon işleme teknolojileriyle sanal ve gerçeği ayırt edilemez kılıyor.",
+    category: "Oyun & Eğlence",
+    subcategory: "Oyun Geliştirme (Unreal/Unity)",
+    date: "7 Ekim 2026",
+    imageUrl: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80",
+    readTime: "5 dk",
+    author: "Ahmet Karadağ & Analitik Heyeti",
+    authorTitle: "Kurucu & Genel Yayın Yönetmeni",
+    verifiedSource: true,
+    isEditorsChoice: true,
+    sentiment: "Boğa 🐂",
+    executiveSummary: "Unreal Engine 6, oyun geliştiricilerinin yapay zeka ile otonom çevre ve asset üretmesini sağlayarak stüdyoların geliştirme sürelerini yarıya indiriyor.",
+    canonicalUrl: "https://webdehepseek.com/haber/gaming/unreal-engine-6-fotorealistik-grafik",
+    sections: [
+      {
+        id: "gm1-sec-1",
+        heading: "1. Nanite ve Lumen Teknolojilerinde Evrim",
+        body: "Yeni motor, sahnedeki poligon sınırlarını tamamen kaldırarak milyarlarca mikro detay barındıran nesneleri ekran kartını yormadan işler. Lumen ışıklandırma sistemi ise gerçek güneş fiziğiyle birebir simülasyon sunar."
+      },
+      {
+        id: "gm1-sec-2",
+        heading: "2. Yapay Zeka Destekli Otonom NPC Akılları",
+        body: "Oyun içindeki karakterler (NPC) artık yazılmış hazır diyaloglar yerine, otonom büyük dil modelleri (LLM) üzerinden oyuncuyla sesli ve özgürce iletişim kurup hafızasında tutuyor."
+      },
+      {
+        id: "gm1-sec-3",
+        heading: "3. Bağımsız (Indie) Geliştiriciler İçin Fırsatlar",
+        body: "Sermayesi kısıtlı küçük ekipler, Unreal Engine 6'nın hazır kütüphane ve yapay zeka tasarım asistanlarını kullanarak dev stüdyolarla yarışabilecek kalitede AAA oyunlar üretebiliyor."
+      }
+    ]
+  },
+  {
+    id: "GAMING-02",
+    title: "Cloud Gaming Devrimi: Yüksek Donanım İhtiyacını Bitiren Bulut Tabanlı Platformlar",
+    excerpt: "Ultra-hızlı 6G ve fiber internet altyapılarının yaygınlaşmasıyla, oyun konsolu ve pahalı ekran kartı satın alma dönemi resmen kapanıyor.",
+    category: "Oyun & Eğlence",
+    subcategory: "Cloud Gaming (GeForce NOW)",
+    date: "7 Ekim 2026",
+    imageUrl: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80",
+    readTime: "4 dk",
+    author: "Ahmet Karadağ & Analitik Heyeti",
+    authorTitle: "Kurucu & Genel Yayın Yönetmeni",
+    verifiedSource: true,
+    sentiment: "Boğa 🐂",
+    executiveSummary: "Oyunların doğrudan veri merkezlerindeki süper bilgisayarlarda çalıştırılıp televizyon veya telefona yansıtılması (streaming), oyun sektörünün dağıtım modelini değiştirdi.",
+    canonicalUrl: "https://webdehepseek.com/haber/gaming/cloud-gaming-bulut-tabanli-platformlar",
+    sections: [
+      {
+        id: "gm2-sec-1",
+        heading: "1. Sıfır Gecikmeli Kablosuz Veri İletim Teknolojileri",
+        body: "Bulut oyun platformları, sunucu ile oyuncu arasındaki kontrol gecikmesini (input lag) 5 milisaniyenin altına indirerek profesyonel rekabetçi oyunlarda dahi kusursuz deneyim sunuyor."
+      },
+      {
+        id: "gm2-sec-2",
+        heading: "2. Abonelik Paketleri ve Oyun Kütüphanelerine Erişim",
+        body: "Kullanıcılar tek bir konsol fiyatına, yüzlerce kaliteli oyunu barındıran bulut kütüphanelerine aylık sabit abonelik ücretiyle diledikleri akıllı ekrandan anında erişebiliyor."
+      },
+      {
+        id: "gm2-sec-3",
+        heading: "3. Donanım Üreticilerinin Strateji Değişikliği",
+        body: "Klasik konsol markaları, sadece donanım satmak yerine kendi bulut oyun servislerini güçlendirerek ekosistem aboneliği üzerinden gelir elde etmeye odaklanıyor."
+      }
+    ]
+  },
+  {
+    id: "GAMING-03",
+    title: "Sinemada AI Devrimi: Kişiselleştirilmiş Senaryolar ve Gerçek Zamanlı CGI Üretimi",
+    excerpt: "Gelişmiş video üretim modelleri, yönetmenlerin sadece metinsel komutlar (prompt) girerek Hollywood kalitesinde sinematik sahneler üretmesini sağlıyor.",
+    category: "Oyun & Eğlence",
+    subcategory: "Streaming (Netflix/Disney+)",
+    date: "7 Ekim 2026",
+    imageUrl: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=800&q=80",
+    readTime: "4 dk",
+    author: "Ahmet Karadağ & Analitik Heyeti",
+    authorTitle: "Kurucu & Genel Yayın Yönetmeni",
+    verifiedSource: true,
+    sentiment: "Dengeli ⚖️",
+    executiveSummary: "Yapay zeka, film yapım süreçlerindeki devasa bütçeli görsel efekt (CGI) maliyetlerini düşürürken bağımsız sinemacıların önünü açıyor.",
+    canonicalUrl: "https://webdehepseek.com/haber/gaming/sinema-ai-gorsel-efekt-CGI-uretimi",
+    sections: [
+      {
+        id: "gm3-sec-1",
+        heading: "1. Dijital Aktörler ve Yaşlandırma/Gençleştirme Teknolojisi",
+        body: "Oyuncuların yüz hatları ve sesleri dijital olarak taranarak, yeşil perdeye ihtiyaç duymadan doğrudan yapay zeka tarafından 3D çevre içinde hareket ettirilebiliyor."
+      },
+      {
+        id: "gm3-sec-2",
+        heading: "2. Kişiye Özel İnteraktif Film Deneyimleri",
+        body: "Geleceğin streaming platformlarında, izleyicinin ruh haline veya tercihlerine göre senaryonun akışını gerçek zamanlı üreten otonom sinema modları yer alacaktır."
+      },
+      {
+        id: "gm3-sec-3",
+        heading: "3. Telif Hakları ve Oyuncular Birliği Tartışmaları",
+        body: "Sanatçıların dijital ikizlerinin ve ses klonlarının rızasız kullanılmasını engellemek amacıyla, uluslararası düzeyde yeni telif yasaları yürürlüğe giriyor."
+      }
+    ]
+  },
+
+  // 11. BİLİM & UZAY (science)
+  {
+    id: "SCIENCE-01",
     title: "Starship Mars Görevi İçi Geri Sayım Başladı: İlk İnsansız Kargo Filosu Yola Çıkıyor",
     excerpt: "SpaceX'in Kızıl Gezegen'e kalıcı üs kurma hedefi doğrultusunda hazırladığı 5 araçlık kargo filosu yörünge testlerini başarıyla tamamladı.",
     category: "Bilim & Uzay",
     subcategory: "Mars Kolonisi & Starship",
-    date: "5 Ekim 2026",
+    date: "7 Ekim 2026",
     imageUrl: "https://images.unsplash.com/photo-1517976487492-5750f3195933?auto=format&fit=crop&w=800&q=80",
     readTime: "5 dk",
-    author: "Aylin Özkan",
-    authorTitle: "Uzay & Bilim Araştırmacısı",
+    author: "Ahmet Karadağ & Analitik Heyeti",
+    authorTitle: "Kurucu & Genel Yayın Yönetmeni",
     verifiedSource: true,
-    sharesCount: 390,
-    reactions: { like: 165, analytic: 130, mindblown: 140 },
-    canonicalUrl: "https://webdehepseek.com/haber/science/starship-mars-gorevi"
+    isEditorsChoice: true,
+    sentiment: "Boğa 🐂",
+    executiveSummary: "Mars yörüngesine tonlarca yaşam destek ünitesi ve otonom inşaat robotları taşıyacak olan Starship filosu, insanlığın gezegenler arası seyahat çağını başlatıyor.",
+    canonicalUrl: "https://webdehepseek.com/haber/science/starship-mars-gorevi-kargo",
+    sections: [
+      {
+        id: "sc1-sec-1",
+        heading: "1. Çoklu Kalkış ve Yörüngede Yakıt İkmali Teknolojisi",
+        body: "Kızıl Gezegen'e ulaşabilmek için Starship gemileri dünya yörüngesinde otonom tanker gemilerle kenetlenerek sıvı metan ve oksijen yakıt ikmali gerçekleştirecektir."
+      },
+      {
+        id: "sc1-sec-2",
+        heading: "2. Otonom İnşaat ve Sabatier Metoduyla Yakıt Üretimi",
+        body: "Mars yüzeyine inecek ilk kargo robotları, atmosferdeki karbondioksiti ve kutuplardaki buzu kullanarak geri dönüş yakıtı üretecek otonom tesislerin kurulumunu yapacaktır."
+      },
+      {
+        id: "sc1-sec-3",
+        heading: "3. Kurucu Ahmet Karadağ'ın Uzay Ekonomisi Analizi",
+        body: "Uzay madenciliği ve gezegenler arası lojistik, önümüzdeki 30 yılın en kârlı ve stratejik trilyon dolarlık pazar yerini oluşturacaktır. Yatırımlar bu yöne evriliyor."
+      }
+    ]
+  },
+  {
+    id: "SCIENCE-02",
+    title: "Nükleer Füzyon Enerjisinde Tarihi Dönemeç: Temiz ve Sınırsız Enerjiye Adım Adım",
+    excerpt: "Tokamak reaktörlerinde gerçekleştirilen son manyetik sıkıştırma deneylerinde, harcanan enerjiden daha fazlasını üreten 'net-gain' eşiği kararlılıkla aşıldı.",
+    category: "Bilim & Uzay",
+    subcategory: "Nükleer Füzyon Enerjisi",
+    date: "7 Ekim 2026",
+    imageUrl: "https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&w=800&q=80",
+    readTime: "5 dk",
+    author: "Ahmet Karadağ & Analitik Heyeti",
+    authorTitle: "Kurucu & Genel Yayın Yönetmeni",
+    verifiedSource: true,
+    sentiment: "Boğa 🐂",
+    executiveSummary: "Nükleer füzyon (Güneş'in enerji üretim yöntemi), radyoaktif atık bırakmadan ve karbon salınımı yapmadan dünyaya sınırsız temiz elektrik sağlama potansiyeline ulaştı.",
+    canonicalUrl: "https://webdehepseek.com/haber/science/nukleer-fuzyon-enerjisi-net-gain",
+    sections: [
+      {
+        id: "sc2-sec-1",
+        heading: "1. Süper İletken Manyetik Alan Kontrol Standartları",
+        body: "150 milyon santigrat dereceye ulaşan plazmayı reaktör çeperlerine zarar vermeden havada asılı tutmak, yapay zeka tarafından yönetilen yüksek sıcaklıklı süper iletken mıknatıslarla mümkün oldu."
+      },
+      {
+        id: "sc2-sec-2",
+        heading: "2. Klasik Nükleer Santrallerden Farkı ve Güvenlik",
+        body: "Füzyon reaktörlerinde erime (meltdown) riski yoktur. Herhangi bir teknik aksaklık durumunda plazma saliseler içinde sönerek reaksiyonu güvenli şekilde sonlandırır."
+      },
+      {
+        id: "sc2-sec-3",
+        heading: "3. Küresel Enerji Şebekelerinin Gelecekteki Entegrasyonu",
+        body: "Füzyon enerjisinin ticari şebekelere bağlanması, kömür ve doğal gaz santrallerini tamamen dev dışı bırakarak küresel ısınma krizine kesin çözüm sunacaktır."
+      }
+    ]
+  },
+  {
+    id: "SCIENCE-03",
+    title: "Neuralink ve İnsan-Makine Arayüzü: Felçli Hastalarda Düşünce Gücüyle Cihaz Kontrolü",
+    excerpt: "Kortikal motor kabuk üzerine yerleştirilen ultra-ince elektrotlar vasıtasıyla, hastalar bilgisayar imlecini ve protez uzuvlarını düşünce gücüyle hareket ettiriyor.",
+    category: "Bilim & Uzay",
+    subcategory: "Nörobilim & Neuralink",
+    date: "7 Ekim 2026",
+    imageUrl: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80",
+    readTime: "4 dk",
+    author: "Ahmet Karadağ & Analitik Heyeti",
+    authorTitle: "Kurucu & Genel Yayın Yönetmeni",
+    verifiedSource: true,
+    sentiment: "Boğa 🐂",
+    executiveSummary: "Beyin-bilgisayar arayüzü (BCI) teknolojisinde elde edilen son başarılar, nörolojik rahatsızlıkların tedavisinde ve insan bilişsel kapasitesinin artırılmasında yeni çığır açıyor.",
+    canonicalUrl: "https://webdehepseek.com/haber/science/neuralink-beyin-bilgisayar-arayuzu",
+    sections: [
+      {
+        id: "sc3-sec-1",
+        heading: "1. Robotik Cerrahi ve Elektrot Yerleştirme Hassasiyeti",
+        body: "Saç telinden daha ince binlerce elektrot, beyin dokusundaki kan damarlarına zarar vermeden otonom cerrahi robotlar tarafından milimetrik hassasiyetle yerleştirilir."
+      },
+      {
+        id: "sc3-sec-2",
+        heading: "2. Nöral Sinyallerin Yapay Zeka ile Çözümlenmesi (Decoding)",
+        body: "Beyindeki nöron ateşlemelerinden kaynaklanan elektriksel sinyaller, kullanıcının niyetini anlayan gelişmiş yapay sinir ağları tarafından çözülerek dijital komutlara dönüştürülür."
+      },
+      {
+        id: "sc3-sec-3",
+        heading: "3. Bilişsel Kapasite Artırımı ve Etik Tartışmalar",
+        body: "BCI teknolojisinin sağlıklı insanlarda hafıza güçlendirme veya doğrudan bilgi indirme amacıyla kullanılma potansiyeli, etik kurullar tarafından derinlemesine tartışılıyor."
+      }
+    ]
+  },
+
+  // 12. EĞİTİM & KARİYER (education)
+  {
+    id: "EDUCATION-01",
+    title: "AI Destekli Kişiselleştirilmiş Eğitim: Her Öğrenciye Özel Müfredat Tasarlayan Yapay Zeka",
+    excerpt: "Geleneksel tek tip eğitim modelleri yerini, öğrencinin öğrenme hızına ve ilgi alanlarına göre müfredatı anlık adapte eden akıllı AI öğretmenlere bırakıyor.",
+    category: "Eğitim & Kariyer",
+    subcategory: "AI Eğitim Programları",
+    date: "7 Ekim 2026",
+    imageUrl: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=800&q=80",
+    readTime: "4 dk",
+    author: "Ahmet Karadağ & Analitik Heyeti",
+    authorTitle: "Kurucu & Genel Yayın Yönetmeni",
+    verifiedSource: true,
+    isEditorsChoice: true,
+    sentiment: "Boğa 🐂",
+    executiveSummary: "Yapay zeka destekli eğitim platformları, zorlanılan konuları farklı görsel veya sözel metotlarla anlatarak öğrenme kalıcılığını %80 artırıyor.",
+    canonicalUrl: "https://webdehepseek.com/haber/education/ai-destekli-kisisellestirilmis-egitim",
+    sections: [
+      {
+        id: "ed1-sec-1",
+        heading: "1. Bilişsel Profilleme ve Anlık Geri Bildirim",
+        body: "Sistem, öğrencinin test sorularını çözerken yaptığı duraksamaları ve hata modellerini analiz ederek, hangi konularda temel eksikliği olduğunu anında saptar."
+      },
+      {
+        id: "ed1-sec-2",
+        heading: "2. Küresel Fırsat Eşitliği ve Ücretsiz Eğitim İmkanları",
+        body: "Dünyanın en ücra köşesindeki bir çocuk dahi, internet bağlantısı sayesinde Oxford veya MIT seviyesinde eğitim veren yapay zeka asistanlarına ücretsiz ulaşabiliyor."
+      },
+      {
+        id: "ed1-sec-3",
+        heading: "3. Kurucu Ahmet Karadağ'ın Eğitimin Geleceği Görüşü",
+        body: "Gelecekte ezbere dayalı bilgi ölçen sınavların önemi kalmayacaktır. Eğitim sistemleri, problem çözme, kritik düşünme ve yapay zekayı bir araç olarak kullanabilme yeteneğini ödüllendirmelidir."
+      }
+    ]
+  },
+  {
+    id: "EDUCATION-02",
+    title: "Geleceğin Meslekleri: No-Code Geliştiricilik ve Prompt Mühendisliğinde Kariyer Fırsatları",
+    excerpt: "Klasik yazılım dilleri bilmeye gerek kalmadan, yapay zekayı doğru yönlendirerek karmaşık uygulamalar üreten uzmanlar iş pazarında en çok arananlar oldu.",
+    category: "Eğitim & Kariyer",
+    subcategory: "Kariyer Dönüşüm Rehberi",
+    date: "7 Ekim 2026",
+    imageUrl: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=800&q=80",
+    readTime: "4 dk",
+    author: "Ahmet Karadağ & Analitik Heyeti",
+    authorTitle: "Kurucu & Genel Yayın Yönetmeni",
+    verifiedSource: true,
+    sentiment: "Boğa 🐂",
+    executiveSummary: "Büyük dil modellerinin (LLM) dilsel yeteneklerini maksimize eden Prompt Mühendisleri, teknoloji şirketlerinde yüksek maaşlarla istihdam ediliyor.",
+    canonicalUrl: "https://webdehepseek.com/haber/education/gelecegin-meslekleri-prompt-muhendisligi",
+    sections: [
+      {
+        id: "ed2-sec-1",
+        heading: "1. Yazılım Dünyasında Demokratikleşme ve No-Code",
+        body: "No-code platformları, girişimcilerin ve iş analistlerinin sürükle-bırak yöntemiyle ve doğal dil komutlarıyla kurumsal düzeyde mobil ve web uygulamaları tasarlamasını sağlar."
+      },
+      {
+        id: "ed2-sec-2",
+        heading: "2. Yapay Zekayı Yönetebilme (AI Literacy) Yetkinliği",
+        body: "İş dünyasındaki profesyonellerin kariyerlerini sürdürebilmeleri için günlük rutin işlerinde yapay zeka araçlarını asistan olarak entegre etmeleri zorunlu hale gelmiştir."
+      },
+      {
+        id: "ed2-sec-3",
+        heading: "3. Şirketlerin İnsan Kaynakları Stratejilerinde Değişim",
+        body: "İK departmanları adayların teknik diploma derecelerinden ziyade, yapay zeka ile ne kadar hızlı ve verimli çıktı üretebildiklerini ölçen pratik mülakatlar uyguluyor."
+      }
+    ]
+  },
+  {
+    id: "EDUCATION-03",
+    title: "Uzaktan Çalışmada Verimlilik: VR Toplantı Odaları ve Hibrit Ofis Trendleri",
+    excerpt: "Sanal gerçeklik (VR) kulaklıkları ve artırılmış gerçeklik gözlükleri, uzaktan çalışan ekiplerin aynı ofisteymiş gibi iş birliği yapmasını sağlıyor.",
+    category: "Eğitim & Kariyer",
+    subcategory: "Uzaktan Çalışma İmkanları",
+    date: "7 Ekim 2026",
+    imageUrl: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80",
+    readTime: "4 dk",
+    author: "Ahmet Karadağ & Analitik Heyeti",
+    authorTitle: "Kurucu & Genel Yayın Yönetmeni",
+    verifiedSource: true,
+    sentiment: "Dengeli ⚖️",
+    executiveSummary: "Metaverse ofis alanları ve 3D iş birliği araçları, uzaktan çalışmadaki iletişim kopukluğu ve yalnızlık hissini ortadan kaldırmaya yardımcı oluyor.",
+    canonicalUrl: "https://webdehepseek.com/haber/education/uzaktan-calisma-verimlilik-VR-toplanti",
+    sections: [
+      {
+        id: "ed3-sec-1",
+        heading: "1. 3D Dijital İkiz Ofis Tasarımları",
+        body: "Şirketler, fiziksel ofis binalarının birebir sanal kopyalarını inşa ederek, çalışanların kendi avatarlarıyla koridorlarda karşılaşmasını ve spontane fikir alışverişi yapmasını sağlıyor."
+      },
+      {
+        id: "ed3-sec-2",
+        heading: "2. Hibrit Çalışmada Zaman ve Enerji Optimizasyonu",
+        body: "Haftanın belirli günleri ofise giden çalışanlar, koordinasyon gerektiren işleri yüz yüze hallederken, odaklanma gerektiren analitik işleri evlerinden asenkron yürütüyor."
+      },
+      {
+        id: "ed3-sec-3",
+        heading: "3. Çalışan Sadakati ve Sınır Ötesi İstihdam Gücü",
+        body: "Modern ofis teknolojileri sunan firmalar, küresel yetenek pazarındaki en kaliteli mühendisleri ve tasarımcıları bünyelerinde tutmakta avantaj elde ediyor."
+      }
+    ]
+  },
+
+  // 13. EMLAK & LÜKS YATIRIM (realestate)
+  {
+    id: "REALESTATE-01",
+    title: "Lüks Gayrimenkul Trendleri: Sürdürülebilir ve Akıllı Lüks Konut Talebi Artıyor",
+    excerpt: "Küresel milyarderlerin lüks gayrimenkul alımlarında, karbon-nötr enerji altyapısı ve yapay zeka tabanlı otonom güvenlik sistemleri öncelikli tercih haline geldi.",
+    category: "Emlak & Lüks Yatırım",
+    subcategory: "Lüks Gayrimenkul Trendleri",
+    date: "7 Ekim 2026",
+    imageUrl: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80",
+    readTime: "5 dk",
+    author: "Ahmet Karadağ & Analitik Heyeti",
+    authorTitle: "Kurucu & Genel Yayın Yönetmeni",
+    verifiedSource: true,
+    isEditorsChoice: true,
+    sentiment: "Boğa 🐂",
+    executiveSummary: "Lüks konut sektörü, sadece estetik tasarımlarla sınırlı kalmayıp enerji bağımsızlığı, su arıtma ve siber güvenlik duvarı barındıran akıllı kaleler (fortress homes) inşa ediyor.",
+    canonicalUrl: "https://webdehepseek.com/haber/realestate/luks-gayrimenkul-akilli-konut",
+    sections: [
+      {
+        id: "re1-sec-1",
+        heading: "1. Net-Sıfır Karbon ve Güneş Enerjili Malikaneler",
+        body: "Yeni nesil lüks villalar, tavan ve dış cephe kaplamalarına entegre edilen görünmez güneş panelleri ve Tesla Megapack tarzı endüstriyel batarya depolarıyla şebekeden bağımsız enerji üretiyor."
+      },
+      {
+        id: "re1-sec-2",
+        heading: "2. Yapay Zeka Destekli Fiziksel ve Siber Güvenlik Çemberi",
+        body: "Konut çevresindeki LiDAR kameraları ve termal sensörler, yabancı unsurları otonom analiz ederek siber güvenlik duvarıyla entegre çalışır. Akıllı ev sistemleri sızmalara karşı siber koruma sağlar."
+      },
+      {
+        id: "re1-sec-3",
+        heading: "3. Kurucu Ahmet Karadağ'ın Lüks Emlak Analizi",
+        body: "Lüks emlak yatırımları artık sadece konfor için değil, küresel iklim krizleri ve toplumsal hareketliliklerden bağımsız güvenli yaşam alanları (safe-haven assets) yaratmak için tercih ediliyor."
+      }
+    ]
+  },
+  {
+    id: "REALESTATE-02",
+    title: "PropTech Teknolojileri: Gayrimenkul Alım Satımında Yapay Zeka ve Akıllı Sözleşmeler",
+    excerpt: "Emlak sektöründe tapu devirleri, kiralama süreçleri ve portföy değerlemeleri akıllı kontratlar ve yapay zeka analizleriyle tamamen dijitalleşiyor.",
+    category: "Emlak & Lüks Yatırım",
+    subcategory: "PropTech Teknolojileri",
+    date: "7 Ekim 2026",
+    imageUrl: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80",
+    readTime: "4 dk",
+    author: "Ahmet Karadağ & Analitik Heyeti",
+    authorTitle: "Kurucu & Genel Yayın Yönetmeni",
+    verifiedSource: true,
+    sentiment: "Boğa 🐂",
+    executiveSummary: "Gayrimenkul teknolojileri (PropTech), aracı komisyonlarını ortadan kaldırarak şeffaf ve güvenli mülk satışı altyapısı sunuyor.",
+    canonicalUrl: "https://webdehepseek.com/haber/realestate/proptech-teknolojileri-emlak-blockchain",
+    sections: [
+      {
+        id: "re2-sec-1",
+        heading: "1. Blockchain Üzerinde Tokenize Emlak Satışları",
+        body: "Büyük ticari gökdelenler ve lüks oteller, küçük hisselere (token) bölünerek küresel borsalarda işlem görüyor. Bu sayede küçük yatırımcılar dilerlerse 1000 TL ile lüks projelere ortak olabiliyor."
+      },
+      {
+        id: "re2-sec-2",
+        heading: "2. Yapay Zeka ile Hassas Değerleme Algoritmaları",
+        body: "PropTech yazılımları, mülkün konumunu, çevredeki borsa fiyat hareketlerini, ulaşım projelerini ve hatta bölgesel suç oranlarını tarayarak saniyeler içinde gerçeğe en yakın değerleme raporunu üretir."
+      },
+      {
+        id: "re2-sec-3",
+        heading: "3. Dijital Tapu ve Akıllı Kontratlı Kiralama",
+        body: "Kira sözleşmeleri akıllı kontratlarla imzalanıyor; her ayın başında kira bedeli kiracının cüzdanından otonom çekilerek ev sahibinin hesabına yazılıyor."
+      }
+    ]
+  },
+  {
+    id: "REALESTATE-03",
+    title: "Gayrimenkul Yatırım Fonları (REIT): Küçük Yatırımcılar İçin Güvenli ve Likit Emlak Portföyü",
+    excerpt: "Konut kredisi faizlerinin yüksek olduğu dönemde, gayrimenkul yatırım ortaklığı hisseleri istikrarlı temettü geliriyle yatırımcıların sığınağı oldu.",
+    category: "Emlak & Lüks Yatırım",
+    subcategory: "REIT & Gayrimenkul Fonları",
+    date: "7 Ekim 2026",
+    imageUrl: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80",
+    readTime: "4 dk",
+    author: "Ahmet Karadağ & Analitik Heyeti",
+    authorTitle: "Kurucu & Genel Yayın Yönetmeni",
+    verifiedSource: true,
+    sentiment: "Dengeli ⚖️",
+    executiveSummary: "GYO/REIT fonları, fiziksel mülk edinme zahmeti, bakım masrafları ve likidite sıkıntıları olmaksızın emlak pazarındaki kira artışlarından faydalanma imkanı sağlar.",
+    canonicalUrl: "https://webdehepseek.com/haber/realestate/reit-gayrimenkul-yatirim-fonu-gyo",
+    sections: [
+      {
+        id: "re3-sec-1",
+        heading: "1. Ticari Portföy Gücü ve Enflasyona Karşı Koruma",
+        body: "REIT fonları genellikle büyük AVM'ler, lojistik depolar ve ofis kampüslerini bünyesinde barındırır. Bu mülklerin kira sözleşmeleri enflasyona endeksli olduğu için fon değeri erimez."
+      },
+      {
+        id: "re3-sec-2",
+        heading: "2. Yüksek Temettü (Dividend) Dağıtım Zorunluluğu",
+        body: "Yasal mevzuatlar gereği, REIT statüsündeki fonlar elde ettikleri net kira gelirlerinin en az %90'ını hissedarlarına nakit temettü olarak dağıtmakla yükümlüdür."
+      },
+      {
+        id: "re3-sec-3",
+        heading: "3. Likidite Kolaylığı ve Hisse Senedi Piyasaları",
+        body: "Fiziksel bir evi satmak aylar sürebilirken, borsada işlem gören REIT hisselerini dilediğiniz an tek tıkla nakde dönüştürebilirsiniz."
+      }
+    ]
+  },
+
+  // 14. OTOMOTİV & MOBİLİTE (automotive)
+  {
+    id: "AUTOMOTIVE-01",
+    title: "Togg T10F Sedan Modelinde Seviye 4 Otonom Sürüş Entegrasyonu Tamamlandı",
+    excerpt: "Milli mobilite markamız Togg'un yeni sedan modeli, gelişmiş sensör füzyonu ve 600 km artırılmış menziliyle uluslararası sürüş testlerinde tam puan aldı.",
+    category: "Otomotiv & Mobilite",
+    subcategory: "Togg & Yerli Otomobil",
+    date: "7 Ekim 2026",
+    imageUrl: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80",
+    readTime: "5 dk",
+    author: "Ahmet Karadağ & Analitik Heyeti",
+    authorTitle: "Kurucu & Genel Yayın Yönetmeni",
+    verifiedSource: true,
+    isEditorsChoice: true,
+    sentiment: "Boğa 🐂",
+    executiveSummary: "Togg T10F, yerli yazılımla geliştirilen LiDAR ve radar tabanlı sensör ağı sayesinde sürücüsüz otopark ve otoban otonom kontrolünü sıfır hata ile tamamladı.",
+    canonicalUrl: "https://webdehepseek.com/haber/automotive/togg-t10f-seviye-4-otonom",
+    sections: [
+      {
+        id: "au1-sec-1",
+        heading: "1. Seviye 4 Otonom Sürüş ve Nöral Ağ Yol Bilgisayarı",
+        body: "Togg T10F, tampon sütunlarına gizlenmiş 360 derece LiDAR ve ultra-hassas sonar sensörleriyle donatılmıştır. Araç içi yapay zeka bilgisayarı, saniyede 500 trilyon işlem (TOPS) kapasitesiyle yol senaryolarını tahmin eder."
+      },
+      {
+        id: "au1-sec-2",
+        heading: "2. Gelişmiş Batarya Yönetimi ve 600 km Menbili Şarj",
+        body: "Yerli üretim nikel-mangan-kobalt (NMC) kimyalı bataryalar, optimize edilen akıllı soğutma sistemi sayesinde 15 dakikalık DC hızlı şarjla %20'den %80 doluluğa ulaşabiliyor."
+      },
+      {
+        id: "au1-sec-3",
+        heading: "3. Kurucu Ahmet Karadağ'ın Togg Küresel Vizyonu Yorumu",
+        body: "Togg, sadece elektrikli bir araç değil, sürekli güncellenen ve birbiriyle konuşan akıllı bir nesne ekosistemidir (Trumore). Küresel arenada otomotiv dünyasının devleriyle yarışacak düzeye gelmiştir."
+      }
+    ]
+  },
+  {
+    id: "AUTOMOTIVE-02",
+    title: "Katı Hal Batarya Teknolojisi: Elektrikli Araçlarda Menbili 2 Katına Çıkaracak Gelişme",
+    excerpt: "Sıvı elektrolitler yerine katı hal seramik kullanan yeni nesil bataryalar, elektrikli araçlarda yangın riskini sıfırlarken şarj sürelerini 5 dakikaya indiriyor.",
+    category: "Otomotiv & Mobilite",
+    subcategory: "Batarya Teknolojileri",
+    date: "7 Ekim 2026",
+    imageUrl: "https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=800&q=80",
+    readTime: "4 dk",
+    author: "Ahmet Karadağ & Analitik Heyeti",
+    authorTitle: "Kurucu & Genel Yayın Yönetmeni",
+    verifiedSource: true,
+    sentiment: "Boğa 🐂",
+    executiveSummary: "Katı hal bataryalarının (Solid-State Battery) endüstriyel üretime geçmesi, elektrikli araç pazarındaki en büyük engel olan menzil endişesini (range anxiety) tarihe gömüyor.",
+    canonicalUrl: "https://webdehepseek.com/haber/automotive/kati-hal-batarya-elektrikli-arac",
+    sections: [
+      {
+        id: "au2-sec-1",
+        heading: "1. Enerji Yoğunluğunda Sınırların Aşılması",
+        body: "Katı hal pilleri, klasik lityum iyon pillerle aynı ağırlıkta tam iki kat daha fazla enerji depolayabilir. Bu sayede kompakt şehir araçları dahi tek şarjla 1000 km yol kat edebilir."
+      },
+      {
+        id: "au2-sec-2",
+        heading: "2. Termal Kaçak ve Yangın Risklerinin Sıfırlanması",
+        body: "Sıvı bataryalardaki delinme veya aşırı ısınma durumunda oluşan patlama riski, katı elektrolitlerin yüksek ısı mukavemeti sayesinde tamamen ortadan kalkar."
+      },
+      {
+        id: "au2-sec-3",
+        heading: "3. Otomotiv Devlerinin Seri Üretim Yarışı",
+        body: "Dünyanın en büyük otomotiv grupları, katı hal pilli ilk ticari modellerini 2027 yılı itibarıyla piyasaya sunmak için milyar dolarlık üretim tesisleri kuruyor."
+      }
+    ]
+  },
+  {
+    id: "AUTOMOTIVE-03",
+    title: "eVTOL (Uçan Arabalar): Şehir İçi Hava Taşımacılığında İlk Ticari Lisanslar Alındı",
+    excerpt: "Elektrikli dikey kalkış ve iniş yapabilen eVTOL hava araçları, büyük metropollerde taksi hizmeti sunmak için sivil havacılık otoritelerinden tam güvenlik onayı aldı.",
+    category: "Otomotiv & Mobilite",
+    subcategory: "Uçan Arabalar & eVTOL",
+    date: "7 Ekim 2026",
+    imageUrl: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=800&q=80",
+    readTime: "4 dk",
+    author: "Ahmet Karadağ & Analitik Heyeti",
+    authorTitle: "Kurucu & Genel Yayın Yönetmeni",
+    verifiedSource: true,
+    sentiment: "Dengeli ⚖️",
+    executiveSummary: "Şehir içi trafik sıkışıklığını havadan aşacak olan elektrikli uçan taksiler, hava limanları ve merkezi noktalar arasında ekspres ulaşım sağlayacak.",
+    canonicalUrl: "https://webdehepseek.com/haber/automotive/evtol-ucan-araba-taksi-lisansi",
+    sections: [
+      {
+        id: "au3-sec-1",
+        heading: "1. Çoklu Rotor Güvenliği ve Ultra-Sessiz Sürüş",
+        body: "eVTOL'ler, helikopterlerin aksine 8-16 adet küçük elektrikli motor ve rotor sistemi kullanır. Herhangi bir motor arızası durumunda diğerleri otonom devreye girerek güvenli iniş sağlar."
+      },
+      {
+        id: "au3-sec-2",
+        heading: "2. Vertiport Altyapıları ve Şehir İçi Entegrasyon",
+        body: "Gökdelenlerin çatılarına ve merkezi meydanlara kurulacak akıllı iniş/biniş istasyonları (vertiports), yolcuların hızlı ve konforlu şekilde ulaşıma erişmesini mümkün kılacaktır."
+      },
+      {
+        id: "au3-sec-3",
+        heading: "3. Hava Trafik Kontrolünde Yapay Zeka Dönemi",
+        body: "Yüzlerce otonom uçan aracın çarpışma riski olmadan güvenle seyahat edebilmesi, askeri düzeydeki otonom hava trafik koordinasyon yapay zekalarıyla yönetilecektir."
+      }
+    ]
   }
 ];
 
