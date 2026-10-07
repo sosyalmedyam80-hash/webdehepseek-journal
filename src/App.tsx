@@ -99,6 +99,253 @@ const BACKGROUND_ROUTINES = [
   "Otonom Mobilite: Seviye 4 Sürücüsüz Araç Testleri Başarıyla Tamamlandı"
 ];
 
+const DEFAULT_CATEGORY_FALLBACKS: Record<string, string> = {
+  'Teknoloji & Dijital Dönüşüm': 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1200&q=80',
+  'Yapay Zeka & Gelecek': 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80',
+  'Kripto & Web3': 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80',
+  'Finans & Küresel Piyasalar': 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80',
+  'Otomotiv & Otonom Sürüş': 'https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=1200&q=80',
+  'Siber Güvenlik & Veri Koruma': 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80',
+  'SaaS & Bulut Yazılımları': 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80',
+  'Kişisel Finans & Sigorta': 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1200&q=80',
+  'Yapay Zeka Araç Rehberi': 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80',
+  'default': 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80'
+};
+
+interface NewsImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
+  category?: string;
+  fallbackUrl?: string;
+}
+
+function NewsImage({ src, alt, category, fallbackUrl, className, ...props }: NewsImageProps) {
+  const [imgSrc, setImgSrc] = useState<string>(src || '');
+
+  useEffect(() => {
+    setImgSrc(src || '');
+  }, [src]);
+
+  const handleError = () => {
+    const fallback = fallbackUrl || (category ? DEFAULT_CATEGORY_FALLBACKS[category] : null) || DEFAULT_CATEGORY_FALLBACKS['default'];
+    if (imgSrc !== fallback) {
+      setImgSrc(fallback);
+    }
+  };
+
+  return (
+    <img
+      src={imgSrc || DEFAULT_CATEGORY_FALLBACKS['default']}
+      alt={alt || 'Haber Görseli'}
+      onError={handleError}
+      className={className}
+      {...props}
+    />
+  );
+}
+
+// DERGİ VE MANŞET MİZANPAJI (SLIDER + YAN MİZANPAJ)
+function HeroHeadlineSection({ newsList, onSelectArticle, bookmarkedIds, onToggleBookmark, getDynamicReadTime }: {
+  newsList: NewsItem[];
+  onSelectArticle: (article: NewsItem) => void;
+  bookmarkedIds: string[];
+  onToggleBookmark: (id: string, e: React.MouseEvent) => void;
+  getDynamicReadTime: (news: NewsItem) => string;
+}) {
+  const top5 = useMemo(() => newsList.slice(0, 5), [newsList]);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    if (isPaused || top5.length === 0) return;
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % top5.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [isPaused, top5.length]);
+
+  if (top5.length === 0) return null;
+
+  const mainArticle = top5[activeIndex] || top5[0];
+
+  return (
+    <section className="space-y-4 my-4">
+      {/* Header bar */}
+      <div className="flex items-center justify-between border-b border-[#D4AF37]/30 pb-3">
+        <div className="flex items-center gap-2">
+          <span className="w-3 h-3 rounded-full bg-[#D4AF37] animate-pulse" />
+          <h3 className="text-lg font-serif font-bold text-white uppercase tracking-wider flex items-center gap-2">
+            <span>Günün Sıcak Manşetleri & Canlı Analizler</span>
+          </h3>
+        </div>
+        <div className="flex items-center gap-2 text-xs font-mono text-[#D4AF37]">
+          <span className="hidden sm:inline bg-[#D4AF37]/10 px-2.5 py-1 rounded border border-[#D4AF37]/30">
+            {activeIndex + 1} / {top5.length} MANŞET
+          </span>
+        </div>
+      </div>
+
+      {/* Grid: Left Main Big Slide (lg:col-span-7), Right Vertical 4 Headlines (lg:col-span-5) */}
+      <div 
+        className="grid grid-cols-1 lg:grid-cols-12 gap-6"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
+        {/* Left Main Hero Card */}
+        <div className="lg:col-span-7 bg-[#121215] border border-[#D4AF37]/40 hover:border-[#D4AF37] rounded-3xl overflow-hidden shadow-2xl relative group flex flex-col justify-between min-h-[420px] transition-all">
+          <div className="relative h-72 sm:h-80 overflow-hidden">
+            <NewsImage 
+              src={mainArticle.imageUrl} 
+              alt={mainArticle.title}
+              category={mainArticle.category}
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#121215] via-[#121215]/30 to-transparent" />
+            
+            {/* Badges & Bookmark */}
+            <div className="absolute top-4 left-4 flex items-center gap-2">
+              <span className="px-3 py-1 bg-[#D4AF37] text-black text-xs font-black rounded-full uppercase tracking-wider shadow-lg">
+                {mainArticle.subcategory || mainArticle.category}
+              </span>
+              <span className="px-2.5 py-1 bg-black/70 backdrop-blur-md text-[#D4AF37] text-[10px] font-mono font-bold rounded-full border border-[#D4AF37]/30">
+                MANŞET #{activeIndex + 1}
+              </span>
+            </div>
+
+            <button 
+              onClick={(e) => onToggleBookmark(mainArticle.id, e)}
+              className={cn(
+                "absolute top-4 right-4 p-2.5 rounded-full backdrop-blur-md transition-all shadow-md",
+                bookmarkedIds.includes(mainArticle.id) ? "bg-[#D4AF37] text-black" : "bg-black/60 text-white hover:text-[#D4AF37]"
+              )}
+              title="Yer İmlerine Ekle"
+            >
+              <Bookmark size={16} />
+            </button>
+
+            {/* Slide Navigation Buttons */}
+            <button
+              onClick={() => setActiveIndex((prev) => (prev - 1 + top5.length) % top5.length)}
+              className="absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/60 hover:bg-[#D4AF37] text-white hover:text-black transition-all border border-white/10 shadow-lg"
+              title="Önceki Manşet"
+            >
+              <ChevronLeft size={20} />
+            </button>
+            <button
+              onClick={() => setActiveIndex((prev) => (prev + 1) % top5.length)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/60 hover:bg-[#D4AF37] text-white hover:text-black transition-all border border-white/10 shadow-lg"
+              title="Sonraki Manşet"
+            >
+              <ChevronRight size={20} />
+            </button>
+          </div>
+
+          {/* Main Hero Card Text Body */}
+          <div 
+            onClick={() => onSelectArticle(mainArticle)}
+            className="p-6 space-y-3 cursor-pointer flex-grow flex flex-col justify-between"
+          >
+            <div className="space-y-2">
+              <h2 className="text-xl sm:text-2xl font-serif font-bold text-white group-hover:text-[#D4AF37] transition-colors leading-tight">
+                {mainArticle.title}
+              </h2>
+              <p className="text-xs sm:text-sm text-zinc-300 line-clamp-2 leading-relaxed">
+                {mainArticle.excerpt}
+              </p>
+            </div>
+
+            <div className="pt-3 border-t border-zinc-800/80 flex items-center justify-between text-xs text-zinc-400">
+              <div className="flex items-center gap-2">
+                <span className="font-semibold text-white truncate max-w-[140px]">{mainArticle.author}</span>
+                <span className="text-zinc-600">•</span>
+                <span className="text-[11px] font-mono text-zinc-400">{mainArticle.date}</span>
+                <span className="text-zinc-600">•</span>
+                <span className="px-1.5 py-0.5 bg-[#D4AF37]/10 text-[#D4AF37] border border-[#D4AF37]/20 rounded text-[9px] font-mono font-bold shrink-0">{getDynamicReadTime(mainArticle)}</span>
+              </div>
+
+              {/* Slider Dots/Numbers */}
+              <div className="flex items-center gap-1.5" onClick={(e) => e.stopPropagation()}>
+                {top5.map((_, idx) => (
+                  <button
+                    key={`dot-${idx}`}
+                    onClick={() => setActiveIndex(idx)}
+                    className={cn(
+                      "h-2 rounded-full transition-all",
+                      idx === activeIndex ? "bg-[#D4AF37] w-6" : "bg-zinc-700 hover:bg-zinc-500 w-2"
+                    )}
+                    title={`Manşet ${idx + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Column: 4 Hot Headlines (2, 3, 4, 5) */}
+        <div className="lg:col-span-5 flex flex-col justify-between gap-3">
+          {top5.map((item, idx) => {
+            const isActive = idx === activeIndex;
+            return (
+              <div
+                key={`side-headline-${item.id}`}
+                onClick={() => {
+                  setActiveIndex(idx);
+                }}
+                className={cn(
+                  "p-3 rounded-2xl border transition-all cursor-pointer flex items-center gap-3 group relative overflow-hidden",
+                  isActive 
+                    ? "bg-[#1c1c24] border-[#D4AF37] shadow-lg ring-1 ring-[#D4AF37]/50" 
+                    : "bg-[#121215] border-zinc-800/80 hover:border-[#D4AF37]/50 hover:bg-[#16161b]"
+                )}
+              >
+                <div className="relative w-28 h-20 shrink-0 rounded-xl overflow-hidden border border-zinc-800">
+                  <NewsImage 
+                    src={item.imageUrl} 
+                    alt={item.title} 
+                    category={item.category}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <span className="absolute top-1 left-1 px-1.5 py-0.5 bg-black/80 text-[#D4AF37] font-mono text-[9px] font-bold rounded">
+                    #{idx + 1}
+                  </span>
+                </div>
+
+                <div className="space-y-1 flex-grow min-w-0">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="px-2 py-0.5 bg-[#D4AF37]/15 text-[#D4AF37] border border-[#D4AF37]/30 text-[9px] font-bold rounded uppercase truncate">
+                      {item.subcategory || item.category}
+                    </span>
+                    <span className="text-[10px] text-zinc-500 font-mono shrink-0">{item.date}</span>
+                  </div>
+
+                  <h4 className={cn(
+                    "text-xs font-bold leading-snug line-clamp-2 transition-colors",
+                    isActive ? "text-[#D4AF37]" : "text-white group-hover:text-[#D4AF37]"
+                  )}>
+                    {item.title}
+                  </h4>
+
+                  <div className="flex items-center justify-between text-[10px] text-zinc-400 pt-1">
+                    <span className="truncate max-w-[120px]">{item.author}</span>
+                    <button 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onSelectArticle(item);
+                      }}
+                      className="text-[#D4AF37] hover:underline font-bold text-[10px] flex items-center gap-0.5"
+                    >
+                      <span>Oku</span>
+                      <ChevronRight size={10} />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // Google AdSense Placements Component (CLS prevention & responsive styling)
 interface AdSenseSlotProps {
   format: 'horizontal' | 'in-feed' | 'sidebar';
@@ -1712,10 +1959,10 @@ export default function App() {
                           onClick={() => setSelectedNewsArticle(spot)}
                           className="flex flex-col sm:flex-row items-center gap-4 bg-[#0B0B0C] border border-zinc-800 hover:border-[#D4AF37] p-4 rounded-2xl cursor-pointer transition-all group"
                         >
-                          <img 
+                          <NewsImage 
                             src={spot.imageUrl} 
                             alt={spot.title}
-                            loading="lazy"
+                            category={spot.category}
                             className="w-full sm:w-36 h-28 object-cover rounded-xl shrink-0 group-hover:scale-105 transition-transform"
                           />
                           <div className="space-y-2">
@@ -1733,101 +1980,15 @@ export default function App() {
                   </section>
                 )}
 
-                {/* SECTION 1: HERO HORIZONTAL BENTO SLIDER CAROUSEL */}
+                {/* SECTION 1: DERGİ VE MANŞET MİZANPAJI (SLIDER + YAN MİZANPAJ) */}
                 {!selectedCategory && !searchQuery && !onlyBookmarks && (
-                  <section className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <span className="w-2.5 h-2.5 rounded-full bg-[#D4AF37]" />
-                        <h3 className="text-lg font-serif font-bold text-white uppercase tracking-wider">
-                          Manşet Analizler & Özel Dosyalar
-                        </h3>
-                      </div>
-
-                      <div className="flex items-center gap-2">
-                        <button 
-                          onClick={() => scrollSlider(heroSliderRef, 'left')}
-                          className="p-2 rounded-xl bg-[#121215] border border-zinc-800 hover:border-[#D4AF37] text-zinc-300 hover:text-white transition-all shadow-md"
-                          title="Sola Kaydır"
-                        >
-                          <ChevronLeft size={18} />
-                        </button>
-                        <button 
-                          onClick={() => scrollSlider(heroSliderRef, 'right')}
-                          className="p-2 rounded-xl bg-[#121215] border border-zinc-800 hover:border-[#D4AF37] text-zinc-300 hover:text-white transition-all shadow-md"
-                          title="Sağa Kaydır"
-                        >
-                          <ChevronRight size={18} />
-                        </button>
-                      </div>
-                    </div>
-
-                    {/* Horizontal Bento Scroll Container */}
-                    <div 
-                      ref={heroSliderRef}
-                      className="horizontal-slider gap-6 pb-4 no-scrollbar"
-                    >
-                      {filteredNews.slice(0, 6).map((news) => (
-                        <div 
-                          key={news.id}
-                          onClick={() => setSelectedNewsArticle(news)}
-                          className="w-[320px] sm:w-[460px] bg-[#121215] border border-[#D4AF37]/35 hover:border-[#D4AF37] rounded-3xl overflow-hidden shadow-2xl transition-all cursor-pointer group flex flex-col justify-between"
-                        >
-                          <div className="relative h-60 overflow-hidden">
-                            <img 
-                              src={news.imageUrl} 
-                              alt={news.title}
-                              loading="lazy"
-                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-[#121215] via-transparent to-black/30" />
-                            
-                            <div className="absolute top-4 left-4 flex gap-2">
-                              <span className="px-2.5 py-1 bg-[#D4AF37] text-black text-[10px] font-extrabold rounded-full uppercase tracking-wider">
-                                {news.subcategory}
-                              </span>
-                            </div>
-
-                            <button 
-                              onClick={(e) => toggleBookmark(news.id, e)}
-                              className={cn(
-                                "absolute top-4 right-4 p-2 rounded-full backdrop-blur-md transition-all",
-                                bookmarkedIds.includes(news.id) ? "bg-[#D4AF37] text-black" : "bg-black/60 text-white hover:text-[#D4AF37]"
-                              )}
-                              title="Yer İmlerine Ekle"
-                            >
-                              <Bookmark size={14} />
-                            </button>
-                          </div>
-
-                          <div className="p-6 space-y-3 flex-grow flex flex-col justify-between">
-                            <div className="space-y-2">
-                              <h4 className="text-lg sm:text-xl font-serif font-bold text-white group-hover:text-[#D4AF37] transition-colors leading-snug line-clamp-2">
-                                {news.title}
-                              </h4>
-                              <p className="text-xs text-zinc-400 line-clamp-3 leading-relaxed">
-                                {news.excerpt}
-                              </p>
-                            </div>
-
-                            <div className="pt-4 border-t border-zinc-800/80 flex items-center justify-between text-xs text-zinc-400">
-                              <div className="flex items-center gap-2">
-                                <span className="font-semibold text-white truncate max-w-[140px]">{news.author}</span>
-                                <span className="text-zinc-600">•</span>
-                                <span className="text-[10px] font-mono text-zinc-500">{news.date}</span>
-                                <span className="text-zinc-600">•</span>
-                                <span className="px-1.5 py-0.2 bg-[#D4AF37]/10 text-[#D4AF37] border border-[#D4AF37]/20 rounded text-[9px] font-mono font-bold shrink-0">{getDynamicReadTime(news)}</span>
-                              </div>
-                              <span className="text-[#D4AF37] font-bold text-xs flex items-center gap-1">
-                                <span>Oku</span>
-                                <ArrowRight size={12} />
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </section>
+                  <HeroHeadlineSection 
+                    newsList={filteredNews}
+                    onSelectArticle={(article) => setSelectedNewsArticle(article)}
+                    bookmarkedIds={bookmarkedIds}
+                    onToggleBookmark={toggleBookmark}
+                    getDynamicReadTime={getDynamicReadTime}
+                  />
                 )}
 
                 {/* GOOGLE ADSENSE HORIZONTAL BANNER (CLS-SAFE) */}
@@ -1893,10 +2054,10 @@ export default function App() {
                       >
                         <div>
                           <div className="relative h-44 overflow-hidden">
-                            <img 
+                            <NewsImage 
                               src={news.imageUrl} 
                               alt={news.title}
-                              loading="lazy"
+                              category={news.category}
                               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
                             />
                             <div className="absolute top-3 left-3">
@@ -1998,10 +2159,10 @@ export default function App() {
                                         onClick={() => setSelectedNewsArticle(featuredArticle)}
                                         className="flex flex-col sm:flex-row gap-3 items-start cursor-pointer hover:bg-zinc-900/40 p-2 rounded-2xl transition-colors"
                                       >
-                                        <img 
+                                        <NewsImage 
                                           src={featuredArticle.imageUrl} 
                                           alt={featuredArticle.title}
-                                          loading="lazy"
+                                          category={featuredArticle.category}
                                           className="w-full sm:w-28 h-20 object-cover rounded-xl shrink-0 border border-zinc-800"
                                         />
                                         <div className="space-y-1.5 flex-grow">
@@ -2064,10 +2225,10 @@ export default function App() {
                               className="bg-[#121215] border border-zinc-800 hover:border-[#D4AF37]/80 rounded-2xl p-4 sm:p-5 transition-all cursor-pointer group flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 shadow-xl"
                             >
                               <div className="w-full sm:w-48 h-32 rounded-xl overflow-hidden shrink-0 relative">
-                                <img 
+                                <NewsImage 
                                   src={news.imageUrl} 
                                   alt={news.title}
-                                  loading="lazy"
+                                  category={news.category}
                                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
                                 />
                                 <span className="absolute top-2 left-2 px-2 py-0.5 bg-black/80 text-[9px] font-bold text-[#D4AF37] rounded">
@@ -2527,9 +2688,10 @@ export default function App() {
                         onClick={() => setSelectedLightboxImage(selectedNewsArticle.imageUrl)}
                         className="relative group cursor-pointer overflow-hidden rounded-2xl border border-zinc-800 shadow-2xl"
                       >
-                        <img 
+                        <NewsImage 
                           src={selectedNewsArticle.imageUrl} 
                           alt={selectedNewsArticle.title}
+                          category={selectedNewsArticle.category}
                           className="w-full h-72 sm:h-96 object-cover group-hover:scale-102 transition-transform duration-500"
                         />
                         <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-bold gap-2">
