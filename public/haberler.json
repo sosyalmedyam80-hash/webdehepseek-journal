@@ -1,1217 +1,830 @@
 [
   {
-    "id": "NEWS-01",
-    "title": "Kuantum Bilgisayarlarda 10,000 Qubit Eşiği Aşıldı: Post-Kuantum Şifrelemeye Geçiş Başladı",
-    "excerpt": "Küresel çip üreticileri tarafından duyurulan yeni kuantum işlemcisi, klasik şifreleme yöntemlerini saniyeler içinde çözebilecek devasa bir hesaplama gücüne ulaştı.",
+    "id": "auto-1",
+    "title": "The people holding up the internet",
+    "excerpt": "Billions of phones and servers depend on a handful of maintainers quietly keeping core infrastructure alive: the time zone database, xz, core-js, sudo, SQLite, zlib, bash, HarfBuzz, curl, OpenSSL and libxml2. The piece c...",
     "category": "Teknoloji & Dijital Dönüşüm",
-    "subcategory": "Kuantum Bilgisayarlar",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1600&q=80",
-    "readTime": "6 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
-    "verifiedSource": true,
-    "isEditorsChoice": true,
-    "sentiment": "Boğa 🐂",
-    "youtubeVideoId": "y9Trz1R1s3M",
-    "executiveSummary": "10,000 fiziksel qubit seviyesinin aşılması, RSA ve AES-256 gibi geleneksel kriptografi standartlarının ömrünü kısaltarak post-kuantum şifreleme geçişini acil hale getirdi.",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-01",
+    "subcategory": "Piyasa ve Teknoloji Raporları",
+    "imageUrl": "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1200&q=80",
     "sections": [
       {
-        "id": "sec-1",
-        "heading": "1. Kuantum Süperpozisyonu ve Donanımsal Atılım",
-        "body": "Post-silikon çağının kapılarını aralayan yeni kuantum işlemcisi, mutlak sıfıra yakın sıcaklıkta çalışan 10,000 kararlı qubiti tek bir çip üzerinde birleştirmeyi başardı. Bu eşik, hata payını milyonda bire indirgeyen gelişmiş kuantum eş-evresizlik kontrol algoritmaları sayesinde kilitlendi."
-      },
-      {
-        "id": "sec-2",
-        "heading": "2. Geleneksel Şifreleme Algoritmalarının Sonu",
-        "body": "Shor Algoritması'nın kuantum işlemcilerdeki simülasyonları, günümüzün en yaygın bankacılık ve askeri şifreleme altyapısı olan RSA-2048'in saatler içinde kırılabileceğini doğruluyor. Bilgi güvenliği otoriteleri, finansal kuruluşlara kuantum dayanıklı şifreleme standartlarına geçme çağrısı yapıyor."
+        "id": "auto-sec-1",
+        "heading": "Haber Analizi",
+        "body": "Billions of phones and servers depend on a handful of maintainers quietly keeping core infrastructure alive: the time zone database, xz, core-js, sudo, SQLite, zlib, bash, HarfBuzz, curl, OpenSSL and libxml2. The piece c\n\nWebdeHepSeek Analitik Heyeti değerlendirmesine göre, bu gelişme küresel pazardaki rekabet dengelerini doğrudan etkileyecektir."
       }
-    ]
-  },
-  {
-    "id": "NEWS-02",
-    "title": "6G Kablosuz Ağ Protokollerinde Terahertz Frekans Rekoru: Saniyede 1 Tbps Veri Transferi",
-    "excerpt": "Uluslararası Telekomünikasyon Birliği tarafından onaylanan yeni 6G standartları, kablosuz veri iletiminde fiziksel sınırları zorlayarak 1 Terabit hıza ulaştı.",
-    "category": "Teknoloji & Dijital Dönüşüm",
-    "subcategory": "Mobil Dünya & 6G",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-02",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Alt-Terahertz Frekans Modülasyonu",
-        "body": "0.1 ila 1 THz bant aralığında çalışan yeni nesil akıllı faset baz istasyonları, hiyerarşik hüzme şekillendirme (beamforming) teknolojisiyle kapsama alanını iki katına çıkardı."
-      },
-      {
-        "id": "sec-2",
-        "heading": "2. Otonom Mobilite ve Holografik İletişim",
-        "body": "Sıfıra yakın gecikme süresi (0.1ms), otonom şehir araçlarının ve uzaktan cerrahi operasyonlarının kesintisiz gerçekleşmesini sağlıyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-03",
-    "title": "Endüstri 5.0 ve Akıllı Fabrikalar: İnsan-Robot Hibrit Üretim Hatlarında %300 Verimlilik",
-    "excerpt": "Siber-fiziksel sistemler ve kobot teknolojilerinin üretken yapay zekayla entegrasyonu, imalat sanayisinde radikal bir verimlilik artışı başlattı.",
-    "category": "Teknoloji & Dijital Dönüşüm",
-    "subcategory": "Robotik & Otomasyon",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 dk",
-    "author": "Teknoloji Servisi",
-    "authorTitle": "Kıdemli Teknoloji Editörü",
-    "verifiedSource": true,
-    "sentiment": "Nötr ⚖️",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-03",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. İş Birlikçi Robotların (Kobot) Yükselişi",
-        "body": "Gelişmiş vizyon sensörleri ve dokunsal bildirimlerle donatılmış kobotlar, insan operatörlerle yan yana güvenlik bariyeri olmadan çalışabiliyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-04",
-    "title": "AGI Seviyesine Bir Adım Daha: Otonom Muhakeme Yapabilen Llama-4 ve Claude-4 Modelleri",
-    "excerpt": "Yapay Genel Zeka mimarisinde çığır açan yeni mantık zinciri (Chain of Thought) algoritmaları, karmaşık matematiksel teoremleri insandan hızlı çözüyor.",
-    "category": "Yapay Zeka & Gelecek",
-    "subcategory": "AGI (Yapay Genel Zeka)",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=80",
-    "readTime": "6 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
-    "verifiedSource": true,
-    "isEditorsChoice": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-04",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Mantık Yürütme Motorlarında Derinleşme",
-        "body": "Yeni nesil AI modelleri sadece kelime tahmini yapmakla kalmıyor, probleme yaklaşmadan önce kendi içinde hipotez kurup doğrulama adımlarını yürütüyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-05",
-    "title": "Otonom AI Ajanları Yazılım Sektörünü Yeniden Şekillendiriyor: Devin v2 ve AutoCode 2026",
-    "excerpt": "Geliştirici ekiplerinin yerini alan otonom yapay zeka ajanları, taranan gereksinim dokümanından baştan sona çalışan yazılım mimarileri üretiyor.",
-    "category": "Yapay Zeka & Gelecek",
-    "subcategory": "Otonom AI Ajanları",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
+    ],
     "author": "Ahmet Karadağ & Teknoloji Masası",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-05",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Kodlama Dillerinde Otonom Refactoring",
-        "body": "Yapay zeka ajanları eski kütüphaneleri ve güvenlik açıklarını tespit ederek binlerce satırlık sistemleri dakikalar içinde güncelliyor."
-      }
+    "date": "08 October 2026",
+    "readTime": "3 dk",
+    "tags": [
+      "Teknoloji",
+      "Gündem",
+      "Haber"
     ]
   },
   {
-    "id": "NEWS-06",
-    "title": "Nöromorfik Biyo-Çipler: İnsan Beyin Hücreleriyle Çalışan Hibrit İşlemci Mimarileri",
-    "excerpt": "Biyolojik nöronlarla silikon devrelerin bir araya getirildiği nöromorfik işlemciler, enerji tüketimini %99 azaltarak AI hesaplamalarında devrim yaptı.",
+    "id": "auto-2",
+    "title": "A death, a plagiarism scandal and a quest for revenge: the bizarre tale of Otto Z",
+    "excerpt": "The long read: After his mother died, Otto became convinced he’d been wronged by the forensic investigators – and that one of them was a fraud. The truth was even stranger [theguardian.com]...",
     "category": "Yapay Zeka & Gelecek",
-    "subcategory": "Nöromorfik Çipler",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "Teknoloji Servisi",
-    "authorTitle": "Teknoloji Editörü",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-06",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Biyo-Silikon Hibrit Hesaplama",
-        "body": "Canlı sinir dokularından esinlenen spikeli nöral ağlar (SNN), milivat seviyesinde güç tüketimiyle karmaşık örüntü tanıma süreçlerini çalıştırıyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-07",
-    "title": "Bitcoin $150,000 Barajını Aşarak Yeni Zirve Yaptı: Spot ETF Girişleri Rekor Kırdı",
-    "excerpt": "Kurumsal sermayenin ve emeklilik fonlarının doğrudan tahsisat yapmasıyla lider kripto para birimi Bitcoin tarihi seviyelerini yeniledi.",
-    "category": "Kripto & Web3",
-    "subcategory": "Bitcoin (BTC) Analiz",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1518546305927-5a555bb7020d?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "6 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
-    "verifiedSource": true,
-    "isEditorsChoice": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-07",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Kurumsal Bilançolarda Bitcoin Ağırlığı",
-        "body": "S&P 500 devleri enflasyondan korunma aracı olarak bilançolarına BTC eklemeye devam ediyor. Günlük ETF akışları $2 Milyar seviyesini aştı."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-08",
-    "title": "Ethereum Pectra Güncellemesi Devrede: Sıfır Bilgi İspatı (ZK-Rollup) İle Ücretsiz İşlemler",
-    "excerpt": "Ethereum ağının son ana güncellemesi olan Pectra, Layer-2 ölçekleme kapasitesini 100 kat artırarak gaz ücretlerini sıfırladı.",
-    "category": "Kripto & Web3",
-    "subcategory": "Ethereum & Smart Contracts",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1622979135225-d2ba269bc1bd?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "Ekonomi Servisi",
-    "authorTitle": "Kripto Masası Şefi",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-08",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Akıllı Sözleşmelerde ZK-STARK Entegrasyonu",
-        "body": "Pectra hard fork'u ile birlikte hesap soyutlama (account abstraction) standart hale geldi, cüzdan kullanımı kredi kartı kolaylığına ulaştı."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-09",
-    "title": "Kurumsal DeFi ve Gerçek Dünya Varlıkları (RWA): $50 Milyarlık Tahvil Blokzincirde",
-    "excerpt": "Wall Street bankaları Hazine bonolarını ve gayrimenkul portföylerini zincir üstüne taşıyarak anlık likidite havuzları oluşturdu.",
-    "category": "Kripto & Web3",
-    "subcategory": "DeFi & Likidite Havuzları",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1642543492481-44e81e3914a7?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-09",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Tokenize Varlık Piyasasının Büyüklüğü",
-        "body": "Geleneksel finans devleri (TradFi) ile ademi merkeziyetçi protokollerin entegrasyonu küresel borç piyasasını blokzincirine entegre ediyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-10",
-    "title": "BIST 100 Rekor Tazeledi: Yabancı Sermaye Akışı ve Teknoloji Hisselerinde Güçlü Ralli",
-    "excerpt": "Borsa İstanbul, yabancı kurumsal fon girişlerinin ivme kazanmasıyla 10,800 puan barajını aşarak tüm zamanların en yüksek seviyesini test etti.",
-    "category": "Finans & Küresel Piyasalar",
-    "subcategory": "Borsa İstanbul (BIST 100)",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
-    "verifiedSource": true,
-    "isEditorsChoice": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-10",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. BIST Teknoloji ve Sanayi Endeksi Öncülüğünde Yükseliş",
-        "body": "Uluslararası derecelendirme kuruluşlarının not artışları sonrası Borsa İstanbul'a giren yabancı sermaye hacmi haftalık $850 Milyona ulaştı."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-11",
-    "title": "Ons Altın $3,200 Seviyesinde Zirve Yaptı: Küresel Merkez Bankaları Rezervlerini Artırıyor",
-    "excerpt": "Jeopolitik riskler ve faiz indirimi beklentileriyle ons altın tarihi rekorunu kırarken gram altın iç piyasada yeni zirvesini gördü.",
-    "category": "Finans & Küresel Piyasalar",
-    "subcategory": "Altın & Değerli Madenler",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1610375461246-83df859d849d?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 dk",
-    "author": "Ekonomi Servisi",
-    "authorTitle": "Finans Analisti",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-11",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Değerli Madenlerde Güvenli Liman Talebi",
-        "body": "Doğu Avrupa ve Uzak Doğu merkez bankalarının külçe altın alımları fiziki talepte rekor kırılmasına yol açtı."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-12",
-    "title": "Federal Rezerv Faiz İndirim Döngüsünü Hızlandırdı: Gelişmekte Olan Piyasalarda Bahar Havası",
-    "excerpt": "Fed Başkanı tarafından yapılan güvercin tondaki açıklamalar sonrası Dolar Endeksi gerilerken gelişmekte olan ülke para birimleri değer kazandı.",
-    "category": "Finans & Küresel Piyasalar",
-    "subcategory": "Fed & Merkez Bankaları",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-12",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Küresel Likidite Koşullarında Rahatlama",
-        "body": "ABD faiz oranlarının düşüş patikasına girmesi küresel sermayenin riske odaklı gelişen piyasalara yönelmesini tetikledi."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-13",
-    "title": "Milli Teknoloji Hamlesi ve Savunma Sanayii: KAAN ve KIZILELMA Seri Üretime Geçti",
-    "excerpt": "Yerli 5. nesil savaş uçağı KAAN ve otonom insansız savaş uçağı KIZILELMA hava kuvvetleri envanterine katılarak ilk ihraç anlaşmalarına imza attı.",
-    "category": "Siyaset & Strateji",
-    "subcategory": "Savunma Sanayii (SİHA/Milli)",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1517976487492-5750f3195933?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
-    "verifiedSource": true,
-    "isEditorsChoice": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-13",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Görünmezlik ve Yerli AESA Radar Entegrasyonu",
-        "body": "Milli imkanlarla geliştirilen radar ve mühimmat sistemleri sayesinde KAAN, küresel pazarın en iddialı 5. nesil platformları arasına girdi."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-14",
-    "title": "Küresel Dijital Diplomasi Zirvesi: Uluslararası AI Güvenlik ve Veri Tüzüğü İmzalandı",
-    "excerpt": "50 ülkeden katılan liderler ve teknoloji devleri, otonom silah sistemlerinin sınırlandırılması ve veri gizliliği üzerinde tarihi anlaşmaya vardı.",
-    "category": "Siyaset & Strateji",
-    "subcategory": "Dış Politika & Diplomasi",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 dk",
-    "author": "Siyaset Masası",
-    "authorTitle": "Diplomasi Editörü",
-    "verifiedSource": true,
-    "sentiment": "Nötr ⚖️",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-14",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Siber Sınırlar ve Uluslararası Hukuk",
-        "body": "Devletlerin siber alandaki egemenlik hakları ve otonom yazılımların sorumlulukları uluslararası protokollerle tescillendi."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-15",
-    "title": "Ankara Gündemi: Yerli Yapay Zeka Yasası ve Kişisel Veri Güvenliği Reformu Mecliste",
-    "excerpt": "Türkiye Büyük Millet Meclisi genel kuruluna sunulan yeni teknoloji paketi, AI şirketlerine teşvik sağlarken veri güvenliğini güçlendiriyor.",
-    "category": "Siyaset & Strateji",
-    "subcategory": "Ankara Gündemi & Meclis",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1575517111478-7f6afd0973db?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
-    "verifiedSource": true,
-    "sentiment": "Nötr ⚖️",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-15",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Yerli Veri Merkezlerine Vergi Muafiyeti",
-        "body": "Yeni yasal düzenleme ile Türkiye sınırları içerisinde veri merkezi kuran yerli ve yabancı yatırımcılara 10 yıl vergi istisnası tanınıyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-16",
-    "title": "Creator Economy 2026 Raporu: Dijital İçerik Üreticilerinin Küresel Pazar Hacmi $480 Milyarı Aştı",
-    "excerpt": "Geleneksel medya kanallarını geride bırakan içerik üretici ekosistemi, markaların reklam bütçelerinin ana odağı haline geldi.",
-    "category": "Sosyal Medya & Viral",
-    "subcategory": "Creator Economy",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-16",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Mikrofondan Küresel Yayına: Podcast ve 4K Stüdyolar",
-        "body": "Bireysel içerik üreticileri kurumsal prodüksiyon kalitesine ulaşarak doğrudan izleyici aboneliklerinden milyon dolarlık gelirler elde ediyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-17",
-    "title": "Yapay Zeka Fenomenleri Sanal Reklam Pazarına Damga Vuruyor: $100M Sosyal Medya Anlaşmaları",
-    "excerpt": "Tamamen fotogerçekçi AI algoritmalarıyla üretilen sanal influencerlar, dünya devlerinin marka yüzü olarak sözleşmelere imza atıyor.",
-    "category": "Sosyal Medya & Viral",
-    "subcategory": "Yapay Zeka Fenomenleri",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1616469829941-c7200edec809?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 dk",
-    "author": "Sosyal Medya Masası",
-    "authorTitle": "Trend Editörü",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-17",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Dijital Kimlikler ve Etik Etiketleme",
-        "body": "Sosyal medya platformları, yapay zeka ile üretilen avatar ve fenomenlerin profil açıklamalarında filigran bulundurmasını zorunlu kıldı."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-18",
-    "title": "Platform Savaşları: TikTok, Instagram ve YouTube Kısa Video Gelir Paylaşımında Devrim Yapıyor",
-    "excerpt": "Kısa dikey içerik rekabetinde öne geçmek isteyen teknoloji devleri, üreticilere reklam gelirlerinin %55'ini doğrudan aktarmaya başladı.",
-    "category": "Sosyal Medya & Viral",
-    "subcategory": "Platform Savaşları",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
-    "verifiedSource": true,
-    "sentiment": "Nötr ⚖️",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-18",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Mobil Algoritmalar ve İzleyici Bağlılığı",
-        "body": "Tavsiye motorlarında yapılan son yapay zeka optimizasyonları, nitelikli ve bilgi odaklı kısa videoların öne çıkmasını sağladı."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-19",
-    "title": "2026 Dünya Kupası Teknolojik Yenilikleri: Çipli Toplar ve Anlık Otonom Ofsayt Tespiti",
-    "excerpt": "Amerika, Kanada ve Meksika ortaklığında düzenlenen Dünya Kupası'nda devrim niteliğinde yapay zeka hakem asistanları sahaya indi.",
-    "category": "Spor & E-Spor",
-    "subcategory": "2026 Dünya Kupası Özel",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-19",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Ultra Hassas İki Yüz Hz Sensörlü Futbol Topu",
-        "body": "Topun içine yerleştirilen ultra geniş bant (UWB) çipleri, darbe ve temas verisini saliseler içinde stadyum veri merkezine iletiyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-20",
-    "title": "Formula 1 2026 Hibrit Motor Çağı Başladı: %100 Sürdürülebilir Yakıt ve Aktif Aerodinamik",
-    "excerpt": "F1 tarihinin en büyük kural değişikliğiyle beraber elektrik gücü %50'ye yükseltildi, sürdürülebilir sentetik yakıt kullanımı zorunlu kılındı.",
-    "category": "Spor & E-Spor",
-    "subcategory": "Formula 1 & Motor Sporları",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "Spor Servisi",
-    "authorTitle": "Motor Sporları Uzmanı",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-20",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. MGU-K Gücü ve Karbon Nötr Yarışlar",
-        "body": "350kW elektrik motoru desteği ve hareketli kanat tasarımları düzlüklerde yüksek hız ve virajlarda Maksimum basma kuvveti sağlıyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-21",
-    "title": "E-Spor Dünyasında Rekor Ödül: $50 Milyonluk Valorant ve League of Legends Dünya Şampiyonası",
-    "excerpt": "Global arenada düzenlenen e-spor turnuvaları, geleneksel spor organizasyonlarını izlenme oranlarında geride bırakarak milyonları ekrana kilitledi.",
-    "category": "Spor & E-Spor",
-    "subcategory": "E-Spor Turnuvaları",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-21",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Profesyonel Kulüpler ve Stadyum Arenaları",
-        "body": "Geleneksel spor kulüpleri e-spor branşlarına yaptığı yatırımlarla genç kitleye doğrudan ulaşan dijital sponsorluk modelleri geliştiriyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-22",
-    "title": "Türkiye'nin Yeni Unicorn'ları: Yapay Zeka ve SaaS Odaklı 3 Türk Girişimi Değerlemesini Katladı",
-    "excerpt": "Silikon Vadisi fonlarından aldıkları yatırımlarla milyar dolar değerlemeyi aşan Türk girişimciler, küresel teknoloji pazarında fırtına estiriyor.",
-    "category": "Girişimcilik & Startup",
-    "subcategory": "Startup Hikayeleri & Unicorns",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
-    "verifiedSource": true,
-    "isEditorsChoice": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-22",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Yerli Yazılım İhracatında Rekor Hacim",
-        "body": "Geliştirilen yapay zeka altyapıları ve mikro-SaaS ürünleri Amerika ve Avrupa pazarında milyonlarca aktif kullanıcıya ulaştı."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-23",
-    "title": "Yatırım Sermayesinde AI Dönemi: VC'ler Kararlarının %40'ını Otonom Veri Robotlarıyla Alıyor",
-    "excerpt": "Girişim sermayesi fonları, yatırım yapacakları şirketleri seçerken artık yapay zeka destekli kohort ve büyüme simülasyonlarını kullanıyor.",
-    "category": "Girişimcilik & Startup",
-    "subcategory": "Yatırım Turları & Seed",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 dk",
-    "author": "Girişim Masası",
-    "authorTitle": "VC Analisti",
-    "verifiedSource": true,
-    "sentiment": "Nötr ⚖️",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-23",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Veriye Dayalı Pitch Deck Analizleri",
-        "body": "Yapay zeka sistemleri girişimcilerin finansal projeksiyonlarını ve pazar rekabet haritasını dakikalar içinde doğruluyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-24",
-    "title": "Küresel Dijital Göçebe (Nomad) Haritası: İstanbul ve Lizbon Teknoloji Çalışanlarının Favorisi",
-    "excerpt": "Uzaktan ve hibrit çalışma kültürünün kalıcı hale gelmesiyle beraber yüksek nitelikli yazılımcı ve tasarımcılar İstanbul ve Lizbon'a akın etti.",
-    "category": "Girişimcilik & Startup",
-    "subcategory": "Dijital Göçebelik (Nomad)",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-24",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Dijital Nomad Vizeleri ve Ortak Çalışma Alanları",
-        "body": "İstanbul'daki yüksek hızlı fiber altyapı ve sosyal imkanlar, küresel teknoloji şirketlerinin çalışanlarını Türkiye'ye çekiyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-25",
-    "title": "Giyilebilir Biyometrik Sensörler ve Longevity: Erken Teşhiste %95 Başarı Oranı",
-    "excerpt": "Akıllı saatler ve yüzükler, sürekli kan şekeri ve metabolik veri takibi yaparak kronik rahatsızlıkları yıllar öncesinden haber veriyor.",
-    "category": "Yaşam & Sağlık",
-    "subcategory": "Giyilebilir Sağlık Teknolojisi",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1510017803434-a899398421b3?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-25",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Biyometrik Verilerin Sürekli Analizi",
-        "body": "Derinizin altındaki kılcal damarlardan gelen optik veri akışları yapay zeka modelleriyle işlenerek kişiye özel beslenme haritası çıkarılıyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-26",
-    "title": "Biyoteknolojide Hücresel Gen Terapisi Çığıra Yol Açıyor: Yaşlanma Karşıtı Yeni Molekül",
-    "excerpt": "Klinik araştırmaları tamamlanan yeni hücresel yenilenme molekülü, telomer boyunu koruyarak hücresel yaşlanmayı yavaşlatmayı başardı.",
-    "category": "Yaşam & Sağlık",
-    "subcategory": "Longevity (Uzun Yaşam)",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "Sağlık Servisi",
-    "authorTitle": "Biyoteknoloji Editörü",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-26",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Telomer Onarımı ve Kök Hücre Yenilenmesi",
-        "body": "Biyoteknoloji lablarında geliştirilen hücresel programlama yöntemleri organ fonksiyonlarının daha uzun süre genç kalmasını sağlıyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-27",
-    "title": "Zihinsel Performans ve Odaklanma: Bilişsel Nörobilimde Nörofeedback Yöntemleri",
-    "excerpt": "Yoğun bilgi yükü altında çalışan yöneticiler ve yazılımcılar için geliştirilen nörofeedback cihazları odak süresini iki katına çıkarıyor.",
-    "category": "Yaşam & Sağlık",
-    "subcategory": "Zihinsel Sağlık & Odak",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
-    "verifiedSource": true,
-    "sentiment": "Nötr ⚖️",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-27",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Beyin Dalgalarının Real-Time Eğitimi",
-        "body": "Alpha ve Beta beyin dalgalarını anlık olarak izleyen hafif kafa bantları, derin çalışma (deep work) moduna geçmeyi kolaylaştırıyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-28",
-    "title": "Unreal Engine 6 ve Foto-Gerçekçi Oyunlar: Sinema İle Oyun Arasındaki Sınır Kalktı",
-    "excerpt": "Epic Games tarafından tanıtılan yeni nesil oyun motoru Unreal Engine 6, gerçek zamanlı ışık izleme ve AI destekli karakterlerle nefes kesti.",
-    "category": "Oyun & Eğlence",
-    "subcategory": "Oyun Geliştirme (Unreal/Unity)",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
-    "verifiedSource": true,
-    "isEditorsChoice": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-28",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Nite 2 ve Lumen Teknolojilerinde Sıçrama",
-        "body": "Milyarlarca poligonu akıcı bir şekilde ekrana getiren yeni mimari, bağımsız stüdyoların bile AAA kalitesinde yapımlar üretmesini sağlıyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-29",
-    "title": "Cloud Gaming Ekosistemi Katlanarak Büyüyor: Oyun Konsolları Tarihe mi Karışıyor?",
-    "excerpt": "GeForce NOW ve Xbox Cloud Gaming hizmetlerinin 4K 120 FPS seviyesine ulaşmasıyla beraber fiziksel konsol satışlarında gerileme başladı.",
-    "category": "Oyun & Eğlence",
-    "subcategory": "Cloud Gaming (GeForce NOW)",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 dk",
-    "author": "Oyun Masası",
-    "authorTitle": "Oyun Editörü",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-29",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Sunucu Tabanlı İşleme Gücü",
-        "body": "Herhangi bir akıllı TV veya ucuz dizüstü bilgisayardan en yüksek sistem gereksinimli oyunları oynamak artık tek tıkla mümkün."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-30",
-    "title": "Apple Vision Pro 2 ve VR Oyun Dünyası: Tam Derinlikli Sanal Gerçeklik Deneyimi",
-    "excerpt": "Apple'ın yeni uzamsal bilgisayarı, hafifleyen yapısı ve uzamsal ses teknolojisiyle oyuncuları doğrudan sanal evrenin merkezine koyuyor.",
-    "category": "Oyun & Eğlence",
-    "subcategory": "VR / AR Oyun Deneyimi",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1592478411213-6153e4ebc07d?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-30",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. El ve Göz Takibinde %100 Doğruluk",
-        "body": "Fiziksel kumandalara ihtiyaç duymadan sadece el jestleri ve göz odaklanmasıyla oynanan yeni nesil oyunlar interaktif eğlenceyi baştan yazıyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-31",
-    "title": "SpaceX Starship Mars Görevi İçin Geri Sayım Başladı: İnsanlı İlk Gezegenler Arası Yolculuk",
-    "excerpt": "Dünyanın en güçlü roketi Starship'in Mars yörüngesine kargo ve yaşam modülleri taşıyacak tarihi uçuş tarihi resmen açıklandı.",
-    "category": "Bilim & Uzay",
-    "subcategory": "Mars Kolonisi & Starship",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1517976487492-5750f3195933?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "6 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
-    "verifiedSource": true,
-    "isEditorsChoice": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-31",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Yörüngede Yakıt İkmali ve Yaşam Destek Sistemleri",
-        "body": "Dünya yörüngesinde gerçekleştirilecek otomatik sıvı metan ikmali, roketin Mars'a tam tonajlı kargo indirmesine imkan veriyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-32",
-    "title": "Nükleer Füzyon Santrallerinde Sınırsız Temiz Enerji Rekoru: 100 Milyon Derece Plazma",
-    "excerpt": "Küresel füzyon konsorsiyumu, Güneş'in çekirdeğinden 7 kat daha sıcak plazmayı kararlı bir şekilde tutarak pozitif net enerji elde etti.",
-    "category": "Bilim & Uzay",
-    "subcategory": "Nükleer Füzyon Enerjisi",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "Bilim Servisi",
-    "authorTitle": "Fizik Uzmanı",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-32",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Tokamak Mıknatıslarında Süper-İletkenlik",
-        "body": "Yüksek sıcaklık süper iletken magnetler sayesinde füzyon reaktörlerinin ebadı küçülerek ticari şebekelere bağlanma aşamasına geldi."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-33",
-    "title": "James Webb Teleskobu Evrenin İlk Galaksilerini Görüntüledi: Big Bang Kuramında Yeni Sayfa",
-    "excerpt": "Derin uzay gözlemlerini sürdüren James Webb Teleskobu, Büyük Patlama'dan sadece 200 milyon yıl sonra oluşmuş olgun galaksileri tespit etti.",
-    "category": "Bilim & Uzay",
-    "subcategory": "Derin Uzay Teleskopları",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-33",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Kırmızıya Kayma ve Kozmolojik Gizemler",
-        "body": "Elde edilen tayf verileri ilk yıldızların ve karadeliklerin evrenin başlangıcında sanılandan çok daha hızlı kütle kazandığını kanıtlıyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-34",
-    "title": "2026 Yapay Zeka Kariyer Raporu: En Çok Aranan 10 Meslek ve $200k+ Maaş Skalası",
-    "excerpt": "Prompt Mühendisliği, AI Etik Denetçiliği ve Otonom Sistem Mimarisi küresel iş gücü pazarının en yüksek maaşlı pozisyonları oldu.",
-    "category": "Eğitim & Kariyer",
-    "subcategory": "Kariyer Dönüşüm Rehberi",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
-    "verifiedSource": true,
-    "isEditorsChoice": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-34",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Disiplinler Arası Yet Yetkinliklerinin Önemi",
-        "body": "Yazılım bilgisinin yanı sıra psikoloji, hukuk ve veri analitiğini harmanlayabilen profesyoneller küresel şirketlerin ilk tercihi haline geliyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-35",
-    "title": "No-Code ve AI Destekli Kodlama: Yazılımcı Olmadan Uygulama Geliştirme Çağı",
-    "excerpt": "Gelişmiş görsel geliştirme platformları sayesinde teknik altyapısı olmayan girişimciler bile kompleks SaaS platformları inşa edebiliyor.",
-    "category": "Eğitim & Kariyer",
-    "subcategory": "No-Code / Low-Code",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 dk",
-    "author": "Eğitim Masası",
-    "authorTitle": "Kariyer Editörü",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-35",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Fikirden Canlı Ürüne Saatler İçinde Geçiş",
-        "body": "Sürükle-bırak arayüzler ve entegre veri tabanları fikrin hızlıca doğrulanmasını ve pazara sürülmesini sağlıyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-36",
-    "title": "LinkedIn Algoritmasında Yeni Dönem: Etkileşim Artıran İçerik ve Profil Stratejileri",
-    "excerpt": "Profesyonel iş ağında öne çıkmak isteyen yöneticiler için onaylanmış içerik mimarisi ve organik görünürlük ipuçları yayınlandı.",
-    "category": "Eğitim & Kariyer",
-    "subcategory": "LinkedIn Algoritma Taktikleri",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
-    "verifiedSource": true,
-    "sentiment": "Nötr ⚖️",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-36",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Derinlemesine Sektörel Analizlerin Gücü",
-        "body": "Görsel ve metin dengesini iyi kuran, değer katan sektörel dosyalar Linkedin akışında organik olarak milyonlarca kişiye ulaşıyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-37",
-    "title": "Küresel Lüks Gayrimenkul Endeksi: İstanbul, Dubai ve Londra Portföylerinde Rekor Değer",
-    "excerpt": "Uluslararası yatırımcıların markalı konut projelerine olan ilgisiyle İstanbul ve Dubai lüks gayrimenkul fiyatlarında %40 prim yaptı.",
-    "category": "Emlak & Lüks Yatırım",
-    "subcategory": "Lüks Gayrimenkul Trendleri",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
-    "verifiedSource": true,
-    "isEditorsChoice": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-37",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Markalı Rezidanslar ve Akıllı Ev Konsepti",
-        "body": "Özel helipadı, akıllı otomasyonu ve sürdürülebilir mimarisi olan ultra lüks yapılar küresel fonların ana yatırım hedefi haline geldi."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-38",
-    "title": "Akıllı Binalar ve PropTech Teknolojileri: Enerji Tüketimini %40 Azaltan Sistemler",
-    "excerpt": "Yapay zeka ile iklimlendirilen ticari binalar ve gökdelenler, karbon ayak izini düşürerek işletme maliyetlerini en aza indiriyor.",
-    "category": "Emlak & Lüks Yatırım",
-    "subcategory": "PropTech Teknolojileri",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 dk",
-    "author": "Emlak Servisi",
-    "authorTitle": "PropTech Editörü",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-38",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Yeşil Mimaride Nesnelerin İnterneti (IoT)",
-        "body": "Güneş paneli kaplı cam cepheler ve bina içi enerji depolama üniteleri akıllı şehirlerin temel taşı haline geldi."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-39",
-    "title": "REIT ve Gayrimenkul Fonları: Küçük Yatırımcı İçin Ticari Emlak Geliri Modeli",
-    "excerpt": "Gayrimenkul yatırım ortaklıkları (GYO), bireysel yatırımcılara yüksek bedelli plaza ve otellerden kirasal temettü elde etme fırsatı sunuyor.",
-    "category": "Emlak & Lüks Yatırım",
-    "subcategory": "REIT & Gayrimenkul Fonları",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-39",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Likit Emlak Yatırımlarının Avantajları",
-        "body": "Tapu süreçleriyle uğraşmadan borsa üzerinden hisse alır gibi nitelikli emlak portföylerine ortak olunabiliyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-40",
-    "title": "Togg T10X ve T10F Yeni Nesil Otonom Güncellemesi Yayınlandı: Seviye 3 Otonom Sürüş",
-    "excerpt": "Yerli mobilite doğuştan elektrikli Togg modelleri, otonom şerit değiştirme ve akıllı park özelliklerini içeren yeni yazılım paketini sundu.",
-    "category": "Otomotiv & Mobilite",
-    "subcategory": "Togg & Yerli Otomobil",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
-    "verifiedSource": true,
-    "isEditorsChoice": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-40",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Trumore Ekosistemi ve Dijital Varlık Cüzdanı",
-        "body": "Araç içi kokpit ekranından doğrudan akıllı şarj ödemeleri ve blokzincir tabanlı araç geçmişi kontrol edilebiliyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-41",
-    "title": "Solid-State (Kuru Tip) Batarya Devrimi: 10 Dakika Şarj İle 1,200 Km Kesintisiz Menzil",
-    "excerpt": "Akü üreticilerinin seri üretime başladığı kuru tip bataryalar, elektrikli araçlarda menzil kaygısını tamamen ortadan kaldırdı.",
-    "category": "Otomotiv & Mobilite",
-    "subcategory": "Batarya Teknolojileri",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "Otomotiv Servisi",
-    "authorTitle": "Mobilite Editörü",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-41",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Lityum-Metal Elektrotlar ve Yanmazlık",
-        "body": "Sıvı elektrolit barındırmayan yeni bataryalar aşırı sıcakta ve kaza anında alev almama garantisi sunuyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-42",
-    "title": "eVTOL Uçan Taksi Filoları Şehir İçi Ulaşımda Başlıyor: 2026 Şehir İçi Uçuş İzinleri",
-    "excerpt": "Sessiz ve sıfır emisyonlu elektrikli dikey iniş kalkış araçları (eVTOL), havalimanı ve şehir merkezleri arasında yolcu taşımaya başladı.",
-    "category": "Otomotiv & Mobilite",
-    "subcategory": "Uçan Arabalar & eVTOL",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-42",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Vertiport İstasyonları ve Hava Trafik Yönetimi",
-        "body": "Şehir içi özel koridorlarda otonom rotalarda uçan taksiler, trafik sıkışıklığını tamamen baypas ediyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-43",
-    "title": "Kurumsal CRM ve Yapay Zeka Entegrasyonu: Müşteri Deneyiminde %300 Dönüşüm Oranı",
-    "excerpt": "Bulut tabanlı müşteri ilişkileri yönetimi yazılımları, satış tahminleme ve e-posta yanıtlarını otonom olarak yönetiyor.",
-    "category": "SaaS & Bulut Yazılımları",
-    "subcategory": "CRM Sistemleri",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
-    "verifiedSource": true,
-    "isEditorsChoice": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-43",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Müşteri Davranışlarının Kestirimci Analitiği",
-        "body": "Yapay zeka agentları, müşterinin terk etme (churn) ihtimalini aylar öncesinden sezip otomatik teklifler sunuyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-44",
-    "title": "Bulut Sunucu & Multi-Cloud Mimarisi: AWS, Azure ve Google Cloud Karşılaştırması",
-    "excerpt": "Yüksek erişilebilirlik gerektiren küresel uygulamalar, birden fazla bulut sağlayıcısını tek bir orkestrasyon paneli üzerinden yönetiyor.",
-    "category": "SaaS & Bulut Yazılımları",
-    "subcategory": "Bulut Sunucu & Hosting",
-    "date": "7 Ekim 2026",
+    "subcategory": "Piyasa ve Teknoloji Raporları",
     "imageUrl": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "Yazılım Servisi",
-    "authorTitle": "SaaS Mimarı",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-44",
     "sections": [
       {
-        "id": "sec-1",
-        "heading": "1. Kubernetes ve Sunucusuz (Serverless) Sistemler",
-        "body": "Trafik patlamalarında anında otomatik ölçeklenen bulut sunucular işletim maliyetlerini %50'ye varan oranda düşürüyor."
+        "id": "auto-sec-1",
+        "heading": "Haber Analizi",
+        "body": "The long read: After his mother died, Otto became convinced he’d been wronged by the forensic investigators – and that one of them was a fraud. The truth was even stranger [theguardian.com]\n\nWebdeHepSeek Analitik Heyeti değerlendirmesine göre, bu gelişme küresel pazardaki rekabet dengelerini doğrudan etkileyecektir."
       }
+    ],
+    "author": "Ahmet Karadağ & Teknoloji Masası",
+    "date": "08 October 2026",
+    "readTime": "3 dk",
+    "tags": [
+      "Yapay",
+      "Gündem",
+      "Haber"
     ]
   },
   {
-    "id": "NEWS-45",
-    "title": "Micro-SaaS Girişimleri İle Aylık $50,000 Düzenli Gelir (MRR) Elde Etme Yolları",
-    "excerpt": "Tek kişilik yazılım projeleri olarak kurulan Micro-SaaS ürünleri, niş problemleri çözerek yüksek karlı abonelik modelleri yaratıyor.",
+    "id": "auto-3",
+    "title": "How did Rosalind Franklin miss the helix in her iconic DNA image? She didn’t",
+    "excerpt": "New analysis refutes James Watson’s claim he was first to recognize significance of famed photograph 51 [science.org]...",
+    "category": "Finans & Küresel Piyasalar",
+    "subcategory": "Piyasa ve Teknoloji Raporları",
+    "imageUrl": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80",
+    "sections": [
+      {
+        "id": "auto-sec-1",
+        "heading": "Haber Analizi",
+        "body": "New analysis refutes James Watson’s claim he was first to recognize significance of famed photograph 51 [science.org]\n\nWebdeHepSeek Analitik Heyeti değerlendirmesine göre, bu gelişme küresel pazardaki rekabet dengelerini doğrudan etkileyecektir."
+      }
+    ],
+    "author": "Ahmet Karadağ & Teknoloji Masası",
+    "date": "08 October 2026",
+    "readTime": "3 dk",
+    "tags": [
+      "Finans",
+      "Gündem",
+      "Haber"
+    ]
+  },
+  {
+    "id": "auto-4",
+    "title": "Jonathan Is the Oldest Known Living Land Animal. Scientists Studied His Genome",
+    "excerpt": "Jonathan, a roughly 194-year-old Aldabra giant tortoise on Saint Helena, has had his genome sequenced for the first time. Researchers say the analysis found variants tied to DNA repair, telomeres, autophagy, and mitochon...",
+    "category": "Kripto & Web3",
+    "subcategory": "Piyasa ve Teknoloji Raporları",
+    "imageUrl": "https://images.unsplash.com/photo-1622979135225-d2ba269bc1bd?auto=format&fit=crop&w=1200&q=80",
+    "sections": [
+      {
+        "id": "auto-sec-1",
+        "heading": "Haber Analizi",
+        "body": "Jonathan, a roughly 194-year-old Aldabra giant tortoise on Saint Helena, has had his genome sequenced for the first time. Researchers say the analysis found variants tied to DNA repair, telomeres, autophagy, and mitochon\n\nWebdeHepSeek Analitik Heyeti değerlendirmesine göre, bu gelişme küresel pazardaki rekabet dengelerini doğrudan etkileyecektir."
+      }
+    ],
+    "author": "Ahmet Karadağ & Teknoloji Masası",
+    "date": "08 October 2026",
+    "readTime": "3 dk",
+    "tags": [
+      "Kripto",
+      "Gündem",
+      "Haber"
+    ]
+  },
+  {
+    "id": "auto-5",
+    "title": "Why Victorian elites were so effective",
+    "excerpt": "A look at how Britain’s nineteenth-century ruling class combined elite schools, Oxbridge, sports, and dense social networks to govern an empire so effectively—despite a lifestyle of late mornings, heavy drinking, and lon...",
     "category": "SaaS & Bulut Yazılımları",
-    "subcategory": "Micro-SaaS Çözümleri",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-45",
+    "subcategory": "Piyasa ve Teknoloji Raporları",
+    "imageUrl": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
     "sections": [
       {
-        "id": "sec-1",
-        "heading": "1. Niş Pazarlar ve Yalın Ürün Mimarisi",
-        "body": "Karmaşık kurumsal yazılımların yerine tek bir işe odaklanan pratik API ve web eklentileri hızlıca pazarı domine ediyor."
+        "id": "auto-sec-1",
+        "heading": "Haber Analizi",
+        "body": "A look at how Britain’s nineteenth-century ruling class combined elite schools, Oxbridge, sports, and dense social networks to govern an empire so effectively—despite a lifestyle of late mornings, heavy drinking, and lon\n\nWebdeHepSeek Analitik Heyeti değerlendirmesine göre, bu gelişme küresel pazardaki rekabet dengelerini doğrudan etkileyecektir."
       }
+    ],
+    "author": "Ahmet Karadağ & Teknoloji Masası",
+    "date": "08 October 2026",
+    "readTime": "3 dk",
+    "tags": [
+      "SaaS",
+      "Gündem",
+      "Haber"
     ]
   },
   {
-    "id": "NEWS-46",
-    "title": "Bireysel Emeklilik (BES) Devlet Katkısı %30'a Yükseltildi: Emeklilikte Fon Yönetimi",
-    "excerpt": "Devlet katkısıyla güçlenen BES fonları, hisse ve altın ağırlıklı portföy tercihleriyle enflasyonun üzerinde getiri sağladı.",
-    "category": "Kişisel Finans & Sigorta",
-    "subcategory": "BES Fonları & Emeklilik",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
-    "verifiedSource": true,
-    "isEditorsChoice": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-46",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Fon Değişikliği Hakları ve Birikim Stratejileri",
-        "body": "Yılda 12 kez yapılabilen fon değişim hakkını piyasa konjonktürüne göre kullanan katılımcılar birikimlerini katladı."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-47",
-    "title": "Akıllı Kasko ve Telematik Sigortacılık: Güvenli Sürücüye %40 Prim İndirimi Fırsatı",
-    "excerpt": "Araç mobil uygulamaları üzerinden sürüş tarzını izleyen sigorta şirketleri, kurallara uyan sürücülere özel kasko fiyatı sunuyor.",
-    "category": "Kişisel Finans & Sigorta",
-    "subcategory": "Kasko & Trafik Sigortası",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 dk",
-    "author": "Finans Servisi",
-    "authorTitle": "Sigorta Uzmanı",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-47",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Telematik Veri Takibi ve Dinamik Fiyatlama",
-        "body": "Ani fren, hız ihlali ve gece sürüşü yapmayan sürücüler kasko poliçelerinde önemli bir maliyet avantajı elde ediyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-48",
-    "title": "Kredi Skoru ve Finansal Sağlık: Bankaların Onay Verdiği 5 Temel Yatırım Kriteri",
-    "excerpt": "Findeks kredi notunu yükseltmek ve düşük faizli finansmana erişmek isteyen bireyler için adım adım rehber açıklandı.",
-    "category": "Kişisel Finans & Sigorta",
-    "subcategory": "Kredi Skoru Yönetimi",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
-    "verifiedSource": true,
-    "sentiment": "Nötr ⚖️",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-48",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Düzenli Ödeme Alışkanlıkları ve Limit Kullanımı",
-        "body": "Kredi kartı limitinin %30'undan fazlasını sürekli kullanmamak ve asgari ödeme yerine tam borç kapatmak notu hızla yükseltiyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-49",
-    "title": "Fidye Yazılımı (Ransomware) Saldırılarına Karşı 'Sıfır Güven (Zero Trust)' Mimarisi",
-    "excerpt": "Kurumsal ağlarda hiçe sayılan yetkilendirme modeli Zero Trust, tüm kullanıcıları ve cihazları sürekli olarak doğrulamayı şart koşuyor.",
+    "id": "auto-6",
+    "title": "The Legend of the Paper Crane",
+    "excerpt": "An illustrated look at origami’s place in Japanese culture, from the senbazuru legend and Sadako Sasaki’s story to Hiroshima’s Children’s Peace Monument and Mazda’s paper crane project. It also explains why the paper cra...",
     "category": "Siber Güvenlik & Veri Koruma",
-    "subcategory": "Fidye Yazılımı (Ransomware) Koruması",
-    "date": "7 Ekim 2026",
+    "subcategory": "Piyasa ve Teknoloji Raporları",
     "imageUrl": "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
-    "verifiedSource": true,
-    "isEditorsChoice": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-49",
     "sections": [
       {
-        "id": "sec-1",
-        "heading": "1. Asla Güvenme, Daima Doğrula İlkesi",
-        "body": "Şirket içi ağda bulunsanız dahi her dosya erişiminde çok faktörlü kimlik doğrulama (MFA) ve şifreli veri tüneli kullanımı zorunlu tutuluyor."
+        "id": "auto-sec-1",
+        "heading": "Haber Analizi",
+        "body": "An illustrated look at origami’s place in Japanese culture, from the senbazuru legend and Sadako Sasaki’s story to Hiroshima’s Children’s Peace Monument and Mazda’s paper crane project. It also explains why the paper cra\n\nWebdeHepSeek Analitik Heyeti değerlendirmesine göre, bu gelişme küresel pazardaki rekabet dengelerini doğrudan etkileyecektir."
       }
+    ],
+    "author": "Ahmet Karadağ & Teknoloji Masası",
+    "date": "08 October 2026",
+    "readTime": "3 dk",
+    "tags": [
+      "Siber",
+      "Gündem",
+      "Haber"
     ]
   },
   {
-    "id": "NEWS-50",
-    "title": "Kurumsal KVKK & GDPR Uyumlu Veri Şifreleme: 2026 Yeni Şifreleme Standartları",
-    "excerpt": "Kişisel verileri işleyen şirketlere getirilen yeni cezai yaptırımlar sonrası uçtan uca anonomizasyon teknolojileri yaygınlaştı.",
+    "id": "auto-7",
+    "title": "‘It could knock a whole street down’: the art of defusing a second world war bomb",
+    "excerpt": "A long read on two unexploded Second World War bombs discovered the same day in Devon, and the bomb-disposal specialists who worked to assess and neutralize them. It follows the risks, techniques, and split-second decisi...",
+    "category": "Otomotiv & Mobilite",
+    "subcategory": "Piyasa ve Teknoloji Raporları",
+    "imageUrl": "https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=1200&q=80",
+    "sections": [
+      {
+        "id": "auto-sec-1",
+        "heading": "Haber Analizi",
+        "body": "A long read on two unexploded Second World War bombs discovered the same day in Devon, and the bomb-disposal specialists who worked to assess and neutralize them. It follows the risks, techniques, and split-second decisi\n\nWebdeHepSeek Analitik Heyeti değerlendirmesine göre, bu gelişme küresel pazardaki rekabet dengelerini doğrudan etkileyecektir."
+      }
+    ],
+    "author": "Ahmet Karadağ & Teknoloji Masası",
+    "date": "08 October 2026",
+    "readTime": "3 dk",
+    "tags": [
+      "Otomotiv",
+      "Gündem",
+      "Haber"
+    ]
+  },
+  {
+    "id": "auto-8",
+    "title": "What’s Earth’s dominant species by mass?",
+    "excerpt": "By biomass, Earth’s biggest winners aren’t humans or ants: cattle outweigh other animal species, sugar cane is the largest crop, and black spruce and larch appear to be among the heaviest wild plant species. The piece wa...",
+    "category": "Teknoloji & Dijital Dönüşüm",
+    "subcategory": "Piyasa ve Teknoloji Raporları",
+    "imageUrl": "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1200&q=80",
+    "sections": [
+      {
+        "id": "auto-sec-1",
+        "heading": "Haber Analizi",
+        "body": "By biomass, Earth’s biggest winners aren’t humans or ants: cattle outweigh other animal species, sugar cane is the largest crop, and black spruce and larch appear to be among the heaviest wild plant species. The piece wa\n\nWebdeHepSeek Analitik Heyeti değerlendirmesine göre, bu gelişme küresel pazardaki rekabet dengelerini doğrudan etkileyecektir."
+      }
+    ],
+    "author": "Ahmet Karadağ & Teknoloji Masası",
+    "date": "08 October 2026",
+    "readTime": "3 dk",
+    "tags": [
+      "Teknoloji",
+      "Gündem",
+      "Haber"
+    ]
+  },
+  {
+    "id": "auto-9",
+    "title": "Nobel Prize in Physics 2026",
+    "excerpt": "The Nobel Prize in Physics 2026 was awarded to Francis Halzen “for decisive contributions to the IceCube Neutrino Observatory and the discovery of high-energy neutrinos of astrophysical origin.” [nobelprize.org]...",
+    "category": "Yapay Zeka & Gelecek",
+    "subcategory": "Piyasa ve Teknoloji Raporları",
+    "imageUrl": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
+    "sections": [
+      {
+        "id": "auto-sec-1",
+        "heading": "Haber Analizi",
+        "body": "The Nobel Prize in Physics 2026 was awarded to Francis Halzen “for decisive contributions to the IceCube Neutrino Observatory and the discovery of high-energy neutrinos of astrophysical origin.” [nobelprize.org]\n\nWebdeHepSeek Analitik Heyeti değerlendirmesine göre, bu gelişme küresel pazardaki rekabet dengelerini doğrudan etkileyecektir."
+      }
+    ],
+    "author": "Ahmet Karadağ & Teknoloji Masası",
+    "date": "08 October 2026",
+    "readTime": "3 dk",
+    "tags": [
+      "Yapay",
+      "Gündem",
+      "Haber"
+    ]
+  },
+  {
+    "id": "auto-10",
+    "title": "Do you want it the most?",
+    "excerpt": "Success tends to go to people who want the goal enough to outwork the competition, but that pursuit has real costs. The bigger question is whether you actually want the outcome, whether the game is worth winning, and whe...",
+    "category": "Finans & Küresel Piyasalar",
+    "subcategory": "Piyasa ve Teknoloji Raporları",
+    "imageUrl": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80",
+    "sections": [
+      {
+        "id": "auto-sec-1",
+        "heading": "Haber Analizi",
+        "body": "Success tends to go to people who want the goal enough to outwork the competition, but that pursuit has real costs. The bigger question is whether you actually want the outcome, whether the game is worth winning, and whe\n\nWebdeHepSeek Analitik Heyeti değerlendirmesine göre, bu gelişme küresel pazardaki rekabet dengelerini doğrudan etkileyecektir."
+      }
+    ],
+    "author": "Ahmet Karadağ & Teknoloji Masası",
+    "date": "08 October 2026",
+    "readTime": "3 dk",
+    "tags": [
+      "Finans",
+      "Gündem",
+      "Haber"
+    ]
+  },
+  {
+    "id": "auto-11",
+    "title": "The Influence of Science Fiction on Science",
+    "excerpt": "A look at how H. G. Wells’s 1914 novel The World Set Free anticipated nuclear chain reactions and may have influenced scientists like Leo Szilard. The essay argues that science fiction can shape scientific imagination, n...",
+    "category": "Kripto & Web3",
+    "subcategory": "Piyasa ve Teknoloji Raporları",
+    "imageUrl": "https://images.unsplash.com/photo-1622979135225-d2ba269bc1bd?auto=format&fit=crop&w=1200&q=80",
+    "sections": [
+      {
+        "id": "auto-sec-1",
+        "heading": "Haber Analizi",
+        "body": "A look at how H. G. Wells’s 1914 novel The World Set Free anticipated nuclear chain reactions and may have influenced scientists like Leo Szilard. The essay argues that science fiction can shape scientific imagination, n\n\nWebdeHepSeek Analitik Heyeti değerlendirmesine göre, bu gelişme küresel pazardaki rekabet dengelerini doğrudan etkileyecektir."
+      }
+    ],
+    "author": "Ahmet Karadağ & Teknoloji Masası",
+    "date": "08 October 2026",
+    "readTime": "3 dk",
+    "tags": [
+      "Kripto",
+      "Gündem",
+      "Haber"
+    ]
+  },
+  {
+    "id": "auto-12",
+    "title": "How a 1940s US experiment tried, and failed, to create a super dog",
+    "excerpt": "In 1940s Maine, scientists at the School for Dogs tried to breed dogs with selected traits and ended up learning how much behavior is shaped by early experience as well as genetics. [bbc.com]...",
+    "category": "SaaS & Bulut Yazılımları",
+    "subcategory": "Piyasa ve Teknoloji Raporları",
+    "imageUrl": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
+    "sections": [
+      {
+        "id": "auto-sec-1",
+        "heading": "Haber Analizi",
+        "body": "In 1940s Maine, scientists at the School for Dogs tried to breed dogs with selected traits and ended up learning how much behavior is shaped by early experience as well as genetics. [bbc.com]\n\nWebdeHepSeek Analitik Heyeti değerlendirmesine göre, bu gelişme küresel pazardaki rekabet dengelerini doğrudan etkileyecektir."
+      }
+    ],
+    "author": "Ahmet Karadağ & Teknoloji Masası",
+    "date": "08 October 2026",
+    "readTime": "3 dk",
+    "tags": [
+      "SaaS",
+      "Gündem",
+      "Haber"
+    ]
+  },
+  {
+    "id": "auto-13",
+    "title": "Samsung Wallet to add USDC transfers for US Galaxy users in October ",
+    "excerpt": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/2026/10/01M4D9C2S9R0YG9SSXQDSNX1H5/usdc-samsung.png\" alt=\"Samsung Wallet to add USDC transfers for US...",
     "category": "Siber Güvenlik & Veri Koruma",
-    "subcategory": "KVKK & GDPR Uyumluluğu",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1510511459019-5dda7724fd87?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 dk",
-    "author": "Güvenlik Servisi",
-    "authorTitle": "Siber Güvenlik Şefi",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-50",
+    "subcategory": "Piyasa ve Teknoloji Raporları",
+    "imageUrl": "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80",
     "sections": [
       {
-        "id": "sec-1",
-        "heading": "1. Homomorfik Şifreleme İle Veri İşleme",
-        "body": "Verileri çözmeden (decrypt etmeden) doğrudan şifreli haliyle analiz edebilen yeni algoritmalar veri ihlali riskini tamamen ortadan kaldırıyor."
+        "id": "auto-sec-1",
+        "heading": "Haber Analizi",
+        "body": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/2026/10/01M4D9C2S9R0YG9SSXQDSNX1H5/usdc-samsung.png\" alt=\"Samsung Wallet to add USDC transfers for US\n\nWebdeHepSeek Analitik Heyeti değerlendirmesine göre, bu gelişme küresel pazardaki rekabet dengelerini doğrudan etkileyecektir."
       }
+    ],
+    "author": "Ahmet Karadağ & Teknoloji Masası",
+    "date": "08 October 2026",
+    "readTime": "3 dk",
+    "tags": [
+      "Siber",
+      "Gündem",
+      "Haber"
     ]
   },
   {
-    "id": "NEWS-51",
-    "title": "Kurumsal Phishing (Kimlik Avı) Tehdit İzleme: Yapay Zeka Destekli Erken Uyarı",
-    "excerpt": "Otonom siber güvenlik robotları, sahte alan adlarını ve çalışanlara gönderilen oltalama e-postalarını saliseler içinde engelliyor.",
+    "id": "auto-14",
+    "title": "NEAR enters crypto’s top 20 after 140% surge in 30 days",
+    "excerpt": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/2026/10/01M4D89SE8351ZX3MBGPAJ0YKW/top-20.png\" alt=\"NEAR enters crypto’s top 20 after 140% surge in 3...",
+    "category": "Otomotiv & Mobilite",
+    "subcategory": "Piyasa ve Teknoloji Raporları",
+    "imageUrl": "https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=1200&q=80",
+    "sections": [
+      {
+        "id": "auto-sec-1",
+        "heading": "Haber Analizi",
+        "body": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/2026/10/01M4D89SE8351ZX3MBGPAJ0YKW/top-20.png\" alt=\"NEAR enters crypto’s top 20 after 140% surge in 3\n\nWebdeHepSeek Analitik Heyeti değerlendirmesine göre, bu gelişme küresel pazardaki rekabet dengelerini doğrudan etkileyecektir."
+      }
+    ],
+    "author": "Ahmet Karadağ & Teknoloji Masası",
+    "date": "08 October 2026",
+    "readTime": "3 dk",
+    "tags": [
+      "Otomotiv",
+      "Gündem",
+      "Haber"
+    ]
+  },
+  {
+    "id": "auto-15",
+    "title": "Standard Chartered plans institutional crypto custody in Singapore",
+    "excerpt": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/2026/10/01M4D5M8YGHAPX4VAG5QCCZDDF/sponsored-marina-bay-sand-singapore-light-water-stablecoin.jpg\" al...",
+    "category": "Teknoloji & Dijital Dönüşüm",
+    "subcategory": "Piyasa ve Teknoloji Raporları",
+    "imageUrl": "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1200&q=80",
+    "sections": [
+      {
+        "id": "auto-sec-1",
+        "heading": "Haber Analizi",
+        "body": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/2026/10/01M4D5M8YGHAPX4VAG5QCCZDDF/sponsored-marina-bay-sand-singapore-light-water-stablecoin.jpg\" al\n\nWebdeHepSeek Analitik Heyeti değerlendirmesine göre, bu gelişme küresel pazardaki rekabet dengelerini doğrudan etkileyecektir."
+      }
+    ],
+    "author": "Ahmet Karadağ & Teknoloji Masası",
+    "date": "08 October 2026",
+    "readTime": "3 dk",
+    "tags": [
+      "Teknoloji",
+      "Gündem",
+      "Haber"
+    ]
+  },
+  {
+    "id": "auto-16",
+    "title": "Greece plans 10% capital gains tax on cryptocurrencies ",
+    "excerpt": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/2026/10/01M4D883MDW2RM3V0M3PC8JAH6/hi-breaking-the-peg-what-can-and-will-go-wrong-with-coins.jpg\" alt...",
+    "category": "Yapay Zeka & Gelecek",
+    "subcategory": "Piyasa ve Teknoloji Raporları",
+    "imageUrl": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
+    "sections": [
+      {
+        "id": "auto-sec-1",
+        "heading": "Haber Analizi",
+        "body": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/2026/10/01M4D883MDW2RM3V0M3PC8JAH6/hi-breaking-the-peg-what-can-and-will-go-wrong-with-coins.jpg\" alt\n\nWebdeHepSeek Analitik Heyeti değerlendirmesine göre, bu gelişme küresel pazardaki rekabet dengelerini doğrudan etkileyecektir."
+      }
+    ],
+    "author": "Ahmet Karadağ & Teknoloji Masası",
+    "date": "08 October 2026",
+    "readTime": "3 dk",
+    "tags": [
+      "Yapay",
+      "Gündem",
+      "Haber"
+    ]
+  },
+  {
+    "id": "auto-17",
+    "title": "US Bitcoin ETFs shed $485M in biggest daily outflow since June",
+    "excerpt": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/2026/10/01M4D50JPZN9J6RZ7XKC5FMJCE/485.png\" alt=\"US Bitcoin ETFs shed $485M in biggest daily outflow ...",
+    "category": "Finans & Küresel Piyasalar",
+    "subcategory": "Piyasa ve Teknoloji Raporları",
+    "imageUrl": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80",
+    "sections": [
+      {
+        "id": "auto-sec-1",
+        "heading": "Haber Analizi",
+        "body": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/2026/10/01M4D50JPZN9J6RZ7XKC5FMJCE/485.png\" alt=\"US Bitcoin ETFs shed $485M in biggest daily outflow \n\nWebdeHepSeek Analitik Heyeti değerlendirmesine göre, bu gelişme küresel pazardaki rekabet dengelerini doğrudan etkileyecektir."
+      }
+    ],
+    "author": "Ahmet Karadağ & Teknoloji Masası",
+    "date": "08 October 2026",
+    "readTime": "3 dk",
+    "tags": [
+      "Finans",
+      "Gündem",
+      "Haber"
+    ]
+  },
+  {
+    "id": "auto-18",
+    "title": "Here’s what happened in crypto today",
+    "excerpt": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/article-covers-110589-what-happened-in-crypto-today.jpg\" alt=\"Here’s what happened in crypto today\" c...",
+    "category": "Kripto & Web3",
+    "subcategory": "Piyasa ve Teknoloji Raporları",
+    "imageUrl": "https://images.unsplash.com/photo-1622979135225-d2ba269bc1bd?auto=format&fit=crop&w=1200&q=80",
+    "sections": [
+      {
+        "id": "auto-sec-1",
+        "heading": "Haber Analizi",
+        "body": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/article-covers-110589-what-happened-in-crypto-today.jpg\" alt=\"Here’s what happened in crypto today\" c\n\nWebdeHepSeek Analitik Heyeti değerlendirmesine göre, bu gelişme küresel pazardaki rekabet dengelerini doğrudan etkileyecektir."
+      }
+    ],
+    "author": "Ahmet Karadağ & Teknoloji Masası",
+    "date": "08 October 2026",
+    "readTime": "3 dk",
+    "tags": [
+      "Kripto",
+      "Gündem",
+      "Haber"
+    ]
+  },
+  {
+    "id": "auto-19",
+    "title": "Crypto’s heavy backing of Republicans alienated Democrats: Cuomo",
+    "excerpt": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/2026/10/01M4CY3W2AFFGN1AY103ADQ3SC/republicans-vs-democrats-voting.jpg\" alt=\"Crypto’s heavy backing o...",
+    "category": "SaaS & Bulut Yazılımları",
+    "subcategory": "Piyasa ve Teknoloji Raporları",
+    "imageUrl": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
+    "sections": [
+      {
+        "id": "auto-sec-1",
+        "heading": "Haber Analizi",
+        "body": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/2026/10/01M4CY3W2AFFGN1AY103ADQ3SC/republicans-vs-democrats-voting.jpg\" alt=\"Crypto’s heavy backing o\n\nWebdeHepSeek Analitik Heyeti değerlendirmesine göre, bu gelişme küresel pazardaki rekabet dengelerini doğrudan etkileyecektir."
+      }
+    ],
+    "author": "Ahmet Karadağ & Teknoloji Masası",
+    "date": "08 October 2026",
+    "readTime": "3 dk",
+    "tags": [
+      "SaaS",
+      "Gündem",
+      "Haber"
+    ]
+  },
+  {
+    "id": "auto-20",
+    "title": "Crypto must cement adoption to withstand US policy shifts: Canton CEO",
+    "excerpt": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/2026/10/01M4CVE7EMKD65X1H85SA1XBYM/regulations-us-blockchain.png\" alt=\"Crypto must cement adoption to...",
     "category": "Siber Güvenlik & Veri Koruma",
-    "subcategory": "Tehdit İzleme & Analiz",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-51",
+    "subcategory": "Piyasa ve Teknoloji Raporları",
+    "imageUrl": "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80",
     "sections": [
       {
-        "id": "sec-1",
-        "heading": "1. Derin Sahtecilik (Deepfake) Ses ve Görüntü Tespiti",
-        "body": "Üst düzey yöneticilerin sesini taklit eden CEO dolandırıcılığı vakalarına karşı AI doğrulama katmanları devreye giriyor."
+        "id": "auto-sec-1",
+        "heading": "Haber Analizi",
+        "body": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/2026/10/01M4CVE7EMKD65X1H85SA1XBYM/regulations-us-blockchain.png\" alt=\"Crypto must cement adoption to\n\nWebdeHepSeek Analitik Heyeti değerlendirmesine göre, bu gelişme küresel pazardaki rekabet dengelerini doğrudan etkileyecektir."
       }
+    ],
+    "author": "Ahmet Karadağ & Teknoloji Masası",
+    "date": "08 October 2026",
+    "readTime": "3 dk",
+    "tags": [
+      "Siber",
+      "Gündem",
+      "Haber"
     ]
   },
   {
-    "id": "NEWS-52",
-    "title": "En İyi AI Metin ve Makale Yazma Araçları 2026: GPT-5, Claude-3.5 ve Gemini Ultra Karşılaştırması",
-    "excerpt": "Akademik metinlerden pazarlama içeriklerine kadar profesyonellerin en çok tercih ettiği yapay zeka modelleri test edildi.",
-    "category": "Yapay Zeka Araç Rehberi",
-    "subcategory": "AI Metin Yazma Araçları",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
-    "verifiedSource": true,
-    "isEditorsChoice": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-52",
+    "id": "auto-21",
+    "title": "Vitalik Buterin backs crypto ‘bunker mode’ amid rapid AI math advances",
+    "excerpt": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/2026/10/01M4CCZ9950ZZBPSK7VXWX6DJ3/ai-hack-3.jpg\" alt=\"Vitalik Buterin backs crypto ‘bunker mode’ ami...",
+    "category": "Otomotiv & Mobilite",
+    "subcategory": "Piyasa ve Teknoloji Raporları",
+    "imageUrl": "https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=1200&q=80",
     "sections": [
       {
-        "id": "sec-1",
-        "heading": "1. Dil Modellerinde Doğruluk ve Kaynak Gösterimi",
-        "body": "Halüsinasyon oranı en düşük olan ve doğrudan akademik makalelere atıf yapabilen yapay zeka araçları performans kriterleriyle sıralandı."
+        "id": "auto-sec-1",
+        "heading": "Haber Analizi",
+        "body": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/2026/10/01M4CCZ9950ZZBPSK7VXWX6DJ3/ai-hack-3.jpg\" alt=\"Vitalik Buterin backs crypto ‘bunker mode’ ami\n\nWebdeHepSeek Analitik Heyeti değerlendirmesine göre, bu gelişme küresel pazardaki rekabet dengelerini doğrudan etkileyecektir."
       }
+    ],
+    "author": "Ahmet Karadağ & Teknoloji Masası",
+    "date": "08 October 2026",
+    "readTime": "3 dk",
+    "tags": [
+      "Otomotiv",
+      "Gündem",
+      "Haber"
     ]
   },
   {
-    "id": "NEWS-53",
-    "title": "Foto-Gerçekçi AI Görsel Oluşturucular Karşılaştırması: Midjourney v7 ve FLUX.1 Pro",
-    "excerpt": "Metin istemlerinden fotogerçekçi 8K görseller üreten yapay zeka araçları, reklam ve grafik tasarım sektörünün vazgeçilmezi oldu.",
-    "category": "Yapay Zeka Araç Rehberi",
-    "subcategory": "AI Görsel Oluşturucular",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "Tasarım Servisi",
-    "authorTitle": "AI Art Editörü",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-53",
+    "id": "auto-22",
+    "title": "Circle brings USDC, EURC payments to SAP customers through Tereina",
+    "excerpt": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/2026/10/01M4C0FKXZZQCVXBKP6KS4MJFP/hi-crypto-negotiation-1.png\" alt=\"Circle brings USDC, EURC payment...",
+    "category": "Teknoloji & Dijital Dönüşüm",
+    "subcategory": "Piyasa ve Teknoloji Raporları",
+    "imageUrl": "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1200&q=80",
     "sections": [
       {
-        "id": "sec-1",
-        "heading": "1. İstem Mühendisliği ve Işık/Dokusu Ayarları",
-        "body": "Kamera açısı, diyafram açıklığı ve odak uzaklığı gibi fotoğrafçılık terimlerini anlayan yeni görsel modeller harikalar yaratıyor."
+        "id": "auto-sec-1",
+        "heading": "Haber Analizi",
+        "body": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/2026/10/01M4C0FKXZZQCVXBKP6KS4MJFP/hi-crypto-negotiation-1.png\" alt=\"Circle brings USDC, EURC payment\n\nWebdeHepSeek Analitik Heyeti değerlendirmesine göre, bu gelişme küresel pazardaki rekabet dengelerini doğrudan etkileyecektir."
       }
+    ],
+    "author": "Ahmet Karadağ & Teknoloji Masası",
+    "date": "08 October 2026",
+    "readTime": "3 dk",
+    "tags": [
+      "Teknoloji",
+      "Gündem",
+      "Haber"
     ]
   },
   {
-    "id": "NEWS-54",
-    "title": "Yazılımcılar İçin AI Kodlama Asistanları: GitHub Copilot vs Cursor vs Claude Dev",
-    "excerpt": "Yazılım geliştirme sürecini 3 kat hızlandıran otomatik tamamlama, hata ayıklama ve test yazma araçlarının detaylı incelemesi.",
-    "category": "Yapay Zeka Araç Rehberi",
-    "subcategory": "AI Kodlama Asistanları",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-54",
+    "id": "auto-23",
+    "title": "Hunter Biden confirms LAPTOP token ‘not a rug pull,’ just trolling Trumps",
+    "excerpt": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/2026/09/01M1YD6ZJP44HSCKV9AHX0ECEZ/hunter-biden-memecoin.png\" alt=\"Hunter Biden confirms LAPTOP token...",
+    "category": "Yapay Zeka & Gelecek",
+    "subcategory": "Piyasa ve Teknoloji Raporları",
+    "imageUrl": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
     "sections": [
       {
-        "id": "sec-1",
-        "heading": "1. Kod Tabanının Tümünü Anlayan Bağlam Penceresi",
-        "body": "Milyonlarca satırlık repoları hafızasına alan gelişmiş yapay zeka asistanları, mimari kararlarda geliştiricilere rehberlik ediyor."
+        "id": "auto-sec-1",
+        "heading": "Haber Analizi",
+        "body": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/2026/09/01M1YD6ZJP44HSCKV9AHX0ECEZ/hunter-biden-memecoin.png\" alt=\"Hunter Biden confirms LAPTOP token\n\nWebdeHepSeek Analitik Heyeti değerlendirmesine göre, bu gelişme küresel pazardaki rekabet dengelerini doğrudan etkileyecektir."
       }
+    ],
+    "author": "Ahmet Karadağ & Teknoloji Masası",
+    "date": "08 October 2026",
+    "readTime": "3 dk",
+    "tags": [
+      "Yapay",
+      "Gündem",
+      "Haber"
+    ]
+  },
+  {
+    "id": "auto-24",
+    "title": "Sui tunnels hit 40.6M TPS in live AI agent test",
+    "excerpt": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/2026/10/01M4BPXB6KYBV02CEGGX5YB926/hi-how-to-utilize-ai-agents-in-decentralized-finance-defi-platform...",
+    "category": "Finans & Küresel Piyasalar",
+    "subcategory": "Piyasa ve Teknoloji Raporları",
+    "imageUrl": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80",
+    "sections": [
+      {
+        "id": "auto-sec-1",
+        "heading": "Haber Analizi",
+        "body": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/2026/10/01M4BPXB6KYBV02CEGGX5YB926/hi-how-to-utilize-ai-agents-in-decentralized-finance-defi-platform\n\nWebdeHepSeek Analitik Heyeti değerlendirmesine göre, bu gelişme küresel pazardaki rekabet dengelerini doğrudan etkileyecektir."
+      }
+    ],
+    "author": "Ahmet Karadağ & Teknoloji Masası",
+    "date": "08 October 2026",
+    "readTime": "3 dk",
+    "tags": [
+      "Finans",
+      "Gündem",
+      "Haber"
+    ]
+  },
+  {
+    "id": "auto-25",
+    "title": "India rejects Elon Musk’s claim of discrimination over Starlink launch",
+    "excerpt": "Starlink is still awaiting security clearance before it can seek spectrum and begin commercial services in India....",
+    "category": "Kripto & Web3",
+    "subcategory": "Piyasa ve Teknoloji Raporları",
+    "imageUrl": "https://images.unsplash.com/photo-1622979135225-d2ba269bc1bd?auto=format&fit=crop&w=1200&q=80",
+    "sections": [
+      {
+        "id": "auto-sec-1",
+        "heading": "Haber Analizi",
+        "body": "Starlink is still awaiting security clearance before it can seek spectrum and begin commercial services in India.\n\nWebdeHepSeek Analitik Heyeti değerlendirmesine göre, bu gelişme küresel pazardaki rekabet dengelerini doğrudan etkileyecektir."
+      }
+    ],
+    "author": "Ahmet Karadağ & Teknoloji Masası",
+    "date": "08 October 2026",
+    "readTime": "3 dk",
+    "tags": [
+      "Kripto",
+      "Gündem",
+      "Haber"
+    ]
+  },
+  {
+    "id": "auto-26",
+    "title": "Robot data startup Mecka AI nabs $60M from Sequoia",
+    "excerpt": "Mecka AI collects and analyzes human motion data to train humanoid robots and other kinds of robots. The startup pays people to record everyday tasks....",
+    "category": "SaaS & Bulut Yazılımları",
+    "subcategory": "Piyasa ve Teknoloji Raporları",
+    "imageUrl": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
+    "sections": [
+      {
+        "id": "auto-sec-1",
+        "heading": "Haber Analizi",
+        "body": "Mecka AI collects and analyzes human motion data to train humanoid robots and other kinds of robots. The startup pays people to record everyday tasks.\n\nWebdeHepSeek Analitik Heyeti değerlendirmesine göre, bu gelişme küresel pazardaki rekabet dengelerini doğrudan etkileyecektir."
+      }
+    ],
+    "author": "Ahmet Karadağ & Teknoloji Masası",
+    "date": "08 October 2026",
+    "readTime": "3 dk",
+    "tags": [
+      "SaaS",
+      "Gündem",
+      "Haber"
+    ]
+  },
+  {
+    "id": "auto-27",
+    "title": "While VCs crowd into San Francisco, Endeavor Catalyst raises $320M for founders ‘elsewhere’",
+    "excerpt": "Endeavor Catalyst just raised $320 million to keep backing founders outside Silicon Valley. Half the profits go back to the nonprofit that finds them....",
+    "category": "Siber Güvenlik & Veri Koruma",
+    "subcategory": "Piyasa ve Teknoloji Raporları",
+    "imageUrl": "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80",
+    "sections": [
+      {
+        "id": "auto-sec-1",
+        "heading": "Haber Analizi",
+        "body": "Endeavor Catalyst just raised $320 million to keep backing founders outside Silicon Valley. Half the profits go back to the nonprofit that finds them.\n\nWebdeHepSeek Analitik Heyeti değerlendirmesine göre, bu gelişme küresel pazardaki rekabet dengelerini doğrudan etkileyecektir."
+      }
+    ],
+    "author": "Ahmet Karadağ & Teknoloji Masası",
+    "date": "08 October 2026",
+    "readTime": "3 dk",
+    "tags": [
+      "Siber",
+      "Gündem",
+      "Haber"
+    ]
+  },
+  {
+    "id": "auto-28",
+    "title": "Nous Research confirms it hit $1.5B valuation, launches AI agents for business users",
+    "excerpt": "The developer of Hermes Agent raised a $90 million Series B. ...",
+    "category": "Otomotiv & Mobilite",
+    "subcategory": "Piyasa ve Teknoloji Raporları",
+    "imageUrl": "https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=1200&q=80",
+    "sections": [
+      {
+        "id": "auto-sec-1",
+        "heading": "Haber Analizi",
+        "body": "The developer of Hermes Agent raised a $90 million Series B. \n\nWebdeHepSeek Analitik Heyeti değerlendirmesine göre, bu gelişme küresel pazardaki rekabet dengelerini doğrudan etkileyecektir."
+      }
+    ],
+    "author": "Ahmet Karadağ & Teknoloji Masası",
+    "date": "08 October 2026",
+    "readTime": "3 dk",
+    "tags": [
+      "Otomotiv",
+      "Gündem",
+      "Haber"
+    ]
+  },
+  {
+    "id": "auto-29",
+    "title": "Microsoft releases new Nvidia-chip AI PCs with revamped Windows 11",
+    "excerpt": "Microsoft revealed the specs and price for its Surface Laptop Ultra, AI PCs that run on Nvidia chips that are designed to run AI models and agents....",
+    "category": "Teknoloji & Dijital Dönüşüm",
+    "subcategory": "Piyasa ve Teknoloji Raporları",
+    "imageUrl": "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1200&q=80",
+    "sections": [
+      {
+        "id": "auto-sec-1",
+        "heading": "Haber Analizi",
+        "body": "Microsoft revealed the specs and price for its Surface Laptop Ultra, AI PCs that run on Nvidia chips that are designed to run AI models and agents.\n\nWebdeHepSeek Analitik Heyeti değerlendirmesine göre, bu gelişme küresel pazardaki rekabet dengelerini doğrudan etkileyecektir."
+      }
+    ],
+    "author": "Ahmet Karadağ & Teknoloji Masası",
+    "date": "08 October 2026",
+    "readTime": "3 dk",
+    "tags": [
+      "Teknoloji",
+      "Gündem",
+      "Haber"
+    ]
+  },
+  {
+    "id": "auto-30",
+    "title": "Meta’s Muse launches on iPad just a month after its mobile debut",
+    "excerpt": "Meta’s AI agent Muse is now available on iPad, just a month after its mobile debut, as the company rapidly expands the assistant’s reach and integrations....",
+    "category": "Yapay Zeka & Gelecek",
+    "subcategory": "Piyasa ve Teknoloji Raporları",
+    "imageUrl": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
+    "sections": [
+      {
+        "id": "auto-sec-1",
+        "heading": "Haber Analizi",
+        "body": "Meta’s AI agent Muse is now available on iPad, just a month after its mobile debut, as the company rapidly expands the assistant’s reach and integrations.\n\nWebdeHepSeek Analitik Heyeti değerlendirmesine göre, bu gelişme küresel pazardaki rekabet dengelerini doğrudan etkileyecektir."
+      }
+    ],
+    "author": "Ahmet Karadağ & Teknoloji Masası",
+    "date": "08 October 2026",
+    "readTime": "3 dk",
+    "tags": [
+      "Yapay",
+      "Gündem",
+      "Haber"
+    ]
+  },
+  {
+    "id": "auto-31",
+    "title": "ChatGPT for Teens keeps teens talking, even during mental health crises",
+    "excerpt": "ChatGPT’s teen safeguards are meant to protect vulnerable users, but new testing found the chatbot continues encouraging engagement during crises and potentially encourages unhealthy relationships with the AI itself....",
+    "category": "Finans & Küresel Piyasalar",
+    "subcategory": "Piyasa ve Teknoloji Raporları",
+    "imageUrl": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80",
+    "sections": [
+      {
+        "id": "auto-sec-1",
+        "heading": "Haber Analizi",
+        "body": "ChatGPT’s teen safeguards are meant to protect vulnerable users, but new testing found the chatbot continues encouraging engagement during crises and potentially encourages unhealthy relationships with the AI itself.\n\nWebdeHepSeek Analitik Heyeti değerlendirmesine göre, bu gelişme küresel pazardaki rekabet dengelerini doğrudan etkileyecektir."
+      }
+    ],
+    "author": "Ahmet Karadağ & Teknoloji Masası",
+    "date": "08 October 2026",
+    "readTime": "3 dk",
+    "tags": [
+      "Finans",
+      "Gündem",
+      "Haber"
+    ]
+  },
+  {
+    "id": "auto-32",
+    "title": "X expands its ‘Gametime’ sports hub beyond the NFL, starting with MLB",
+    "excerpt": "X is turning its NFL-focused Gametime feature into a year-round sports destination, starting with MLB and with other professional leagues to follow....",
+    "category": "Kripto & Web3",
+    "subcategory": "Piyasa ve Teknoloji Raporları",
+    "imageUrl": "https://images.unsplash.com/photo-1622979135225-d2ba269bc1bd?auto=format&fit=crop&w=1200&q=80",
+    "sections": [
+      {
+        "id": "auto-sec-1",
+        "heading": "Haber Analizi",
+        "body": "X is turning its NFL-focused Gametime feature into a year-round sports destination, starting with MLB and with other professional leagues to follow.\n\nWebdeHepSeek Analitik Heyeti değerlendirmesine göre, bu gelişme küresel pazardaki rekabet dengelerini doğrudan etkileyecektir."
+      }
+    ],
+    "author": "Ahmet Karadağ & Teknoloji Masası",
+    "date": "08 October 2026",
+    "readTime": "3 dk",
+    "tags": [
+      "Kripto",
+      "Gündem",
+      "Haber"
+    ]
+  },
+  {
+    "id": "auto-33",
+    "title": "ChatGPT is getting a lot more visual, with the launch of a new interface",
+    "excerpt": "OpenAI is launching a new user interface that will bring interactive visuals to ChatGPT. ...",
+    "category": "SaaS & Bulut Yazılımları",
+    "subcategory": "Piyasa ve Teknoloji Raporları",
+    "imageUrl": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
+    "sections": [
+      {
+        "id": "auto-sec-1",
+        "heading": "Haber Analizi",
+        "body": "OpenAI is launching a new user interface that will bring interactive visuals to ChatGPT. \n\nWebdeHepSeek Analitik Heyeti değerlendirmesine göre, bu gelişme küresel pazardaki rekabet dengelerini doğrudan etkileyecektir."
+      }
+    ],
+    "author": "Ahmet Karadağ & Teknoloji Masası",
+    "date": "08 October 2026",
+    "readTime": "3 dk",
+    "tags": [
+      "SaaS",
+      "Gündem",
+      "Haber"
+    ]
+  },
+  {
+    "id": "auto-34",
+    "title": "Greenairy is building smart plant towers to clean the air in your office",
+    "excerpt": "As it turns out, the cure for stuffy, chemical-infused office air might be a tower of leafy greenery....",
+    "category": "Siber Güvenlik & Veri Koruma",
+    "subcategory": "Piyasa ve Teknoloji Raporları",
+    "imageUrl": "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80",
+    "sections": [
+      {
+        "id": "auto-sec-1",
+        "heading": "Haber Analizi",
+        "body": "As it turns out, the cure for stuffy, chemical-infused office air might be a tower of leafy greenery.\n\nWebdeHepSeek Analitik Heyeti değerlendirmesine göre, bu gelişme küresel pazardaki rekabet dengelerini doğrudan etkileyecektir."
+      }
+    ],
+    "author": "Ahmet Karadağ & Teknoloji Masası",
+    "date": "08 October 2026",
+    "readTime": "3 dk",
+    "tags": [
+      "Siber",
+      "Gündem",
+      "Haber"
+    ]
+  },
+  {
+    "id": "auto-35",
+    "title": "CIA officer admits to creating fake top secret government program to steal over $190M, including gold bars",
+    "excerpt": "CIA officer David Rush, who worked on highly sensitive intelligence programs, reached a plea deal with U.S. prosecutors after he was caught siphoning money and gold with a fake government contract....",
+    "category": "Otomotiv & Mobilite",
+    "subcategory": "Piyasa ve Teknoloji Raporları",
+    "imageUrl": "https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=1200&q=80",
+    "sections": [
+      {
+        "id": "auto-sec-1",
+        "heading": "Haber Analizi",
+        "body": "CIA officer David Rush, who worked on highly sensitive intelligence programs, reached a plea deal with U.S. prosecutors after he was caught siphoning money and gold with a fake government contract.\n\nWebdeHepSeek Analitik Heyeti değerlendirmesine göre, bu gelişme küresel pazardaki rekabet dengelerini doğrudan etkileyecektir."
+      }
+    ],
+    "author": "Ahmet Karadağ & Teknoloji Masası",
+    "date": "08 October 2026",
+    "readTime": "3 dk",
+    "tags": [
+      "Otomotiv",
+      "Gündem",
+      "Haber"
+    ]
+  },
+  {
+    "id": "auto-36",
+    "title": "Meta rolls out new AI tools to detect ads that secretly lead to child sexual abuse material",
+    "excerpt": "Meta launches new AI tools after discovering ads on its platforms that may look normal but direct users to harmful content elsewhere online....",
+    "category": "Teknoloji & Dijital Dönüşüm",
+    "subcategory": "Piyasa ve Teknoloji Raporları",
+    "imageUrl": "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1200&q=80",
+    "sections": [
+      {
+        "id": "auto-sec-1",
+        "heading": "Haber Analizi",
+        "body": "Meta launches new AI tools after discovering ads on its platforms that may look normal but direct users to harmful content elsewhere online.\n\nWebdeHepSeek Analitik Heyeti değerlendirmesine göre, bu gelişme küresel pazardaki rekabet dengelerini doğrudan etkileyecektir."
+      }
+    ],
+    "author": "Ahmet Karadağ & Teknoloji Masası",
+    "date": "08 October 2026",
+    "readTime": "3 dk",
+    "tags": [
+      "Teknoloji",
+      "Gündem",
+      "Haber"
     ]
   }
 ]

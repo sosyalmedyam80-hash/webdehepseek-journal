@@ -12,6 +12,8 @@ import {
   FileJson, 
   ChevronRight, 
   ChevronLeft,
+  ChevronDown,
+  ChevronUp,
   Sun, 
   Moon, 
   Globe, 
@@ -543,7 +545,7 @@ function HotDealsWidget() {
         <div className="flex items-center gap-2">
           <Zap size={18} className="text-[#D4AF37] animate-pulse" />
           <h3 className="font-serif font-bold text-white text-sm">
-            🔥 Günün Sıcak İndirimleri & Fırsatları
+            🔥 Günün Fırsatları
           </h3>
         </div>
         <span className="text-[10px] font-mono text-[#D4AF37] bg-[#D4AF37]/15 border border-[#D4AF37]/30 px-2 py-0.5 rounded font-extrabold uppercase">
@@ -596,10 +598,10 @@ function HotDealsWidget() {
 }
 
 // Mobile Sticky Anchor Ad Banner (ShiftDelete Style)
-function StickyAnchorBanner() {
+function StickyAnchorBanner({ isCookieConsentVisible }: { isCookieConsentVisible?: boolean }) {
   const [isDismissed, setIsDismissed] = useState(false);
 
-  if (isDismissed) return null;
+  if (isDismissed || isCookieConsentVisible) return null;
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-40 bg-[#0B0B0C]/95 border-t border-[#D4AF37]/30 shadow-2xl backdrop-blur-md px-3 py-2.5 transition-all">
@@ -986,7 +988,13 @@ export default function App() {
 
   // Legal Modal & Cookie Consent
   const [activeLegalModal, setActiveLegalModal] = useState<keyof typeof LEGAL_DOCUMENTS | null>(null);
-  const [cookieConsentAccepted, setCookieConsentAccepted] = useState(false);
+  const [cookieConsentAccepted, setCookieConsentAccepted] = useState<boolean>(() => {
+    if (typeof localStorage !== 'undefined') {
+      return localStorage.getItem('whsk_cookie_consent') === 'accepted';
+    }
+    return false;
+  });
+  const [expandedCategoryNavId, setExpandedCategoryNavId] = useState<string | null>('cat-1');
 
   // Theme & Language
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -1082,15 +1090,11 @@ export default function App() {
         if (res.ok) {
           const data = await res.json();
           if (Array.isArray(data) && data.length > 0) {
-            setNewsList(prev => {
-              const externalIds = new Set(data.map((item: NewsItem) => item.id));
-              const filteredPrev = prev.filter(item => !externalIds.has(item.id));
-              return [...data, ...filteredPrev];
-            });
+            setNewsList(data);
           }
         }
       } catch {
-        // Fall back seamlessly to MOCK_NEWS
+        // Fall back seamlessly to MOCK_NEWS (initialized in state)
       }
     }
 
@@ -1224,6 +1228,28 @@ export default function App() {
     showToast("Çerez politikası ve KVKK rızası onaylandı.");
   };
 
+  // Dynamic URL Deep Linking & Browser History Sync (?haber=NEWS-01)
+  useEffect(() => {
+    const syncArticleFromUrl = () => {
+      if (typeof window === 'undefined') return;
+      const params = new URLSearchParams(window.location.search);
+      let haberId = params.get('haber');
+      if (!haberId && window.location.hash) {
+        haberId = window.location.hash.replace('#haber-', '').replace('#', '');
+      }
+      if (haberId) {
+        const found = newsList.find(n => n.id === haberId);
+        if (found) {
+          setSelectedNewsArticle(found);
+        }
+      }
+    };
+
+    syncArticleFromUrl();
+    window.addEventListener('popstate', syncArticleFromUrl);
+    return () => window.removeEventListener('popstate', syncArticleFromUrl);
+  }, [newsList]);
+
   // Scroll Slider Helper
   const scrollSlider = (ref: React.RefObject<HTMLDivElement | null>, direction: 'left' | 'right') => {
     if (ref.current) {
@@ -1232,13 +1258,32 @@ export default function App() {
     }
   };
 
-  // Article Select Helper with Recently Viewed History Tracking
+  // Article Select Helper with Recently Viewed History Tracking and URL Routing
   const handleSelectArticle = (news: NewsItem) => {
     setSelectedNewsArticle(news);
+    if (typeof window !== 'undefined') {
+      const url = new URL(window.location.href);
+      url.searchParams.set('haber', news.id);
+      window.history.pushState({ haberId: news.id }, '', url.toString());
+    }
     if (!recentlyViewedIds.includes(news.id)) {
       const updated = [news.id, ...recentlyViewedIds.filter(id => id !== news.id)].slice(0, 6);
       setRecentlyViewedIds(updated);
       localStorage.setItem('whsk_recently_viewed', JSON.stringify(updated));
+    }
+  };
+
+  const handleCloseArticle = () => {
+    setSelectedNewsArticle(null);
+    setIsAiSummaryExpanded(false);
+    setAudioProgress(0);
+    stopSpeech();
+    if (typeof window !== 'undefined') {
+      const url = new URL(window.location.href);
+      if (url.searchParams.has('haber') || window.location.hash.includes('haber-')) {
+        url.searchParams.delete('haber');
+        window.history.pushState({}, '', url.pathname + (url.searchParams.toString() ? `?${url.searchParams.toString()}` : ''));
+      }
     }
   };
 
@@ -1598,105 +1643,112 @@ export default function App() {
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-1">
-              {[
-                { id: 'news', label: language === 'TR' ? 'Haber Akışı' : 'News Feed', icon: Newspaper },
-                { id: 'nav', label: language === 'TR' ? '18 Kategori' : '18 Categories', icon: LayoutGrid },
-                { id: 'analytics', label: language === 'TR' ? 'Google Konsolu' : 'Google Console', icon: BarChart2, isAdmin: true },
-                { id: 'system', label: language === 'TR' ? 'Sistem Metrikleri' : 'System Metrics', icon: Shield, isAdmin: true },
-                { id: 'ai', label: language === 'TR' ? 'AI Analiz' : 'AI Classifier', icon: Zap },
-                { id: 'wp', label: 'WordPress Export', icon: FileJson, isAdmin: true },
-                { id: 'legal', label: 'Kurumsal & KVKK', icon: Scale }
-              ].filter(item => !item.isAdmin || showAdminTabs).map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => {
-                    if (item.id === 'news') {
-                      setSelectedCategory(null);
-                      setSelectedSubcategory(null);
-                      setOnlyBookmarks(false);
-                    }
-                    setActiveTab(item.id as any);
-                  }}
-                  className={cn(
-                    "px-3.5 py-2 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 relative",
-                    activeTab === item.id 
-                      ? (isDarkMode ? "bg-[#121215] text-[#D4AF37] border border-[#D4AF37]/50 shadow-sm" : "bg-zinc-100 text-zinc-900 border border-zinc-300")
-                      : (isDarkMode ? "text-zinc-400 hover:text-white hover:bg-zinc-900" : "text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100")
-                  )}
-                >
-                  <item.icon size={14} className={activeTab === item.id ? "text-[#D4AF37]" : "opacity-70"} />
-                  <span>{item.label}</span>
-                </button>
-              ))}
+              <button
+                onClick={() => {
+                  setSelectedCategory(null);
+                  setSelectedSubcategory(null);
+                  setOnlyBookmarks(false);
+                  setActiveTab('news');
+                }}
+                className={cn(
+                  "px-3.5 py-2 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 relative",
+                  (activeTab === 'news' && !selectedCategory && !onlyBookmarks)
+                    ? (isDarkMode ? "bg-[#121215] text-[#D4AF37] border border-[#D4AF37]/50 shadow-sm font-bold" : "bg-zinc-100 text-zinc-900 border border-zinc-300 font-bold")
+                    : (isDarkMode ? "text-zinc-400 hover:text-white hover:bg-zinc-900" : "text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100")
+                )}
+              >
+                <Radio size={14} className={activeTab === 'news' && !selectedCategory ? "text-[#D4AF37]" : "opacity-70"} />
+                <span>Gündem</span>
+              </button>
+
+              <button
+                onClick={() => {
+                  setSelectedCategory('Teknoloji & Dijital Dönüşüm');
+                  setSelectedSubcategory(null);
+                  setOnlyBookmarks(false);
+                  setActiveTab('news');
+                }}
+                className={cn(
+                  "px-3.5 py-2 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 relative",
+                  selectedCategory === 'Teknoloji & Dijital Dönüşüm'
+                    ? (isDarkMode ? "bg-[#121215] text-[#D4AF37] border border-[#D4AF37]/50 shadow-sm font-bold" : "bg-zinc-100 text-zinc-900 border border-zinc-300 font-bold")
+                    : (isDarkMode ? "text-zinc-400 hover:text-white hover:bg-zinc-900" : "text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100")
+                )}
+              >
+                <Zap size={14} className={selectedCategory === 'Teknoloji & Dijital Dönüşüm' ? "text-[#D4AF37]" : "opacity-70"} />
+                <span>Teknoloji</span>
+              </button>
+
+              <button
+                onClick={() => {
+                  setSelectedCategory('Finans & Küresel Piyasalar');
+                  setSelectedSubcategory(null);
+                  setOnlyBookmarks(false);
+                  setActiveTab('news');
+                }}
+                className={cn(
+                  "px-3.5 py-2 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 relative",
+                  selectedCategory === 'Finans & Küresel Piyasalar'
+                    ? (isDarkMode ? "bg-[#121215] text-[#D4AF37] border border-[#D4AF37]/50 shadow-sm font-bold" : "bg-zinc-100 text-zinc-900 border border-zinc-300 font-bold")
+                    : (isDarkMode ? "text-zinc-400 hover:text-white hover:bg-zinc-900" : "text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100")
+                )}
+              >
+                <TrendingUp size={14} className={selectedCategory === 'Finans & Küresel Piyasalar' ? "text-[#D4AF37]" : "opacity-70"} />
+                <span>Finans</span>
+              </button>
+
+              <button
+                onClick={() => setActiveTab('nav')}
+                className={cn(
+                  "px-3.5 py-2 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 relative",
+                  activeTab === 'nav'
+                    ? (isDarkMode ? "bg-[#121215] text-[#D4AF37] border border-[#D4AF37]/50 shadow-sm font-bold" : "bg-zinc-100 text-zinc-900 border border-zinc-300 font-bold")
+                    : (isDarkMode ? "text-zinc-400 hover:text-white hover:bg-zinc-900" : "text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100")
+                )}
+              >
+                <LayoutGrid size={14} className={activeTab === 'nav' ? "text-[#D4AF37]" : "opacity-70"} />
+                <span>Kategoriler</span>
+              </button>
             </nav>
 
             {/* Actions */}
             <div className="flex items-center gap-3">
-              {/* Bookmarks Toggle */}
-              <button 
-                onClick={() => {
-                  setOnlyBookmarks(!onlyBookmarks);
-                  setActiveTab('news');
-                  showToast(!onlyBookmarks ? "Sadece kaydedilen haberler listeleniyor" : "Tüm haber akışı aktif");
-                }}
-                className={cn(
-                  "flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all border",
-                  onlyBookmarks 
-                    ? "bg-[#D4AF37] text-black border-[#D4AF37]" 
-                    : "bg-[#121215] text-[#D4AF37] border-[#D4AF37]/40 hover:bg-[#D4AF37]/10"
+              {/* Search Bar */}
+              <div className="relative hidden md:flex items-center">
+                <Search size={14} className="absolute left-3 text-zinc-400 pointer-events-none" />
+                <input 
+                  type="text" 
+                  value={searchQuery} 
+                  onChange={e => {
+                    setSearchQuery(e.target.value);
+                    if (e.target.value) setActiveTab('news');
+                  }} 
+                  placeholder="Haberlerde ara..." 
+                  className="pl-9 pr-3 py-1.5 bg-[#121215] border border-zinc-800 focus:border-[#D4AF37] text-xs text-white rounded-xl focus:outline-none w-36 xl:w-52 transition-all placeholder:text-zinc-500 font-sans" 
+                />
+                {searchQuery && (
+                  <button 
+                    onClick={() => setSearchQuery('')}
+                    className="absolute right-2 text-zinc-400 hover:text-white p-0.5"
+                  >
+                    <X size={12} />
+                  </button>
                 )}
-                title="Yer İmleri"
-              >
-                <Bookmark size={13} />
-                <span className="hidden sm:inline">Yer İmlerim ({bookmarkedIds.length})</span>
-              </button>
+              </div>
 
-              <button
-                onClick={() => setIsCalcModalOpen(true)}
-                className="hidden xl:flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-bold bg-[#121215] border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 transition-all"
-                title="Finansal Hesaplayıcı"
-              >
-                <Calculator size={13} />
-                <span>Hesapla</span>
-              </button>
-
-              <button
-                onClick={() => setIsPressReleaseModalOpen(true)}
-                className="hidden xl:flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-bold bg-[#121215] border border-[#D4AF37]/30 text-[#D4AF37] hover:bg-[#D4AF37]/10 transition-all"
-                title="Basın Bülteni Gönder"
-              >
-                <Send size={13} />
-                <span>Bülten Gönder</span>
-              </button>
-
-              <button
-                onClick={handleRefreshFeed}
-                disabled={isRefreshingFeed}
-                className="hidden lg:flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-bold bg-[#121215] border border-[#D4AF37]/50 text-[#D4AF37] hover:bg-[#D4AF37]/20 transition-all disabled:opacity-50"
-                title="Haber Akışını Yenile / Otonom Analiz Ekle"
-              >
-                <RefreshCw size={13} className={cn("text-[#D4AF37]", isRefreshingFeed ? "animate-spin" : "")} />
-                <span>Akışı Yenile</span>
-              </button>
-
-              <button 
-                onClick={handleTogglePushNotifications}
-                className={cn(
-                  "p-2 rounded-xl border transition-all",
-                  pushNotificationsEnabled ? "bg-[#D4AF37] text-black border-[#D4AF37]" : "border-zinc-800 text-[#D4AF37] hover:bg-[#D4AF37]/10"
-                )}
-                title="Bildirimler"
-              >
-                <Bell size={15} />
-              </button>
-
+              {/* Ahmet Karadağ Badge / Reader Profile */}
               <button
                 onClick={() => setIsProfileModalOpen(true)}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-[#D4AF37] text-black hover:brightness-110 transition-all"
-                title="Okur Profili"
+                className="flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-bold bg-[#D4AF37] text-black hover:brightness-110 transition-all shadow-md"
+                title="Okur Profili & Yönetici"
               >
-                <User size={13} />
-                <span className="hidden md:inline">{userProfile.name}</span>
+                <div className="w-5 h-5 rounded-full bg-black text-[#D4AF37] font-serif font-black flex items-center justify-center text-[10px]">
+                  A
+                </div>
+                <span className="hidden sm:inline font-bold">{userProfile.name}</span>
+                <span className="text-[9px] bg-black/20 text-black px-1.5 py-0.5 rounded font-mono font-bold hidden md:inline">
+                  Doğrulanmış
+                </span>
               </button>
 
               <button 
@@ -1937,49 +1989,6 @@ export default function App() {
               </div>
             ) : (
               <>
-                {/* EDITOR'S CHOICE SPOTLIGHT SECTION */}
-                {!selectedCategory && !searchQuery && !onlyBookmarks && editorsChoiceNews.length > 0 && (
-                  <section className="bg-gradient-to-r from-[#121215] via-[#1c1c24] to-[#121215] border border-[#D4AF37]/40 rounded-3xl p-6 shadow-2xl space-y-4">
-                    <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
-                      <div className="flex items-center gap-2">
-                        <Award size={18} className="text-[#D4AF37]" />
-                        <h3 className="text-base font-serif font-bold text-white uppercase tracking-wider">
-                          Editörün Seçimi (Spotlight)
-                        </h3>
-                      </div>
-                      <span className="text-[10px] font-mono text-[#D4AF37] bg-[#D4AF37]/10 border border-[#D4AF37]/30 px-2 py-0.5 rounded">
-                        Özel Analizler
-                      </span>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      {editorsChoiceNews.map(spot => (
-                        <div 
-                          key={`spot-${spot.id}`} 
-                          onClick={() => setSelectedNewsArticle(spot)}
-                          className="flex flex-col sm:flex-row items-center gap-4 bg-[#0B0B0C] border border-zinc-800 hover:border-[#D4AF37] p-4 rounded-2xl cursor-pointer transition-all group"
-                        >
-                          <NewsImage 
-                            src={spot.imageUrl} 
-                            alt={spot.title}
-                            category={spot.category}
-                            className="w-full sm:w-36 h-28 object-cover rounded-xl shrink-0 group-hover:scale-105 transition-transform"
-                          />
-                          <div className="space-y-2">
-                            <span className="px-2 py-0.5 bg-[#D4AF37] text-black text-[9px] font-extrabold rounded">
-                              {spot.subcategory}
-                            </span>
-                            <h4 className="text-sm font-bold text-white group-hover:text-[#D4AF37] leading-snug line-clamp-2">
-                              {spot.title}
-                            </h4>
-                            <span className="text-[11px] text-zinc-400 font-mono block">Yazar: {spot.author}</span>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </section>
-                )}
-
                 {/* SECTION 1: DERGİ VE MANŞET MİZANPAJI (SLIDER + YAN MİZANPAJ) */}
                 {!selectedCategory && !searchQuery && !onlyBookmarks && (
                   <HeroHeadlineSection 
@@ -2015,93 +2024,6 @@ export default function App() {
                   </button>
                 </div>
 
-                {/* SECTION 2: TRENDING HORIZONTAL CARD CAROUSEL */}
-                <section className="space-y-4">
-                  <div className="flex items-center justify-between border-b border-zinc-800/80 pb-3">
-                    <div className="flex items-center gap-2">
-                      <TrendingUp size={20} className="text-[#D4AF37]" />
-                      <h3 className="text-lg font-serif font-bold text-white uppercase tracking-wider">
-                        En Çok Okunan Trend Haberler
-                      </h3>
-                    </div>
-
-                    <div className="flex items-center gap-2">
-                      <button 
-                        onClick={() => scrollSlider(trendSliderRef, 'left')}
-                        className="p-1.5 rounded-lg bg-[#121215] border border-zinc-800 hover:border-[#D4AF37] text-zinc-300 hover:text-white transition-all"
-                      >
-                        <ChevronLeft size={16} />
-                      </button>
-                      <button 
-                        onClick={() => scrollSlider(trendSliderRef, 'right')}
-                        className="p-1.5 rounded-lg bg-[#121215] border border-zinc-800 hover:border-[#D4AF37] text-zinc-300 hover:text-white transition-all"
-                      >
-                        <ChevronRight size={16} />
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Horizontal Scroll Grid */}
-                  <div 
-                    ref={trendSliderRef}
-                    className="horizontal-slider gap-5 pb-4 no-scrollbar"
-                  >
-                    {filteredNews.map((news) => (
-                      <div 
-                        key={`trend-${news.id}`}
-                        onClick={() => setSelectedNewsArticle(news)}
-                        className="w-[280px] sm:w-[340px] bg-[#121215] border border-zinc-800 hover:border-[#D4AF37] rounded-2xl overflow-hidden shadow-lg transition-all cursor-pointer group flex flex-col justify-between"
-                      >
-                        <div>
-                          <div className="relative h-44 overflow-hidden">
-                            <NewsImage 
-                              src={news.imageUrl} 
-                              alt={news.title}
-                              category={news.category}
-                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
-                            />
-                            <div className="absolute top-3 left-3">
-                              <span className="px-2 py-0.5 bg-black/80 backdrop-blur-md text-white text-[9px] font-bold rounded">
-                                {news.subcategory}
-                              </span>
-                            </div>
-                            <button 
-                              onClick={(e) => toggleBookmark(news.id, e)}
-                              className={cn(
-                                "absolute top-3 right-3 p-1.5 rounded-full backdrop-blur-md transition-all",
-                                bookmarkedIds.includes(news.id) ? "bg-[#D4AF37] text-black" : "bg-black/60 text-white hover:text-[#D4AF37]"
-                              )}
-                            >
-                              <Bookmark size={12} />
-                            </button>
-                          </div>
-
-                          <div className="p-4 space-y-2">
-                            <div className="flex items-center justify-between text-[10px] text-zinc-500 font-mono">
-                              <span>{news.date}</span>
-                              <span className="bg-[#D4AF37]/10 text-[#D4AF37] px-1.5 py-0.5 rounded font-bold">{getDynamicReadTime(news)} okuma</span>
-                            </div>
-                            <h4 className="text-sm font-bold text-white group-hover:text-[#D4AF37] transition-colors leading-snug line-clamp-2">
-                              {news.title}
-                            </h4>
-                            <p className="text-xs text-zinc-400 line-clamp-2 leading-relaxed">
-                              {news.excerpt}
-                            </p>
-                          </div>
-                        </div>
-
-                        <div className="p-3 bg-zinc-950/80 border-t border-zinc-800/80 flex items-center justify-between text-[11px] text-zinc-400">
-                          <span className="truncate max-w-[140px] text-zinc-300 font-medium">{news.author}</span>
-                          <span className="text-[#D4AF37] font-bold text-xs flex items-center gap-1">
-                            <span>Oku</span>
-                            <ChevronRight size={12} />
-                          </span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </section>
-
                 {/* SECTION 3: TWO-COLUMN MAIN NEWSPAPER LAYOUT (NEWS & SIDEBAR WIDGETS) */}
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                   {/* Left Column (Row News List) */}
@@ -2110,7 +2032,7 @@ export default function App() {
                       <div className="border-b border-zinc-800 pb-3 flex items-center justify-between">
                         <h3 className="text-lg font-serif font-bold text-white uppercase tracking-wider flex items-center gap-2">
                           <Newspaper size={18} className="text-[#D4AF37]" />
-                          <span>{selectedCategory ? `${selectedCategory} Tüm Yayınlar` : "Özel Dosyalar & Derinlemesine Analizler"}</span>
+                          <span>{selectedCategory ? `${selectedCategory} Tüm Yayınlar` : "Kategorilere Göre Temiz Haber Akışı"}</span>
                         </h3>
                       </div>
 
@@ -2514,12 +2436,7 @@ export default function App() {
                       <div className="flex items-center justify-between border-b border-zinc-800/80 pb-4">
                         {/* ← Tüm Haberler Butonu */}
                         <button 
-                          onClick={() => {
-                            setSelectedNewsArticle(null);
-                            setIsAiSummaryExpanded(false);
-                            setAudioProgress(0);
-                            stopSpeech();
-                          }}
+                          onClick={handleCloseArticle}
                           className="inline-flex items-center gap-2 px-4 py-2 bg-[#121215] border border-zinc-700 hover:border-[#D4AF37] hover:text-[#D4AF37] text-zinc-200 text-xs font-bold rounded-xl transition-all shadow-md group"
                         >
                           <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform text-[#D4AF37]" />
@@ -2572,7 +2489,7 @@ export default function App() {
                     <nav className="flex items-center gap-2 text-xs font-mono text-zinc-400 border-b border-zinc-800/60 pb-3">
                       <button 
                         onClick={() => {
-                          setSelectedNewsArticle(null);
+                          handleCloseArticle();
                           setSelectedCategory(null);
                           setSelectedSubcategory(null);
                         }}
@@ -2583,9 +2500,10 @@ export default function App() {
                       <ChevronRight size={10} className="text-zinc-600" />
                       <button 
                         onClick={() => {
-                          setSelectedCategory(selectedNewsArticle.category);
+                          const cat = selectedNewsArticle.category;
+                          handleCloseArticle();
+                          setSelectedCategory(cat);
                           setSelectedSubcategory(null);
-                          setSelectedNewsArticle(null);
                         }}
                         className="hover:text-[#D4AF37] transition-colors"
                       >
@@ -2704,16 +2622,16 @@ export default function App() {
                       </span>
                     </div>
 
-                    {/* WEBTEKNO MODELİ: YOUTUBE VİDEO VE MEDYA GÖMME (EMBED) ALANI */}
-                    {selectedNewsArticle.youtubeVideoId && (
+                    {/* WEBDEHEPSEEK VİDEO VE MEDYA EMBED ALANI */}
+                    {(selectedNewsArticle.youtubeVideoId || selectedNewsArticle.videoUrl) && (
                       <div className="space-y-2.5 my-6 font-sans">
                         <div className="flex items-center gap-2 text-xs font-bold text-[#D4AF37] uppercase font-mono">
                           <Play size={14} className="fill-[#D4AF37] text-[#D4AF37]" />
-                          <span>Webtekno İnceleme & Video Medya:</span>
+                          <span>WebdeHepSeek Video Analiz</span>
                         </div>
                         <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-zinc-800 shadow-2xl bg-black">
                           <iframe
-                            src={`https://www.youtube-nocookie.com/embed/${selectedNewsArticle.youtubeVideoId}?autoplay=0&rel=0`}
+                            src={`https://www.youtube-nocookie.com/embed/${selectedNewsArticle.youtubeVideoId || 'y9Trz1R1s3M'}?autoplay=0&rel=0`}
                             title={selectedNewsArticle.title}
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowFullScreen
@@ -3122,70 +3040,138 @@ export default function App() {
           </div>
         )}
 
-        {/* TAB 2: 18 CORE CATEGORIES & MEGA NAV */}
+        {/* TAB 2: 18 CORE CATEGORIES FERAH AKORDEON ÇEKMECESİ */}
         {activeTab === 'nav' && (
-          <div className="space-y-8">
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-zinc-800 pb-6">
+          <div className="space-y-6 max-w-5xl mx-auto font-sans">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-zinc-800/80 pb-6">
               <div>
-                <span className="px-3 py-1 bg-[#D4AF37]/15 border border-[#D4AF37] text-[#D4AF37] text-[10px] font-extrabold rounded-full uppercase tracking-widest">
-                  18 Ana Kategori & 180 Alt Başlık
+                <span className="px-3.5 py-1 bg-[#D4AF37]/15 border border-[#D4AF37]/40 text-[#D4AF37] text-[10px] font-extrabold rounded-full uppercase tracking-widest inline-flex items-center gap-1.5">
+                  <LayoutGrid size={12} />
+                  <span>18 Ana Kategori & 180 Alt Başlık</span>
                 </span>
-                <h2 className="text-3xl font-serif font-bold text-white mt-2">
-                  Navigasyon & Yayın Yapısı
+                <h2 className="text-2xl sm:text-3xl font-serif font-bold text-white mt-2">
+                  Kategori & Yayın Çekmecesi
                 </h2>
+                <p className="text-xs text-zinc-400 mt-1 font-sans">
+                  Sektör seçerek 10 alt başlığı ferah bir listede açabilir veya doğrudan ilgili kategori haberlerine ulaşabilirsiniz.
+                </p>
+              </div>
+              <div className="flex items-center gap-2">
+                <button 
+                  onClick={() => setExpandedCategoryNavId(null)} 
+                  className="text-xs text-zinc-400 hover:text-[#D4AF37] border border-zinc-800 bg-[#121215] px-3 py-1.5 rounded-xl font-mono transition-colors"
+                >
+                  Tümünü Kapat
+                </button>
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
-              {SITE_STRUCTURE.map((cat) => (
-                <div 
-                  key={cat.id}
-                  className="bg-[#121215] border border-[#D4AF37]/25 hover:border-[#D4AF37] rounded-2xl overflow-hidden shadow-lg transition-all group flex flex-col justify-between"
-                >
-                  <div>
-                    <div className="p-3.5 bg-zinc-900/80 border-b border-zinc-800 flex items-center justify-between group-hover:bg-[#D4AF37] transition-colors">
-                      <span className="font-bold text-xs uppercase tracking-wide text-zinc-100 group-hover:text-black transition-colors line-clamp-1">
-                        {cat.name}
-                      </span>
-                      {cat.badge && (
-                        <span className="px-1.5 py-0.5 bg-[#D4AF37]/20 text-[#D4AF37] group-hover:bg-black group-hover:text-white text-[9px] font-extrabold rounded uppercase">
-                          {cat.badge}
-                        </span>
-                      )}
-                    </div>
+            <div className="space-y-3">
+              {SITE_STRUCTURE.map((cat, idx) => {
+                const isOpen = expandedCategoryNavId === cat.id;
+                return (
+                  <div 
+                    key={cat.id} 
+                    className="bg-[#121215] border border-zinc-800/90 hover:border-[#D4AF37]/50 rounded-2xl overflow-hidden transition-all duration-300 shadow-md"
+                  >
+                    {/* Akordeon Başlık / Satır */}
+                    <div 
+                      onClick={() => setExpandedCategoryNavId(isOpen ? null : cat.id)}
+                      className="p-4 sm:p-5 cursor-pointer flex items-center justify-between gap-4 hover:bg-zinc-900/60 transition-colors"
+                    >
+                      <div className="flex items-center gap-3.5 min-w-0">
+                        <div className="w-9 h-9 rounded-xl bg-[#0B0B0C] border border-[#D4AF37]/40 text-[#D4AF37] font-serif font-extrabold flex items-center justify-center text-xs sm:text-sm shrink-0 shadow-sm">
+                          {idx + 1}
+                        </div>
+                        <div className="min-w-0">
+                          <div className="flex items-center gap-2 flex-wrap">
+                            <h3 className="text-sm sm:text-base font-serif font-bold text-white tracking-tight hover:text-[#D4AF37] transition-colors">
+                              {cat.name}
+                            </h3>
+                            {cat.badge && (
+                              <span className="px-2 py-0.5 bg-[#D4AF37]/20 text-[#D4AF37] border border-[#D4AF37]/30 text-[9px] font-extrabold rounded uppercase font-mono">
+                                {cat.badge}
+                              </span>
+                            )}
+                          </div>
+                          <span className="text-[11px] text-zinc-500 font-mono block mt-0.5">
+                            10 Özel Alt Başlık & Detaylı Analizler
+                          </span>
+                        </div>
+                      </div>
 
-                    <div className="p-3.5 space-y-1.5">
-                      {cat.subcategories.map((sub) => (
-                        <div 
-                          key={sub} 
-                          onClick={() => {
+                      <div className="flex items-center gap-3 shrink-0">
+                        <button 
+                          onClick={(e) => {
+                            e.stopPropagation();
                             setSelectedCategory(cat.name);
-                            setSelectedSubcategory(sub);
+                            setSelectedSubcategory(null);
                             setActiveTab('news');
                           }}
-                          className="flex items-center justify-between text-xs text-zinc-400 hover:text-[#D4AF37] cursor-pointer transition-colors p-1 rounded hover:bg-zinc-900/60"
+                          className="px-3 py-1.5 bg-[#0B0B0C] border border-[#D4AF37]/40 text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black text-xs font-bold rounded-xl transition-all hidden sm:flex items-center gap-1 uppercase font-mono"
                         >
-                          <span className="truncate max-w-[170px]">{sub}</span>
-                          <ChevronRight size={10} className="text-[#D4AF37]" />
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+                          <span>Akışı Gör</span>
+                          <ChevronRight size={12} />
+                        </button>
 
-                  <div className="p-2.5 bg-zinc-950 border-t border-zinc-800 text-center">
-                    <button 
-                      onClick={() => {
-                        setSelectedCategory(cat.name);
-                        setSelectedSubcategory(null);
-                        setActiveTab('news');
-                      }}
-                      className="text-[10px] font-bold text-[#D4AF37] hover:underline"
-                    >
-                      Haberlerini Gör
-                    </button>
+                        <div className="w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center text-zinc-400 group-hover:text-[#D4AF37] transition-colors">
+                          {isOpen ? <ChevronUp size={18} className="text-[#D4AF37]" /> : <ChevronDown size={18} />}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Akordeon Açılır İçerik (Alt Başlıklar) */}
+                    <AnimatePresence>
+                      {isOpen && (
+                        <motion.div 
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: 'auto' }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.2 }}
+                          className="border-t border-zinc-800/80 bg-[#0B0B0C]/90 p-4 sm:p-5 space-y-4"
+                        >
+                          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-2.5">
+                            {cat.subcategories.map((sub) => (
+                              <div 
+                                key={sub}
+                                onClick={() => {
+                                  setSelectedCategory(cat.name);
+                                  setSelectedSubcategory(sub);
+                                  setActiveTab('news');
+                                }}
+                                className="p-3 bg-[#121215] border border-zinc-800/90 hover:border-[#D4AF37] rounded-xl flex items-center justify-between text-xs text-zinc-300 hover:text-[#D4AF37] cursor-pointer transition-all group"
+                              >
+                                <span className="font-medium truncate">{sub}</span>
+                                <span className="text-[10px] font-mono text-[#D4AF37] opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1 shrink-0">
+                                  <span>Gör</span>
+                                  <ChevronRight size={10} />
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+
+                          <div className="pt-3 border-t border-zinc-800/60 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
+                            <span className="text-zinc-500 font-mono text-[11px]">
+                              WebdeHepSeek • {cat.name} Sektör Portföyü
+                            </span>
+                            <button 
+                              onClick={() => {
+                                setSelectedCategory(cat.name);
+                                setSelectedSubcategory(null);
+                                setActiveTab('news');
+                              }}
+                              className="text-[#D4AF37] hover:underline font-bold text-xs flex items-center gap-1"
+                            >
+                              <span>Tüm {cat.name} Haberlerini Filtrele</span>
+                              <ChevronRight size={12} />
+                            </button>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         )}
@@ -3543,7 +3529,7 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
 
       {/* Sticky Cookie Consent Banner */}
       {!cookieConsentAccepted && (
-        <div className="fixed bottom-14 sm:bottom-0 inset-x-0 z-50 bg-[#121215] border-t-2 border-[#D4AF37] p-4 shadow-2xl backdrop-blur-xl">
+        <div className="fixed bottom-0 inset-x-0 z-50 bg-[#121215] border-t-2 border-[#D4AF37] p-4 shadow-2xl backdrop-blur-xl">
           <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
             <div className="text-zinc-300 space-y-1">
               <span className="font-bold text-white flex items-center gap-2">
@@ -3873,7 +3859,7 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
       </footer>
 
       {/* Sticky Bottom Anchor Banner (ShiftDelete Style) */}
-      <StickyAnchorBanner />
+      <StickyAnchorBanner isCookieConsentVisible={!cookieConsentAccepted} />
 
     </div>
   );
