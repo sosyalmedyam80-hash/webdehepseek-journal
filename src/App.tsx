@@ -654,9 +654,9 @@ export default function App() {
   // Reader Profile & Auth Modal
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
   const [userProfile, setUserProfile] = useState<{ name: string; email: string; role: string; badge: string; isLoggedIn: boolean }>({
-    name: 'Ahmet Karadağ',
+    name: 'Yönetici',
     email: 'iletisim@webdehepseek.com',
-    role: 'Kurucu & Genel Yayın Yönetmeni (Founder & Owner)',
+    role: 'WebdeHepSeek Yayın Kurulu & Yönetici',
     badge: 'Doğrulanmış Yönetici',
     isLoggedIn: true
   });
@@ -1589,8 +1589,8 @@ export default function App() {
         date: "Az Önce (Otonom)",
         imageUrl: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=800&q=80",
         readTime: "3 dk",
-        author: "Ahmet Karadağ & Analitik Heyeti",
-        authorTitle: "Kurucu & Genel Yayın Yönetmeni",
+        author: "Ekonomi & Piyasa Masası",
+        authorTitle: "Makro Finans & Analiz Servisi",
         verifiedSource: true,
         sentiment: "Boğa 🐂",
         executiveSummary: "Küresel sermaye girişlerinin hızlanması ve faiz indirim döngüsünün derinleşmesiyle borsalarda yeni bir boğa rallisi tetiklenmektedir.",
@@ -1609,7 +1609,7 @@ export default function App() {
           {
             id: "sec-3",
             heading: "3. Makro Regülatör Sinyalleri ve Stratejik Konumlanma",
-            body: "Kurucu Ahmet Karadağ liderliğindeki Analitik Heyetimiz, yatırımcıların likit kalma oranlarını optimize ederek trendi izlemelerini önermektedir."
+            body: "WebdeHepSeek Ekonomi & Piyasa Masası Analitik Heyetimiz, yatırımcıların likit kalma oranlarını optimize ederek trendi izlemelerini önermektedir."
           }
         ]
       };
@@ -1883,16 +1883,14 @@ export default function App() {
                 )}
               </div>
 
-              {/* Ahmet Karadağ Badge / Reader Profile */}
+              {/* Manager & Reader Profile Badge */}
               <button
                 onClick={() => setIsProfileModalOpen(true)}
-                className="flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-bold bg-[#D4AF37] text-black hover:brightness-110 transition-all shadow-md"
-                title="Okur Profili & Yönetici"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-[#D4AF37] text-black hover:brightness-110 transition-all shadow-md"
+                title="Yönetici & Okur Profili"
               >
-                <div className="w-5 h-5 rounded-full bg-black text-[#D4AF37] font-serif font-black flex items-center justify-center text-[10px]">
-                  A
-                </div>
-                <span className="hidden sm:inline font-bold">{userProfile.name}</span>
+                <User size={15} className="text-black shrink-0" />
+                <span className="hidden sm:inline font-bold">Yönetici</span>
                 <span className="text-[9px] bg-black/20 text-black px-1.5 py-0.5 rounded font-mono font-bold hidden md:inline">
                   Doğrulanmış
                 </span>
@@ -3723,10 +3721,10 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
                   <X size={20} />
                 </button>
               </div>
-              <div className="text-xs text-zinc-300 leading-relaxed space-y-3 font-sans max-h-80 overflow-y-auto pr-2">
-                <p>{LEGAL_DOCUMENTS[activeLegalModal].content}</p>
-                <p>
-                  WebdeHepSeeK ekosisteminde KVKK 6698 uyarınca veri sahipleri haklarını diledikleri zaman kullanabilirler.
+              <div className="text-xs text-zinc-300 leading-relaxed space-y-3 font-sans max-h-96 overflow-y-auto pr-2">
+                <div className="whitespace-pre-line leading-relaxed text-zinc-300 font-sans">{LEGAL_DOCUMENTS[activeLegalModal].content}</div>
+                <p className="text-[11px] text-zinc-400 pt-2 border-t border-zinc-800">
+                  WebdeHepSeek ekosisteminde KVKK 6698 uyarınca veri sahipleri haklarını iletisim@webdehepseek.com üzerinden diledikleri zaman kullanabilirler.
                 </p>
               </div>
               <div className="pt-3 border-t border-zinc-800 text-right">

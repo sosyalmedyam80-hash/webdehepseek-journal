@@ -343,6 +343,17 @@ def run_news_factory():
         ("TIER_3", "AI Araç Rehberi", "AI Araçları & İpuçları")
     ]
 
+    def get_editorial_author(category_name):
+        c = category_name.lower()
+        if any(k in c for k in ["teknoloji", "ai", "yapay zeka", "saas", "siber", "yazılım"]):
+            return "Teknoloji Servisi", "Teknoloji & AI Yayın Masası"
+        elif any(k in c for k in ["finans", "kripto", "piyasa", "borsa", "ekonomi", "yatırım", "emlak"]):
+            return "Ekonomi & Piyasa Masası", "Makro Finans & Analiz Servisi"
+        elif any(k in c for k in ["otomotiv", "mobilite", "savunma", "lojistik"]):
+            return "Mobilite & Strateji Servisi", "Otomotiv & Sektör Analiz Servisi"
+        else:
+            return "WebdeHepSeek Haber Merkezi", "Editoryal Yayın Kurulu"
+
     article_index = 1
 
     # Generate weighted articles pool
@@ -353,6 +364,7 @@ def run_news_factory():
         for k in range(count_for_cat):
             tr_title, summary, full_content, content_sections = generate_algorithmic_content(tier_target, cat_target, subcat_target, article_index)
             img = CATEGORY_IMAGES.get(cat_target, CATEGORY_IMAGES["Teknoloji & Dijital Dönüşüm"])
+            author_name, author_title = get_editorial_author(cat_target)
 
             art_obj = {
                 "id": f"whs-{article_index}",
@@ -363,8 +375,8 @@ def run_news_factory():
                 "subcategory": subcat_target,
                 "content": full_content,
                 "sections": content_sections,
-                "author": "Ahmet Karadağ & Algoritmik Yayın Grubu",
-                "authorTitle": "Kurucu & Baş Editör",
+                "author": author_name,
+                "authorTitle": author_title,
                 "date": today_str,
                 "readTime": "4 dk" if tier_target == "TIER_1" else "3 dk",
                 "imageUrl": img,

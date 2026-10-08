@@ -596,8 +596,8 @@ export const MOCK_NEWS: NewsItem[] = [
     "date": "7 Ekim 2026",
     "imageUrl": "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1600&q=80",
     "readTime": "6 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
+    "author": "WebdeHepSeek Haber Merkezi",
+    "authorTitle": "Editoryal Yayın Kurulu",
     "verifiedSource": true,
     "isEditorsChoice": true,
     "sentiment": "Boğa 🐂",
@@ -626,8 +626,8 @@ export const MOCK_NEWS: NewsItem[] = [
     "date": "7 Ekim 2026",
     "imageUrl": "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=1200&q=80",
     "readTime": "5 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
+    "author": "WebdeHepSeek Haber Merkezi",
+    "authorTitle": "Editoryal Yayın Kurulu",
     "verifiedSource": true,
     "sentiment": "Boğa 🐂",
     "canonicalUrl": "https://webdehepseek.com/haber/NEWS-02",
@@ -675,8 +675,8 @@ export const MOCK_NEWS: NewsItem[] = [
     "date": "7 Ekim 2026",
     "imageUrl": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=80",
     "readTime": "6 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
+    "author": "WebdeHepSeek Haber Merkezi",
+    "authorTitle": "Editoryal Yayın Kurulu",
     "verifiedSource": true,
     "isEditorsChoice": true,
     "sentiment": "Boğa 🐂",
@@ -698,8 +698,8 @@ export const MOCK_NEWS: NewsItem[] = [
     "date": "7 Ekim 2026",
     "imageUrl": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
     "readTime": "5 dk",
-    "author": "Ahmet Karadağ & Teknoloji Masası",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
+    "author": "Teknoloji Servisi",
+    "authorTitle": "Editoryal Yayın Kurulu",
     "verifiedSource": true,
     "sentiment": "Boğa 🐂",
     "canonicalUrl": "https://webdehepseek.com/haber/NEWS-05",
@@ -742,8 +742,8 @@ export const MOCK_NEWS: NewsItem[] = [
     "date": "7 Ekim 2026",
     "imageUrl": "https://images.unsplash.com/photo-1518546305927-5a555bb7020d?auto=format&fit=crop&w=1200&q=80",
     "readTime": "6 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
+    "author": "WebdeHepSeek Haber Merkezi",
+    "authorTitle": "Editoryal Yayın Kurulu",
     "verifiedSource": true,
     "isEditorsChoice": true,
     "sentiment": "Boğa 🐂",
@@ -787,8 +787,8 @@ export const MOCK_NEWS: NewsItem[] = [
     "date": "7 Ekim 2026",
     "imageUrl": "https://images.unsplash.com/photo-1642543492481-44e81e3914a7?auto=format&fit=crop&w=1200&q=80",
     "readTime": "4 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
+    "author": "WebdeHepSeek Haber Merkezi",
+    "authorTitle": "Editoryal Yayın Kurulu",
     "verifiedSource": true,
     "sentiment": "Boğa 🐂",
     "canonicalUrl": "https://webdehepseek.com/haber/NEWS-09",
@@ -809,8 +809,8 @@ export const MOCK_NEWS: NewsItem[] = [
     "date": "7 Ekim 2026",
     "imageUrl": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80",
     "readTime": "5 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
+    "author": "WebdeHepSeek Haber Merkezi",
+    "authorTitle": "Editoryal Yayın Kurulu",
     "verifiedSource": true,
     "isEditorsChoice": true,
     "sentiment": "Boğa 🐂",
@@ -854,8 +854,8 @@ export const MOCK_NEWS: NewsItem[] = [
     "date": "7 Ekim 2026",
     "imageUrl": "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1200&q=80",
     "readTime": "5 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
+    "author": "WebdeHepSeek Haber Merkezi",
+    "authorTitle": "Editoryal Yayın Kurulu",
     "verifiedSource": true,
     "sentiment": "Boğa 🐂",
     "canonicalUrl": "https://webdehepseek.com/haber/NEWS-12",
@@ -876,8 +876,8 @@ export const MOCK_NEWS: NewsItem[] = [
     "date": "7 Ekim 2026",
     "imageUrl": "https://images.unsplash.com/photo-1517976487492-5750f3195933?auto=format&fit=crop&w=1200&q=80",
     "readTime": "5 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
+    "author": "WebdeHepSeek Haber Merkezi",
+    "authorTitle": "Editoryal Yayın Kurulu",
     "verifiedSource": true,
     "isEditorsChoice": true,
     "sentiment": "Boğa 🐂",
@@ -921,8 +921,8 @@ export const MOCK_NEWS: NewsItem[] = [
     "date": "7 Ekim 2026",
     "imageUrl": "https://images.unsplash.com/photo-1575517111478-7f6afd0973db?auto=format&fit=crop&w=1200&q=80",
     "readTime": "4 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
+    "author": "WebdeHepSeek Haber Merkezi",
+    "authorTitle": "Editoryal Yayın Kurulu",
     "verifiedSource": true,
     "sentiment": "Nötr ⚖️",
     "canonicalUrl": "https://webdehepseek.com/haber/NEWS-15",
@@ -943,8 +943,8 @@ export const MOCK_NEWS: NewsItem[] = [
     "date": "7 Ekim 2026",
     "imageUrl": "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=1200&q=80",
     "readTime": "5 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
+    "author": "WebdeHepSeek Haber Merkezi",
+    "authorTitle": "Editoryal Yayın Kurulu",
     "verifiedSource": true,
     "sentiment": "Boğa 🐂",
     "canonicalUrl": "https://webdehepseek.com/haber/NEWS-16",
@@ -987,8 +987,8 @@ export const MOCK_NEWS: NewsItem[] = [
     "date": "7 Ekim 2026",
     "imageUrl": "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=1200&q=80",
     "readTime": "4 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
+    "author": "WebdeHepSeek Haber Merkezi",
+    "authorTitle": "Editoryal Yayın Kurulu",
     "verifiedSource": true,
     "sentiment": "Nötr ⚖️",
     "canonicalUrl": "https://webdehepseek.com/haber/NEWS-18",
@@ -1009,8 +1009,8 @@ export const MOCK_NEWS: NewsItem[] = [
     "date": "7 Ekim 2026",
     "imageUrl": "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80",
     "readTime": "5 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
+    "author": "WebdeHepSeek Haber Merkezi",
+    "authorTitle": "Editoryal Yayın Kurulu",
     "verifiedSource": true,
     "sentiment": "Boğa 🐂",
     "canonicalUrl": "https://webdehepseek.com/haber/NEWS-19",
@@ -1053,8 +1053,8 @@ export const MOCK_NEWS: NewsItem[] = [
     "date": "7 Ekim 2026",
     "imageUrl": "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=80",
     "readTime": "4 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
+    "author": "WebdeHepSeek Haber Merkezi",
+    "authorTitle": "Editoryal Yayın Kurulu",
     "verifiedSource": true,
     "sentiment": "Boğa 🐂",
     "canonicalUrl": "https://webdehepseek.com/haber/NEWS-21",
@@ -1075,8 +1075,8 @@ export const MOCK_NEWS: NewsItem[] = [
     "date": "7 Ekim 2026",
     "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80",
     "readTime": "5 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
+    "author": "WebdeHepSeek Haber Merkezi",
+    "authorTitle": "Editoryal Yayın Kurulu",
     "verifiedSource": true,
     "isEditorsChoice": true,
     "sentiment": "Boğa 🐂",
@@ -1120,8 +1120,8 @@ export const MOCK_NEWS: NewsItem[] = [
     "date": "7 Ekim 2026",
     "imageUrl": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
     "readTime": "4 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
+    "author": "WebdeHepSeek Haber Merkezi",
+    "authorTitle": "Editoryal Yayın Kurulu",
     "verifiedSource": true,
     "sentiment": "Boğa 🐂",
     "canonicalUrl": "https://webdehepseek.com/haber/NEWS-24",
@@ -1142,8 +1142,8 @@ export const MOCK_NEWS: NewsItem[] = [
     "date": "7 Ekim 2026",
     "imageUrl": "https://images.unsplash.com/photo-1510017803434-a899398421b3?auto=format&fit=crop&w=1200&q=80",
     "readTime": "5 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
+    "author": "WebdeHepSeek Haber Merkezi",
+    "authorTitle": "Editoryal Yayın Kurulu",
     "verifiedSource": true,
     "sentiment": "Boğa 🐂",
     "canonicalUrl": "https://webdehepseek.com/haber/NEWS-25",
@@ -1186,8 +1186,8 @@ export const MOCK_NEWS: NewsItem[] = [
     "date": "7 Ekim 2026",
     "imageUrl": "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1200&q=80",
     "readTime": "4 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
+    "author": "WebdeHepSeek Haber Merkezi",
+    "authorTitle": "Editoryal Yayın Kurulu",
     "verifiedSource": true,
     "sentiment": "Nötr ⚖️",
     "canonicalUrl": "https://webdehepseek.com/haber/NEWS-27",
@@ -1208,8 +1208,8 @@ export const MOCK_NEWS: NewsItem[] = [
     "date": "7 Ekim 2026",
     "imageUrl": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=1200&q=80",
     "readTime": "5 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
+    "author": "WebdeHepSeek Haber Merkezi",
+    "authorTitle": "Editoryal Yayın Kurulu",
     "verifiedSource": true,
     "isEditorsChoice": true,
     "sentiment": "Boğa 🐂",
@@ -1253,8 +1253,8 @@ export const MOCK_NEWS: NewsItem[] = [
     "date": "7 Ekim 2026",
     "imageUrl": "https://images.unsplash.com/photo-1592478411213-6153e4ebc07d?auto=format&fit=crop&w=1200&q=80",
     "readTime": "4 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
+    "author": "WebdeHepSeek Haber Merkezi",
+    "authorTitle": "Editoryal Yayın Kurulu",
     "verifiedSource": true,
     "sentiment": "Boğa 🐂",
     "canonicalUrl": "https://webdehepseek.com/haber/NEWS-30",
@@ -1275,8 +1275,8 @@ export const MOCK_NEWS: NewsItem[] = [
     "date": "7 Ekim 2026",
     "imageUrl": "https://images.unsplash.com/photo-1517976487492-5750f3195933?auto=format&fit=crop&w=1200&q=80",
     "readTime": "6 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
+    "author": "WebdeHepSeek Haber Merkezi",
+    "authorTitle": "Editoryal Yayın Kurulu",
     "verifiedSource": true,
     "isEditorsChoice": true,
     "sentiment": "Boğa 🐂",
@@ -1320,8 +1320,8 @@ export const MOCK_NEWS: NewsItem[] = [
     "date": "7 Ekim 2026",
     "imageUrl": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
     "readTime": "5 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
+    "author": "WebdeHepSeek Haber Merkezi",
+    "authorTitle": "Editoryal Yayın Kurulu",
     "verifiedSource": true,
     "sentiment": "Boğa 🐂",
     "canonicalUrl": "https://webdehepseek.com/haber/NEWS-33",
@@ -1342,8 +1342,8 @@ export const MOCK_NEWS: NewsItem[] = [
     "date": "7 Ekim 2026",
     "imageUrl": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80",
     "readTime": "5 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
+    "author": "WebdeHepSeek Haber Merkezi",
+    "authorTitle": "Editoryal Yayın Kurulu",
     "verifiedSource": true,
     "isEditorsChoice": true,
     "sentiment": "Boğa 🐂",
@@ -1387,8 +1387,8 @@ export const MOCK_NEWS: NewsItem[] = [
     "date": "7 Ekim 2026",
     "imageUrl": "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1200&q=80",
     "readTime": "4 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
+    "author": "WebdeHepSeek Haber Merkezi",
+    "authorTitle": "Editoryal Yayın Kurulu",
     "verifiedSource": true,
     "sentiment": "Nötr ⚖️",
     "canonicalUrl": "https://webdehepseek.com/haber/NEWS-36",
@@ -1409,8 +1409,8 @@ export const MOCK_NEWS: NewsItem[] = [
     "date": "7 Ekim 2026",
     "imageUrl": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80",
     "readTime": "5 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
+    "author": "WebdeHepSeek Haber Merkezi",
+    "authorTitle": "Editoryal Yayın Kurulu",
     "verifiedSource": true,
     "isEditorsChoice": true,
     "sentiment": "Boğa 🐂",
@@ -1454,8 +1454,8 @@ export const MOCK_NEWS: NewsItem[] = [
     "date": "7 Ekim 2026",
     "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80",
     "readTime": "4 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
+    "author": "WebdeHepSeek Haber Merkezi",
+    "authorTitle": "Editoryal Yayın Kurulu",
     "verifiedSource": true,
     "sentiment": "Boğa 🐂",
     "canonicalUrl": "https://webdehepseek.com/haber/NEWS-39",
@@ -1476,8 +1476,8 @@ export const MOCK_NEWS: NewsItem[] = [
     "date": "7 Ekim 2026",
     "imageUrl": "https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=1200&q=80",
     "readTime": "5 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
+    "author": "WebdeHepSeek Haber Merkezi",
+    "authorTitle": "Editoryal Yayın Kurulu",
     "verifiedSource": true,
     "isEditorsChoice": true,
     "sentiment": "Boğa 🐂",
@@ -1521,8 +1521,8 @@ export const MOCK_NEWS: NewsItem[] = [
     "date": "7 Ekim 2026",
     "imageUrl": "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=1200&q=80",
     "readTime": "4 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
+    "author": "WebdeHepSeek Haber Merkezi",
+    "authorTitle": "Editoryal Yayın Kurulu",
     "verifiedSource": true,
     "sentiment": "Boğa 🐂",
     "canonicalUrl": "https://webdehepseek.com/haber/NEWS-42",
@@ -1543,8 +1543,8 @@ export const MOCK_NEWS: NewsItem[] = [
     "date": "7 Ekim 2026",
     "imageUrl": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
     "readTime": "5 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
+    "author": "WebdeHepSeek Haber Merkezi",
+    "authorTitle": "Editoryal Yayın Kurulu",
     "verifiedSource": true,
     "isEditorsChoice": true,
     "sentiment": "Boğa 🐂",
@@ -1588,8 +1588,8 @@ export const MOCK_NEWS: NewsItem[] = [
     "date": "7 Ekim 2026",
     "imageUrl": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80",
     "readTime": "4 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
+    "author": "WebdeHepSeek Haber Merkezi",
+    "authorTitle": "Editoryal Yayın Kurulu",
     "verifiedSource": true,
     "sentiment": "Boğa 🐂",
     "canonicalUrl": "https://webdehepseek.com/haber/NEWS-45",
@@ -1610,8 +1610,8 @@ export const MOCK_NEWS: NewsItem[] = [
     "date": "7 Ekim 2026",
     "imageUrl": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1200&q=80",
     "readTime": "5 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
+    "author": "WebdeHepSeek Haber Merkezi",
+    "authorTitle": "Editoryal Yayın Kurulu",
     "verifiedSource": true,
     "isEditorsChoice": true,
     "sentiment": "Boğa 🐂",
@@ -1655,8 +1655,8 @@ export const MOCK_NEWS: NewsItem[] = [
     "date": "7 Ekim 2026",
     "imageUrl": "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1200&q=80",
     "readTime": "4 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
+    "author": "WebdeHepSeek Haber Merkezi",
+    "authorTitle": "Editoryal Yayın Kurulu",
     "verifiedSource": true,
     "sentiment": "Nötr ⚖️",
     "canonicalUrl": "https://webdehepseek.com/haber/NEWS-48",
@@ -1677,8 +1677,8 @@ export const MOCK_NEWS: NewsItem[] = [
     "date": "7 Ekim 2026",
     "imageUrl": "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80",
     "readTime": "5 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
+    "author": "WebdeHepSeek Haber Merkezi",
+    "authorTitle": "Editoryal Yayın Kurulu",
     "verifiedSource": true,
     "isEditorsChoice": true,
     "sentiment": "Boğa 🐂",
@@ -1722,8 +1722,8 @@ export const MOCK_NEWS: NewsItem[] = [
     "date": "7 Ekim 2026",
     "imageUrl": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80",
     "readTime": "4 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
+    "author": "WebdeHepSeek Haber Merkezi",
+    "authorTitle": "Editoryal Yayın Kurulu",
     "verifiedSource": true,
     "sentiment": "Boğa 🐂",
     "canonicalUrl": "https://webdehepseek.com/haber/NEWS-51",
@@ -1744,8 +1744,8 @@ export const MOCK_NEWS: NewsItem[] = [
     "date": "7 Ekim 2026",
     "imageUrl": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1200&q=80",
     "readTime": "5 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
+    "author": "WebdeHepSeek Haber Merkezi",
+    "authorTitle": "Editoryal Yayın Kurulu",
     "verifiedSource": true,
     "isEditorsChoice": true,
     "sentiment": "Boğa 🐂",
@@ -1789,8 +1789,8 @@ export const MOCK_NEWS: NewsItem[] = [
     "date": "7 Ekim 2026",
     "imageUrl": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80",
     "readTime": "5 dk",
-    "author": "Ahmet Karadağ",
-    "authorTitle": "Kurucu & Genel Yayın Yönetmeni",
+    "author": "WebdeHepSeek Haber Merkezi",
+    "authorTitle": "Editoryal Yayın Kurulu",
     "verifiedSource": true,
     "sentiment": "Boğa 🐂",
     "canonicalUrl": "https://webdehepseek.com/haber/NEWS-54",
@@ -1806,19 +1806,78 @@ export const MOCK_NEWS: NewsItem[] = [
 
 export const LEGAL_DOCUMENTS = {
   kvkk: {
-    title: "KVKK Aydınlatma Metni",
-    content: "WebdeHepSeeK Journal (6698 Sayılı Kişisel Verilerin Korunması Kanunu uyarınca), kullanıcılarımızın kişisel verilerinin gizliliğini korumayı en üst düzey ilke olarak benimser. Sitemizi ziyaretiniz sırasında elde edilen log kayıtları ve kullanıcı tercihleri yalnızca hizmet kalitesini artırmak amacıyla işlenir."
+    title: "KVKK Aydınlatma Metni (6698 Sayılı Kanun)",
+    content: `WebdeHepSeek Journal ("Platform"), 6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK") m. 10 uyarınca veri sahiplerini bilgilendirmektedir.
+
+Veri Sorumlusu: Ahmet Karadağ (WebdeHepSeek Yayın Grubu - İletişim: iletisim@webdehepseek.com)
+
+1. Toplanan Kişisel Veriler ve İşleme Amaçları
+Platformumuz, ziyaretçilerin gezinme deneyimini geliştirmek, içerik kalitesini optimize etmek ve yasal yükümlülükleri yerine getirmek amacıyla sınırlı kişisel verileri işlemektedir:
+* Analitik ve Trafik Verileri: Google Analytics 4 altyapısı aracılığıyla IP adresiniz anonimleştirilerek; tarayıcı türünüz, cihaz modeliniz, ziyaret ettiğiniz haber sayfaları ve sitede kalma süreniz istatistiki amaçlarla kaydedilir.
+* İletişim ve Bülten Verileri: E-posta bültenimize abone olduğunuzda veya basın bülteni gönderdiğinizde ilettiğiniz e-posta adresi ve ad-soyad bilgileri, yalnızca onay verdiğiniz bültenlerin iletimi amacıyla saklanır; üçüncü şahıslarla paylaşılmaz veya satılmaz.
+
+2. Kişisel Verilerin Aktarılması
+Kişisel verileriniz, kanunen yetkili kamu kurum ve kuruluşları hariç olmak üzere üçüncü şahıslara satılamaz, kiralanamaz veya ticari amaçla paylaşılamaz. Sunucu altyapısı ve e-posta gönderim hizmeti sağlayıcıları ile veri güvenliği protokollerine uygun olarak çalışılmaktadır.
+
+3. KVKK Kapsamındaki Haklarınız
+6698 sayılı KVKK'nın 11. maddesi uyarınca veri sahipleri; kişisel verilerinin işlenip işlenmediğini öğrenme, işlenmişse buna ilişkin bilgi talep etme, verilerin düzeltilmesini veya silinmesini isteme ve aleyhine bir sonucun ortaya çıkmasına itiraz etme haklarına sahiptir.
+Başvurularınızı iletisim@webdehepseek.com adresine iletebilirsiniz.`
   },
   privacy: {
-    title: "Gizlilik Politikası",
-    content: "İşbu Gizlilik Politikası, WebdeHepSeeK platformu üzerinden toplanan verilerin nasıl kullanıldığını, saklandığını ve korunduğunu açıklamaktadır. Verileriniz üçüncü şahıslarla asla satılmaz veya rızanız olmadan paylaşılmaz."
+    title: "Gizlilik ve Çerez Politikası (KVKK / GDPR / AdSense)",
+    content: `WebdeHepSeek Journal — Gizlilik ve Çerez Politikası
+
+Son Güncelleme: 8 Ekim 2026
+Veri Sorumlusu: Ahmet Karadağ (WebdeHepSeek Yayın Grubu)
+İletişim: iletisim@webdehepseek.com
+
+WebdeHepSeek Journal ("Platform"), ziyaretçilerinin kişisel verilerinin gizliliğine, 6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK") ve Avrupa Birliği Genel Veri Koruma Tüzüğü ("GDPR") ilkelerine azami özen göstermektedir. Bu metin, platformumuzu ziyaret ettiğinizde toplanan verilerin mahiyetini, kullanım amaçlarını ve çerez politikamızı açıklamaktadır.
+
+1. Toplanan Kişisel Veriler ve Toplama Amaçları
+Platformumuz, ziyaretçilerin gezinme deneyimini geliştirmek, içerik kalitesini optimize etmek ve yasal yükümlülükleri yerine getirmek amacıyla sınırlı kişisel verileri işlemektedir:
+* Analitik ve Trafik Verileri: Google Analytics 4 altyapısı aracılığıyla IP adresiniz anonimleştirilerek; tarayıcı türünüz, cihaz modeliniz, ziyaret ettiğiniz haber sayfaları ve sitede kalma süreniz istatistiki amaçlarla kaydedilir.
+* İletişim ve Bülten Verileri: E-posta bültenimize abone olduğunuzda veya basın bülteni gönderdiğinizde ilettiğiniz e-posta adresi ve ad-soyad bilgileri, yalnızca onay verdiğiniz bültenlerin iletimi amacıyla saklanır; üçüncü şahıslarla paylaşılmaz veya satılmaz.
+
+2. Çerez (Cookie) Kullanımı ve Türleri
+Sitemizde sunulan yayıncılık hizmetlerinin kesintisiz işlemesi ve kişiselleştirilmiş reklam/içerik sunumu için çerezler kullanılmaktadır:
+* Zorunlu Çerezler: Sitenin temel fonksiyonlarının (oturum açma, çerez tercihlerini saklama) çalışması için şarttır.
+* Analitik Çerezler: Ziyaretçi davranışlarını analiz ederek en çok okunan haber kategorilerini ve kullanıcı etkileşimini tespit etmemizi sağlar.
+* Pazarlama ve AdSense Çerezleri: Google AdSense ve yetkili reklam ortaklarımız tarafından, ilgi alanlarınıza uygun kişiselleştirilmiş reklamlar sunmak amacıyla üçüncü taraf çerezleri kullanılır.
+
+3. Google AdSense ve Üçüncü Taraf Reklamcılık
+* Üçüncü taraf satıcı olarak Google, sitemizde reklam yayınlamak için çerezlerden yararlanır.
+* Google'ın DART çerezlerini kullanması, sitemize ve İnternet'teki diğer sitelere yaptığınız ziyaretlere dayalı olarak reklamlar sunmasını sağlar.
+* Ziyaretçiler, Google Reklam ve İçerik Ağı Gizlilik Politikası sayfasını ziyaret ederek DART çerezinin kullanımını devre dışı bırakabilirler.
+
+4. KVKK / GDPR Kapsamındaki Haklarınız
+6698 sayılı KVKK'nın 11. maddesi uyarınca veri sahipleri; kişisel verilerinin işlenip işlenmediğini öğrenme, işlenmişse bilgi talep etme, verilerin düzeltilmesini veya silinmesini isteme haklarına sahiptir. Tüm taleplerinizi iletisim@webdehepseek.com e-posta adresine iletebilirsiniz.`
   },
   terms: {
-    title: "Kullanım Koşulları",
-    content: "WebdeHepSeeK platformunda yayınlanan tüm haberler, borsa verileri, analizler ve telif hakkına tabi materyaller kaynak gösterilerek dahi izinsiz ticari amaçla kullanılamaz."
+    title: "Kullanım Koşulları ve Yayın Hakları",
+    content: `WebdeHepSeek Journal Yayın Hakları ve Kullanım Şartları
+
+1. Yayın Etiği ve Telif Hakları
+WebdeHepSeek platformunda yayınlanan tüm özel analizler, grafikler, finans yorumları, otonom haber akışları ve editoryal içerikler 5846 Sayılı Fikir ve Sanat Eserleri Kanunu ile uluslararası telif hakları antlaşmaları uyarınca koruma altındadır.
+
+2. İçerik Alıntılama Kuralları
+Haber ve analizlerimiz, aktif hiperlink (Backlink) verilerek ve "WebdeHepSeek" kaynak gösterilerek makul seviyede alıntılanabilir. İçeriğin tamamının izinsiz kopyalanması, otomatik botlarla çekilmesi veya ticari amaçla dağıtılması yasaktır.
+
+3. Yatırım Tavsiyesi Muafiyeti (Disclaimer)
+Sitemizde yer alan finansal analizler, kripto varlık değerlendirmeleri, piyasa indeksleri ve hisse senedi yorumları hiçbir şekilde "Yatırım Tavsiyesi" (YTD) niteliğinde değildir. Yatırım kararlarınızı yetkili lisanslı yatırım danışmanlarına danışarak almanız gerekmektedir.
+
+4. Sorumluluk Sınırı
+Platformumuz, üçüncü taraf kaynaklardan veya otonom veri akışlarından elde edilen bilgilerin anlık doğruluğunu garanti etmekle birlikte, doğrudan ya da dolaylı olarak doğabilecek maddi/manevi zararlardan sorumlu tutulamaz.`
   },
   cookies: {
-    title: "Çerez (Cookie) Politikası",
-    content: "Sitemizde kullanıcı tecrübesini optimize etmek, oturum yönetimi sağlamak ve anonim istatistiksel analizler yürütmek amacıyla zorunlu ve analitik çerezler kullanılmaktadır."
+    title: "Çerez (Cookie) Aydınlatma Bildirimi",
+    content: `WebdeHepSeek Çerez Aydınlatma Bildirimi
+
+Sitemizi ziyaret ettiğinizde cihazınıza yerleştirilen çerezler (cookies), daha hızlı ve güvenli bir kullanıcı deneyimi sunabilmek amacıyla kullanılmaktadır.
+
+Çerez Yönetimi:
+Tarayıcınızın ayarlar menüsünden çerezleri istediğiniz zaman engelleyebilir veya silebilirsiniz. Ancak zorunlu çerezlerin kapatılması durumunda platformun bazı fonksiyonları kısıtlanabilir.
+
+Google AdSense & İletişim:
+Reklam ortaklarımız ilgi alanlarınıza özel içerik sunmak için çerez verilerinden faydalanabilir. Detaylı bilgi veya veri silme talepleri için: iletisim@webdehepseek.com`
   }
 };
