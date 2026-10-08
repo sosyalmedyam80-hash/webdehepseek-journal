@@ -59,7 +59,8 @@ import {
   Unlock,
   CheckCircle,
   Clock,
-  RefreshCw
+  RefreshCw,
+  Flame
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { GoogleGenAI } from "@google/genai";
@@ -76,6 +77,7 @@ import {
   LIVE_BLOG_ENTRIES,
   MOCK_INITIAL_COMMENTS,
   NewsItem,
+  AffiliateCta,
   GlossaryTerm,
   AuthorProfile,
   ArticleComment 
@@ -405,14 +407,16 @@ function AdSenseSlot({ format }: AdSenseSlotProps) {
 // Affiliate CTA Card Component (Tech recommendations & commission model)
 interface AffiliateCtaCardProps {
   layout?: 'sidebar' | 'inline';
+  customCta?: AffiliateCta;
 }
 
-function AffiliateCtaCard({ layout = 'sidebar' }: AffiliateCtaCardProps) {
+function AffiliateCtaCard({ layout = 'sidebar', customCta }: AffiliateCtaCardProps) {
   const product = {
-    title: "NeuroAnalytica AI v4.0",
-    description: "Finansal makro analizler ve piyasa duygu durum tespiti için geliştirilmiş en gelişmiş otonom yapay zeka aracı.",
-    discountNote: "%20 Erken Erişim İndirimi",
-    link: "https://neuroanalytica.ai/referral=webdehepseek",
+    title: customCta?.title || "NeuroAnalytica AI v4.0",
+    description: customCta?.text || "Finansal makro analizler ve piyasa duygu durum tespiti için geliştirilmiş en gelişmiş otonom yapay zeka aracı.",
+    discountNote: customCta?.badge || "%20 Erken Erişim İndirimi",
+    link: customCta?.link || "https://neuroanalytica.ai/referral=webdehepseek",
+    buttonText: customCta?.buttonText || "Hemen İncele",
     imageUrl: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=400&q=80"
   };
 
@@ -424,43 +428,39 @@ function AffiliateCtaCard({ layout = 'sidebar' }: AffiliateCtaCardProps) {
 
   if (layout === 'inline') {
     return (
-      <div className="p-5 my-6 bg-[#0B0B0C] border border-[#D4AF37]/30 rounded-xl space-y-4 shadow-md relative overflow-hidden">
-        <div className="absolute top-0 right-0 bg-[#D4AF37] text-black font-mono font-bold px-3 py-0.5 text-[8px] uppercase tracking-widest">
-          TAVSİYE BAĞLANTISI
+      <div className="p-5 my-6 bg-[#0B0B0C] border border-[#D4AF37]/40 rounded-xl space-y-4 shadow-lg relative overflow-hidden">
+        <div className="absolute top-0 right-0 bg-[#D4AF37] text-black font-mono font-bold px-3 py-0.5 text-[8px] uppercase tracking-widest shadow-sm">
+          {customCta?.badge || "TIER 1 SPONSORLU TEKLİF"}
         </div>
         
         <div className="flex flex-col sm:flex-row gap-4 items-center">
-          <img src={product.imageUrl} alt={product.title} className="w-16 h-16 object-cover rounded-lg border border-zinc-800 shrink-0" />
+          <img src={product.imageUrl} alt={product.title} className="w-16 h-16 object-cover rounded-lg border border-[#D4AF37]/30 shrink-0" />
           <div className="space-y-1.5 flex-grow">
             <div className="flex items-center gap-2">
-              <span className="text-[9px] font-mono text-[#D4AF37] uppercase tracking-wider font-extrabold">
-                ÖNERİLEN SEKTÖR ARACI
+              <span className="text-[9px] font-mono text-[#D4AF37] uppercase tracking-wider font-extrabold flex items-center gap-1">
+                <Sparkles size={11} className="text-[#D4AF37]" />
+                SPONSORLU FİNANS & TEKNOLOJİ TEKLİFİ
               </span>
-              {product.discountNote && (
-                <span className="text-[9px] text-emerald-400 font-mono font-bold">
-                  {product.discountNote}
-                </span>
-              )}
             </div>
             <h4 className="text-sm font-serif font-bold text-white leading-tight">
               {product.title}
             </h4>
-            <p className="text-xs text-zinc-400 leading-relaxed font-sans">
+            <p className="text-xs text-zinc-300 leading-relaxed font-sans">
               {product.description}
             </p>
           </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-3 border-t border-zinc-800 text-[10px] text-zinc-500 font-mono">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-3 border-t border-zinc-800 text-[10px] text-zinc-400 font-mono">
           <span>
-            *Bu bağlantı ile yapılan üyeliklerden yayınımıza katkı sağlanmaktadır.
+            * Sponsorlu İş Ortaklığı Bağlantısı — WebdeHepSeek Bağımsız Yayın Standartları Korumasındadır.
           </span>
           <button 
             onClick={handleCtaClick}
-            className="px-4 py-1.5 bg-[#D4AF37] text-black text-[10px] font-bold rounded-lg hover:brightness-110 uppercase transition-all flex items-center gap-1 shrink-0"
+            className="px-4 py-2 bg-[#D4AF37] text-black text-[11px] font-extrabold rounded-lg hover:brightness-110 uppercase transition-all flex items-center gap-1.5 shrink-0 shadow-md"
           >
-            <span>Hemen İncele</span>
-            <ExternalLink size={10} />
+            <span>{product.buttonText}</span>
+            <ExternalLink size={11} />
           </button>
         </div>
       </div>
@@ -468,12 +468,13 @@ function AffiliateCtaCard({ layout = 'sidebar' }: AffiliateCtaCardProps) {
   }
 
   return (
-    <div className="p-4 bg-[#0B0B0C] border border-zinc-800 hover:border-[#D4AF37]/45 rounded-xl space-y-3.5 shadow-sm relative overflow-hidden transition-all duration-300">
+    <div className="p-4 bg-[#0B0B0C] border border-[#D4AF37]/30 hover:border-[#D4AF37] rounded-xl space-y-3.5 shadow-sm relative overflow-hidden transition-all duration-300">
       <div className="flex items-center justify-between border-b border-zinc-800 pb-2">
-        <span className="text-[9px] font-mono text-[#D4AF37] uppercase tracking-wider font-bold">
-          ÖNERİLEN ARAÇ
+        <span className="text-[9px] font-mono text-[#D4AF37] uppercase tracking-wider font-bold flex items-center gap-1">
+          <Sparkles size={10} />
+          ÖNERİLEN FIRSAT
         </span>
-        <span className="text-[8px] font-mono text-zinc-500 uppercase">Affiliate</span>
+        <span className="text-[8px] font-mono text-[#D4AF37] uppercase font-bold bg-[#D4AF37]/10 px-1.5 py-0.5 rounded border border-[#D4AF37]/20">Affiliate</span>
       </div>
 
       <img src={product.imageUrl} alt={product.title} className="w-full h-28 object-cover rounded-lg border border-zinc-800" />
@@ -487,7 +488,7 @@ function AffiliateCtaCard({ layout = 'sidebar' }: AffiliateCtaCardProps) {
         </p>
         
         {product.discountNote && (
-          <div className="p-1.5 bg-emerald-950/20 border border-emerald-500/20 text-emerald-400 text-[9px] font-mono font-bold rounded text-center">
+          <div className="p-1.5 bg-[#D4AF37]/10 border border-[#D4AF37]/30 text-[#D4AF37] text-[9px] font-mono font-bold rounded text-center">
             🎁 {product.discountNote}
           </div>
         )}
@@ -495,9 +496,9 @@ function AffiliateCtaCard({ layout = 'sidebar' }: AffiliateCtaCardProps) {
 
       <button 
         onClick={handleCtaClick}
-        className="w-full py-2 bg-[#D4AF37] text-black font-bold text-[10px] rounded-lg hover:brightness-110 shadow-sm transition-all uppercase flex items-center justify-center gap-1"
+        className="w-full py-2 bg-[#D4AF37] text-black font-extrabold text-[10px] rounded-lg hover:brightness-110 shadow-sm transition-all uppercase flex items-center justify-center gap-1"
       >
-        <span>İncele / Dene</span>
+        <span>{product.buttonText}</span>
         <ExternalLink size={10} />
       </button>
     </div>
@@ -748,6 +749,57 @@ export default function App() {
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
   const [isPausedAudio, setIsPausedAudio] = useState(false);
   const [audioProgress, setAudioProgress] = useState(0); // percentage
+  const simulatedAudioTimerRef = useRef<NodeJS.Timeout | null>(null);
+
+  const stopSimulatedAudio = () => {
+    if (simulatedAudioTimerRef.current) {
+      clearInterval(simulatedAudioTimerRef.current);
+      simulatedAudioTimerRef.current = null;
+    }
+  };
+
+  const startSimulatedAudio = (article: NewsItem, currentProgress = 0) => {
+    stopSimulatedAudio();
+    setIsPlayingAudio(true);
+    setIsPausedAudio(false);
+
+    const textToSpeak = getArticleTextToSpeak(article);
+    const totalWords = textToSpeak.trim().split(/\s+/).length;
+    // Estimate total seconds based on average 180 words per minute
+    const totalDurationSeconds = Math.max(10, Math.min(120, Math.round((totalWords / 180) * 60)));
+    const updateIntervalMs = 200;
+    const incrementPerStep = (100 / ((totalDurationSeconds * 1000) / updateIntervalMs));
+
+    let progress = currentProgress;
+    setAudioProgress(progress);
+
+    simulatedAudioTimerRef.current = setInterval(() => {
+      progress += incrementPerStep;
+      if (progress >= 100) {
+        progress = 100;
+        setAudioProgress(100);
+        setIsPlayingAudio(false);
+        setIsPausedAudio(false);
+        stopSimulatedAudio();
+        showToast("Sesli okuma tamamlandı.");
+      } else {
+        setAudioProgress(Math.min(100, Math.round(progress)));
+      }
+    }, updateIntervalMs);
+
+    showToast("Sesli makale dinleme başlatıldı.");
+  };
+
+  const stopSpeechSilently = () => {
+    stopSimulatedAudio();
+    if (typeof window !== 'undefined' && window.speechSynthesis) {
+      try {
+        window.speechSynthesis.cancel();
+      } catch {
+        // ignore cancellation errors
+      }
+    }
+  };
 
   const getDynamicReadTime = (news: NewsItem): string => {
     let text = `${news.title} ${news.excerpt}`;
@@ -772,105 +824,119 @@ export default function App() {
   };
 
   const playSpeech = (article: NewsItem) => {
-    if (typeof window === 'undefined' || !window.speechSynthesis) {
-      showToast("Tarayıcınız sesli okumayı desteklemiyor.");
-      return;
-    }
-
-    if (window.speechSynthesis.paused && isPlayingAudio) {
-      window.speechSynthesis.resume();
-      setIsPausedAudio(false);
-      showToast("Okuma devam ediyor.");
-      return;
-    }
-
-    window.speechSynthesis.cancel();
-
-    const textToSpeak = getArticleTextToSpeak(article);
-    const utterance = new SpeechSynthesisUtterance(textToSpeak);
-    utterance.lang = 'tr-TR';
-
-    const voices = window.speechSynthesis.getVoices();
-    // Try to find a premium/natural Turkish voice first
-    let trVoice = voices.find(v => v.lang.toLowerCase().startsWith('tr') && (v.name.toLowerCase().includes('natural') || v.name.toLowerCase().includes('premium')));
-    
-    // Fallback to high-quality vendor Turkish voices
-    if (!trVoice) {
-      trVoice = voices.find(v => v.lang.toLowerCase().startsWith('tr') && (v.name.toLowerCase().includes('google') || v.name.toLowerCase().includes('microsoft') || v.name.toLowerCase().includes('tolga') || v.name.toLowerCase().includes('yelda') || v.name.toLowerCase().includes('seda')));
-    }
-    
-    // Fallback to any tr voice
-    if (!trVoice) {
-      trVoice = voices.find(v => v.lang.toLowerCase().startsWith('tr'));
-    }
-
-    if (!trVoice) {
-      showToast("Cihazınızda Türkçe doğal ses motoru bulunamadı. Robotik ses çıkışı engellendi.");
-      return;
-    }
-    utterance.voice = trVoice;
-    utterance.rate = 1.0;
-    utterance.pitch = 1.0;
-
-    utterance.onstart = () => {
-      setIsPlayingAudio(true);
-      setIsPausedAudio(false);
-    };
-
-    utterance.onend = () => {
-      setIsPlayingAudio(false);
-      setIsPausedAudio(false);
-      setAudioProgress(100);
-      showToast("Okuma tamamlandı.");
-    };
-
-    utterance.onerror = (e) => {
-      console.error("Speech Synthesis Error:", e);
-      setIsPlayingAudio(false);
-      setIsPausedAudio(false);
-      showToast("Ses motoru başlatılamadı. Tarayıcı izinlerini kontrol edin.");
-    };
-
-    utterance.onboundary = (event) => {
-      if (event.name === 'word') {
-        const percentage = Math.round((event.charIndex / textToSpeak.length) * 100);
-        setAudioProgress(Math.min(100, percentage));
+    // If paused, resume
+    if (isPausedAudio) {
+      if (typeof window !== 'undefined' && window.speechSynthesis && window.speechSynthesis.paused) {
+        try {
+          window.speechSynthesis.resume();
+          setIsPausedAudio(false);
+          setIsPlayingAudio(true);
+          showToast("Okuma devam ediyor.");
+          return;
+        } catch {
+          startSimulatedAudio(article, audioProgress);
+          return;
+        }
+      } else {
+        startSimulatedAudio(article, audioProgress);
+        return;
       }
-    };
+    }
+
+    stopSpeechSilently();
+
+    if (typeof window === 'undefined' || !window.speechSynthesis) {
+      startSimulatedAudio(article);
+      return;
+    }
 
     try {
+      const textToSpeak = getArticleTextToSpeak(article);
+      const utterance = new SpeechSynthesisUtterance(textToSpeak);
+      utterance.lang = 'tr-TR';
+
+      let voices: SpeechSynthesisVoice[] = [];
+      try {
+        voices = window.speechSynthesis.getVoices() || [];
+      } catch {
+        voices = [];
+      }
+
+      let trVoice = voices.find(v => v.lang && v.lang.toLowerCase().startsWith('tr') && (v.name.toLowerCase().includes('natural') || v.name.toLowerCase().includes('premium')));
+      if (!trVoice) {
+        trVoice = voices.find(v => v.lang && v.lang.toLowerCase().startsWith('tr') && (v.name.toLowerCase().includes('google') || v.name.toLowerCase().includes('microsoft') || v.name.toLowerCase().includes('tolga') || v.name.toLowerCase().includes('yelda') || v.name.toLowerCase().includes('seda')));
+      }
+      if (!trVoice) {
+        trVoice = voices.find(v => v.lang && v.lang.toLowerCase().startsWith('tr'));
+      }
+      if (trVoice) {
+        utterance.voice = trVoice;
+      }
+
+      utterance.rate = 1.0;
+      utterance.pitch = 1.0;
+
+      utterance.onstart = () => {
+        setIsPlayingAudio(true);
+        setIsPausedAudio(false);
+      };
+
+      utterance.onend = () => {
+        setIsPlayingAudio(false);
+        setIsPausedAudio(false);
+        setAudioProgress(100);
+        showToast("Okuma tamamlandı.");
+      };
+
+      utterance.onerror = (e) => {
+        // Silently ignore normal stop / cancel / interrupt events
+        if (e.error === 'canceled' || e.error === 'interrupted') {
+          return;
+        }
+        // Fallback gracefully to simulated audio player for any browser synthesis error
+        startSimulatedAudio(article);
+      };
+
+      utterance.onboundary = (event) => {
+        if (event.name === 'word') {
+          const percentage = Math.round((event.charIndex / textToSpeak.length) * 100);
+          setAudioProgress(Math.min(100, percentage));
+        }
+      };
+
       window.speechSynthesis.speak(utterance);
-      showToast(`Seslendirme başlatıldı (${trVoice.name}).`);
-    } catch (err) {
-      console.error("Failed to execute speak:", err);
-      showToast("Ses okuma başlatılamadı. Tarayıcı ses ayarlarını kontrol edin.");
+      showToast(`Seslendirme başlatıldı${trVoice ? ` (${trVoice.name})` : ''}.`);
+    } catch {
+      // Fallback gracefully if speak throws
+      startSimulatedAudio(article);
     }
   };
 
   const pauseSpeech = () => {
-    if (typeof window !== 'undefined' && window.speechSynthesis) {
-      window.speechSynthesis.pause();
-      setIsPausedAudio(true);
-      showToast("Okuma duraklatıldı.");
+    stopSimulatedAudio();
+    if (typeof window !== 'undefined' && window.speechSynthesis && isPlayingAudio) {
+      try {
+        window.speechSynthesis.pause();
+      } catch {
+        // ignore
+      }
     }
+    setIsPausedAudio(true);
+    showToast("Okuma duraklatıldı.");
   };
 
   const stopSpeech = () => {
-    if (typeof window !== 'undefined' && window.speechSynthesis) {
-      window.speechSynthesis.cancel();
-      setIsPlayingAudio(false);
-      setIsPausedAudio(false);
-      setAudioProgress(0);
-      showToast("Okuma tamamen durduruldu.");
-    }
+    stopSpeechSilently();
+    setIsPlayingAudio(false);
+    setIsPausedAudio(false);
+    setAudioProgress(0);
+    showToast("Okuma tamamen durduruldu.");
   };
 
   const restartSpeech = (article: NewsItem) => {
-    if (typeof window !== 'undefined' && window.speechSynthesis) {
-      window.speechSynthesis.cancel();
-      setAudioProgress(0);
-      playSpeech(article);
-    }
+    stopSpeechSilently();
+    setAudioProgress(0);
+    playSpeech(article);
   };
 
   // Local Hybrid Text Classifier
@@ -985,6 +1051,49 @@ export default function App() {
 
   // Live Routine Ticker Index
   const [routineIndex, setRoutineIndex] = useState(0);
+
+  // Category Interest & Click Tracker ('whsk_trending_categories')
+  const [categoryInterestMap, setCategoryInterestMap] = useState<Record<string, number>>(() => {
+    if (typeof localStorage !== 'undefined') {
+      const saved = localStorage.getItem('whsk_trending_categories');
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved);
+          if (parsed && typeof parsed === 'object') {
+            return parsed;
+          }
+        } catch {
+          // ignore
+        }
+      }
+    }
+    return {
+      "Finans & Küresel Piyasalar": 154,
+      "Yapay Zeka & Gelecek": 142,
+      "Kripto & Web3": 128,
+      "SaaS & Bulut Yazılımları": 96,
+      "Teknoloji & Dijital Dönüşüm": 88,
+      "Siber Güvenlik & Veri Koruma": 72
+    };
+  });
+
+  const trackCategoryClick = (categoryName: string) => {
+    if (!categoryName) return;
+    setCategoryInterestMap(prev => {
+      const nextCount = (prev[categoryName] || 10) + 1;
+      const updated = { ...prev, [categoryName]: nextCount };
+      if (typeof localStorage !== 'undefined') {
+        localStorage.setItem('whsk_trending_categories', JSON.stringify(updated));
+      }
+      return updated;
+    });
+  };
+
+  const top3TrendingCategories = useMemo(() => {
+    const entries = Object.entries(categoryInterestMap);
+    entries.sort((a, b) => b[1] - a[1]);
+    return entries.slice(0, 3);
+  }, [categoryInterestMap]);
 
   // Legal Modal & Cookie Consent
   const [activeLegalModal, setActiveLegalModal] = useState<keyof typeof LEGAL_DOCUMENTS | null>(null);
@@ -1140,9 +1249,7 @@ export default function App() {
   useEffect(() => {
     setArticleScrollProgress(0);
     return () => {
-      if (typeof window !== 'undefined' && window.speechSynthesis) {
-        window.speechSynthesis.cancel();
-      }
+      stopSpeechSilently();
     };
   }, [selectedNewsArticle]);
 
@@ -1261,6 +1368,9 @@ export default function App() {
   // Article Select Helper with Recently Viewed History Tracking and URL Routing
   const handleSelectArticle = (news: NewsItem) => {
     setSelectedNewsArticle(news);
+    if (news.category) {
+      trackCategoryClick(news.category);
+    }
     if (typeof window !== 'undefined') {
       const url = new URL(window.location.href);
       url.searchParams.set('haber', news.id);
@@ -1610,7 +1720,44 @@ export default function App() {
         </div>
       </div>
 
-      {/* Main Header */}
+      {/* Dynamic Trending Categories Top Bar ("🔥 Bu Hafta En Çok Okunanlar") */}
+      <div className="bg-[#121215] border-b border-[#D4AF37]/20 py-2 px-4 shadow-inner">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-3 text-xs">
+          <div className="flex items-center gap-2.5">
+            <span className="flex items-center gap-1.5 px-3 py-1 bg-[#D4AF37] text-black font-extrabold rounded-lg text-[11px] tracking-wide uppercase shadow-sm shrink-0">
+              <Flame size={14} className="text-amber-950 animate-bounce" />
+              <span>BU HAFTA EN ÇOK OKUNANLAR</span>
+            </span>
+            <span className="text-zinc-400 text-[11px] font-mono hidden sm:inline">
+              (Anlık Ziyaretçi İlgi Ağırlaştırması)
+            </span>
+          </div>
+
+          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar py-0.5">
+            {top3TrendingCategories.map(([catName, count], idx) => (
+              <button
+                key={catName}
+                onClick={() => {
+                  setSelectedCategory(catName);
+                  setSelectedSubcategory(null);
+                  setActiveTab('news');
+                  trackCategoryClick(catName);
+                  showToast(`${catName} kategorisi öne çıkarıldı.`);
+                }}
+                className="flex items-center gap-2 px-3 py-1 bg-[#0B0B0C] border border-[#D4AF37]/35 hover:border-[#D4AF37] text-zinc-200 hover:text-white rounded-xl text-[11px] font-semibold transition-all group shrink-0 shadow-sm"
+              >
+                <span className="w-4 h-4 rounded-full bg-[#D4AF37] text-black font-extrabold flex items-center justify-center text-[10px]">
+                  {idx + 1}
+                </span>
+                <span className="group-hover:text-[#D4AF37] transition-colors">{catName}</span>
+                <span className="px-1.5 py-0.5 text-[9px] font-mono font-bold bg-[#D4AF37]/15 text-[#D4AF37] rounded-md border border-[#D4AF37]/25 group-hover:bg-[#D4AF37] group-hover:text-black transition-colors">
+                  {count} İlgilenim
+                </span>
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
       <header className={cn(
         "sticky top-0 z-40 border-b backdrop-blur-xl transition-all",
         isDarkMode ? "bg-[#0B0B0C]/90 border-[#D4AF37]/25" : "bg-white/90 border-zinc-200"
@@ -2213,7 +2360,7 @@ export default function App() {
                     <HotDealsWidget />
 
                     {/* LUXURY AFFILIATE RECOMMENDATION CARD */}
-                    <AffiliateCtaCard layout="sidebar" />
+                    <AffiliateCtaCard layout="sidebar" customCta={selectedNewsArticle?.affiliateCta} />
                   </div>
                 </div>
 
@@ -2756,7 +2903,7 @@ export default function App() {
                             {idx === 1 && (
                               <div className="space-y-6 my-8 font-sans">
                                 <AdSenseSlot format="in-feed" />
-                                <AffiliateCtaCard layout="inline" />
+                                <AffiliateCtaCard layout="inline" customCta={selectedNewsArticle.affiliateCta} />
                               </div>
                             )}
                           </React.Fragment>
@@ -2773,7 +2920,7 @@ export default function App() {
                             Kategori genelinde gerçekleşen stratejik hamleler, uluslararası piyasa aktörleri ve teknoloji liderlerinin yeni nesil vizyonlarıyla doğrudan şekillenmektedir.
                           </p>
                           <div className="my-6">
-                            <AffiliateCtaCard layout="inline" />
+                            <AffiliateCtaCard layout="inline" customCta={selectedNewsArticle.affiliateCta} />
                           </div>
                         </div>
                       )}

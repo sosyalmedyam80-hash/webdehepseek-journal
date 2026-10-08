@@ -40,6 +40,14 @@ export interface AuthorProfile {
   verified: boolean;
 }
 
+export interface AffiliateCta {
+  title: string;
+  text: string;
+  badge: string;
+  buttonText: string;
+  link?: string;
+}
+
 export interface NewsItem {
   id: string;
   title: string;
@@ -64,6 +72,9 @@ export interface NewsItem {
   correctionLog?: string;
   canonicalUrl?: string;
   sharesCount?: number;
+  tier?: 'TIER_1' | 'TIER_2' | 'TIER_3' | string;
+  revenueWeight?: number;
+  affiliateCta?: AffiliateCta;
   reactions?: {
     like: number;
     analytic: number;
