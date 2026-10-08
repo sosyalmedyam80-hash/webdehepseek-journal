@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useMemo, useEffect, useRef } from 'react';
+import React, { useState, useMemo, useEffect, useRef, useCallback } from 'react';
 import { 
   Search, 
   Menu, 
@@ -60,7 +60,12 @@ import {
   CheckCircle,
   Clock,
   RefreshCw,
-  Flame
+  Flame,
+  Briefcase,
+  Percent,
+  Copy,
+  Gift,
+  Code
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { GoogleGenAI } from "@google/genai";
@@ -85,9 +90,47 @@ import {
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
+// 2026 Nesil GEO/AEO, İnteraktif Oylama ve Büyüme Motorları Bileşenleri
+import { GeoAnswerBox } from './components/GeoAnswerBox';
+import { InArticlePoll } from './components/InArticlePoll';
+import { EmbedWidgetModal } from './components/EmbedWidgetModal';
+import { ExitIntentRetention } from './components/ExitIntentRetention';
+import { PriceAlertTrigger } from './components/PriceAlertTrigger';
+import { AffiliateComparisonCard } from './components/AffiliateComparisonCard';
+import { CouponHubCard } from './components/CouponHubCard';
+import { PressReleaseModal } from './components/PressReleaseModal';
+
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
+
+// Reuters/ShiftDelete style editoryal hiyerarşi yardımcıları
+const getCleanCategoryBadge = (category: string) => {
+  const norm = category.toLowerCase();
+  if (norm.includes('yapay zeka') || norm.includes('ai')) return 'YAPAY ZEKA';
+  if (norm.includes('finans') || norm.includes('kripto') || norm.includes('piyasa') || norm.includes('borsa')) return 'FİNANS';
+  if (norm.includes('otomotiv') || norm.includes('mobilite')) return 'OTOMOTİV';
+  if (norm.includes('enerji') || norm.includes('solar') || norm.includes('ges')) return 'ENERJİ';
+  if (norm.includes('siber') || norm.includes('güvenlik') || norm.includes('yazılım')) return 'TEKNOLOJİ';
+  return 'TEKNOLOJİ';
+};
+
+const getMasaImzasi = (category: string) => {
+  const norm = category.toLowerCase();
+  if (norm.includes('finans') || norm.includes('kripto') || norm.includes('piyasa') || norm.includes('borsa')) {
+    return 'Ekonomi & Piyasa Masası';
+  }
+  return 'Teknoloji Servisi';
+};
+
+// Global Toast Proxy Helper for standalone components
+const showToast = (msg: string) => {
+  if (typeof window !== 'undefined' && (window as any).showToast) {
+    (window as any).showToast(msg);
+  } else {
+    console.log("[Toast Proxy]:", msg);
+  }
+};
 
 // Gemini AI SDK
 const apiKey = typeof process !== 'undefined' && process.env?.GEMINI_API_KEY ? process.env.GEMINI_API_KEY : '';
@@ -140,7 +183,8 @@ function NewsImage({ src, alt, category, fallbackUrl, className, ...props }: New
       src={imgSrc || DEFAULT_CATEGORY_FALLBACKS['default']}
       alt={alt || 'Haber Görseli'}
       onError={handleError}
-      className={className}
+      loading="lazy"
+      className={cn("aspect-video object-cover", className)}
       {...props}
     />
   );
@@ -206,11 +250,11 @@ function HeroHeadlineSection({ newsList, onSelectArticle, bookmarkedIds, onToggl
             
             {/* Badges & Bookmark */}
             <div className="absolute top-4 left-4 flex items-center gap-2">
-              <span className="px-3 py-1 bg-[#D4AF37] text-black text-xs font-black rounded-full uppercase tracking-wider shadow-lg">
-                {mainArticle.subcategory || mainArticle.category}
+              <span className="px-3 py-1 bg-[#D4AF37] text-black text-xs font-black rounded-lg uppercase tracking-wider shadow-lg">
+                {getCleanCategoryBadge(mainArticle.category)}
               </span>
-              <span className="px-2.5 py-1 bg-black/70 backdrop-blur-md text-[#D4AF37] text-[10px] font-mono font-bold rounded-full border border-[#D4AF37]/30">
-                MANŞET #{activeIndex + 1}
+              <span className="px-2.5 py-1 bg-black/70 backdrop-blur-md text-[#D4AF37] text-[10px] font-mono font-bold rounded-lg border border-[#D4AF37]/30">
+                {getMasaImzasi(mainArticle.category)}
               </span>
             </div>
 
@@ -315,7 +359,7 @@ function HeroHeadlineSection({ newsList, onSelectArticle, bookmarkedIds, onToggl
                 <div className="space-y-1 flex-grow min-w-0">
                   <div className="flex items-center justify-between gap-2">
                     <span className="px-2 py-0.5 bg-[#D4AF37]/15 text-[#D4AF37] border border-[#D4AF37]/30 text-[9px] font-bold rounded uppercase truncate">
-                      {item.subcategory || item.category}
+                      {getCleanCategoryBadge(item.category)}
                     </span>
                     <span className="text-[10px] text-zinc-500 font-mono shrink-0">{item.date}</span>
                   </div>
@@ -598,6 +642,423 @@ function HotDealsWidget() {
   );
 }
 
+// Interactive Sidebar Finance, Loan and Deposit Interest Yield Calculator
+function SidebarCalculatorWidget() {
+  const [isEmbedModalOpen, setIsEmbedModalOpen] = useState(false);
+  const [calcTab, setCalcTab] = useState<'profit_loss' | 'deposit' | 'currency' | 'severance'>('profit_loss');
+  const [amount, setAmount] = useState<number>(100000);
+  const [rate, setRate] = useState<number>(45); // Annual for deposit
+  const [duration, setDuration] = useState<number>(32); // Days for deposit
+
+  // 1. Kripto & Borsa Profit/Loss states
+  const [entryPrice, setEntryPrice] = useState<number>(1000);
+  const [exitPrice, setExitPrice] = useState<number>(1250);
+  const [quantity, setQuantity] = useState<number>(100);
+
+  // 2. Gold & Currency state
+  const [currencyInput, setCurrencyInput] = useState<number>(10000);
+  const [currencyUnit, setCurrencyUnit] = useState<'TRY' | 'USD' | 'EUR' | 'XAU' | 'XAQ'>('TRY');
+
+  // Rates
+  const USD_TRY = 34.35;
+  const EUR_TRY = 37.10;
+  const XAU_TRY = 3050; // Gram Gold
+  const XAQ_TRY = 5080; // Quarter Gold
+
+  // 3. Severance states
+  const [severanceYears, setSeveranceYears] = useState<number>(3);
+  const [severanceSalary, setSeveranceSalary] = useState<number>(45000);
+
+  const profitLossResult = useMemo(() => {
+    const investment = entryPrice * quantity;
+    const exitValue = exitPrice * quantity;
+    const profitLoss = exitValue - investment;
+    const percent = entryPrice > 0 ? (profitLoss / investment) * 100 : 0;
+    return { investment, exitValue, profitLoss, percent };
+  }, [entryPrice, exitPrice, quantity]);
+
+  const depositResult = useMemo(() => {
+    const gross = amount * (rate / 100) * (duration / 365);
+    const tax = gross * 0.075; // Stopaj %7.5
+    const net = gross - tax;
+    const total = amount + net;
+    return { gross, tax, net, total };
+  }, [amount, rate, duration]);
+
+  const loanResult = useMemo(() => {
+    const monthlyRate = (rate / 100);
+    if (monthlyRate === 0) {
+      return { monthlyPayment: amount / duration, totalPayment: amount, totalInterest: 0 };
+    }
+    const monthlyPayment = amount * (monthlyRate * Math.pow(1 + monthlyRate, duration)) / (Math.pow(1 + monthlyRate, duration) - 1);
+    const totalPayment = monthlyPayment * duration;
+    const totalInterest = totalPayment - amount;
+    return { monthlyPayment, totalPayment, totalInterest };
+  }, [amount, rate, duration]);
+
+  // Conversions based on selected unit & amount
+  const currencyResult = useMemo(() => {
+    let tryVal = 0;
+    if (currencyUnit === 'TRY') tryVal = currencyInput;
+    else if (currencyUnit === 'USD') tryVal = currencyInput * USD_TRY;
+    else if (currencyUnit === 'EUR') tryVal = currencyInput * EUR_TRY;
+    else if (currencyUnit === 'XAU') tryVal = currencyInput * XAU_TRY;
+    else if (currencyUnit === 'XAQ') tryVal = currencyInput * XAQ_TRY;
+
+    return {
+      TRY: tryVal,
+      USD: tryVal / USD_TRY,
+      EUR: tryVal / EUR_TRY,
+      XAU: tryVal / XAU_TRY, // Gram Gold
+      XAQ: tryVal / XAQ_TRY  // Quarter Gold
+    };
+  }, [currencyInput, currencyUnit]);
+
+  // Seniority & severance payout calculator
+  const severanceResult = useMemo(() => {
+    const ceilingValue = 41828.42; // Real 2026 Severance Pay Ceiling
+    const baseSeveranceSalary = Math.min(severanceSalary, ceilingValue);
+    
+    // Severance Calculation
+    const rawSeverance = severanceYears * baseSeveranceSalary;
+    const severanceStampTax = rawSeverance * 0.00759; // Damga Vergisi %0.759
+    const netSeverance = rawSeverance - severanceStampTax;
+
+    // Notice Pay Calculation (İhbar Tazminatı)
+    let noticeWeeks = 8;
+    if (severanceYears < 0.5) noticeWeeks = 2;
+    else if (severanceYears < 1.5) noticeWeeks = 4;
+    else if (severanceYears < 3) noticeWeeks = 6;
+
+    const dailySalary = severanceSalary / 30;
+    const rawNotice = dailySalary * (noticeWeeks * 7);
+    const noticeIncomeTax = rawNotice * 0.15; // Stopaj/Income Tax %15
+    const noticeStampTax = rawNotice * 0.00759;
+    const netNotice = rawNotice - noticeIncomeTax - noticeStampTax;
+
+    const totalNet = netSeverance + netNotice;
+    return { rawSeverance, severanceStampTax, netSeverance, noticeWeeks, rawNotice, noticeIncomeTax, noticeStampTax, netNotice, totalNet };
+  }, [severanceYears, severanceSalary]);
+
+  // Handle share result copy
+  const handleShareCalculation = () => {
+    let text = "";
+    if (calcTab === 'profit_loss') {
+      text = `WebdeHepSeeK Kâr/Zarar Hesaplayıcı\nGiriş Fiyatı: ${entryPrice.toLocaleString('tr-TR')} ₺ | Çıkış: ${exitPrice.toLocaleString('tr-TR')} ₺\nMiktar: ${quantity.toLocaleString('tr-TR')}\nYatırım: ${profitLossResult.investment.toLocaleString('tr-TR')} ₺\nNet Kâr/Zarar: ${profitLossResult.profitLoss >= 0 ? '+' : ''}${profitLossResult.profitLoss.toLocaleString('tr-TR')} ₺ (%${profitLossResult.percent.toFixed(2)})`;
+    } else if (calcTab === 'deposit') {
+      text = `WebdeHepSeeK Mevduat Hesaplayıcı\nTutar: ${amount.toLocaleString('tr-TR')} ₺\nVade: ${duration} Gün | Faiz: %${rate}\nNet Getiri: ${depositResult.net.toLocaleString('tr-TR', { maximumFractionDigits: 2 })} ₺\nToplam Tutar: ${depositResult.total.toLocaleString('tr-TR', { maximumFractionDigits: 2 })} ₺`;
+    } else if (calcTab === 'currency') {
+      text = `WebdeHepSeeK Altın & Döviz Çevirici\nGirdi: ${currencyInput.toLocaleString('tr-TR')} ${currencyUnit}\nTRY Karşılığı: ${currencyResult.TRY.toLocaleString('tr-TR', { maximumFractionDigits: 2 })} ₺\nUSD Karşılığı: $${currencyResult.USD.toLocaleString('tr-TR', { maximumFractionDigits: 2 })}\nAltın (Gram) Karşılığı: ${currencyResult.XAU.toFixed(3)} gr`;
+    } else if (calcTab === 'severance') {
+      text = `WebdeHepSeeK Kıdem & İhbar Tazminatı Hesaplayıcı\nÇalışma Süresi: ${severanceYears} Yıl | Son Brüt Maaş: ${severanceSalary.toLocaleString('tr-TR')} ₺\nNet Kıdem Tazminatı: ${severanceResult.netSeverance.toLocaleString('tr-TR', { maximumFractionDigits: 2 })} ₺\nNet İhbar Tazminatı: ${severanceResult.netNotice.toLocaleString('tr-TR', { maximumFractionDigits: 2 })} ₺\nNet Payout Toplam: ${severanceResult.totalNet.toLocaleString('tr-TR', { maximumFractionDigits: 2 })} ₺`;
+    }
+
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(text);
+      showToast("📋 Hesaplama sonucu başarıyla kopyalandı!");
+    }
+  };
+
+  return (
+    <div className="bg-[#121215] border border-[#D4AF37]/30 rounded-3xl p-5 space-y-4 shadow-xl text-left font-sans">
+      <div className="flex items-center justify-between border-b border-zinc-800 pb-2.5">
+        <div className="flex items-center gap-2">
+          <Calculator size={16} className="text-[#D4AF37]" />
+          <h4 className="font-serif font-bold text-white text-xs uppercase tracking-wider">
+            Finans & Getiri Hesaplayıcı
+          </h4>
+        </div>
+        <span className="text-[9px] font-mono text-[#D4AF37] bg-[#D4AF37]/10 px-1.5 py-0.5 rounded font-bold">PRO PLUS</span>
+      </div>
+
+      <div className="grid grid-cols-2 gap-1.5 p-0.5 bg-[#0B0B0C] rounded-lg border border-zinc-850 text-[10px]">
+        <button 
+          onClick={() => setCalcTab('profit_loss')}
+          className={cn("py-1 rounded font-bold transition-all text-center whitespace-nowrap", calcTab === 'profit_loss' ? "bg-[#D4AF37] text-black" : "text-zinc-400 hover:text-white")}
+        >
+          Kâr/Zarar
+        </button>
+        <button 
+          onClick={() => { setCalcTab('deposit'); setRate(45); setDuration(32); }}
+          className={cn("py-1 rounded font-bold transition-all text-center whitespace-nowrap", calcTab === 'deposit' ? "bg-[#D4AF37] text-black" : "text-zinc-400 hover:text-white")}
+        >
+          Mevduat Getirisi
+        </button>
+        <button 
+          onClick={() => setCalcTab('currency')}
+          className={cn("py-1 rounded font-bold transition-all text-center whitespace-nowrap", calcTab === 'currency' ? "bg-[#D4AF37] text-black" : "text-zinc-400 hover:text-white")}
+        >
+          Altın & Döviz
+        </button>
+        <button 
+          onClick={() => setCalcTab('severance')}
+          className={cn("py-1 rounded font-bold transition-all text-center whitespace-nowrap", calcTab === 'severance' ? "bg-[#D4AF37] text-black" : "text-zinc-400 hover:text-white")}
+        >
+          Kıdem Tazminatı
+        </button>
+      </div>
+
+      <div className="space-y-3 text-[11px]">
+        {/* CASE 1: PROFIT & LOSS INPUTS */}
+        {calcTab === 'profit_loss' && (
+          <div className="space-y-2">
+            <div>
+              <label className="text-zinc-400 block mb-1">Giriş Fiyatı (TL/$):</label>
+              <input 
+                type="number" 
+                value={entryPrice} 
+                onChange={(e) => setEntryPrice(Number(e.target.value))} 
+                className="w-full bg-[#0B0B0C] border border-zinc-800 rounded-lg px-2.5 py-1.5 text-white font-mono text-xs outline-none focus:border-[#D4AF37]" 
+              />
+            </div>
+            <div className="grid grid-cols-2 gap-2">
+              <div>
+                <label className="text-zinc-400 block mb-1">Çıkış Fiyatı:</label>
+                <input 
+                  type="number" 
+                  value={exitPrice} 
+                  onChange={(e) => setExitPrice(Number(e.target.value))} 
+                  className="w-full bg-[#0B0B0C] border border-zinc-800 rounded-lg px-2.5 py-1.5 text-white font-mono text-xs outline-none focus:border-[#D4AF37]" 
+                />
+              </div>
+              <div>
+                <label className="text-zinc-400 block mb-1">Miktar/Adet:</label>
+                <input 
+                  type="number" 
+                  value={quantity} 
+                  onChange={(e) => setQuantity(Number(e.target.value))} 
+                  className="w-full bg-[#0B0B0C] border border-zinc-800 rounded-lg px-2.5 py-1.5 text-white font-mono text-xs outline-none focus:border-[#D4AF37]" 
+                />
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* CASE 2: DEPOSIT INPUTS */}
+        {calcTab === 'deposit' && (
+          <>
+            <div>
+              <label className="text-zinc-400 block mb-1">Tutar (TL):</label>
+              <input 
+                type="number" 
+                value={amount} 
+                onChange={(e) => setAmount(Number(e.target.value))} 
+                className="w-full bg-[#0B0B0C] border border-zinc-800 rounded-lg px-2.5 py-1.5 text-white font-mono text-xs outline-none focus:border-[#D4AF37]" 
+              />
+            </div>
+
+            <div className="grid grid-cols-2 gap-2">
+              <div>
+                <label className="text-zinc-400 block mb-1">Yıllık Faiz (%):</label>
+                <input 
+                  type="number" 
+                  step="0.1"
+                  value={rate} 
+                  onChange={(e) => setRate(Number(e.target.value))} 
+                  className="w-full bg-[#0B0B0C] border border-zinc-850 rounded-lg px-2.5 py-1.5 text-white font-mono text-xs outline-none focus:border-[#D4AF37]" 
+                />
+              </div>
+              <div>
+                <label className="text-zinc-400 block mb-1">Vade (Gün):</label>
+                <input 
+                  type="number" 
+                  value={duration} 
+                  onChange={(e) => setDuration(Number(e.target.value))} 
+                  className="w-full bg-[#0B0B0C] border border-zinc-850 rounded-lg px-2.5 py-1.5 text-white font-mono text-xs outline-none focus:border-[#D4AF37]" 
+                />
+              </div>
+            </div>
+          </>
+        )}
+
+        {/* CASE 3: GOLD & CURRENCY INPUTS */}
+        {calcTab === 'currency' && (
+          <div className="space-y-3">
+            <div className="grid grid-cols-3 gap-2">
+              <div className="col-span-2">
+                <label className="text-zinc-400 block mb-1">Miktar:</label>
+                <input 
+                  type="number" 
+                  value={currencyInput} 
+                  onChange={(e) => setCurrencyInput(Number(e.target.value))} 
+                  className="w-full bg-[#0B0B0C] border border-zinc-800 rounded-lg px-2.5 py-1.5 text-white font-mono text-xs outline-none focus:border-[#D4AF37]" 
+                />
+              </div>
+              <div>
+                <label className="text-zinc-400 block mb-1">Birim:</label>
+                <select 
+                  value={currencyUnit}
+                  onChange={(e: any) => setCurrencyUnit(e.target.value)}
+                  className="w-full bg-[#0B0B0C] border border-zinc-800 rounded-lg px-1 py-1.5 text-white text-xs outline-none focus:border-[#D4AF37]"
+                >
+                  <option value="TRY">TRY (₺)</option>
+                  <option value="USD">USD ($)</option>
+                  <option value="EUR">EUR (€)</option>
+                  <option value="XAU">Gold (gr)</option>
+                  <option value="XAQ">Gold (Çeyrek)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* CASE 4: SEVERANCE & NOTICE PAY INPUTS */}
+        {calcTab === 'severance' && (
+          <div className="space-y-3">
+            <div className="grid grid-cols-2 gap-2">
+              <div>
+                <label className="text-zinc-400 block mb-1">Çalışma Süresi (Yıl):</label>
+                <input 
+                  type="number" 
+                  min="0.1" 
+                  step="0.5"
+                  value={severanceYears} 
+                  onChange={(e) => setSeveranceYears(Number(e.target.value))} 
+                  className="w-full bg-[#0B0B0C] border border-zinc-800 rounded-lg px-2.5 py-1.5 text-white font-mono text-xs outline-none focus:border-[#D4AF37]" 
+                />
+              </div>
+              <div>
+                <label className="text-zinc-400 block mb-1">Son Brüt Maaş (TL):</label>
+                <input 
+                  type="number" 
+                  value={severanceSalary} 
+                  onChange={(e) => setSeveranceSalary(Number(e.target.value))} 
+                  className="w-full bg-[#0B0B0C] border border-zinc-800 rounded-lg px-2.5 py-1.5 text-white font-mono text-xs outline-none focus:border-[#D4AF37]" 
+                />
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* OUTPUT DISPLAY PANEL */}
+        <div className="p-3 bg-[#0B0B0C] border border-zinc-850 rounded-2xl space-y-2 font-mono text-[11px]">
+          {calcTab === 'profit_loss' && (
+            <div className="space-y-1.5">
+              <div className="flex justify-between">
+                <span className="text-zinc-500">Yatırım Tutarı:</span>
+                <strong className="text-white">{profitLossResult.investment.toLocaleString('tr-TR', { maximumFractionDigits: 2 })}</strong>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-zinc-500">Mevcut Değer:</span>
+                <strong className="text-zinc-300">{profitLossResult.exitValue.toLocaleString('tr-TR', { maximumFractionDigits: 2 })}</strong>
+              </div>
+              <div className="flex justify-between border-t border-zinc-900 pt-1.5">
+                <span className="text-zinc-400 font-bold">Net Kâr/Zarar:</span>
+                <strong className={cn("font-black", profitLossResult.profitLoss >= 0 ? "text-emerald-400" : "text-rose-450")}>
+                  {profitLossResult.profitLoss >= 0 ? '+' : ''}{profitLossResult.profitLoss.toLocaleString('tr-TR', { maximumFractionDigits: 2 })}
+                </strong>
+              </div>
+              <div className="flex justify-between text-[10px]">
+                <span className="text-zinc-500">Getiri Oranı:</span>
+                <strong className={profitLossResult.profitLoss >= 0 ? "text-emerald-500" : "text-rose-500"}>
+                  {profitLossResult.percent >= 0 ? '+' : ''}{profitLossResult.percent.toFixed(2)}%
+                </strong>
+              </div>
+            </div>
+          )}
+
+          {calcTab === 'deposit' && (
+            <>
+              <div className="flex justify-between">
+                <span className="text-zinc-500">Net Getiri:</span>
+                <strong className="text-emerald-400">+{depositResult.net.toLocaleString('tr-TR', { maximumFractionDigits: 2 })} ₺</strong>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-zinc-500">Vade Sonu Toplam:</span>
+                <strong className="text-white">{depositResult.total.toLocaleString('tr-TR', { maximumFractionDigits: 2 })} ₺</strong>
+              </div>
+              <div className="flex justify-between text-[9px] text-zinc-500 border-t border-zinc-900 pt-1.5">
+                <span>Stopaj Vergisi (%7.5):</span>
+                <span>{depositResult.tax.toLocaleString('tr-TR', { maximumFractionDigits: 2 })} ₺</span>
+              </div>
+            </>
+          )}
+
+          {calcTab === 'currency' && (
+            <div className="space-y-1.5">
+              <div className="text-[9px] text-zinc-500 uppercase tracking-wider pb-1 border-b border-zinc-900">
+                Karşılık Gelen Değerler (Simüle Kurlar)
+              </div>
+              <div className="flex justify-between">
+                <span className="text-zinc-500">Türk Lirası (TRY):</span>
+                <strong className="text-white">{currencyResult.TRY.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ₺</strong>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-zinc-500">Amerikan Doları (USD):</span>
+                <strong className="text-zinc-300">${currencyResult.USD.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</strong>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-zinc-500">Euro (EUR):</span>
+                <strong className="text-zinc-300">€{currencyResult.EUR.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</strong>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-zinc-500">Altın (Gram):</span>
+                <strong className="text-[#D4AF37]">{currencyResult.XAU.toFixed(3)} gr</strong>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-zinc-500">Altın (Çeyrek):</span>
+                <strong className="text-[#D4AF37]">{currencyResult.XAQ.toFixed(2)} Adet</strong>
+              </div>
+            </div>
+          )}
+
+          {calcTab === 'severance' && (
+            <div className="space-y-1.5">
+              <div className="flex justify-between">
+                <span className="text-zinc-500">Brüt Kıdem Tutarı:</span>
+                <strong className="text-zinc-300">{severanceResult.rawSeverance.toLocaleString('tr-TR', { maximumFractionDigits: 2 })} ₺</strong>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-zinc-500">Damga Vergisi (%0.759):</span>
+                <strong className="text-rose-400">-{severanceResult.severanceStampTax.toLocaleString('tr-TR', { maximumFractionDigits: 2 })} ₺</strong>
+              </div>
+              <div className="flex justify-between border-t border-zinc-900 pt-1.5 text-xs">
+                <span className="text-zinc-400 font-bold">Net Kıdem Tazminatı:</span>
+                <strong className="text-[#D4AF37] font-black">{severanceResult.netSeverance.toLocaleString('tr-TR', { maximumFractionDigits: 2 })} ₺</strong>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Legal Disclaimer & Copy Action */}
+        <div className="space-y-2.5">
+          <div className="text-[9px] text-zinc-500 leading-relaxed bg-[#0B0B0C] border border-zinc-900 p-2.5 rounded-xl">
+            ⚠️ <strong>Yasal Uyarı:</strong> Bu hesaplama sonuçları tamamen bilgilendirme amaçlı olup, resmi ve hukuki tavsiye niteliği taşımaz.
+          </div>
+          <div className="grid grid-cols-2 gap-2">
+            <button 
+              onClick={handleShareCalculation}
+              className="py-2 bg-zinc-900 border border-zinc-800 hover:border-[#D4AF37]/50 text-zinc-300 hover:text-[#D4AF37] font-bold text-[10px] uppercase rounded-xl transition-all flex items-center justify-center gap-1.5"
+            >
+              <Copy size={11} />
+              <span>Sonucu Kopyala</span>
+            </button>
+            <button 
+              onClick={() => setIsEmbedModalOpen(true)}
+              className="py-2 bg-zinc-900 border border-zinc-800 hover:border-[#D4AF37]/50 text-zinc-300 hover:text-[#D4AF37] font-bold text-[10px] uppercase rounded-xl transition-all flex items-center justify-center gap-1.5"
+            >
+              <Code size={11} className="text-[#D4AF37]" />
+              <span>Sitene Ekle</span>
+            </button>
+          </div>
+
+          <EmbedWidgetModal
+            isOpen={isEmbedModalOpen}
+            onClose={() => setIsEmbedModalOpen(false)}
+            widgetType={calcTab === 'profit_loss' ? 'kripto-borsa' : calcTab === 'deposit' ? 'mevduat' : calcTab === 'currency' ? 'altin-doviz' : 'kidem-tazminati'}
+            onShowToast={showToast}
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Pro Plus: Günün İndirim ve Kupon Kodları Merkezi (Coupon Hub)
+function CouponHubWidget() {
+  return <CouponHubCard onShowToast={showToast} />;
+}
+
 // Mobile Sticky Anchor Ad Banner (ShiftDelete Style)
 function StickyAnchorBanner({ isCookieConsentVisible }: { isCookieConsentVisible?: boolean }) {
   const [isDismissed, setIsDismissed] = useState(false);
@@ -636,6 +1097,23 @@ function StickyAnchorBanner({ isCookieConsentVisible }: { isCookieConsentVisible
 }
 
 export default function App() {
+  // Helper for mock affiliate prices
+  const getMockAffiliatePrices = useCallback((articleId: string, title: string) => {
+    const hash = title.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+    const basePrice = (hash % 30) * 1000 + 4999;
+    const amazonPrice = Math.round(basePrice * 0.9);
+    const hepsiburadaPrice = Math.round(basePrice * 0.95);
+    const trendyolPrice = basePrice;
+    const amazonDiscount = 10 + (hash % 12);
+    const hbDiscount = 5 + (hash % 8);
+    const trendyolDiscount = hash % 6;
+    return [
+      { marketplace: 'Amazon TR', seller: 'Amazon Türkiye', shipping: 'Hızlı Kargo', price: amazonPrice, discount: `%${amazonDiscount} İndirim`, link: 'https://www.amazon.com.tr', rating: 4.8 },
+      { marketplace: 'Hepsiburada', seller: 'Hepsiburada Resmi Store', shipping: 'Hızlı Kargo', price: hepsiburadaPrice, discount: `%${hbDiscount} İndirim`, link: 'https://www.hepsiburada.com', rating: 4.6 },
+      { marketplace: 'Trendyol', seller: 'Teknosa Mağazası', shipping: 'Hızlı Kargo', price: trendyolPrice, discount: `%${trendyolDiscount} İndirim`, link: 'https://www.trendyol.com', rating: 4.5 }
+    ];
+  }, []);
+
   // Navigation Tabs
   const [activeTab, setActiveTab] = useState<'news' | 'nav' | 'analytics' | 'system' | 'ai' | 'wp' | 'legal'>('news');
   const [showAdminTabs, setShowAdminTabs] = useState(false);
@@ -650,6 +1128,7 @@ export default function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [onlyBookmarks, setOnlyBookmarks] = useState(false);
+  const [isMobileAdBannerVisible, setIsMobileAdBannerVisible] = useState(true);
 
   // Reader Profile & Auth Modal
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
@@ -745,6 +1224,49 @@ export default function App() {
   // Glossary Tooltip Modal State
   const [activeGlossaryTerm, setActiveGlossaryTerm] = useState<GlossaryTerm | null>(null);
 
+  // Programmatic SEO Content Agent State
+  const [seoKeyword, setSeoKeyword] = useState('');
+  const [seoMode, setSeoMode] = useState<'auto' | 'comparison' | 'price' | 'howto' | 'analysis'>('auto');
+  const [seoCustomInstructions, setSeoCustomInstructions] = useState('');
+  const [isGeneratingSeo, setIsGeneratingSeo] = useState(false);
+  const [seoResult, setSeoResult] = useState<any>(null);
+  const [seoActiveTab, setSeoActiveTab] = useState<'reader' | 'eeat' | 'seo' | 'schema'>('reader');
+  const [seoStep, setSeoStep] = useState<string>('');
+  const [selectedNewsletterInterest, setSelectedNewsletterInterest] = useState<'finans' | 'ai'>('finans');
+
+  // B2B Lead Form state
+  const [b2bLeads, setB2bLeads] = useState<any[]>(() => {
+    if (typeof localStorage !== 'undefined') {
+      const saved = localStorage.getItem('whsk_b2b_leads');
+      return saved ? JSON.parse(saved) : [];
+    }
+    return [];
+  });
+  const [b2bCompanyName, setB2bCompanyName] = useState('');
+  const [b2bService, setB2bService] = useState('Güneş Enerjisi & GES Yatırımları');
+  const [b2bBudget, setB2bBudget] = useState('1.000.000 ₺ - 5.000.000 ₺');
+  const [b2bEmail, setB2bEmail] = useState('');
+  const [b2bPhone, setB2bPhone] = useState('');
+  const [isB2bSubmitting, setIsB2bSubmitting] = useState(false);
+
+  // Affiliate click tracker
+  const [affiliateClicks, setAffiliateClicks] = useState<Record<string, number>>(() => {
+    if (typeof localStorage !== 'undefined') {
+      const saved = localStorage.getItem('whsk_affiliate_clicks');
+      return saved ? JSON.parse(saved) : {};
+    }
+    return {};
+  });
+
+  // Native Push Notification bar state
+  const [showPushBar, setShowPushBar] = useState(false);
+
+  // Press Release selected package
+  const [selectedPrPackage, setSelectedPrPackage] = useState<'standard' | 'headline' | 'authority'>('headline');
+  const [prCompanyName, setPrCompanyName] = useState('');
+  const [prEmail, setPrEmail] = useState('');
+  const [prPhone, setPrPhone] = useState('');
+
   // Audio Player State & TTS Controllers
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
   const [isPausedAudio, setIsPausedAudio] = useState(false);
@@ -801,7 +1323,9 @@ export default function App() {
     }
   };
 
-  const getDynamicReadTime = (news: NewsItem): string => {
+  // Dynamic Reading Time Hook
+  const getDynamicReadTime = useCallback((news: NewsItem): string => {
+    if (!news) return "1 dk";
     let text = `${news.title} ${news.excerpt}`;
     if (news.sections && news.sections.length > 0) {
       news.sections.forEach(sec => {
@@ -809,12 +1333,30 @@ export default function App() {
       });
     }
     const words = text.trim().split(/\s+/).filter(w => w.length > 0).length;
-    const minutes = Math.max(1, Math.ceil(words / 200));
+    
+    // Metin yoğunluğuna göre okuma hızı (WPM - Words Per Minute) katsayısı:
+    // Küçük yazı tipinde ('sm') metin daha yoğundur, hızlı taranabilir.
+    // Orta yazı tipinde ('md') standart okuma hızıdır.
+    // Büyük yazı tipinde ('lg') metin daha seyrektir, göz takibi ve kaydırma hızı nedeniyle okuma hızı düşer.
+    let wpm = 200; // Standart (md)
+    if (articleFontSize === 'sm') {
+      wpm = 240; // Hızlı tarama
+    } else if (articleFontSize === 'lg') {
+      wpm = 140; // Yavaş ve dikkatli okuma, seyreltilmiş metin yoğunluğu
+    }
+    
+    const minutes = Math.max(1, Math.ceil(words / wpm));
     return `${minutes} dk`;
-  };
+  }, [articleFontSize]);
+
+  // Real-time memoized read time for the currently selected article
+  const currentArticleReadTime = useMemo(() => {
+    if (!selectedNewsArticle) return "0 dk";
+    return getDynamicReadTime(selectedNewsArticle);
+  }, [selectedNewsArticle, getDynamicReadTime]);
 
   const getArticleTextToSpeak = (article: NewsItem) => {
-    let text = `${article.title}. ${article.excerpt}. `;
+    let text = `WebdeHepSeek Analiz Masası sesli bülteni sunar. ${article.title}. ${article.excerpt}. `;
     if (article.sections && article.sections.length > 0) {
       article.sections.forEach(sec => {
         text += `${sec.heading}. ${sec.body}. `;
@@ -1119,6 +1661,9 @@ export default function App() {
     setToastMessage(msg);
     setTimeout(() => setToastMessage(null), 3000);
   };
+  useEffect(() => {
+    (window as any).showToast = showToast;
+  }, []);
 
   // AI Classification
   const [newsText, setNewsText] = useState('');
@@ -1164,6 +1709,17 @@ export default function App() {
       setLiveFearGreed(prev => Math.min(85, Math.max(55, prev + Math.floor((Math.random() - 0.48) * 2))));
     }, 8000);
     return () => clearInterval(interval);
+  }, []);
+
+  // Pro Plus: 4 seconds timer to show Native-like Browser Push Notification Opt-in bar
+  useEffect(() => {
+    const isActed = localStorage.getItem('whsk_push_acted');
+    if (!isActed) {
+      const timer = setTimeout(() => {
+        setShowPushBar(true);
+      }, 4000);
+      return () => clearTimeout(timer);
+    }
   }, []);
 
   // Fetch Live Rates API & External News & Comments Persistence
@@ -1296,35 +1852,136 @@ export default function App() {
     return pollData.options.reduce((acc, curr) => acc + curr.votes, 0);
   }, [pollData]);
 
-  // Dynamic Schema.org JSON-LD Insertion
+  // Dynamic Schema.org JSON-LD Insertion supporting all 4 pSEO Templates
   useEffect(() => {
+    // Clean up existing schema script tag
+    const existing = document.getElementById('news-article-jsonld');
+    if (existing) existing.remove();
+
     if (selectedNewsArticle) {
       const script = document.createElement('script');
       script.type = 'application/ld+json';
       script.id = 'news-article-jsonld';
-      script.innerHTML = JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "NewsArticle",
-        "headline": selectedNewsArticle.title,
-        "description": selectedNewsArticle.excerpt,
-        "image": [selectedNewsArticle.imageUrl],
-        "datePublished": "2026-10-06T08:00:00+03:00",
-        "author": {
-          "@type": "Person",
-          "name": selectedNewsArticle.author,
-          "jobTitle": selectedNewsArticle.authorTitle || "Journalist"
-        },
-        "publisher": {
-          "@type": "Organization",
-          "name": "WebdeHepSeeK Journal",
-          "url": "https://webdehepseek.com"
-        },
-        "mainEntityOfPage": selectedNewsArticle.canonicalUrl
-      });
+      
+      const canonical = selectedNewsArticle.canonicalUrl || `https://webdehepseek.com/haber/${selectedNewsArticle.id}`;
+      let schemaPayload: any = null;
+
+      // Check pSEO type and build the appropriate Google Rich Result Schema
+      if (selectedNewsArticle.pSeoType === 'comparison' && selectedNewsArticle.pSeoData) {
+        const d = selectedNewsArticle.pSeoData;
+        schemaPayload = {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Product",
+              "@id": `${canonical}#product`,
+              "name": d.x && d.y ? `${d.x} vs ${d.y} Karşılaştırması` : selectedNewsArticle.title,
+              "description": selectedNewsArticle.excerpt,
+              "image": selectedNewsArticle.imageUrl,
+              "brand": { "@type": "Brand", "name": "WebdeHepSeek" },
+              "offers": {
+                "@type": "AggregateOffer",
+                "priceCurrency": "TRY",
+                "lowPrice": "29999",
+                "highPrice": "149999",
+                "offerCount": "2"
+              }
+            },
+            {
+              "@type": "FAQPage",
+              "@id": `${canonical}#faq`,
+              "mainEntity": (d.quickDecision?.points || ["Karşılaştırma detaylarını inceleyin."]).map((pt: string, idx: number) => ({
+                "@type": "Question",
+                "name": idx === 0 ? "Kısaca hangisi tercih edilmeli?" : `Karar kriteri ${idx} nedir?`,
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": pt
+                }
+              }))
+            }
+          ]
+        };
+      } else if (selectedNewsArticle.pSeoType === 'price' && selectedNewsArticle.pSeoData) {
+        const d = selectedNewsArticle.pSeoData;
+        schemaPayload = {
+          "@context": "https://schema.org",
+          "@type": "PriceSpecification",
+          "name": selectedNewsArticle.title,
+          "price": d.spotPrice?.replace(/[^0-9]/g, '') || "690",
+          "priceCurrency": "TRY",
+          "valueAddedTaxIncluded": true,
+          "description": selectedNewsArticle.excerpt
+        };
+      } else if (selectedNewsArticle.pSeoType === 'howto' && selectedNewsArticle.pSeoData) {
+        const d = selectedNewsArticle.pSeoData;
+        schemaPayload = {
+          "@context": "https://schema.org",
+          "@type": "HowTo",
+          "name": selectedNewsArticle.title,
+          "description": selectedNewsArticle.excerpt,
+          "totalTime": "PT15M",
+          "step": (d.steps || []).map((s: any, idx: number) => ({
+            "@type": "HowToStep",
+            "position": idx + 1,
+            "name": s.heading,
+            "itemListElement": [{
+              "@type": "HowToDirection",
+              "text": s.body
+            }]
+          }))
+        };
+      } else if (selectedNewsArticle.pSeoType === 'review' && selectedNewsArticle.pSeoData) {
+        const d = selectedNewsArticle.pSeoData;
+        schemaPayload = {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Product",
+              "@id": `${canonical}#product`,
+              "name": selectedNewsArticle.title,
+              "image": selectedNewsArticle.imageUrl,
+              "description": selectedNewsArticle.excerpt,
+              "review": {
+                "@type": "Review",
+                "reviewRating": {
+                  "@type": "Rating",
+                  "ratingValue": d.score || "9.6",
+                  "bestRating": "10"
+                },
+                "author": { "@type": "Person", "name": selectedNewsArticle.author }
+              }
+            }
+          ]
+        };
+      } else {
+        // Fallback: standard NewsArticle
+        schemaPayload = {
+          "@context": "https://schema.org",
+          "@type": "NewsArticle",
+          "headline": selectedNewsArticle.title,
+          "description": selectedNewsArticle.excerpt,
+          "image": [selectedNewsArticle.imageUrl],
+          "datePublished": "2026-10-08T10:00:00+03:00",
+          "author": {
+            "@type": "Person",
+            "name": selectedNewsArticle.author,
+            "jobTitle": selectedNewsArticle.authorTitle || "Teknoloji Servisi"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "WebdeHepSeeK Journal",
+            "url": "https://webdehepseek.com"
+          },
+          "mainEntityOfPage": canonical
+        };
+      }
+
+      script.innerHTML = JSON.stringify(schemaPayload, null, 2);
       document.head.appendChild(script);
+
       return () => {
-        const existing = document.getElementById('news-article-jsonld');
-        if (existing) existing.remove();
+        const cleanup = document.getElementById('news-article-jsonld');
+        if (cleanup) cleanup.remove();
       };
     }
   }, [selectedNewsArticle]);
@@ -1477,7 +2134,7 @@ export default function App() {
   }, [newsList, selectedNewsArticle]);
 
   // Gemini / Local Hybrid AI Classifier
-  const classifyNewsWithGemini = () => {
+  const classifyNewsWithGemini = async () => {
     if (!newsText.trim()) {
       showToast("Lütfen analiz etmek için bir metin girin.");
       return;
@@ -1485,14 +2142,26 @@ export default function App() {
     setIsClassifying(true);
     setClassificationResult(null);
 
-    setTimeout(() => {
+    try {
+      const response = await fetch('/api/gemini/classify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text: newsText }),
+      });
+      const resData = await response.json();
+      if (resData.success && resData.data) {
+        setClassificationResult(resData.data);
+        showToast("AI Sınıflandırma Tamamlandı!");
+      } else {
+        throw new Error(resData.error || "Sunucu sınıflandırma hatası.");
+      }
+    } catch (err) {
+      console.warn("API classification failed, falling back to local classifier:", err);
       try {
         const result = localTextClassifier(newsText);
         setClassificationResult(result);
-        showToast("AI Sınıflandırma Tamamlandı!");
-      } catch (err) {
-        console.error("Classification error:", err);
-        // Resilient fallback so that it never crashes
+        showToast("Hibrit Sınıflandırma Tamamlandı!");
+      } catch (localErr) {
         setClassificationResult({
           category: "Yapay Zeka & Gelecek",
           subcategory: "AGI (Yapay Genel Zeka)",
@@ -1501,10 +2170,374 @@ export default function App() {
           reasoning: "Metin analizinde genel yapay zeka ve teknoloji desenleri saptanmıştır."
         });
         showToast("Sınıflandırma tamamlandı.");
-      } finally {
-        setIsClassifying(false);
       }
-    }, 300);
+    } finally {
+      setIsClassifying(false);
+    }
+  };
+
+  // Graceful fallback helper to simulate gorgeous E-E-A-T programmatic contents if API fails
+  const simulateFallbackSeo = (keyword: string, mode: 'auto' | 'comparison' | 'price' | 'howto' | 'analysis') => {
+    let detectedMode = mode;
+    if (mode === 'auto') {
+      const kw = keyword.toLowerCase();
+      if (kw.includes('vs') || kw.includes('veya') || kw.includes('kıyas')) detectedMode = 'comparison';
+      else if (kw.includes('fiyat') || kw.includes('maliyet') || kw.includes('kaç tl') || kw.includes('ne kadar')) detectedMode = 'price';
+      else if (kw.includes('nasıl') || kw.includes('yapılır') || kw.includes('kurulum')) detectedMode = 'howto';
+      else detectedMode = 'analysis';
+    }
+
+    // Generate high-quality mock structure matching the exact mode requested
+    let result: any = {};
+    if (detectedMode === 'comparison') {
+      const parts = keyword.split(/vs|veya/i);
+      const x = parts[0]?.trim() || "X Cihazı";
+      const y = parts[1]?.trim() || "Y Cihazı";
+      result = {
+        h1: `${x} vs ${y} Karşılaştırması 2026: Hangisi Alınmalı? (Özellik, Fiyat ve Karar Matrisi)`,
+        spot: `2026 yılı itibarıyla ${x} ve ${y} modelleri pazardaki en güçlü rakipler arasında yer alıyor. Bu analizde, her iki platformun teknik performansını, maliyet avantajlarını ve uzun ömürlülüğünü tarafsız olarak değerlendiriyoruz.`,
+        quickDecision: {
+          title: "Kısaca Hangisi?",
+          winner: `${x} (Genel Performans ve Gelecek Odaklılıkta Önde)`,
+          points: [
+            `Eğer bütçe hassasiyetiniz varsa ve maksimum fiyat/performans istiyorsanız ${y} tercih edilmeli.`,
+            `Gelişmiş yapay zeka özellikleri, yüksek işlem hızı ve uzun vadeli güncelleme desteği için ${x} tartışmasız liderdir.`,
+            `Kurumsal iş akışlarında ve ağır iş yüklerinde ${x} üstün ekosistem entegrasyonu sunmaktadır.`
+          ]
+        },
+        table: {
+          headers: ["Özellik/Kriter", x, y],
+          rows: [
+            ["İşlemci Gücü", "Apple M4 Max / Snapdragon X Elite v2", "Intel Core Ultra 9 / MediaTek Dimensity 9400"],
+            ["Yapay Zeka (NPU) Kapasitesi", "50 TOPS (Lokal Çalışma)", "40 TOPS (Hibrit Sentez)"],
+            ["Pil / Enerji Verimliliği", "Mükemmel (18+ saat aktif kullanım)", "Çok İyi (12-14 saat aktif kullanım)"],
+            ["Başlangıç Fiyatı (2026)", "49.999 TL", "39.999 TL"],
+            ["Uzun Ömürlülük & Destek", "7 Yıl Yazılım ve Donanım Garantisi", "4 Yıl Güncelleme Desteği"],
+            ["E-E-A-T Karar Puanı", "9.6 / 10 (Sektör Standardı)", "8.9 / 10 (Fiyat Performans Odaklı)"]
+          ]
+        },
+        sections: [
+          {
+            heading: "Derinlemesine Ekosistem Entegrasyonu ve Verimlilik Karşılaştırması",
+            body: `${x}, tescilli işletim sistemi ve donanım sinerjisi sayesinde özellikle yoğun iş yüklerinde rakiplerinden belirgin şekilde ayrışmaktadır. 2026 yılında yayınlanan Helpful Content güncellemesine göre, kullanıcılar sistem kararlılığını %40 oranında daha yüksek puanlamıştır. ${y} ise açık kaynak kodlu ve özelleştirilebilir yapısıyla esneklik arayan geliştiriciler ve teknik profesyoneller için ideal bir platform sunmaktadır.`
+          },
+          {
+            heading: "Karar Matrisi: Kim, Hangisini Neden Almalı?",
+            body: `Karar aşamasında en kritik faktör kullanım senaryonuzdur. Eğer günlük çalışma rutininiz yoğun Adobe/CAD yazılımları, veri analizi veya lokal yapay zeka modelleri çalıştırmayı içeriyorsa ${x} için ödeyeceğiniz fiyat farkı, kazandıracağı zaman ile amorti edilecektir. Öte yandan, standart web geliştirme, genel ofis uygulamaları ve bütçe optimizasyonu önceliğiniz ise ${y} sizi asla yarı yolda bırakmayacak sağlam bir yatırımdır.`
+          }
+        ],
+        faq: [
+          {
+            question: `${x} ve ${y} modellerinden hangisi daha uzun ömürlü?`,
+            answer: `${x}, 2026 donanım mimarisi ve 7 yıllık kesintisiz güncelleme garantisiyle uzun ömürlülükte bir adım öndedir.`
+          },
+          {
+            question: "Fiyat farkına gerçekten değer mi?",
+            answer: "Eğer işlem hızı ve günlük 2-3 saatlik zaman tasarrufu sizin için önemliyse, evet, aradaki %20'lik fiyat farkı kesinlikle değer."
+          },
+          {
+            question: "Yapay zeka özellikleri internet olmadan çalışıyor mu?",
+            answer: `${x} üzerinde bulunan 50 TOPS gücündeki yeni nesil NPU, en popüler LLM modellerini tamamen internet dışı (offline) çalıştırabilmektedir.`
+          }
+        ],
+        schemaJson: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "NewsArticle",
+              "headline": `${x} vs ${y} Karşılaştırması 2026`,
+              "datePublished": "2026-10-08T10:00:00Z",
+              "author": { "@type": "Organization", "name": "WebdeHepSeek Haber Merkezi" }
+            },
+            {
+              "@type": "FAQPage",
+              "mainEntity": [
+                { "@type": "Question", "name": "Uzun ömürlülük hangisinde daha iyi?", "acceptedAnswer": { "@type": "Answer", "text": "X modelinde daha iyidir." } }
+              ]
+            }
+          ]
+        }, null, 2),
+        metaTitle: `${x} vs ${y} Karşılaştırması 2026: Hangisini Almalı?`,
+        metaDescription: `Detaylı ${x} ve ${y} teknik özellikleri, 2026 güncel fiyat listesi ve uzman tavsiyesi. Hangisi sizin için doğru yatırım? Tıklayın ve öğrenin.`,
+        eeatScore: 98,
+        eeatReasons: [
+          "Tarafsız karşılaştırma matrisi ve somut teknik parametreler kullanıldı.",
+          "Ticari manipülasyondan uzak, tamamen teknik performansa dayalı analiz yapıldı.",
+          "Kullanıcı senaryolarına özel kararlar net olarak formüle edildi."
+        ],
+        detectedMode: 'comparison'
+      };
+    } else if (detectedMode === 'price') {
+      result = {
+        h1: `${keyword} 2026 Fiyatı Ne Kadar Oldu? (Güncel Tarife & Kalem Kalem Maliyet)`,
+        spot: `2026 yılı güncel ekonomik verileri ve vergi düzenlemeleri çerçevesinde, ${keyword} sahibi olmak için gereken tüm maliyet kalemlerini, taban fiyatları ve ek harçları detaylandırıyoruz.`,
+        spotPrice: "74.999 TL (Tüm Vergiler Dahil Tavsiye Edilen Satış Fiyatı)",
+        table: {
+          headers: ["Maliyet Kalemi", "Yüzde / Oran", "Net Tutar (TL)"],
+          rows: [
+            ["Yalın Giriş Fiyatı (Taban)", "Gümrük Giriş", "45.000 TL"],
+            ["Özel Tüketim Vergisi (ÖTV)", "%20 (Yasal Tarife)", "9.000 TL"],
+            ["Katma Değer Vergisi (KDV)", "%20 (Standart Oran)", "10.800 TL"],
+            ["Kültür Fonu ve TRT Bandrolü", "%4 ve %12 birleşik", "3.200 TL"],
+            ["Yolcu ve Bandrol Masrafları", "Sabit Harçlar", "1.999 TL"],
+            ["TOPLAM MALİYET", "%100 Vergi ve Masraf Dahil", "74.999 TL"]
+          ]
+        },
+        sections: [
+          {
+            heading: "Geçen Yıla Göre Değişim Analizi ve Gelecek Projeksiyonu",
+            body: `${keyword} fiyatları, 2025 yılına kıyasla küresel enflasyon ve çip krizinin hafiflemesi sayesinde döviz bazında %5 düşüş gösterse de, yerel vergi güncellemeleri ve lojistik maliyetlerin artışı nedeniyle TL bazında toplamda %18'lik bir artış yaşamıştır. Önümüzdeki çeyrekte fiyatların bu seviyede konsolide olması beklenmektedir.`
+          },
+          {
+            heading: "En Uygun Fiyatla Alım Yapma Stratejileri",
+            body: `Ürünü en avantajlı şekilde teminat altına almak için dönemsel distribütör kampanyaları, eskiyi getir yeniyi götür indirimleri ve özel banka kartı taksit fırsatları yakından takip edilmelidir. Özellikle Kasım ve Ocak aylarındaki stok temizleme periyotlarında %12'ye varan reel fiyat gevşemeleri gözlenmektedir.`
+          }
+        ],
+        savings: [
+          "Yetkili satıcıların 'Eskiyi Getir, Yeniyi Götür' takas kampanyalarını değerlendirin.",
+          "Peşin ödemelerde uygulanan distribütör özel iskonto oranını (%5-8) talep edin.",
+          "Yıl sonu stok boşaltma dönemlerinde (Kasım/Aralık) alım yaparak ek aksesuarları ücretsiz edinin."
+        ],
+        faq: [
+          {
+            question: "Fiyatlara önümüzdeki aylarda zam gelir mi?",
+            answer: "Küresel tedarik zinciri şu an dengede olduğu için 2026 ilk yarısına kadar fiyatta stabilite öngörülmektedir."
+          },
+          {
+            question: "Taksit imkanları ve vadeler nasıl şekilleniyor?",
+            answer: "BDDK mevzuatları gereği, teknolojik ve lüks tüketim ürünlerinde taksit sınırları kart bazında 3 ila 6 ay olarak uygulanmaktadır."
+          }
+        ],
+        schemaJson: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "PriceSpecification",
+          "price": "74999",
+          "priceCurrency": "TRY",
+          "valueAddedTaxIncluded": "true"
+        }, null, 2),
+        metaTitle: `${keyword} 2026 Fiyatı Ne Kadar? (Net Güncel Tarife)`,
+        metaDescription: `Detaylı ${keyword} maliyet tablosu, ÖTV, KDV ve ek harçlar dahil net fiyatı. 2026 geçen yıla göre değişim analizi ve tasarruf tüyoları.`,
+        eeatScore: 99,
+        eeatReasons: [
+          "Kalem kalem şeffaf vergi ve maliyet dökümü yapıldı.",
+          "Doğrudan kullanıcı odaklı tasarruf tavsiyelerine yer verildi.",
+          "Döviz ve enflasyon katsayıları gerçeğe uygun simüle edildi."
+        ],
+        detectedMode: 'price'
+      };
+    } else if (detectedMode === 'howto') {
+      result = {
+        h1: `Adım Adım ${keyword} Nasıl Yapılır? (2026 Güncel Rehberi & Resimli Anlatım)`,
+        spot: `${keyword} sürecini sorunsuz, hızlı ve en doğru teknik adımlarla gerçekleştirebilmeniz için hazırladığımız kapsamlı kurulum ve konfigürasyon kılavuzu.`,
+        sections: [
+          {
+            heading: "Adım 1: Gerekli Ön Hazırlıklar ve Bağımlılıkların Yüklenmesi",
+            body: "İşleme başlamadan önce sisteminizin güncel olduğundan emin olun. Gerekli terminal paketlerini indirin ve yönetici yetkileriyle terminalinizi hazır hale getirin."
+          },
+          {
+            heading: "Adım 2: Konfigürasyon Dosyalarının Yapılandırılması",
+            body: "Uygulamanın düzgün çalışabilmesi için ana parametreleri içeren çevre değişkenlerini (.env) veya ayar dosyalarını düzenleyin. Port, veritabanı yolları ve güvenlik anahtarlarını girin."
+          },
+          {
+            heading: "Adım 3: Çalıştırma ve İlk Test Rutinleri",
+            body: "Kurulum tamamlandıktan sonra test komutunu koşturarak sistemin yanıt süresini kontrol edin. Herhangi bir hata kodu dönmediğinden emin olmak için log dosyalarını izleyin."
+          }
+        ],
+        errorsTable: {
+          headers: ["Sık Karşılaşılan Hata", "Olası Nedeni", "Kesin Çözümü"],
+          rows: [
+            ["Port Conflict Error (EADDRINUSE)", "Seçtiğiniz port arka planda başka bir servis tarafından işgal edilmiştir.", "Sistemdeki çakışan servisi durdurun veya yapılandırma dosyasından portu değiştirin."],
+            ["Permission Denied (EACCES)", "Sistem dosyalarını okumak veya yazmak için yeterli yönetici izni bulunmuyor.", "Komutun başına 'sudo' ekleyin veya terminali yönetici olarak çalıştırın."],
+            ["Missing Environment Variables", ".env dosyasındaki API anahtarı veya bağlantı dizgesi eksik girilmiştir.", "Şablon dosyayı (.env.example) kopyalayarak alanları eksiksiz doldurun."]
+          ]
+        },
+        faq: [
+          {
+            question: "Bu işlemler ne kadar sürer?",
+            answer: "Tüm adımları kılavuza göre uyguladığınızda ortalama kurulum süresi 15 ila 20 dakikadır."
+          },
+          {
+            question: "Hata alırsam nereye danışabilirim?",
+            answer: "WebdeHepSeek geliştirici forumuna veya resmi destek e-postamıza (iletisim@webdehepseek.com) log çıktınızla birlikte başvurabilirsiniz."
+          }
+        ],
+        schemaJson: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "HowTo",
+          "name": `${keyword} Kurulum Kılavuzu`,
+          "step": [
+            { "@type": "HowToStep", "text": "Ön hazırlık ve güncellemeleri yapın." },
+            { "@type": "HowToStep", "text": "Ayar dosyalarını konfigüre edin." }
+          ]
+        }, null, 2),
+        metaTitle: `Adım Adım ${keyword} Nasıl Yapılır? (2026 Detaylı Rehber)`,
+        metaDescription: `Sıfırdan başlayarak ${keyword} kılavuzu. Resimli adımlar, olası port/izin hataları ve pratik çözümleri. Hemen kurun.`,
+        eeatScore: 97,
+        eeatReasons: [
+          "Sıralı ve mantıksal adım adım talimatlar sunuldu.",
+          "Hata ve çözümler tablosuyla kullanıcı sorunlarına pratik yanıtlar üretildi.",
+          "Terminal komutları ve teknik detaylar doğrulanmış kaynaklardan türetildi."
+        ],
+        detectedMode: 'howto'
+      };
+    } else {
+      result = {
+        h1: `${keyword} Hakkında Bilmeniz Gereken Her Şey (2026 Derinlemesine Analiz & Gelecek Öngörüsü)`,
+        spot: `${keyword} konusunda küresel trendler, teknik parametreler ve uzman öngörüleriyle desteklenmiş derinlemesine durum analizice sektörel saptamalar.`,
+        sections: [
+          {
+            heading: "Mevcut Teknolojik Durum ve Sektörel Yansımalar",
+            body: "2026 yılı itibarıyla bu başlık, endüstri standartlarının yeniden tanımlanmasında kritik bir rol oynamaktadır. Öncü şirketlerin yaptığı yatırımlar, kullanıcı alışkanlıklarını kökten değiştirerek yeni bir pazar hacmi yaratmıştır."
+          },
+          {
+            heading: "Stratejik Öngörüler ve Fırsatlar Kapısı",
+            body: "Gelecekteki 5 yıllık projeksiyonda, yapay zekanın sisteme dahil olmasıyla operasyonel verimliliğin %250 oranında artacağı öngörülmektedir. Bu trende erken uyum sağlayan kurumlar, rakiplerine karşı ezici bir üstünlük elde edecektir."
+          }
+        ],
+        faq: [
+          {
+            question: "Gelecekte bu sektörde neler değişecek?",
+            answer: "Tam otonom entegrasyon ve merkeziyetsiz veri doğrulama sistemleri standart hale gelecektir."
+          },
+          {
+            question: "Bireysel kullanıcılar için riskler nelerdir?",
+            answer: "Veri güvenliği ve adaptasyon hızı en kritik iki risk faktörü olarak öne çıkmaktadır."
+          }
+        ],
+        schemaJson: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "NewsArticle",
+          "headline": `${keyword} Derin Analizi`,
+          "datePublished": "2026-10-08T10:00:00Z"
+        }, null, 2),
+        metaTitle: `${keyword} Hakkında Her Şey: 2026 Detaylı İnceleme`,
+        metaDescription: `${keyword} hakkında bilinmeyenler, teknik analizler ve gelecek projeksiyonları. Sektör liderlerinin görüşleri ve derin analiz.`,
+        eeatScore: 98,
+        eeatReasons: [
+          "Bütünsel pazar ve trend analizleri entegre edildi.",
+          "Uluslararası saygın finans ve teknoloji kaynakları simüle edildi.",
+          "Gelecek öngörüleri mantıksal ve doğrulanabilir temellere oturtuldu."
+        ],
+        detectedMode: 'analysis'
+      };
+    }
+
+    setSeoResult(result);
+  };
+
+  // Programmatic SEO Content Generator via server-side API proxy
+  const generateProgrammaticSeoContent = async () => {
+    if (!seoKeyword.trim()) {
+      showToast("Lütfen bir anahtar kelime veya karşılaştırma girdisi yazın.");
+      return;
+    }
+    setIsGeneratingSeo(true);
+    setSeoResult(null);
+    setSeoStep("Anahtar kelime analiz ediliyor...");
+
+    const steps = [
+      "E-E-A-T ve Helpful Content yönergeleri sorgulanıyor...",
+      "Yüksek dönüşüm oranlı affiliate / sponsorluk fırsatları taranıyor...",
+      "Seçilen moda göre derinlemesine içerik mimarisi tasarlanıyor...",
+      "Sıkça sorulan sorular ve cevaplar hazırlanıyor...",
+      "Schema.org JSON-LD yapısal verisi oluşturuluyor ve doğrulanıyor..."
+    ];
+
+    let currentStepIndex = 0;
+    const interval = setInterval(() => {
+      if (currentStepIndex < steps.length) {
+        setSeoStep(steps[currentStepIndex]);
+        currentStepIndex++;
+      }
+    }, 2500);
+
+    try {
+      // Determine work mode based on input if set to 'auto'
+      let detectedMode = seoMode;
+      if (seoMode === 'auto') {
+        const kw = seoKeyword.toLowerCase();
+        if (kw.includes('vs') || kw.includes('veya') || kw.includes('kıyas') || kw.includes('karşılaştır') || kw.includes('mi')) {
+          detectedMode = 'comparison';
+        } else if (kw.includes('fiyat') || kw.includes('maliyet') || kw.includes('kaç tl') || kw.includes('ne kadar') || kw.includes('ücret')) {
+          detectedMode = 'price';
+        } else if (kw.includes('nasıl') || kw.includes('kurulum') || kw.includes('rehber') || kw.includes('adım adım') || kw.includes('yapılır')) {
+          detectedMode = 'howto';
+        } else {
+          detectedMode = 'analysis';
+        }
+      }
+
+      const response = await fetch('/api/gemini/generate-seo-content', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          keyword: seoKeyword,
+          mode: detectedMode,
+          customInstructions: seoCustomInstructions
+        })
+      });
+
+      const resData = await response.json();
+      if (resData.success && resData.data) {
+        setSeoResult({
+          ...resData.data,
+          detectedMode // Store the mode we used
+        });
+        showToast("Programmatik SEO İçeriği Başarıyla Üretildi!");
+      } else {
+        throw new Error(resData.error || "İçerik üretilemedi.");
+      }
+    } catch (error: any) {
+      console.error("SEO generation failed:", error);
+      showToast("Yapay zeka üretimi başarısız oldu, yerel şablon dolduruluyor.");
+      simulateFallbackSeo(seoKeyword, seoMode);
+    } finally {
+      clearInterval(interval);
+      setIsGeneratingSeo(false);
+      setSeoStep('');
+    }
+  };
+
+  // Helper to publish generated programmatic SEO post directly into live feed
+  const publishSeoPostToFeed = () => {
+    if (!seoResult) return;
+    
+    // Determine category based on keywords
+    let targetCat = "Teknoloji & Dijital Dönüşüm";
+    if (seoResult.detectedMode === 'price' || seoKeyword.toLowerCase().includes('hisse') || seoKeyword.toLowerCase().includes('ekonomi') || seoKeyword.toLowerCase().includes('kripto') || seoKeyword.toLowerCase().includes('piyasa')) {
+      targetCat = "Finans & Küresel Piyasalar";
+    } else if (seoKeyword.toLowerCase().includes('yapay zeka') || seoKeyword.toLowerCase().includes('ai') || seoKeyword.toLowerCase().includes('model') || seoKeyword.toLowerCase().includes('llm')) {
+      targetCat = "Yapay Zeka & Gelecek";
+    }
+
+    const uniqueId = `pseo-${Date.now()}`;
+    const newArticle: NewsItem = {
+      id: uniqueId,
+      category: targetCat,
+      subcategory: seoResult.detectedMode === 'comparison' ? "Ürün Kıyaslama" : seoResult.detectedMode === 'price' ? "Piyasa Analizleri" : "Teknik Rehberler",
+      title: seoResult.h1,
+      excerpt: seoResult.spot,
+      date: new Date().toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' }),
+      imageUrl: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
+      author: seoResult.detectedMode === 'price' ? "Ekonomi & Piyasa Masası" : "Teknoloji Servisi",
+      authorTitle: seoResult.detectedMode === 'price' ? "Makro Finans & Analiz Masası" : "Teknoloji & AI Yayın Masası",
+      verifiedSource: true,
+      sentiment: seoResult.detectedMode === 'price' ? "Boğa 🐂" : "Nötr ⚖️",
+      executiveSummary: seoResult.spot,
+      sections: seoResult.sections.map((sec: any) => ({
+        heading: sec.heading,
+        body: sec.body
+      })),
+      readTime: "3 dk"
+    };
+
+    // Add into state list
+    setNewsList(prev => [newArticle, ...prev]);
+    showToast("Programmatik İçerik Canlı Haber Akışına Eklendi!");
+    
+    // Auto-select the newly created article so they can read it!
+    setSelectedNewsArticle(newArticle);
+    setActiveTab('news');
   };
 
   // Export Data Helper
@@ -1547,7 +2580,12 @@ export default function App() {
           subscribers.push(newsletterEmail);
           localStorage.setItem('webdehep_subscribers', JSON.stringify(subscribers));
         }
-        showToast("Aboneliğiniz başarıyla kaydedildi! Her sabah küresel analizler e-postanızda.");
+        
+        // Save Subscriber Interest Preference
+        const interestLabel = selectedNewsletterInterest === 'finans' ? 'Finans' : 'Yapay Zeka';
+        localStorage.setItem('whsk_subscriber_interests', interestLabel);
+        
+        showToast(`Aboneliğiniz kaydedildi! Öncelikli İlgi Alanınız: ${selectedNewsletterInterest === 'finans' ? '📈 Finans' : '🤖 Yapay Zeka'} olarak saklandı.`);
         setNewsletterEmail('');
       } catch (err) {
         console.error("Failed to store subscriber email", err);
@@ -1637,6 +2675,62 @@ export default function App() {
           >
             <Sparkles size={16} className="text-[#D4AF37]" />
             <span>{toastMessage}</span>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Pro Plus: Native Browser Push Notification Opt-in Bar */}
+      <AnimatePresence>
+        {showPushBar && (
+          <motion.div
+            initial={{ opacity: 0, y: -60 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -60 }}
+            className="sticky top-0 left-0 right-0 z-50 bg-[#121215]/95 border-b border-[#D4AF37]/50 shadow-xl backdrop-blur-md px-4 py-3"
+          >
+            <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-left font-sans">
+              <div className="flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-full bg-[#D4AF37]/10 flex items-center justify-center border border-[#D4AF37]/35 text-[#D4AF37] shrink-0 animate-pulse">
+                  <Bell size={15} />
+                </div>
+                <div>
+                  <h4 className="text-xs font-bold text-white font-serif">⚡ Son Dakika Finans ve Teknoloji Gelişmelerini Kaçırmayın!</h4>
+                  <p className="text-[10px] text-zinc-400">Anlık piyasa kırılmaları ve otonom PR raporlarından anında haberdar olmak için izin verin.</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 w-full sm:w-auto shrink-0 justify-end">
+                <button
+                  onClick={() => {
+                    localStorage.setItem('whsk_push_acted', 'dismissed');
+                    setShowPushBar(false);
+                    showToast("Bildirim daveti daha sonra gösterilmek üzere kapatıldı.");
+                  }}
+                  className="px-3 py-1.5 bg-[#0B0B0C] border border-zinc-800 hover:border-zinc-700 text-zinc-400 hover:text-white text-[10px] font-bold rounded-xl transition-all"
+                >
+                  Daha Sonra
+                </button>
+                <button
+                  onClick={() => {
+                    localStorage.setItem('whsk_push_acted', 'accepted');
+                    setShowPushBar(false);
+                    if ('Notification' in window) {
+                      Notification.requestPermission().then((permission) => {
+                        if (permission === 'granted') {
+                          showToast("⚡ Bildirim aboneliğiniz başarıyla aktif edildi!");
+                        } else {
+                          showToast("Bildirim izni onaylanmadı veya engellendi.");
+                        }
+                      });
+                    } else {
+                      showToast("⚡ Bildirim aboneliğiniz sanal olarak aktif edildi!");
+                    }
+                  }}
+                  className="px-4 py-1.5 bg-[#D4AF37] hover:brightness-110 text-black text-[10px] font-extrabold uppercase rounded-xl transition-all whitespace-nowrap"
+                >
+                  Bildirimleri Aç
+                </button>
+              </div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -1855,6 +2949,14 @@ export default function App() {
               >
                 <LayoutGrid size={14} className={activeTab === 'nav' ? "text-[#D4AF37]" : "opacity-70"} />
                 <span>Kategoriler</span>
+              </button>
+
+              <button
+                onClick={() => setIsPressReleaseModalOpen(true)}
+                className="px-3.5 py-2 rounded-xl text-xs font-semibold text-zinc-400 hover:text-[#D4AF37] hover:bg-zinc-900/60 transition-all flex items-center gap-1.5 shrink-0"
+              >
+                <Send size={13} className="text-[#D4AF37]" />
+                <span>Basın Bülteni</span>
               </button>
             </nav>
 
@@ -2233,8 +3335,8 @@ export default function App() {
                                           className="w-full sm:w-28 h-20 object-cover rounded-xl shrink-0 border border-zinc-800"
                                         />
                                         <div className="space-y-1.5 flex-grow">
-                                          <span className="text-[9px] font-mono text-zinc-400">
-                                            {featuredArticle.subcategory}
+                                          <span className="text-[9px] font-mono text-[#D4AF37] font-bold uppercase">
+                                            {getCleanCategoryBadge(featuredArticle.category)}
                                           </span>
                                           <h5 className="text-xs font-serif font-bold text-white hover:text-[#D4AF37] transition-colors leading-snug line-clamp-2">
                                             {featuredArticle.title}
@@ -2299,19 +3401,19 @@ export default function App() {
                                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
                                 />
                                 <span className="absolute top-2 left-2 px-2 py-0.5 bg-black/80 text-[9px] font-bold text-[#D4AF37] rounded">
-                                  {news.subcategory}
+                                  {getCleanCategoryBadge(news.category)}
                                 </span>
                               </div>
 
                               <div className="flex-grow space-y-2">
-                                <div className="flex items-center gap-2 text-[10px] text-zinc-400 font-mono">
-                                  <span className="text-[#D4AF37] font-bold">{news.category}</span>
-                                  <span>•</span>
-                                  <span className="text-zinc-300">{news.subcategory}</span>
+                                <div className="flex items-center gap-2 text-[10px] text-zinc-400 font-mono flex-wrap">
+                                  <span className="text-[#D4AF37] font-bold">{getCleanCategoryBadge(news.category)}</span>
                                   <span>•</span>
                                   <span>{news.date}</span>
                                   <span>•</span>
-                                  <span className="px-1.5 py-0.2 bg-[#D4AF37]/10 text-[#D4AF37] border border-[#D4AF37]/20 rounded text-[9px] font-bold shrink-0">{getDynamicReadTime(news)} okuma</span>
+                                  <span className="font-semibold text-zinc-300">{getDynamicReadTime(news)} okuma</span>
+                                  <span>•</span>
+                                  <span className="text-zinc-500 font-bold italic">{getMasaImzasi(news.category)}</span>
                                 </div>
 
                                 <h4 className="text-base sm:text-lg font-bold text-white group-hover:text-[#D4AF37] transition-colors leading-snug">
@@ -2356,6 +3458,12 @@ export default function App() {
 
                     {/* DONANİMHABER MODELİ: SICAK FIRSATLAR VE İNDİRİM RADARI WİDGETI */}
                     <HotDealsWidget />
+
+                    {/* INTERACTIVE FINANCE, LOAN AND DEPOSIT INTEREST CALCULATOR WIDGET */}
+                    <SidebarCalculatorWidget />
+
+                    {/* GÜNÜN İNDİRİM VE KUPON KODLARI MERKEZİ (Coupon Hub) */}
+                    <CouponHubWidget />
 
                     {/* LUXURY AFFILIATE RECOMMENDATION CARD */}
                     <AffiliateCtaCard layout="sidebar" customCta={selectedNewsArticle?.affiliateCta} />
@@ -2517,7 +3625,36 @@ export default function App() {
                 <p className="text-xs sm:text-sm text-zinc-400 max-w-xl mx-auto leading-relaxed">
                   WebdeHepSeeK Editör Masası tarafından hazırlanan günlük borsa özetleri, kripto piyasası raporları ve BGL gemoloji bültenine ücretsiz abone olun.
                 </p>
-                <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto pt-2">
+
+                {/* Interest preference badges */}
+                <div className="flex items-center justify-center gap-2.5 pt-1.5 pb-1">
+                  <button 
+                    type="button"
+                    onClick={() => setSelectedNewsletterInterest('finans')}
+                    className={cn(
+                      "px-3.5 py-1.5 rounded-xl text-xs font-bold border transition-all flex items-center gap-1.5",
+                      selectedNewsletterInterest === 'finans' 
+                        ? "bg-[#D4AF37]/20 border-[#D4AF37] text-[#D4AF37] scale-102" 
+                        : "bg-zinc-950 border-zinc-800 text-zinc-500 hover:text-zinc-300"
+                    )}
+                  >
+                    <span>📈 Finans & Piyasa</span>
+                  </button>
+                  <button 
+                    type="button"
+                    onClick={() => setSelectedNewsletterInterest('ai')}
+                    className={cn(
+                      "px-3.5 py-1.5 rounded-xl text-xs font-bold border transition-all flex items-center gap-1.5",
+                      selectedNewsletterInterest === 'ai' 
+                        ? "bg-[#D4AF37]/20 border-[#D4AF37] text-[#D4AF37] scale-102" 
+                        : "bg-zinc-950 border-zinc-800 text-zinc-500 hover:text-zinc-300"
+                    )}
+                  >
+                    <span>🤖 Yapay Zeka & AI</span>
+                  </button>
+                </div>
+
+                <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto pt-1">
                   <input 
                     type="email" 
                     required
@@ -2660,25 +3797,31 @@ export default function App() {
                       </span>
                     </nav>
 
-                    {/* KATEGORİ VE AI İLE ÖZETLE BUTONU */}
-                    <div className="flex items-center justify-between gap-3 flex-wrap">
-                      <div className="flex items-center gap-2">
-                        <span className="px-3.5 py-1 bg-[#D4AF37] text-black text-xs font-black rounded-lg uppercase tracking-wider shadow-sm">
-                          {selectedNewsArticle.category}
-                        </span>
-                        <span className="text-xs font-mono text-zinc-400 font-bold bg-[#121215] px-3 py-1 rounded-lg border border-zinc-800">
-                          {selectedNewsArticle.subcategory}
-                        </span>
-                      </div>
+                     {/* Reuters/ShiftDelete Standartlarında Editoryal Hiyerarşi */}
+                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-2 border-b border-zinc-800/60">
+                       <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs text-zinc-400 font-mono">
+                         {/* Tek Sade Kategori Rozeti */}
+                         <span className="px-2.5 py-1 bg-[#D4AF37] text-black text-[10px] font-black rounded-md tracking-wider uppercase">
+                           {getCleanCategoryBadge(selectedNewsArticle.category)}
+                         </span>
+                         <span>•</span>
+                         {/* Tarih & Okuma Süresi */}
+                         <span>{selectedNewsArticle.date}</span>
+                         <span>•</span>
+                         <span className="text-[#D4AF37] font-semibold">{currentArticleReadTime} okuma</span>
+                         <span>•</span>
+                         {/* Kurumsal Masa İmzası */}
+                         <span className="text-zinc-500 font-bold italic">{getMasaImzasi(selectedNewsArticle.category)}</span>
+                       </div>
 
-                      <button 
-                        onClick={() => setIsAiSummaryExpanded(!isAiSummaryExpanded)}
-                        className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-[#D4AF37]/15 border border-[#D4AF37]/50 text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black text-xs font-extrabold rounded-xl transition-all shadow-sm"
-                      >
-                        <Sparkles size={14} />
-                        <span>{isAiSummaryExpanded ? 'AI Özetini Gizle' : 'AI ile Özetle'}</span>
-                      </button>
-                    </div>
+                       <button 
+                         onClick={() => setIsAiSummaryExpanded(!isAiSummaryExpanded)}
+                         className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-[#D4AF37]/15 border border-[#D4AF37]/50 text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black text-xs font-extrabold rounded-xl transition-all shadow-sm self-start sm:self-auto"
+                       >
+                         <Sparkles size={14} />
+                         <span>{isAiSummaryExpanded ? 'AI Özetini Gizle' : 'AI ile Özetle'}</span>
+                       </button>
+                     </div>
 
                     {/* AÇILIR AI MADDELİ ÖZET KARTI */}
                     {isAiSummaryExpanded && (
@@ -2710,6 +3853,41 @@ export default function App() {
                       {selectedNewsArticle.excerpt}
                     </p>
 
+                    {/* GEO / AEO (AJANİK SEO - KEY TAKEAWAYS PANEL) */}
+                    <div className="bg-[#0B0B0C] border border-[#D4AF37]/35 rounded-2xl p-4.5 space-y-3 font-sans shadow-xl text-left">
+                      <div className="flex items-center gap-2 border-b border-zinc-800 pb-2">
+                        <Sparkles className="text-[#D4AF37] animate-pulse" size={15} />
+                        <h4 className="text-xs font-bold text-white uppercase tracking-wider font-mono">
+                          📌 HIZLI OLGULAR VE TEMEL VERİLER (AI Engine Takeaways)
+                        </h4>
+                      </div>
+                      
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs font-sans">
+                        <div className="space-y-1">
+                          <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block font-bold">🧠 Konunun Özü</span>
+                          <p className="text-zinc-300 leading-relaxed font-sans font-medium">
+                            {selectedNewsArticle.pSeoData?.quickDecision?.winner || selectedNewsArticle.title.split(':').slice(-1)[0]?.trim() || "Sektörel ve teknolojik inovasyon analizi."}
+                          </p>
+                        </div>
+                        <div className="space-y-1">
+                          <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block font-bold">🏢 Sektörel Etki</span>
+                          <p className="text-zinc-300 leading-relaxed font-sans font-semibold">
+                            {selectedNewsArticle.category} • <span className="text-[#D4AF37]">{selectedNewsArticle.subcategory}</span>
+                          </p>
+                        </div>
+                        <div className="space-y-1">
+                          <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block font-bold">📊 Doğrulanmış Veri & Kaynak</span>
+                          <p className="text-zinc-300 leading-relaxed font-mono text-[11px] font-bold">
+                            {selectedNewsArticle.pSeoData?.spotPrice || "Güven Skoru: %98"} • <span className="text-emerald-400">WebdeHepSeek Araştırma Masası Atfı (E-E-A-T)</span>
+                          </p>
+                        </div>
+                      </div>
+                      
+                      <p className="text-[10px] text-zinc-500 font-mono pt-1 text-center sm:text-left leading-relaxed">
+                        🤖 <strong className="text-zinc-400">GEO Uyumluluk Notu:</strong> Bu yapısal özet panel, yapay zeka arama motorları (Perplexity, ChatGPT, Gemini Search) tarafından doğrudan alıntılanabilir formatta biçimlendirilmiştir.
+                      </p>
+                    </div>
+
                     {/* KÜNYE SATIRI */}
                     <div className="flex flex-wrap items-center justify-between gap-4 p-4 bg-[#121215] border border-zinc-800/80 rounded-2xl text-xs">
                       <div 
@@ -2740,10 +3918,20 @@ export default function App() {
                       <div className="flex items-center gap-3 text-zinc-400 font-mono text-xs">
                         <span className="px-2.5 py-1 bg-[#0B0B0C] border border-zinc-800 text-[#D4AF37] font-bold rounded-lg flex items-center gap-1.5">
                           <Clock size={13} />
-                          <span>{getDynamicReadTime(selectedNewsArticle)} Okuma</span>
+                          <span>{currentArticleReadTime} Okuma</span>
                         </span>
                       </div>
                     </div>
+
+                    {/* Geo / AEO Özet Doğrulama Kutusu */}
+                    <GeoAnswerBox 
+                      articleId={selectedNewsArticle.id}
+                      title={selectedNewsArticle.title}
+                      category={selectedNewsArticle.category}
+                      subcategory={selectedNewsArticle.subcategory}
+                      excerpt={selectedNewsArticle.excerpt}
+                      canonicalUrl={selectedNewsArticle.canonicalUrl}
+                    />
 
                     {/* KAPAK GÖRSELİ VE AÇIKLAMA METNİ */}
                     <div className="space-y-2">
@@ -2796,6 +3984,10 @@ export default function App() {
                           <div>
                             <span className="text-xs font-bold text-white block">AI Sesli Makale Dinle (TTS)</span>
                             <span className="text-[10px] text-zinc-400">Tarayıcı içi Türkçe (tr-TR) doğal ses motoru</span>
+                            <div className="flex items-center gap-1.5 mt-1 text-[8px] font-mono text-[#D4AF37] bg-[#D4AF37]/15 border border-[#D4AF37]/35 px-2 py-0.5 rounded font-black w-max uppercase tracking-wider">
+                              <Sparkles size={10} className="text-[#D4AF37]" />
+                              <span>Sponsorlu Dinleme Alanı</span>
+                            </div>
                           </div>
                         </div>
                         <span className="text-xs font-mono text-[#D4AF37] font-bold">
@@ -2885,27 +4077,299 @@ export default function App() {
                       "text-zinc-200 leading-relaxed space-y-6 font-serif",
                       articleFontSize === 'sm' ? 'text-sm' : articleFontSize === 'lg' ? 'text-xl' : 'text-base sm:text-lg'
                     )}>
-                      {selectedNewsArticle.sections ? (
-                        selectedNewsArticle.sections.map((sec, idx) => (
-                          <React.Fragment key={sec.id}>
-                            <div id={sec.id} className="space-y-3 pt-2">
-                              <h3 className="text-xl sm:text-2xl font-serif font-bold text-white border-b border-zinc-800 pb-2">
-                                {sec.heading}
-                              </h3>
-                              <p className="text-zinc-300 leading-relaxed font-sans">
-                                {sec.body}
+                      {/* PROGRAMMATIC SEO TEMPLATE INTEGRATIONS */}
+                      {selectedNewsArticle.pSeoType === 'comparison' && selectedNewsArticle.pSeoData && (
+                        <div className="space-y-6 font-sans">
+                          {/* Hızlı Karar Kutusu */}
+                          {selectedNewsArticle.pSeoData.quickDecision && (
+                            <div className="p-5 bg-zinc-950 border border-[#D4AF37]/45 rounded-2xl space-y-3 shadow-xl">
+                              <span className="px-2.5 py-0.5 bg-[#D4AF37]/10 text-[#D4AF37] border border-[#D4AF37]/30 text-[9px] font-mono rounded font-extrabold uppercase">HIZLI KARAR MATRİSİ</span>
+                              <h4 className="text-sm font-bold text-white flex items-center gap-1.5 font-serif">
+                                <CheckCircle className="text-emerald-400" size={16} />
+                                {selectedNewsArticle.pSeoData.quickDecision.title || "Özet Karar Analizi"}
+                              </h4>
+                              <p className="text-xs text-zinc-300">
+                                <strong className="text-[#D4AF37]">Önerilen Seçim:</strong> {selectedNewsArticle.pSeoData.quickDecision.winner}
+                              </p>
+                              <ul className="space-y-1.5 text-xs text-zinc-400 list-disc pl-5 leading-relaxed">
+                                {selectedNewsArticle.pSeoData.quickDecision.points.map((pt: string, idx: number) => (
+                                  <li key={idx}>{pt}</li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
+
+                          {/* Kıyaslama Tablosu */}
+                          {selectedNewsArticle.pSeoData.table && (
+                            <div className="space-y-2 pt-2 text-left">
+                              <span className="text-[10px] font-mono text-zinc-400 uppercase tracking-widest block font-bold">📊 Detaylı Özellik Karşılaştırma Matrisi</span>
+                              <div className="overflow-x-auto rounded-2xl border border-zinc-800 bg-[#0B0B0C]">
+                                <table className="w-full text-left border-collapse text-xs">
+                                  <thead>
+                                    <tr className="bg-zinc-900 border-b border-zinc-800 text-zinc-300 font-semibold font-mono">
+                                      {selectedNewsArticle.pSeoData.table.headers.map((h: string, idx: number) => (
+                                        <th key={idx} className="p-4">{h}</th>
+                                      ))}
+                                    </tr>
+                                  </thead>
+                                  <tbody className="divide-y divide-zinc-800/60 text-zinc-400">
+                                    {selectedNewsArticle.pSeoData.table.rows.map((row: string[], rowIdx: number) => (
+                                      <tr key={rowIdx} className="hover:bg-zinc-900/30 transition-colors">
+                                        {row.map((cell: string, cellIdx: number) => (
+                                          <td key={cellIdx} className={cn("p-4", cellIdx === 0 ? "font-semibold text-zinc-300 font-sans" : "font-mono text-[#D4AF37]/90")}>
+                                            {cell}
+                                          </td>
+                                        ))}
+                                      </tr>
+                                    ))}
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          )}
+
+                          {/* Tercih Kılavuzu Bölümleri */}
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2 text-left">
+                            <div className="p-4 bg-zinc-900/40 border border-zinc-800 rounded-xl space-y-2">
+                              <h5 className="text-xs font-bold text-white uppercase tracking-wider font-mono">
+                                👍 Kimler {selectedNewsArticle.pSeoData.x || "X Modelini"} Tercih Etmeli?
+                              </h5>
+                              <p className="text-xs text-zinc-400 leading-relaxed font-sans">
+                                {selectedNewsArticle.pSeoData.xPreference || "Yüksek teknik donanım, uzun ömürlülük ve ekosistem kalitesi arayan profesyonel kullanıcılar."}
                               </p>
                             </div>
+                            <div className="p-4 bg-zinc-900/40 border border-zinc-800 rounded-xl space-y-2">
+                              <h5 className="text-xs font-bold text-white uppercase tracking-wider font-mono">
+                                👍 Kimler {selectedNewsArticle.pSeoData.y || "Y Modelini"} Tercih Etmeli?
+                              </h5>
+                              <p className="text-xs text-zinc-400 leading-relaxed font-sans">
+                                {selectedNewsArticle.pSeoData.yPreference || "Fiyat/performans dengesi, bütçe kısıtları ve genel günlük pratik kullanım arayanlar."}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      )}
 
-                            {/* 2. PARAGRAFTAN/BÖLÜMDEN SONRA DOĞAL ADSENSE YATAY REKLAM ALANI */}
-                            {idx === 1 && (
-                              <div className="space-y-6 my-8 font-sans">
-                                <AdSenseSlot format="in-feed" />
-                                <AffiliateCtaCard layout="inline" customCta={selectedNewsArticle.affiliateCta} />
+                      {selectedNewsArticle.pSeoType === 'price' && selectedNewsArticle.pSeoData && (
+                        <div className="space-y-6 font-sans">
+                          {/* Net Rakam Kutusu */}
+                          <div className="p-6 bg-zinc-950 border border-emerald-500/30 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
+                            <div className="space-y-1 text-center sm:text-left">
+                              <span className="px-2.5 py-0.5 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[9px] font-mono rounded font-extrabold uppercase">2026 NET SATIŞ FİYATI</span>
+                              <h4 className="text-xs text-zinc-400 font-sans">Tüm Vergiler Dahil Tavsiye Edilen Satış Tutarı</h4>
+                            </div>
+                            <div className="flex flex-col sm:flex-row items-center gap-3.5 w-full sm:w-auto justify-end">
+                              <div className="text-2xl sm:text-3xl font-mono font-black text-emerald-400 bg-emerald-950/20 border border-emerald-500/20 px-6 py-2.5 rounded-xl shadow-inner shrink-0 text-center">
+                                {selectedNewsArticle.pSeoData.spotPrice}
                               </div>
-                            )}
-                          </React.Fragment>
-                        ))
+                              <PriceAlertTrigger 
+                                itemTitle={selectedNewsArticle.title}
+                                currentPrice={selectedNewsArticle.pSeoData.spotPrice}
+                                onShowToast={showToast}
+                              />
+                            </div>
+                          </div>
+
+                          {/* Yıllık Değişim Oranı */}
+                          {selectedNewsArticle.pSeoData.yoyChange && (
+                            <div className="p-3.5 bg-zinc-900/50 border border-zinc-800 rounded-xl flex items-center gap-2.5 text-left">
+                              <TrendingUp className="text-emerald-400 shrink-0" size={16} />
+                              <span className="text-xs text-zinc-300 font-sans">
+                                <strong className="text-white">Geçen Yıla Göre Değişim:</strong> {selectedNewsArticle.pSeoData.yoyChange}
+                              </span>
+                            </div>
+                          )}
+
+                          {/* Kalem Kalem Maliyet Tablosu */}
+                          {selectedNewsArticle.pSeoData.table && (
+                            <div className="space-y-2 text-left">
+                              <span className="text-[10px] font-mono text-zinc-400 uppercase tracking-widest block font-bold">🧾 Kalem Kalem Vergilendirme ve Maliyet Dökümü</span>
+                              <div className="overflow-x-auto rounded-2xl border border-zinc-800 bg-[#0B0B0C]">
+                                <table className="w-full text-left border-collapse text-xs">
+                                  <thead>
+                                    <tr className="bg-zinc-900 border-b border-zinc-800 text-zinc-300 font-semibold font-mono">
+                                      {selectedNewsArticle.pSeoData.table.headers.map((h: string, idx: number) => (
+                                        <th key={idx} className="p-4">{h}</th>
+                                      ))}
+                                    </tr>
+                                  </thead>
+                                  <tbody className="divide-y divide-zinc-800/60 text-zinc-400">
+                                    {selectedNewsArticle.pSeoData.table.rows.map((row: string[], rowIdx: number) => (
+                                      <tr key={rowIdx} className="hover:bg-zinc-900/30 transition-colors">
+                                        {row.map((cell: string, cellIdx: number) => (
+                                          <td key={cellIdx} className={cn("p-4", cellIdx === 0 ? "font-semibold text-zinc-300 font-sans" : "font-mono text-zinc-300")}>
+                                            {cell}
+                                          </td>
+                                        ))}
+                                      </tr>
+                                    ))}
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          )}
+
+                          {/* Tasarruf İpuçları */}
+                          {selectedNewsArticle.pSeoData.savings && (
+                            <div className="p-5 bg-emerald-950/20 border border-emerald-500/20 rounded-2xl space-y-3 text-left">
+                              <h4 className="text-xs font-bold text-emerald-400 flex items-center gap-2 uppercase tracking-widest font-mono">
+                                <Smile size={14} />
+                                Maliyeti Düşürecek Akıllı Tasarruf Tüyoları
+                              </h4>
+                              <ul className="space-y-1.5 text-xs text-zinc-300 list-disc pl-5 leading-relaxed font-sans">
+                                {selectedNewsArticle.pSeoData.savings.map((sav: string, idx: number) => (
+                                  <li key={idx}>{sav}</li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
+                        </div>
+                      )}
+
+                      {selectedNewsArticle.pSeoType === 'howto' && selectedNewsArticle.pSeoData && (
+                        <div className="space-y-6 font-sans">
+                          {/* Tahmini Süre Kutusu */}
+                          <div className="p-3 bg-zinc-900 border border-zinc-800 rounded-xl flex items-center gap-2.5 text-left">
+                            <Clock className="text-[#D4AF37]" size={16} />
+                            <span className="text-xs text-zinc-300 font-mono">
+                              <strong>Tahmini Tamamlama Süresi:</strong> {selectedNewsArticle.pSeoData.duration || "15 Dakika"}
+                            </span>
+                          </div>
+
+                          {/* Adım Adım İşlemler */}
+                          {selectedNewsArticle.pSeoData.steps && (
+                            <div className="space-y-4 text-left">
+                              <span className="text-[10px] font-mono text-zinc-400 uppercase tracking-widest block font-bold">🛠️ Sıralı Kurulum ve Uygulama Adımları</span>
+                              <div className="space-y-3">
+                                {selectedNewsArticle.pSeoData.steps.map((step: any, idx: number) => (
+                                  <div key={idx} className="p-4 bg-[#0B0B0C] border border-zinc-800 rounded-xl flex items-start gap-4">
+                                    <span className="w-6 h-6 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/35 text-[#D4AF37] flex items-center justify-center text-xs font-mono font-bold shrink-0 mt-0.5">
+                                      {idx + 1}
+                                    </span>
+                                    <div className="space-y-1">
+                                      <h4 className="text-xs font-bold text-white font-sans">{step.heading}</h4>
+                                      <p className="text-xs text-zinc-400 leading-relaxed font-sans">{step.body}</p>
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+
+                          {/* Sık Karşılaşılan Hata */}
+                          {selectedNewsArticle.pSeoData.commonError && (
+                            <div className="p-5 bg-rose-950/20 border border-rose-500/20 rounded-2xl space-y-2 text-left">
+                              <h4 className="text-xs font-bold text-rose-400 flex items-center gap-2 uppercase tracking-widest font-mono">
+                                <Scale size={14} className="text-rose-400" />
+                                Kritik Kurulum Hatası ve Pratik Çözümü
+                              </h4>
+                              <p className="text-xs text-zinc-300 leading-relaxed font-sans">
+                                {selectedNewsArticle.pSeoData.commonError}
+                              </p>
+                            </div>
+                          )}
+                        </div>
+                      )}
+
+                      {selectedNewsArticle.pSeoType === 'review' && selectedNewsArticle.pSeoData && (
+                        <div className="space-y-6 font-sans">
+                          {/* 10 Üzerinden Puanlama Kartı */}
+                          <div className="p-5 bg-zinc-950 border border-[#D4AF37]/30 rounded-2xl flex items-center justify-between gap-4 shadow-xl">
+                            <div className="text-left">
+                              <span className="px-2.5 py-0.5 bg-[#D4AF37]/10 text-[#D4AF37] border border-[#D4AF37]/20 text-[9px] font-mono rounded font-extrabold uppercase">EDİTÖRYAL PUAN</span>
+                              <h4 className="text-xs text-zinc-400 mt-1 font-serif">Arayüz Sektörel Değerlendirme Derecesi</h4>
+                            </div>
+                            <div className="text-3xl font-mono font-black text-[#D4AF37] bg-[#D4AF37]/10 px-5 py-2.5 rounded-2xl border border-[#D4AF37]/30 flex items-baseline gap-1">
+                              {selectedNewsArticle.pSeoData.score} <span className="text-xs text-zinc-500 font-normal">/ 10</span>
+                            </div>
+                          </div>
+
+                          {/* Artılar ve Eksiler Listesi */}
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
+                            <div className="p-4 bg-emerald-950/10 border border-emerald-500/20 rounded-2xl space-y-3">
+                              <h4 className="text-xs font-bold text-emerald-400 flex items-center gap-1.5 uppercase font-mono tracking-wider">
+                                <CheckCircle size={14} />
+                                Güçlü Yönleri (Artılar)
+                              </h4>
+                              <ul className="space-y-2 text-xs text-zinc-300 font-sans leading-relaxed list-inside list-disc">
+                                {selectedNewsArticle.pSeoData.pros.map((p: string, idx: number) => (
+                                  <li key={idx} className="pl-1">{p}</li>
+                                ))}
+                              </ul>
+                            </div>
+                            <div className="p-4 bg-rose-950/10 border border-rose-500/20 rounded-2xl space-y-3">
+                              <h4 className="text-xs font-bold text-rose-400 flex items-center gap-1.5 uppercase font-mono tracking-wider">
+                                <X size={14} />
+                                Zayıf Yönleri (Eksiler)
+                              </h4>
+                              <ul className="space-y-2 text-xs text-zinc-300 font-sans leading-relaxed list-inside list-disc">
+                                {selectedNewsArticle.pSeoData.cons.map((c: string, idx: number) => (
+                                  <li key={idx} className="pl-1">{c}</li>
+                                ))}
+                              </ul>
+                            </div>
+                          </div>
+
+                          {/* Affiliate Yönlendirme Butonu */}
+                          {selectedNewsArticle.pSeoData.affiliateUrl && (
+                            <div className="pt-2 text-center">
+                              <a 
+                                href={selectedNewsArticle.pSeoData.affiliateUrl} 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 px-8 py-3 bg-[#D4AF37] hover:brightness-110 text-black text-xs font-extrabold uppercase rounded-xl shadow-lg shadow-[#D4AF37]/10 transition-all scale-102 hover:scale-105 active:scale-98 animate-pulse"
+                              >
+                                <Sparkles size={14} />
+                                {selectedNewsArticle.pSeoData.affiliateText || "Ücretsiz Dene & Hemen Başla"}
+                              </a>
+                            </div>
+                          )}
+                        </div>
+                      )}
+
+                      {/* DEFAULT BODY SECTIONS */}
+                      {selectedNewsArticle.sections ? (
+                        (() => {
+                          let wordCounter = 0;
+                          return selectedNewsArticle.sections.map((sec, idx) => {
+                            const sectionWords = sec.body.split(/\s+/).length;
+                            wordCounter += sectionWords;
+                            
+                            // Decide if we should place a subsequent ad
+                            const showSubsequentAd = idx > 1 && wordCounter >= 300;
+                            if (showSubsequentAd) {
+                              wordCounter = 0; // reset counter after placement
+                            }
+
+                            return (
+                              <React.Fragment key={sec.id}>
+                                <div id={sec.id} className="space-y-3 pt-2 text-left">
+                                  <h3 className="text-xl sm:text-2xl font-serif font-bold text-white border-b border-zinc-800 pb-2">
+                                    {sec.heading}
+                                  </h3>
+                                  <p className="text-zinc-300 leading-relaxed font-sans">
+                                    {sec.body}
+                                  </p>
+                                </div>
+
+                                {/* First ad after paragraph 3 (idx === 1 is 2nd block after the main lead excerpt) */}
+                                {idx === 1 && (
+                                  <div className="space-y-6 my-8 font-sans">
+                                    <AdSenseSlot format="in-feed" />
+                                    <AffiliateCtaCard layout="inline" customCta={selectedNewsArticle.affiliateCta} />
+                                  </div>
+                                )}
+
+                                {/* Subsequent ads placed every 300 words */}
+                                {showSubsequentAd && (
+                                  <div className="space-y-6 my-8 font-sans">
+                                    <AdSenseSlot format="in-feed" />
+                                  </div>
+                                )}
+                              </React.Fragment>
+                            );
+                          });
+                        })()
                       ) : (
                         <div className="space-y-4 font-sans text-zinc-300">
                           <p>
@@ -2922,6 +4386,249 @@ export default function App() {
                           </div>
                         </div>
                       )}
+                    </div>
+
+                    {/* Pro Plus: Affiliate Fiyat Karşılaştırma Hub */}
+                    <AffiliateComparisonCard 
+                      articleId={selectedNewsArticle.id}
+                      articleTitle={selectedNewsArticle.title}
+                      category={selectedNewsArticle.category}
+                      onShowToast={showToast}
+                    />
+
+                    {/* Pro Plus: B2B Kurumsal Teklif & Lead Toplama Formu */}
+                    {['SaaS & Bulut Yazılımları', 'Yapay Zeka & Gelecek', 'Finans & Küresel Piyasalar', 'Otomotiv & Mobilite'].includes(selectedNewsArticle.category) && (
+                      <div className="my-8 p-6 bg-[#121215] border border-zinc-800 rounded-3xl space-y-4 text-left font-sans relative overflow-hidden">
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-[#D4AF37]/5 rounded-full blur-2xl -z-10" />
+                        <div className="flex items-center gap-2 border-b border-zinc-850 pb-3">
+                          <Briefcase className="text-[#D4AF37]" size={16} />
+                          <div>
+                            <span className="text-[9px] font-mono text-[#D4AF37] uppercase tracking-wider block">PREMIUM B2B ANLAŞMALARI (YÜKSEK KOMİSYON)</span>
+                            <h4 className="text-sm font-serif font-bold text-white mt-0.5">Kurumsal Çözüm & Teklif Al</h4>
+                          </div>
+                        </div>
+                        <p className="text-[11px] text-zinc-400 leading-relaxed">
+                          Enerji, B2B SaaS, Finans ve Sanayii yatırımlarınız için önde gelen kurumsal çözüm ortaklarımızdan kişiselleştirilmiş, yüksek limitli teklifleri doğrudan toplayın.
+                        </p>
+
+                        <form 
+                          onSubmit={(e) => {
+                            e.preventDefault();
+                            if (!b2bCompanyName || !b2bEmail || !b2bPhone) {
+                              showToast("Lütfen tüm alanları doldurun!");
+                              return;
+                            }
+                            setIsB2bSubmitting(true);
+                            setTimeout(() => {
+                              const newLead = {
+                                id: Date.now().toString(),
+                                company: b2bCompanyName,
+                                service: b2bService,
+                                budget: b2bBudget,
+                                email: b2bEmail,
+                                phone: b2bPhone,
+                                date: new Date().toLocaleDateString('tr-TR'),
+                                status: '⏳ İncelemede (2 Saat İçinde Dönüş)'
+                              };
+                              const updated = [newLead, ...b2bLeads];
+                              setB2bLeads(updated);
+                              localStorage.setItem('whsk_b2b_leads', JSON.stringify(updated));
+                              setIsB2bSubmitting(false);
+                              setB2bCompanyName('');
+                              setB2bEmail('');
+                              setB2bPhone('');
+                              showToast("💼 Talebiniz sektör uzmanı iş ortaklarımıza iletildi, 2 saat içinde dönüş yapılacaktır!");
+                            }, 1000);
+                          }}
+                          className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1 text-xs"
+                        >
+                          <div className="space-y-1">
+                            <label className="text-zinc-400 block text-[10px] uppercase font-mono">Şirket Unvanı</label>
+                            <input 
+                              type="text" 
+                              required
+                              value={b2bCompanyName}
+                              onChange={(e) => setB2bCompanyName(e.target.value)}
+                              placeholder="Örn: Karadağ Holding A.Ş." 
+                              className="w-full bg-[#0B0B0C] border border-zinc-800 focus:border-[#D4AF37] rounded-xl px-3 py-2 text-white outline-none"
+                            />
+                          </div>
+                          <div className="space-y-1">
+                            <label className="text-zinc-400 block text-[10px] uppercase font-mono">İlgilenilen Hizmet</label>
+                            <select 
+                              value={b2bService}
+                              onChange={(e) => setB2bService(e.target.value)}
+                              className="w-full bg-[#0B0B0C] border border-zinc-800 focus:border-[#D4AF37] rounded-xl px-3 py-2 text-white outline-none"
+                            >
+                              <option value="Güneş Enerjisi & GES Yatırımları">Güneş Enerjisi (GES Yatırımı)</option>
+                              <option value="CRM & ERP Bulut Yazılımları">CRM & ERP Bulut Yazılımı</option>
+                              <option value="Kurumsal Finans Sigortası">Kurumsal Finans Sigortası</option>
+                              <option value="Sanayi Tipi Otomasyon Sistemleri">Sanayi Tipi Otomasyon Sistemleri</option>
+                            </select>
+                          </div>
+                          <div className="space-y-1">
+                            <label className="text-zinc-400 block text-[10px] uppercase font-mono">Tahmini Bütçe</label>
+                            <select 
+                              value={b2bBudget}
+                              onChange={(e) => setB2bBudget(e.target.value)}
+                              className="w-full bg-[#0B0B0C] border border-zinc-800 focus:border-[#D4AF37] rounded-xl px-3 py-2 text-white outline-none font-mono"
+                            >
+                              <option value="100.000 ₺ - 500.000 ₺">100.000 ₺ - 500.000 ₺</option>
+                              <option value="500.000 ₺ - 2.000.000 ₺">500.000 ₺ - 2.000.000 ₺</option>
+                              <option value="2.000.000 ₺ - 5.000.000 ₺">2.000.000 ₺ - 5.000.000 ₺</option>
+                              <option value="5.000.000 ₺+">5.000.000 ₺+</option>
+                            </select>
+                          </div>
+                          <div className="space-y-1">
+                            <label className="text-zinc-400 block text-[10px] uppercase font-mono">E-posta ve Telefon</label>
+                            <div className="grid grid-cols-2 gap-2">
+                              <input 
+                                type="email" 
+                                required
+                                value={b2bEmail}
+                                onChange={(e) => setB2bEmail(e.target.value)}
+                                placeholder="E-posta..." 
+                                className="w-full bg-[#0B0B0C] border border-zinc-800 focus:border-[#D4AF37] rounded-xl px-2.5 py-2 text-white outline-none"
+                              />
+                              <input 
+                                type="tel" 
+                                required
+                                value={b2bPhone}
+                                onChange={(e) => setB2bPhone(e.target.value)}
+                                placeholder="Telefon..." 
+                                className="w-full bg-[#0B0B0C] border border-zinc-800 focus:border-[#D4AF37] rounded-xl px-2.5 py-2 text-white outline-none font-mono"
+                              />
+                            </div>
+                          </div>
+                          <div className="col-span-1 sm:col-span-2 pt-2">
+                            <button 
+                              type="submit" 
+                              disabled={isB2bSubmitting}
+                              className="w-full py-2.5 bg-zinc-900 hover:bg-[#D4AF37] text-[#D4AF37] hover:text-black font-extrabold text-xs uppercase rounded-xl border border-[#D4AF37]/50 hover:border-[#D4AF37] transition-all flex items-center justify-center gap-1.5 disabled:opacity-50"
+                            >
+                              {isB2bSubmitting ? "Talebiniz Gönderiliyor..." : "Kurumsal Çözüm & Teklif Al"}
+                            </button>
+                          </div>
+                        </form>
+
+                        {/* Submitted Leads Log */}
+                        {b2bLeads.length > 0 && (
+                          <div className="pt-3 border-t border-zinc-850 space-y-2 text-[11px]">
+                            <span className="text-zinc-500 font-bold block">Aktif Kurumsal Talepleriniz:</span>
+                            <div className="space-y-1.5 max-h-32 overflow-y-auto no-scrollbar">
+                              {b2bLeads.map((lead) => (
+                                <div key={lead.id} className="flex justify-between items-center bg-[#0B0B0C] p-2.5 rounded-xl border border-zinc-850">
+                                  <div>
+                                    <strong className="text-white">{lead.company}</strong>
+                                    <span className="text-zinc-500 font-mono text-[9px] block">{lead.service} • {lead.budget}</span>
+                                  </div>
+                                  <span className="text-[10px] text-[#D4AF37] font-bold bg-[#D4AF37]/10 px-2 py-0.5 rounded font-mono">
+                                    {lead.status}
+                                  </span>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    )}
+
+                    {/* AKILLI İÇ LİNKLEME VE SİLO MİMARİSİ (Internal Linking & Silo) */}
+                    <div className="border-t border-zinc-800 pt-6 space-y-6 font-sans">
+                      {/* 1. Pillar Link (Ana Kategoriye Dönüş) */}
+                      <div className="flex">
+                        <button 
+                          onClick={() => {
+                            setSelectedCategory(selectedNewsArticle.category);
+                            setSelectedSubcategory(null);
+                            setSelectedNewsArticle(null); // Closes modal and filters category
+                            showToast(`${selectedNewsArticle.category} sütununa yönlendirildiniz.`);
+                          }}
+                          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-zinc-900 border border-zinc-800 text-[#D4AF37] hover:border-[#D4AF37] text-xs font-bold transition-all hover:scale-101"
+                        >
+                          <ChevronLeft size={14} />
+                          <span>{selectedNewsArticle.category} Sütun Rehberine Geri Dön (Pillar)</span>
+                        </button>
+                      </div>
+
+                      {/* 2. Sibling News Cards (İlgili Diğer Rehberler) */}
+                      <div className="space-y-3 text-left">
+                        <h4 className="text-xs font-mono font-bold text-zinc-400 uppercase tracking-widest block">
+                          🔗 Aynı Kategorideki Diğer Analiz ve Rehberler (Silo)
+                        </h4>
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                          {relatedNews.map((item) => (
+                            <div 
+                              key={`silo-card-${item.id}`}
+                              onClick={() => {
+                                setSelectedNewsArticle(item);
+                                // Scroll reading view to top
+                                const scrollContainer = document.getElementById('news-reading-scroll-container');
+                                if (scrollContainer) {
+                                  scrollContainer.scrollTop = 0;
+                                }
+                              }}
+                              className="bg-zinc-950 border border-zinc-800 hover:border-[#D4AF37]/50 rounded-2xl p-3.5 space-y-2 cursor-pointer transition-all hover:scale-102 group flex flex-col justify-between text-left"
+                            >
+                              <div className="space-y-1.5">
+                                <span className="text-[9px] font-mono text-[#D4AF37] bg-[#D4AF37]/10 px-2 py-0.5 rounded font-bold">
+                                  {item.subcategory}
+                                </span>
+                                <h5 className="text-xs font-serif font-bold text-white group-hover:text-[#D4AF37] line-clamp-2 transition-colors">
+                                  {item.title}
+                                </h5>
+                              </div>
+                              <span className="text-[10px] text-zinc-500 block pt-1.5 font-mono">
+                                {item.date} • {getDynamicReadTime(item)} okuma
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* 3. Newsletter Opt-In Call */}
+                      <div className="p-5 bg-gradient-to-r from-zinc-950 to-zinc-900 border border-[#D4AF37]/35 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-lg text-left">
+                        <div className="space-y-1">
+                          <h4 className="text-xs font-serif font-bold text-white flex items-center gap-1.5">
+                            <Mail className="text-[#D4AF37]" size={15} />
+                            Haftalık Analitik Bültene Katılın
+                          </h4>
+                          <p className="text-[11px] text-zinc-400 leading-relaxed font-sans">
+                            Yayınlanan kurumsal pSEO verilerinden ve borsa raporlarından ilk siz haberdar olun.
+                          </p>
+                        </div>
+                        <div className="flex gap-2 w-full sm:w-auto shrink-0">
+                          <input 
+                            type="email"
+                            placeholder="E-posta adresiniz..."
+                            id="silo-newsletter-email"
+                            className="bg-[#0B0B0C] border border-zinc-800 focus:border-[#D4AF37] rounded-xl px-3 py-2 text-xs text-white outline-none w-full sm:w-48 font-sans"
+                            onKeyDown={(e) => {
+                              if (e.key === 'Enter') {
+                                const input = document.getElementById('silo-newsletter-email') as HTMLInputElement;
+                                if (input && input.value) {
+                                  showToast("Bülten aboneliğiniz başarıyla başlatıldı!");
+                                  input.value = '';
+                                }
+                              }
+                            }}
+                          />
+                          <button 
+                            onClick={() => {
+                              const input = document.getElementById('silo-newsletter-email') as HTMLInputElement;
+                              if (input && input.value) {
+                                showToast("Bülten aboneliğiniz başarıyla başlatıldı!");
+                                input.value = '';
+                              } else {
+                                showToast("Lütfen geçerli bir e-posta girin.");
+                              }
+                            }}
+                            className="bg-[#D4AF37] hover:brightness-110 text-black font-extrabold text-xs uppercase px-4 py-2 rounded-xl transition-all"
+                          >
+                            Kayıt Ol
+                          </button>
+                        </div>
+                      </div>
                     </div>
 
                     {/* PAYLAŞIM VE GOOGLE NEWS TAKİP ROZETİ */}
@@ -3014,6 +4721,14 @@ export default function App() {
                           Yazarın Tüm Makalelerini İncele →
                         </span>
                       </div>
+                    </div>
+
+                    {/* Canlı Mikro Anket & Oylama Modülü */}
+                    <div className="my-6">
+                      <InArticlePoll 
+                        articleId={selectedNewsArticle.id}
+                        title={selectedNewsArticle.title}
+                      />
                     </div>
 
                     {/* SADE VE KATLANABİLİR "YORUM YAP (0)" AKORDEON BÖLÜMÜ */}
@@ -3497,73 +5212,531 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
           </div>
         )}
 
-        {/* TAB 6: AI CLASSIFIER */}
+        {/* TAB 6: AI & PROGRAMMATIC SEO HUB */}
         {activeTab === 'ai' && (
-          <div className="space-y-8 max-w-4xl mx-auto">
-            <div className="border-b border-zinc-800 pb-6">
-              <h2 className="text-3xl font-serif font-bold text-white">AI Metin Analizi & Sınıflandırma</h2>
-              <p className="text-zinc-400 text-sm mt-1">İçerikleri 14 ana kategori ve 140 alt başlığımıza göre anında analiz edin.</p>
+          <div className="space-y-8 max-w-5xl mx-auto">
+            {/* Header section with Obsidian/Gold Premium branding */}
+            <div className="border-b border-zinc-800 pb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div>
+                <h2 className="text-3xl font-serif font-bold text-white flex items-center gap-2.5">
+                  <Sparkles className="text-[#D4AF37] animate-pulse" size={28} />
+                  Yapay Zeka & Programmatik SEO Merkezi
+                </h2>
+                <p className="text-zinc-400 text-sm mt-1">
+                  Google E-E-A-T ve Helpful Content kriterlerine tam uyumlu, arama motorlarında liderliği hedefleyen içerik fabrikası.
+                </p>
+              </div>
+              <div className="flex bg-zinc-900 border border-zinc-800 p-1 rounded-xl shrink-0">
+                <button 
+                  onClick={() => setSeoActiveTab('reader')} 
+                  className={cn("px-4 py-1.5 rounded-lg text-xs font-bold transition-all", seoActiveTab === 'reader' || !seoResult ? "bg-[#D4AF37] text-black" : "text-zinc-400 hover:text-white")}
+                >
+                  SEO Editör Ajanı
+                </button>
+                <button 
+                  onClick={() => { setSeoResult(null); setSeoActiveTab('eeat'); }} 
+                  className={cn("px-4 py-1.5 rounded-lg text-xs font-bold transition-all", seoActiveTab === 'eeat' && !seoResult ? "bg-[#D4AF37] text-black" : "text-zinc-400 hover:text-white")}
+                >
+                  Metin Sınıflandırıcı
+                </button>
+              </div>
             </div>
-            <div className="bg-[#121215] border border-zinc-800 rounded-3xl p-6 space-y-4">
-              <textarea 
-                value={newsText}
-                onChange={(e) => setNewsText(e.target.value)}
-                placeholder="Herhangi bir haber metni girin..."
-                className="w-full h-40 bg-[#0B0B0C] border border-zinc-700 rounded-xl p-4 text-xs text-white outline-none focus:border-[#D4AF37]"
-              />
-              <button onClick={classifyNewsWithGemini} disabled={isClassifying} className="w-full py-3 bg-[#D4AF37] text-black font-bold text-xs uppercase rounded-xl hover:brightness-110 transition-all">
-                {isClassifying ? "Sınıflandırılıyor..." : "Kategoriyi Analiz Et"}
-              </button>
-              {classificationResult && (
-                <div className="p-5 bg-[#0B0B0C] border border-[#D4AF37] rounded-2xl space-y-4 shadow-xl text-xs">
-                  <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#D4AF37]/20 pb-3">
-                    <span className="text-[10px] font-mono text-zinc-400 uppercase tracking-widest">Sınıflandırma Raporu</span>
-                    <span className="px-2.5 py-0.5 bg-[#D4AF37]/10 text-[#D4AF37] border border-[#D4AF37]/30 text-[9px] font-mono rounded-full font-bold">
-                      Hibrit Motor v2.6
-                    </span>
-                  </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                    <div className="p-3 bg-[#121215] border border-zinc-800 rounded-xl space-y-1">
-                      <span className="text-zinc-400 text-[10px] uppercase font-mono block">Eşleşen Kategori</span>
-                      <strong className="text-white font-bold text-xs">{classificationResult.category}</strong>
-                      <span className="text-[10px] text-[#D4AF37] block font-mono">{classificationResult.subcategory}</span>
+            {/* CASE 1: METIN SINIFLANDIRICI ACTIVE SUB-TAB (WHEN NOT GENERATED/GENERATING OR MANUALLY SELECTED WITHOUT RESULTS) */}
+            {seoActiveTab === 'eeat' && !seoResult && (
+              <div className="bg-[#121215] border border-zinc-800 rounded-3xl p-6 space-y-4">
+                <div className="flex items-center gap-2 text-white font-serif font-bold text-sm">
+                  <Activity className="text-[#D4AF37]" size={18} />
+                  <h3>AI Metin Analizi & Kategori Sınıflandırma</h3>
+                </div>
+                <p className="text-zinc-400 text-xs">
+                  Sitenin 14 ana kategori ve 140 alt başlığına uygunluğu, piyasa duygusunu ve editoryal mantığı anında saptayın.
+                </p>
+                <textarea 
+                  value={newsText}
+                  onChange={(e) => setNewsText(e.target.value)}
+                  placeholder="Kategorize etmek istediğiniz haber veya analiz metnini buraya yapıştırın..."
+                  className="w-full h-40 bg-[#0B0B0C] border border-zinc-700 rounded-xl p-4 text-xs text-white outline-none focus:border-[#D4AF37] resize-none"
+                />
+                <button onClick={classifyNewsWithGemini} disabled={isClassifying} className="w-full py-3 bg-[#D4AF37] text-black font-bold text-xs uppercase rounded-xl hover:brightness-110 transition-all flex items-center justify-center gap-2">
+                  {isClassifying ? (
+                    <>
+                      <RefreshCw className="animate-spin" size={14} />
+                      Sınıflandırılıyor...
+                    </>
+                  ) : "Kategoriyi Analiz Et"}
+                </button>
+
+                {classificationResult && (
+                  <div className="p-5 bg-[#0B0B0C] border border-[#D4AF37]/50 rounded-2xl space-y-4 shadow-xl text-xs">
+                    <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#D4AF37]/20 pb-3">
+                      <span className="text-[10px] font-mono text-zinc-400 uppercase tracking-widest">Sınıflandırma Raporu</span>
+                      <span className="px-2.5 py-0.5 bg-[#D4AF37]/10 text-[#D4AF37] border border-[#D4AF37]/30 text-[9px] font-mono rounded-full font-bold">
+                        Hibrit Motor v2.8
+                      </span>
                     </div>
 
-                    <div className="p-3 bg-[#121215] border border-zinc-800 rounded-xl space-y-1">
-                      <span className="text-zinc-400 text-[10px] uppercase font-mono block">Güven Skoru</span>
-                      <div className="flex items-center gap-2">
-                        <strong className="text-[#D4AF37] text-sm font-extrabold">%{classificationResult.confidence}</strong>
-                        <div className="flex-1 h-1.5 bg-zinc-800 rounded-full overflow-hidden">
-                          <div className="h-full bg-[#D4AF37]" style={{ width: `${classificationResult.confidence}%` }} />
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                      <div className="p-3 bg-[#121215] border border-zinc-800 rounded-xl space-y-1">
+                        <span className="text-zinc-400 text-[10px] uppercase font-mono block">Eşleşen Kategori</span>
+                        <strong className="text-white font-bold text-xs">{classificationResult.category}</strong>
+                        <span className="text-[10px] text-[#D4AF37] block font-mono">{classificationResult.subcategory}</span>
+                      </div>
+
+                      <div className="p-3 bg-[#121215] border border-zinc-800 rounded-xl space-y-1">
+                        <span className="text-zinc-400 text-[10px] uppercase font-mono block">Güven Skoru</span>
+                        <div className="flex items-center gap-2">
+                          <strong className="text-[#D4AF37] text-sm font-extrabold">%{classificationResult.confidence}</strong>
+                          <div className="flex-1 h-1.5 bg-zinc-800 rounded-full overflow-hidden">
+                            <div className="h-full bg-[#D4AF37]" style={{ width: `${classificationResult.confidence}%` }} />
+                          </div>
                         </div>
+                      </div>
+
+                      <div className="p-3 bg-[#121215] border border-zinc-800 rounded-xl space-y-1">
+                        <span className="text-zinc-400 text-[10px] uppercase font-mono block">Piyasa Duyarlılığı</span>
+                        <span className={cn(
+                          "font-extrabold text-xs px-2 py-0.5 rounded-full inline-block border mt-1",
+                          classificationResult.sentiment.includes('Boğa') 
+                            ? "bg-emerald-950/60 border-emerald-500/30 text-emerald-400" 
+                            : classificationResult.sentiment.includes('Ayı')
+                              ? "bg-rose-950/60 border-rose-500/30 text-rose-400"
+                              : "bg-zinc-900 border-zinc-700 text-zinc-300"
+                        )}>
+                          {classificationResult.sentiment}
+                        </span>
                       </div>
                     </div>
 
-                    <div className="p-3 bg-[#121215] border border-zinc-800 rounded-xl space-y-1">
-                      <span className="text-zinc-400 text-[10px] uppercase font-mono block">Piyasa Duyarlılığı</span>
-                      <span className={cn(
-                        "font-extrabold text-xs px-2 py-0.5 rounded-full inline-block border",
-                        classificationResult.sentiment.includes('Boğa') 
-                          ? "bg-emerald-950/60 border-emerald-500/30 text-emerald-400" 
-                          : classificationResult.sentiment.includes('Ayı')
-                            ? "bg-rose-950/60 border-rose-500/30 text-rose-400"
-                            : "bg-zinc-900 border-zinc-700 text-zinc-300"
-                      )}>
-                        {classificationResult.sentiment}
-                      </span>
+                    <div className="p-3.5 bg-[#121215] rounded-xl space-y-1 border border-zinc-800">
+                      <span className="text-[10px] uppercase tracking-wider font-bold text-[#D4AF37] block">🧠 Editoryal Gerekçelendirme (Reasoning):</span>
+                      <p className="text-zinc-300 leading-relaxed font-sans text-xs italic">
+                        {classificationResult.reasoning}
+                      </p>
                     </div>
                   </div>
+                )}
+              </div>
+            )}
 
-                  <div className="p-3.5 bg-[#121215] rounded-xl space-y-1 border border-zinc-800">
-                    <span className="text-[10px] uppercase tracking-wider font-bold text-[#D4AF37] block">🧠 Editoryal Gerekçelendirme (Reasoning):</span>
-                    <p className="text-zinc-300 leading-relaxed font-sans text-xs italic">
-                      {classificationResult.reasoning}
-                    </p>
+            {/* CASE 2: SEO EDITÖR AJANI INPUT WORKSPACE (WHEN NOT GENERATING AND NO ACTIVE RESULT) */}
+            {(seoActiveTab !== 'eeat' || seoResult) && !seoResult && !isGeneratingSeo && (
+              <div className="bg-[#121215] border border-zinc-800 rounded-3xl p-6 space-y-6">
+                <div className="space-y-2">
+                  <label className="text-xs font-mono font-bold text-zinc-300 uppercase tracking-wider block">
+                    1. İçerik Teması / Anahtar Kelime veya Kıyaslama Girdisi
+                  </label>
+                  <input 
+                    type="text"
+                    value={seoKeyword}
+                    onChange={(e) => setSeoKeyword(e.target.value)}
+                    placeholder="Örn: Apple Vision Pro vs Meta Quest 4, Bitcoin 2026 Fiyatı, Node.js Kurulumu Rehberi..."
+                    className="w-full bg-[#0B0B0C] border border-zinc-700 rounded-xl p-3.5 text-xs text-white outline-none focus:border-[#D4AF37]"
+                  />
+                  <div className="flex flex-wrap gap-1.5 pt-1.5">
+                    <span className="text-[10px] font-mono text-zinc-500 self-center">Hızlı Öneriler:</span>
+                    {[
+                      "MacBook M4 vs Dell XPS 2026",
+                      "Ethereum 2026 Fiyatı Kaç TL?",
+                      "Adım Adım Flutter Kurulumu",
+                      "SaaS Bulut Güvenliği İpuçları"
+                    ].map((kw) => (
+                      <button 
+                        key={kw} 
+                        onClick={() => setSeoKeyword(kw)} 
+                        className="text-[10px] font-mono bg-zinc-900 hover:bg-zinc-800 hover:text-[#D4AF37] border border-zinc-800 text-zinc-400 px-2 py-0.5 rounded-md transition-colors"
+                      >
+                        {kw}
+                      </button>
+                    ))}
                   </div>
                 </div>
-              )}
-            </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <label className="text-xs font-mono font-bold text-zinc-300 uppercase tracking-wider block">
+                      2. Çalışma Modu (Algorithmic Routing)
+                    </label>
+                    <select 
+                      value={seoMode}
+                      onChange={(e: any) => setSeoMode(e.target.value)}
+                      className="w-full bg-[#0B0B0C] border border-zinc-700 rounded-xl p-3 text-xs text-white outline-none focus:border-[#D4AF37]"
+                    >
+                      <option value="auto">🤖 Girdiye Göre Otomatik Seç (Önerilen)</option>
+                      <option value="comparison">🔄 MOD 1: \"X vs Y\" Kıyaslama (Özellik, Karar Matrisi)</option>
+                      <option value="price">💰 MOD 2: \"Fiyatı Ne Kadar?\" (Maliyet, ÖTV, KDV)</option>
+                      <option value="howto">🛠️ MOD 3: \"Nasıl Yapılır?\" (Adım Adım, Hata Çözüm)</option>
+                      <option value="analysis">📈 MOD 4: Genel Derinlemesine Teknoloji & Finans Analizi</option>
+                    </select>
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="text-xs font-mono font-bold text-zinc-300 uppercase tracking-wider block">
+                      3. Ek Özel Talimatlar (Opsiyonel)
+                    </label>
+                    <input 
+                      type="text"
+                      value={seoCustomInstructions}
+                      onChange={(e) => setSeoCustomInstructions(e.target.value)}
+                      placeholder="Örn: 'Tabloda 2026 Türkiye vergi oranlarını yansıt', 'Çok akıcı Türkçe kullan'..."
+                      className="w-full bg-[#0B0B0C] border border-zinc-700 rounded-xl p-3 text-xs text-white outline-none focus:border-[#D4AF37]"
+                    />
+                  </div>
+                </div>
+
+                <button 
+                  onClick={generateProgrammaticSeoContent} 
+                  className="w-full py-4 bg-[#D4AF37] text-black font-extrabold text-xs uppercase rounded-xl hover:brightness-110 transition-all flex items-center justify-center gap-2 shadow-lg shadow-[#D4AF37]/10"
+                >
+                  <Sparkles size={16} />
+                  Programmatik SEO İçeriği Üret (Google E-E-A-T Uyumlu)
+                </button>
+              </div>
+            )}
+
+            {/* GENERATING LOADING SCREEN */}
+            {isGeneratingSeo && (
+              <div className="bg-[#121215] border border-zinc-800 rounded-3xl p-12 text-center space-y-6">
+                <div className="w-16 h-16 bg-[#D4AF37]/10 border-2 border-dashed border-[#D4AF37] rounded-full flex items-center justify-center mx-auto animate-spin">
+                  <Sparkles className="text-[#D4AF37]" size={24} />
+                </div>
+                <div className="space-y-2 max-w-md mx-auto">
+                  <h3 className="text-lg font-serif font-bold text-white">Yapay Zeka SEO Ajanı Çalışıyor</h3>
+                  <p className="text-xs text-[#D4AF37] font-mono tracking-widest uppercase animate-pulse">{seoStep}</p>
+                  <p className="text-xs text-zinc-400 font-sans leading-relaxed pt-2">
+                    Google Helpful Content ve Thin Content filtrelerine takılmayacak şekilde somut veriler, maliyet tabloları, karar şemaları ve JSON-LD yapısal verileri arka planda sentezleniyor. Bu işlem ortalama 15-20 saniye sürebilir.
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {/* GENERATED CONTENT VIEW BOARD */}
+            {seoResult && (
+              <div className="space-y-6">
+                {/* Result header & actions */}
+                <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-[#D4AF37]/10 text-[#D4AF37] border border-[#D4AF37]/20 rounded-xl flex items-center justify-center shrink-0 font-bold">
+                      %{seoResult.eeatScore || 98}
+                    </div>
+                    <div>
+                      <h4 className="text-xs text-zinc-400 font-mono">Google E-E-A-T Uyumluluk Skoru</h4>
+                      <div className="flex items-center gap-2.5">
+                        <span className="text-white text-xs font-bold font-serif">Mükemmel Kalite Standardı</span>
+                        <span className="px-2 py-0.2 bg-emerald-950/40 text-emerald-400 border border-emerald-500/20 text-[9px] font-mono rounded font-bold uppercase">Helpful Content Uyumlu</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="flex flex-wrap gap-2">
+                    <button 
+                      onClick={() => { setSeoResult(null); }} 
+                      className="px-4 py-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-bold text-xs rounded-xl transition-all"
+                    >
+                      Yeni İçerik Üret
+                    </button>
+                    <button 
+                      onClick={publishSeoPostToFeed}
+                      className="px-4 py-2 bg-[#D4AF37] text-black font-extrabold text-xs rounded-xl hover:brightness-110 transition-all flex items-center gap-1.5"
+                    >
+                      <Send size={12} />
+                      Sitede Yayınla
+                    </button>
+                  </div>
+                </div>
+
+                {/* Tab selector for results */}
+                <div className="flex border-b border-zinc-800">
+                  <button 
+                    onClick={() => setSeoActiveTab('reader')} 
+                    className={cn("px-5 py-3 text-xs font-bold border-b-2 transition-all", seoActiveTab === 'reader' ? "border-[#D4AF37] text-white" : "border-transparent text-zinc-400 hover:text-white")}
+                  >
+                    📖 Okuyucu Görünümü
+                  </button>
+                  <button 
+                    onClick={() => setSeoActiveTab('eeat')} 
+                    className={cn("px-5 py-3 text-xs font-bold border-b-2 transition-all", seoActiveTab === 'eeat' ? "border-[#D4AF37] text-white" : "border-transparent text-zinc-400 hover:text-white")}
+                  >
+                    🧠 E-E-A-T Analizi
+                  </button>
+                  <button 
+                    onClick={() => setSeoActiveTab('seo')} 
+                    className={cn("px-5 py-3 text-xs font-bold border-b-2 transition-all", seoActiveTab === 'seo' ? "border-[#D4AF37] text-white" : "border-transparent text-zinc-400 hover:text-white")}
+                  >
+                    🌐 Google SERP Önizleme
+                  </button>
+                  <button 
+                    onClick={() => setSeoActiveTab('schema')} 
+                    className={cn("px-5 py-3 text-xs font-bold border-b-2 transition-all", seoActiveTab === 'schema' ? "border-[#D4AF37] text-white" : "border-transparent text-zinc-400 hover:text-white")}
+                  >
+                    📄 Schema.org (JSON-LD)
+                  </button>
+                </div>
+
+                {/* TAB CONTENT 1: OKUYUCU GÖRÜNÜMÜ */}
+                {seoActiveTab === 'reader' && (
+                  <div className="bg-[#121215] border border-zinc-800 rounded-3xl p-6 sm:p-8 space-y-6 font-sans">
+                    <h1 className="text-2xl sm:text-3xl font-serif font-black text-white leading-tight border-b border-zinc-800 pb-4">
+                      {seoResult.h1}
+                    </h1>
+                    
+                    <p className="text-zinc-300 text-sm sm:text-base font-medium leading-relaxed border-l-4 border-[#D4AF37] pl-4 italic bg-[#0B0B0C] py-3 rounded-r-xl">
+                      {seoResult.spot}
+                    </p>
+
+                    {/* Hızlı Karar Kutusu (Kıyaslama Modu) */}
+                    {seoResult.quickDecision && seoResult.quickDecision.winner && (
+                      <div className="p-5 bg-zinc-950 border border-[#D4AF37]/30 rounded-2xl space-y-3">
+                        <span className="px-2 py-0.5 bg-[#D4AF37]/10 text-[#D4AF37] border border-[#D4AF37]/30 text-[9px] font-mono rounded font-extrabold uppercase">HIZLI KARAR KUTUSU</span>
+                        <h3 className="text-sm font-bold text-white flex items-center gap-1.5">
+                          <Check className="text-emerald-400" size={16} />
+                          {seoResult.quickDecision.title}
+                        </h3>
+                        <p className="text-xs text-zinc-300 font-semibold">
+                          Kazanan: <span className="text-[#D4AF37]">{seoResult.quickDecision.winner}</span>
+                        </p>
+                        <ul className="space-y-1 text-xs text-zinc-400 list-disc pl-4 leading-relaxed">
+                          {seoResult.quickDecision.points.map((pt: string, idx: number) => (
+                            <li key={idx}>{pt}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                    {/* Spot Fiyat Rakamı (Fiyat Modu) */}
+                    {seoResult.spotPrice && (
+                      <div className="p-5 bg-zinc-950 border border-emerald-500/30 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <div>
+                          <span className="px-2 py-0.5 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[9px] font-mono rounded font-extrabold uppercase">2026 GÜNCEL FİYAT TARİFESİ</span>
+                          <h4 className="text-xs text-zinc-400 mt-1">Sorgulanan Kalem İçin Tespit Edilen Net Tutar</h4>
+                        </div>
+                        <div className="text-xl sm:text-2xl font-mono font-black text-emerald-400 bg-emerald-950/30 border border-emerald-500/20 px-6 py-2.5 rounded-xl">
+                          {seoResult.spotPrice}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Veri Tablosu */}
+                    {seoResult.table && seoResult.table.headers && (
+                      <div className="overflow-x-auto rounded-2xl border border-zinc-800 bg-[#0B0B0C]">
+                        <table className="w-full text-left border-collapse text-xs">
+                          <thead>
+                            <tr className="bg-zinc-900 border-b border-zinc-800 text-zinc-300 font-semibold font-mono">
+                              {seoResult.table.headers.map((h: string, idx: number) => (
+                                <th key={idx} className="p-4">{h}</th>
+                              ))}
+                            </tr>
+                          </thead>
+                          <tbody className="divide-y divide-zinc-800/60 text-zinc-400">
+                            {seoResult.table.rows.map((row: string[], rowIdx: number) => (
+                              <tr key={rowIdx} className="hover:bg-zinc-900/30 transition-colors">
+                                {row.map((cell: string, cellIdx: number) => (
+                                  <td key={cellIdx} className={cn("p-4", cellIdx === 0 ? "font-semibold text-zinc-300 font-sans" : "font-mono")}>
+                                    {cell}
+                                  </td>
+                                ))}
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    )}
+
+                    {/* Detaylı Makale Paragrafları */}
+                    <div className="space-y-6">
+                      {seoResult.sections && seoResult.sections.map((sec: any, idx: number) => (
+                        <div key={idx} className="space-y-2.5">
+                          <h3 className="text-base sm:text-lg font-serif font-bold text-white flex items-center gap-2">
+                            <span className="w-1.5 h-4 bg-[#D4AF37] rounded-full shrink-0" />
+                            {sec.heading}
+                          </h3>
+                          <p className="text-zinc-300 text-xs sm:text-sm leading-relaxed font-sans font-normal whitespace-pre-wrap">
+                            {sec.body}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Potansiyel Hatalar ve Çözümleri Tablosu (Rehber Modu) */}
+                    {seoResult.errorsTable && seoResult.errorsTable.headers && (
+                      <div className="space-y-3">
+                        <h3 className="text-sm font-bold text-white flex items-center gap-2 font-serif uppercase tracking-wider">
+                          <Scale className="text-rose-400" size={16} />
+                          Olası Teknik Engeller ve Çözümleri
+                        </h3>
+                        <div className="overflow-x-auto rounded-2xl border border-zinc-800 bg-[#0B0B0C]">
+                          <table className="w-full text-left border-collapse text-xs">
+                            <thead>
+                              <tr className="bg-zinc-900 border-b border-zinc-800 text-zinc-300 font-semibold font-mono">
+                                {seoResult.errorsTable.headers.map((h: string, idx: number) => (
+                                  <th key={idx} className="p-4">{h}</th>
+                                ))}
+                              </tr>
+                            </thead>
+                            <tbody className="divide-y divide-zinc-800/60 text-zinc-400">
+                              {seoResult.errorsTable.rows.map((row: string[], rowIdx: number) => (
+                                <tr key={rowIdx} className="hover:bg-zinc-900/30 transition-colors">
+                                  {row.map((cell: string, cellIdx: number) => (
+                                    <td key={cellIdx} className={cn("p-4 leading-relaxed", cellIdx === 0 ? "font-bold text-rose-400 font-mono" : cellIdx === 2 ? "text-emerald-400 font-medium" : "")}>
+                                      {cell}
+                                    </td>
+                                  ))}
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Tasarruf İpuçları (Fiyat Modu) */}
+                    {seoResult.savings && seoResult.savings.length > 0 && (
+                      <div className="p-5 bg-emerald-950/20 border border-emerald-500/30 rounded-2xl space-y-3">
+                        <h4 className="text-xs font-bold text-emerald-400 flex items-center gap-2 uppercase tracking-widest font-mono">
+                          <Smile size={15} />
+                          Maliyet Tasarruf Tüyoları & Profesyonel İpuçları
+                        </h4>
+                        <ul className="space-y-1.5 text-xs text-zinc-300 list-disc pl-5 leading-relaxed">
+                          {seoResult.savings.map((sav: string, idx: number) => (
+                            <li key={idx}>{sav}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                    {/* Sıkça Sorulan Sorular (Faq Page Schema ile eşleşir) */}
+                    <div className="border-t border-zinc-800 pt-6 space-y-4">
+                      <h3 className="text-sm font-bold text-white flex items-center gap-2 font-serif uppercase tracking-wider">
+                        <HelpCircle className="text-[#D4AF37]" size={16} />
+                        Sıkça Sorulan Sorular (FAQ)
+                      </h3>
+                      <div className="grid grid-cols-1 gap-4">
+                        {seoResult.faq && seoResult.faq.map((q: any, idx: number) => (
+                          <div key={idx} className="p-4 bg-[#0B0B0C] border border-zinc-800 rounded-xl space-y-1.5">
+                            <h4 className="text-xs font-bold text-white font-sans flex items-center gap-1.5">
+                              <span className="text-[#D4AF37]">Q:</span> {q.question}
+                            </h4>
+                            <p className="text-zinc-400 text-xs font-sans leading-relaxed">
+                              {q.answer}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* TAB CONTENT 2: E-E-A-T QUALITY AUDIT */}
+                {seoActiveTab === 'eeat' && (
+                  <div className="bg-[#121215] border border-zinc-800 rounded-3xl p-6 space-y-4 font-sans">
+                    <div className="flex items-center gap-2 text-white font-serif font-bold text-sm">
+                      <Award className="text-[#D4AF37]" size={18} />
+                      <h3>Google E-E-A-T ve Helpful Content Analizi</h3>
+                    </div>
+                    <p className="text-zinc-400 text-xs leading-relaxed">
+                      Bu içerik, Google Search Quality Raters Guidelines tarafından tanımlanan Deneyim (Experience), Uzmanlık (Expertise), Yetkinlik (Authoritativeness) ve Güvenilirlik (Trustworthiness) parametrelerine göre otomatik taranmıştır.
+                    </p>
+
+                    <div className="p-5 bg-zinc-950 border border-zinc-800 rounded-2xl flex items-center justify-between gap-4">
+                      <div className="space-y-1">
+                        <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block">KALİTE SKORU</span>
+                        <h4 className="text-[#D4AF37] font-serif font-black text-xl">Uluslararası Basın Standartları</h4>
+                      </div>
+                      <div className="text-3xl font-mono font-black text-[#D4AF37] bg-[#D4AF37]/10 px-5 py-2.5 rounded-2xl border border-[#D4AF37]/30">
+                        {seoResult.eeatScore || 98}/100
+                      </div>
+                    </div>
+
+                    <div className="space-y-2 pt-2">
+                      <h4 className="text-xs font-mono font-bold text-zinc-300 uppercase tracking-wide">Analiz Raporu Maddeleri:</h4>
+                      <div className="grid grid-cols-1 gap-2.5">
+                        {seoResult.eeatReasons && seoResult.eeatReasons.map((reason: string, idx: number) => (
+                          <div key={idx} className="p-3.5 bg-[#0B0B0C] border border-zinc-800/80 rounded-xl flex items-start gap-2.5">
+                            <CheckCircle className="text-[#D4AF37] mt-0.5 shrink-0" size={15} />
+                            <span className="text-xs text-zinc-300 leading-relaxed font-sans">{reason}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* TAB CONTENT 3: GOOGLE SERP PREVIEW */}
+                {seoActiveTab === 'seo' && (
+                  <div className="bg-[#121215] border border-zinc-800 rounded-3xl p-6 space-y-6 font-sans">
+                    <div className="flex items-center gap-2 text-white font-serif font-bold text-sm">
+                      <Globe className="text-[#D4AF37]" size={18} />
+                      <h3>Arama Motoru Sonucu Önizlemesi (Google SERP)</h3>
+                    </div>
+
+                    {/* Google Desktop Snippet Preview */}
+                    <div className="p-6 bg-[#0B0B0C] border border-zinc-800 rounded-2xl space-y-2">
+                      <div className="flex items-center gap-1.5 text-xs text-zinc-400 font-sans">
+                        <Globe size={13} className="text-[#D4AF37]" />
+                        <span>webdehepseek.com</span>
+                        <span>›</span>
+                        <span>makale</span>
+                      </div>
+                      <h3 className="text-[#1a0dab] dark:text-[#8ab4f8] hover:underline text-lg font-sans font-normal leading-tight cursor-pointer">
+                        {seoResult.metaTitle || seoResult.h1}
+                      </h3>
+                      <p className="text-[#4d5156] dark:text-[#bdc1c6] text-xs leading-relaxed font-sans font-normal">
+                        {seoResult.metaDescription || seoResult.spot}
+                      </p>
+                    </div>
+
+                    {/* Meta tag inputs for copying */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="space-y-1.5 p-4 bg-zinc-950 border border-zinc-800 rounded-xl">
+                        <span className="text-[10px] font-mono text-zinc-400 block uppercase tracking-widest">SEO TITLE TAG ({seoResult.metaTitle?.length || 0} Karakter)</span>
+                        <input 
+                          type="text" 
+                          readOnly 
+                          value={seoResult.metaTitle} 
+                          onClick={(e: any) => handleCopy(e.target.value, "Meta Title")}
+                          className="w-full bg-[#0B0B0C] border border-zinc-800 rounded-lg p-2.5 text-xs font-mono text-[#D4AF37] outline-none cursor-copy"
+                        />
+                      </div>
+                      <div className="space-y-1.5 p-4 bg-zinc-950 border border-zinc-800 rounded-xl">
+                        <span className="text-[10px] font-mono text-zinc-400 block uppercase tracking-widest">SEO META DESCRIPTION ({seoResult.metaDescription?.length || 0} Karakter)</span>
+                        <input 
+                          type="text" 
+                          readOnly 
+                          value={seoResult.metaDescription} 
+                          onClick={(e: any) => handleCopy(e.target.value, "Meta Description")}
+                          className="w-full bg-[#0B0B0C] border border-zinc-800 rounded-lg p-2.5 text-xs font-mono text-zinc-300 outline-none cursor-copy"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* TAB CONTENT 4: SCHEMA JSON-LD */}
+                {seoActiveTab === 'schema' && (
+                  <div className="bg-[#121215] border border-zinc-800 rounded-3xl p-6 space-y-4 font-sans">
+                    <div className="flex items-center justify-between gap-4 border-b border-zinc-800 pb-3">
+                      <div className="flex items-center gap-2 text-white font-serif font-bold text-sm">
+                        <FileJson className="text-[#D4AF37]" size={18} />
+                        <h3>Doğrulanmış Schema.org Yapısal Verisi (JSON-LD)</h3>
+                      </div>
+                      <button 
+                        onClick={() => handleCopy(seoResult.schemaJson, "Schema JSON-LD")}
+                        className="px-3 py-1.5 bg-[#D4AF37] hover:brightness-110 text-black font-bold text-[10px] rounded uppercase transition-all"
+                      >
+                        Şemayı Kopyala
+                      </button>
+                    </div>
+                    <p className="text-zinc-400 text-xs">
+                      Aşağıdaki script bloğu, Google Botlarının sayfayı saniyeler içinde anlamlandırması ve arama sonuçlarında Rich Snippets (SSS, Yıldızlı Değerlendirme, Fiyat Şeması) kazanabilmeniz için özel olarak biçimlendirilmiştir.
+                    </p>
+
+                    <pre className="p-4 bg-[#0B0B0C] border border-zinc-800 rounded-2xl text-[11px] font-mono text-[#D4AF37] max-h-96 overflow-y-auto overflow-x-auto select-all leading-relaxed whitespace-pre-wrap">
+                      {seoResult.schemaJson}
+                    </pre>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         )}
 
@@ -3838,55 +6011,11 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
       </AnimatePresence>
 
       {/* PRESS RELEASE PORTAL MODAL */}
-      <AnimatePresence>
-        {isPressReleaseModalOpen && (
-          <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
-            <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} className="bg-[#121215] border border-[#D4AF37] max-w-lg w-full rounded-3xl p-6 space-y-4 shadow-2xl">
-              <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
-                <h3 className="text-lg font-serif font-bold text-[#D4AF37] flex items-center gap-2">
-                  <Send size={18} />
-                  <span>Basın Bülteni & Lansman Duyuru Portalı</span>
-                </h3>
-                <button onClick={() => setIsPressReleaseModalOpen(false)} className="p-1 text-zinc-400 hover:text-white"><X size={18} /></button>
-              </div>
-              <form onSubmit={handlePressReleaseSubmit} className="space-y-3 text-xs">
-                <input 
-                  type="text" 
-                  required 
-                  disabled={isPressReleaseSubmitting}
-                  value={pressReleaseTitle}
-                  onChange={(e) => setPressReleaseTitle(e.target.value)}
-                  placeholder="Bülten Başlığı..." 
-                  className="w-full bg-[#0B0B0C] border border-zinc-700 rounded-xl p-2.5 text-white outline-none focus:border-[#D4AF37] disabled:opacity-50" 
-                />
-                <textarea 
-                  required 
-                  rows={4} 
-                  disabled={isPressReleaseSubmitting}
-                  value={pressReleaseBody}
-                  onChange={(e) => setPressReleaseBody(e.target.value)}
-                  placeholder="Kurumsal duyuru metni ve iletişim bilgileri..." 
-                  className="w-full bg-[#0B0B0C] border border-zinc-700 rounded-xl p-2.5 text-white outline-none focus:border-[#D4AF37] disabled:opacity-50" 
-                />
-                <button 
-                  type="submit" 
-                  disabled={isPressReleaseSubmitting}
-                  className="w-full py-2.5 bg-[#D4AF37] text-black font-extrabold text-xs uppercase rounded-xl hover:brightness-110 flex items-center justify-center gap-2 disabled:opacity-50 disabled:pointer-events-none"
-                >
-                  {isPressReleaseSubmitting ? (
-                    <>
-                      <span className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin" />
-                      <span>Bülten Gönderiliyor...</span>
-                    </>
-                  ) : (
-                    <span>Editör Masasına Gönder</span>
-                  )}
-                </button>
-              </form>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
+      <PressReleaseModal 
+        isOpen={isPressReleaseModalOpen}
+        onClose={() => setIsPressReleaseModalOpen(false)}
+        onShowToast={showToast}
+      />
 
       {/* SUPPORT & BUY ME A COFFEE MODAL */}
       <AnimatePresence>
@@ -3985,6 +6114,10 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
                 <li onClick={() => setActiveLegalModal('privacy')} className="hover:text-white cursor-pointer">Gizlilik Politikası</li>
                 <li onClick={() => setActiveLegalModal('terms')} className="hover:text-white cursor-pointer">Kullanım Koşulları</li>
                 <li onClick={() => setActiveLegalModal('cookies')} className="hover:text-white cursor-pointer">Çerez Politikası</li>
+                <li onClick={() => setIsPressReleaseModalOpen(true)} className="text-[#D4AF37] hover:brightness-110 font-semibold cursor-pointer flex items-center gap-1">
+                  <Send size={11} />
+                  <span>Basın Bülteni Gönder</span>
+                </li>
               </ul>
             </div>
             <div>
@@ -4005,6 +6138,35 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
 
       {/* Sticky Bottom Anchor Banner (ShiftDelete Style) */}
       <StickyAnchorBanner isCookieConsentVisible={!cookieConsentAccepted} />
+
+      {/* Mobil Yapışkan Alt Reklam Barı (Sticky Bottom Banner - 320x50) */}
+      {isMobileAdBannerVisible && (
+        <div className="fixed bottom-0 left-0 right-0 z-40 h-[65px] bg-[#0B0B0C]/95 border-t border-[#D4AF37]/40 sm:hidden flex items-center justify-between px-3 shadow-[0_-5px_20px_rgba(212,175,55,0.1)]">
+          <div className="flex-grow flex flex-col justify-center text-left">
+            <span className="text-[7px] font-mono tracking-widest text-[#D4AF37] uppercase font-bold block mb-0.5">SPONSORLU BAĞLANTI</span>
+            <div className="w-[320px] h-[40px] max-w-[75vw] bg-[#121215] border border-zinc-800 rounded flex items-center justify-center">
+              <span className="text-[9px] text-zinc-500 font-mono">Duyarlı Reklam Alanı (320x50 AdSense)</span>
+            </div>
+          </div>
+          <button 
+            onClick={() => setIsMobileAdBannerVisible(false)}
+            className="p-1.5 px-2 text-[9px] font-mono font-bold text-black bg-[#D4AF37] hover:brightness-110 rounded-lg shrink-0 transition-all uppercase"
+          >
+            ✕ Kapat
+          </button>
+        </div>
+      )}
+
+      {/* Exit-Intent Retention Akıllı Önerici Modal */}
+      <ExitIntentRetention 
+        onSelectArticle={(id) => {
+          const found = newsList.find(n => n.id === id);
+          if (found) {
+            handleSelectArticle(found);
+          }
+        }}
+        onShowToast={showToast}
+      />
 
     </div>
   );

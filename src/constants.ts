@@ -81,6 +81,8 @@ export interface NewsItem {
     mindblown: number;
   };
   sections?: ContentSection[];
+  pSeoType?: 'comparison' | 'price' | 'howto' | 'review';
+  pSeoData?: any;
 }
 
 export const FEAR_GREED_INDEX = {
@@ -587,6 +589,175 @@ export const SYSTEM_NODES: SystemNode[] = [
 
 // Rich 42-Article Database (14 Categories x 3 Articles each)
 export const MOCK_NEWS: NewsItem[] = [
+  {
+    "id": "PSEO-01",
+    "title": "Apple Vision Pro vs Meta Quest 4: Karşılaştırmalı 2026 İncelemesi",
+    "excerpt": "2026 yılının en iddialı iki karma gerçeklik gözlüğü karşı karşıya: Ekosistem gücü mü, yoksa agresif fiyat/performans avantajı mı? Hangisini tercih etmelisiniz?",
+    "category": "Teknoloji & Dijital Dönüşüm",
+    "subcategory": "Giyilebilir Teknoloji",
+    "date": "8 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&fit=crop&w=1600&q=80",
+    "readTime": "4 dk",
+    "author": "Teknoloji Servisi",
+    "authorTitle": "Teknoloji & AI Yayın Masası",
+    "verifiedSource": true,
+    "sentiment": "Boğa 🐂",
+    "pSeoType": "comparison",
+    "pSeoData": {
+      "x": "Apple Vision Pro",
+      "y": "Meta Quest 4",
+      "quickDecision": {
+        "title": "Kısaca Hangisi?",
+        "winner": "Meta Quest 4 (Genel Kullanım ve Fiyat/Performansta Lider)",
+        "points": [
+          "Eğer bütçe kısıtınız yoksa ve en yüksek çözünürlüğü istiyorsanız Apple Vision Pro.",
+          "Geniş oyun kütüphanesi, hafif gövde tasarımı ve uygun fiyat için Meta Quest 4.",
+          "İş ve üretkenlik uygulamalarında Apple Vision Pro ekosistemi hala rakipsiz."
+        ]
+      },
+      "table": {
+        "headers": ["Parametre / Özellik", "Apple Vision Pro", "Meta Quest 4"],
+        "rows": [
+          ["Başlangıç Fiyatı", "149.999 TL", "29.999 TL"],
+          ["Ekran Çözünürlüğü", "Göz başına 4K Micro-OLED", "Göz başına 2.5K LCD / QD-OLED"],
+          ["Ağırlık", "650 gram (Harici Pil)", "410 gram (Dahili Pil)"],
+          ["Yapay Zeka (NPU)", "R1 / M2 Çift İşlemci", "Snapdragon XR2+ Gen 3"],
+          ["Karma Gerçeklik Geçişi (Passthrough)", "Ultra Düşük Gecikme (12ms)", "Çok Net (15ms)"],
+          ["E-E-A-T Puanı", "9.4 / 10", "9.7 / 10"]
+        ]
+      },
+      "xPreference": "Yüksek çözünürlüklü uzamsal bilgi işlem, 4K film deneyimi ve Apple ekosistem uyumluluğu arayan profesyoneller tercih etmeli.",
+      "yPreference": "Sosyal sanal gerçeklik, VR oyunları, hafiflik ve yüksek fiyat/performans avantajı arayan genel tüketiciler tercih etmeli."
+    },
+    "sections": [
+      {
+        "id": "comp-sec-1",
+        "heading": "Ekran Teknolojileri ve Optik Performans",
+        "body": "Apple Vision Pro, göz başına düşen 4K Micro-OLED panelleri ile görsel berraklıkta hala endüstri standardını belirliyor. Ancak Meta Quest 4, QD-OLED ekran seçeneği ve gelişmiş krep mercekleri ile yansımaları ve hareleri neredeyse sıfıra indirerek rakibine oldukça yaklaşıyor."
+      },
+      {
+        "id": "comp-sec-2",
+        "heading": "Konfor, Ağırlık Dağılımı ve Uzun Süreli Kullanım Analizi",
+        "body": "En büyük fark fiziki ergonomide ortaya çıkıyor. Meta Quest 4, dahili pil barındırmasına rağmen sadece 410 gram ağırlığında ve dengeli bir kafa kayışı sunuyor. Apple Vision Pro ise harici kablolu pil kutusuna rağmen 650 gramlık yüz ağırlığıyla uzun süreli çalışmalarda boyun kaslarını yorabiliyor."
+      }
+    ]
+  },
+  {
+    "id": "PSEO-02",
+    "title": "ChatGPT Plus 2026 Türkiye Fiyatı Ne Kadar Oldu? (Kaç TL?)",
+    "excerpt": "Yapay zeka asistanı ChatGPT Plus üyeliğinin Türkiye fiyat tarifesi, KDV, dijital hizmet vergileri ve ek kur maliyetleriyle kalem kalem açıklandı.",
+    "category": "Yapay Zeka & Gelecek",
+    "subcategory": "Generative AI",
+    "date": "8 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=1600&q=80",
+    "readTime": "3 dk",
+    "author": "Teknoloji Servisi",
+    "authorTitle": "Teknoloji & AI Yayın Masası",
+    "verifiedSource": true,
+    "sentiment": "Nötr ⚖️",
+    "pSeoType": "price",
+    "pSeoData": {
+      "spotPrice": "690 TL / Ay",
+      "yoyChange": "%15 Artış (Global $20 Sabit Kalırken, Yerel Vergi Güncellemeleriyle Sınırlandı)",
+      "table": {
+        "headers": ["Maliyet Kalemi / Hizmet", "Oran / Tür", "Tutar (Aylık)"],
+        "rows": [
+          ["Yalın Abonelik Bedeli", "$20 USD (Kur Korumalı)", "600 TL"],
+          ["Dijital Hizmet Vergisi (DHV)", "%7.5 Oran", "45 TL"],
+          ["Katma Değer Vergisi (KDV)", "%20 (Bireysel Hizmet)", "45 TL"],
+          ["Toplam Aylık Maliyet", "Bireysel Premium Tarife", "690 TL"]
+        ]
+      },
+      "savings": [
+        "Yıllık taahhütlü abonelik seçeneğini tercih ederek aylık maliyeti %15 düşürün.",
+        "Ekip kullanımları için 'ChatGPT Team' paketine geçerek fatura giderini azaltın.",
+        "Kullanmadığınız aylarda aboneliğinizi dondurarak bütçenizi koruyun."
+      ]
+    },
+    "sections": [
+      {
+        "id": "price-sec-1",
+        "heading": "Türkiye Fiyatlandırma Politikası ve Döviz Sinerjisi",
+        "body": "OpenAI, 2026 yılında Türkiye pazarı için yerel fiyatlandırma kur koruma desteğini sürdürüyor. Global bazda $20 olan Plus aboneliği, fiks kur politikası sayesinde vergiler dahil 690 TL seviyesinde dengelenerek Türk geliştiriciler için önemli bir maliyet avantajı sağlıyor."
+      }
+    ]
+  },
+  {
+    "id": "PSEO-03",
+    "title": "Adım Adım Node.js v26 Kurulumu ve Çevre Değişkenleri Rehberi",
+    "excerpt": "Geliştiriciler için yeni nesil Node.js v26 sürümünün işletim sistemlerine göre adım adım hatasız kurulum yönergeleri ve terminal konfigürasyonları.",
+    "category": "SaaS & Bulut Yazılımları",
+    "subcategory": "Geliştirici Araçları",
+    "date": "8 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1618401471353-b98aedd07871?auto=format&fit=crop&w=1600&q=80",
+    "readTime": "5 dk",
+    "author": "Teknoloji Servisi",
+    "authorTitle": "Teknoloji & AI Yayın Masası",
+    "verifiedSource": true,
+    "sentiment": "Boğa 🐂",
+    "pSeoType": "howto",
+    "pSeoData": {
+      "duration": "15 dk",
+      "steps": [
+        {
+          "heading": "1. Adım: Node Version Manager (NVM) Güncellemesi",
+          "body": "Terminalinizden 'nvm install v26' komutunu koşturarak en son kararlı sürümü indirin ve sisteminize dahil edin."
+        },
+        {
+          "heading": "2. Adım: Çevre Değişkenlerinin Yapılandırılması",
+          "body": "Sisteminizin PATH değişkenine yeni Node ikili dosyalarının (bin) yolunu ekleyin ve aktif kılmak için terminal oturumunuzu yeniden başlatın."
+        },
+        {
+          "heading": "3. Adım: Versiyon Kontrolü ve Doğrulama",
+          "body": "Terminalden 'node -v' komutunu koşturarak 'v26.0.0' çıktısını aldığınızdan emin olun. Bu sayede aktif Node sürümü onaylanmış olacaktır."
+        }
+      ],
+      "commonError": "Port Conflict Error (EADDRINUSE): Geliştirici portunuz arka plandaki eski Node servisleri tarafından işgal edildiğinde oluşur. Çözüm için terminalden 'killall node' komutunu çalıştırarak portu boşaltın."
+    },
+    "sections": [
+      {
+        "id": "howto-sec-1",
+        "heading": "Neden v26 Sürümüne Yükseltmelisiniz?",
+        "body": "Node.js v26 sürümü, %30 daha hızlı startup süreleri sağlayan optimize edilmiş V8 motoru ve dahili TypeScript derleyici desteğiyle birlikte geliyor. Artık ek bir ts-node paketine ihtiyaç duymadan doğrudan .ts dosyalarını koşturabilirsiniz."
+      }
+    ]
+  },
+  {
+    "id": "PSEO-04",
+    "title": "v0.dev AI Yapay Zeka Arayüz Oluşturucu Derinlemesine İncelemesi",
+    "excerpt": "Vercel'in popüler yapay zeka arayüz motoru v0.dev'i kod kalitesi, tasarım kabiliyetleri ve 2026 fiyat tarifesi üzerinden mercek altına alıyoruz.",
+    "category": "Yapay Zeka & Gelecek",
+    "subcategory": "AI Arayüz Araçları",
+    "date": "8 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1600&q=80",
+    "readTime": "4 dk",
+    "author": "Teknoloji Servisi",
+    "authorTitle": "Teknoloji & AI Yayın Masası",
+    "verifiedSource": true,
+    "sentiment": "Boğa 🐂",
+    "pSeoType": "review",
+    "pSeoData": {
+      "score": 9.6,
+      "pros": [
+        "React ve Tailwind CSS ile saniyeler içinde mükemmel arayüz tasarımları üretir.",
+        "Figma çıktılarını doğrudan temiz koda dönüştürebilir.",
+        "Vercel ekosistemiyle anında dağıtım ve canlı önizleme sunar."
+      ],
+      "cons": [
+        "Çok karmaşık backend entegrasyonlarında manuel kodlama gerektirir.",
+        "Ücretsiz plandaki kredi limitleri yoğun projeler için yetersiz kalabilir."
+      ],
+      "affiliateUrl": "https://v0.dev",
+      "affiliateText": "Ücretsiz Dene & Hemen Başla"
+    },
+    "sections": [
+      {
+        "id": "rev-sec-1",
+        "heading": "v0.dev Kod Kalitesi ve Üretim Hızı Testi",
+        "body": "Vercel v0.dev, özellikle Tailwind CSS ve Radix UI bileşenlerini birleştirerek son derece kurumsal, temiz ve erişilebilir React kodu üretiyor. AI tarafından üretilen şablonlar, elle yazılmışçasına temiz ve modüler bir yapıda dışarı aktarılabiliyor."
+      }
+    ]
+  },
   {
     "id": "NEWS-01",
     "title": "Kuantum Bilgisayarlarda 10,000 Qubit Eşiği Aşıldı: Post-Kuantum Şifrelemeye Geçiş Başladı",

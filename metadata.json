@@ -1,5 +1,6 @@
 {
   "name": "WebdeHepSeeK",
   "description": "Elite Obsidian Gold financial, technology, and AI news publication with 14 core categories and 140 subcategories.",
-  "requestFramePermissions": []
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
