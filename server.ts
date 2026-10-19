@@ -8,7 +8,20 @@ import fs from 'fs';
 dotenv.config();
 
 const isProd = process.env.NODE_ENV === 'production' || fs.existsSync(path.resolve(process.cwd(), 'dist'));
-const port = process.env.PORT || 3000;
+
+// Parse --port argument, or fallback to 3000 as required by AI Studio environment constraints.
+const getPort = () => {
+  const portArgIndex = process.argv.indexOf('--port');
+  if (portArgIndex !== -1 && process.argv[portArgIndex + 1]) {
+    return Number(process.argv[portArgIndex + 1]);
+  }
+  // In development, always force port 3000 to avoid conflicting with container environment variables (like PORT=8080)
+  if (!isProd) {
+    return 3000;
+  }
+  return process.env.PORT ? Number(process.env.PORT) : 3000;
+};
+const port = getPort();
 
 async function startServer() {
   const app = express();
