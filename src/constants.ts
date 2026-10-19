@@ -54,6 +54,7 @@ export interface NewsItem {
   excerpt: string;
   category: string;
   subcategory: string;
+  subCategory?: string;
   date: string;
   imageUrl: string;
   readTime: string;
@@ -81,6 +82,8 @@ export interface NewsItem {
     mindblown: number;
   };
   sections?: ContentSection[];
+  content?: string;
+  fullContent?: string;
   pSeoType?: 'comparison' | 'price' | 'howto' | 'review';
   pSeoData?: any;
 }
@@ -236,21 +239,30 @@ export const DAILY_POLL: PollData = {
 };
 
 export const siteKategorileri = [
+  { id: 0, baslik: "Siber Güvenlik" },
   { id: 1, baslik: "Yapay Zeka & LLM" },
   { id: 2, baslik: "Donanım & Çipler" },
   { id: 3, baslik: "Finans & Küresel Piyasalar" },
   { id: 4, baslik: "Kripto & Web3" },
   { id: 5, baslik: "SaaS & Yazılım" },
-  { id: 6, baslik: "Otomotiv & Mobilite" },
-  { id: 7, baslik: "Oyun & Espor" },
-  { id: 8, baslik: "Yaşam & Sağlık" },
-  { id: 9, baslik: "Bilim & Uzay" },
-  { id: 10, baslik: "Yeşil Enerji" },
-  { id: 11, baslik: "Girişimcilik & Yatırım" },
-  { id: 12, baslik: "E-Ticaret & Pazarlama" }
+  { id: 6, baslik: "Otomotiv & Mobilite" }
 ];
 
 export const SITE_STRUCTURE: Category[] = [
+  {
+    id: "security",
+    name: "Siber Güvenlik",
+    badge: "Kritik Sistem",
+    subcategories: [
+      "OSINT & İz Sürme",
+      "Ağ Keşfi & SIEM",
+      "Adli Bilişim (Forensics)",
+      "Zafiyet & Web Güvenliği",
+      "Sızma Testi & Red Team",
+      "Parola & Hashcat",
+      "Tersine Mühendislik & Malware"
+    ]
+  },
   {
     id: "ai",
     name: "Yapay Zeka & LLM",
@@ -379,1465 +391,622 @@ export const SYSTEM_NODES: SystemNode[] = [
 // Rich 42-Article Database (14 Categories x 3 Articles each)
 export const MOCK_NEWS: NewsItem[] = [
   {
-    "id": "PSEO-01",
-    "title": "Apple Vision Pro vs Meta Quest 4: Karşılaştırmalı 2026 İncelemesi",
-    "excerpt": "2026 yılının en iddialı iki karma gerçeklik gözlüğü karşı karşıya: Ekosistem gücü mü, yoksa agresif fiyat/performans avantajı mı? Hangisini tercih etmelisiniz?",
-    "category": "Donanım & Çipler",
-    "subcategory": "Giyilebilir Teknoloji",
-    "date": "8 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&fit=crop&w=1600&q=80",
-    "readTime": "4 dk",
-    "author": "Teknoloji Servisi",
-    "authorTitle": "Teknoloji & AI Yayın Masası",
+    "id": "sec-101",
+    "title": "Shodan ve Censys Raporu: Türkiye’de 12.000’den Fazla Endüstriyel Cihaz İnternete Açık Durumda!",
+    "excerpt": "Siber tehdit istihbarat aracı Shodan ve Censys taramalarında SCADA, PLC ve RDP portları açık kalan binlerce kritik altyapı sistemi tespit edildi. İşte korunma yöntemleri.",
+    "category": "Siber Güvenlik",
+    "subcategory": "OSINT & İz Sürme",
+    "subCategory": "OSINT & İz Sürme",
+    "date": "18 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "5 dk",
+    "author": "Siber Güvenlik Masası",
+    "authorTitle": "OSINT & Tehdit İstihbaratı",
     "verifiedSource": true,
     "sentiment": "Boğa 🐂",
-    "pSeoType": "comparison",
-    "pSeoData": {
-      "x": "Apple Vision Pro",
-      "y": "Meta Quest 4",
-      "quickDecision": {
-        "title": "Kısaca Hangisi?",
-        "winner": "Meta Quest 4 (Genel Kullanım ve Fiyat/Performansta Lider)",
-        "points": [
-          "Eğer bütçe kısıtınız yoksa ve en yüksek çözünürlüğü istiyorsanız Apple Vision Pro.",
-          "Geniş oyun kütüphanesi, hafif gövde tasarımı ve uygun fiyat için Meta Quest 4.",
-          "İş ve üretkenlik uygulamalarında Apple Vision Pro ekosistemi hala rakipsiz."
-        ]
-      },
-      "table": {
-        "headers": ["Parametre / Özellik", "Apple Vision Pro", "Meta Quest 4"],
-        "rows": [
-          ["Başlangıç Fiyatı", "149.999 TL", "29.999 TL"],
-          ["Ekran Çözünürlüğü", "Göz başına 4K Micro-OLED", "Göz başına 2.5K LCD / QD-OLED"],
-          ["Ağırlık", "650 gram (Harici Pil)", "410 gram (Dahili Pil)"],
-          ["Yapay Zeka (NPU)", "R1 / M2 Çift İşlemci", "Snapdragon XR2+ Gen 3"],
-          ["Karma Gerçeklik Geçişi (Passthrough)", "Ultra Düşük Gecikme (12ms)", "Çok Net (15ms)"],
-          ["E-E-A-T Puanı", "9.4 / 10", "9.7 / 10"]
-        ]
-      },
-      "xPreference": "Yüksek çözünürlüklü uzamsal bilgi işlem, 4K film deneyimi ve Apple ekosistem uyumluluğu arayan profesyoneller tercih etmeli.",
-      "yPreference": "Sosyal sanal gerçeklik, VR oyunları, hafiflik ve yüksek fiyat/performans avantajı arayan genel tüketiciler tercih etmeli."
-    },
-    "sections": [
-      {
-        "id": "comp-sec-1",
-        "heading": "Ekran Teknolojileri ve Optik Performans",
-        "body": "Apple Vision Pro, göz başına düşen 4K Micro-OLED panelleri ile görsel berraklıkta hala endüstri standardını belirliyor. Ancak Meta Quest 4, QD-OLED ekran seçeneği ve gelişmiş krep mercekleri ile yansımaları ve hareleri neredeyse sıfıra indirerek rakibine oldukça yaklaşıyor."
-      },
-      {
-        "id": "comp-sec-2",
-        "heading": "Konfor, Ağırlık Dağılımı ve Uzun Süreli Kullanım Analizi",
-        "body": "En büyük fark fiziki ergonomide ortaya çıkıyor. Meta Quest 4, dahili pil barındırmasına rağmen sadece 410 gram ağırlığında ve dengeli bir kafa kayışı sunuyor. Apple Vision Pro ise harici kablolu pil kutusuna rağmen 650 gramlık yüz ağırlığıyla uzun süreli çalışmalarda boyun kaslarını yorabiliyor."
-      }
-    ]
+    "executiveSummary": "Açık kaynak istihbaratı (OSINT) araçları Shodan, Censys ve Maltego ile yapılan küresel taramalarda Türkiye’de 12.000’den fazla SCADA ve kritik altyapı cihazının korumasız olduğu belirlendi. Cihazların güvenlik duvarı arkasına alınması ve varsayılan şifrelerin değiştirilmesi önerilmektedir.",
+    "content": "Siber tehdit istihbarat ekipleri, Shodan ve Censys arama motorları üzerinden gerçekleştirdikleri yeni nesil OSINT taramalarında endüstriyel kontrol sistemleri (ICS) ve SCADA cihazlarının doğrudan internete açık durumda olduğunu tespit etti. Saldırganların Nmap ve Masscan araçlarıyla saniyeler içinde bulabildiği bu açıklara karşı Maltego, SpiderFoot ve Recon-ng altyapılarıyla kurum içi zafiyet haritalaması yapılması hayati önem taşıyor.\n\nİndirme ve Kurulum Rehberi:\n- Shodan CLI: pip install shodan (shodan init <API_KEY>)\n- GitHub Deposu: github.com/achillean/shodan-python\n- Kurulum İpucu: Kurumsal IP bloklarınızı shodan host veya shodan search org:Sirketiniz komutuyla haftalık otomatik taramaya bağlayın."
   },
   {
-    "id": "PSEO-02",
-    "title": "ChatGPT Plus 2026 Türkiye Fiyatı Ne Kadar Oldu? (Kaç TL?)",
-    "excerpt": "Yapay zeka asistanı ChatGPT Plus üyeliğinin Türkiye fiyat tarifesi, KDV, dijital hizmet vergileri ve ek kur maliyetleriyle kalem kalem açıklandı.",
-    "category": "Yapay Zeka & LLM",
-    "subcategory": "Generative AI",
-    "date": "8 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=1600&q=80",
-    "readTime": "3 dk",
-    "author": "Teknoloji Servisi",
-    "authorTitle": "Teknoloji & AI Yayın Masası",
+    "id": "sec-102",
+    "title": "Siber Olay Müdahalesinde RAM Analizi: Volatility 3 İle Bellekteki Gizli Zararlılar Nasıl Yakalanır?",
+    "excerpt": "Sızma sonrası bellek içine gizlenen zararlı yazılımlar ve dosyasız (fileless) malware tehditleri FTK Imager ve Volatility 3 adli bilişim araçlarıyla ortaya çıkarılıyor.",
+    "category": "Siber Güvenlik",
+    "subcategory": "Adli Bilişim (Forensics)",
+    "subCategory": "Adli Bilişim (Forensics)",
+    "date": "18 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "6 dk",
+    "author": "Adli Bilişim Uzmanı",
+    "authorTitle": "Digital Forensics & Incident Response (DFIR)",
     "verifiedSource": true,
-    "sentiment": "Nötr ⚖️",
-    "pSeoType": "price",
-    "pSeoData": {
-      "spotPrice": "690 TL / Ay",
-      "yoyChange": "%15 Artış (Global $20 Sabit Kalırken, Yerel Vergi Güncellemeleriyle Sınırlandı)",
-      "table": {
-        "headers": ["Maliyet Kalemi / Hizmet", "Oran / Tür", "Tutar (Aylık)"],
-        "rows": [
-          ["Yalın Abonelik Bedeli", "$20 USD (Kur Korumalı)", "600 TL"],
-          ["Dijital Hizmet Vergisi (DHV)", "%7.5 Oran", "45 TL"],
-          ["Katma Değer Vergisi (KDV)", "%20 (Bireysel Hizmet)", "45 TL"],
-          ["Toplam Aylık Maliyet", "Bireysel Premium Tarife", "690 TL"]
-        ]
-      },
-      "savings": [
-        "Yıllık taahhütlü abonelik seçeneğini tercih ederek aylık maliyeti %15 düşürün.",
-        "Ekip kullanımları için 'ChatGPT Team' paketine geçerek fatura giderini azaltın.",
-        "Kullanmadığınız aylarda aboneliğinizi dondurarak bütçenizi koruyun."
-      ]
-    },
-    "sections": [
-      {
-        "id": "price-sec-1",
-        "heading": "Türkiye Fiyatlandırma Politikası ve Döviz Sinerjisi",
-        "body": "OpenAI, 2026 yılında Türkiye pazarı için yerel fiyatlandırma kur koruma desteğini sürdürüyor. Global bazda $20 olan Plus aboneliği, fiks kur politikası sayesinde vergiler dahil 690 TL seviyesinde dengelenerek Türk geliştiriciler için önemli bir maliyet avantajı sağlıyor."
-      }
-    ]
+    "sentiment": "Boğa 🐂",
+    "executiveSummary": "Dijital adli bilişim (DFIR) süreçlerinde FTK Imager ile alınan RAM bellek imajları, Volatility 3 ve Autopsy analiz yazılımları ile incelenerek belleğe enjekte edilen zararlı DLL ve süreçler tespit edilmektedir. Olay müdahale ekipleri için kritik rehber.",
+    "content": "Siber olay müdahalesi (DFIR) uzmanları, karmaşık saldırı analizlerinde RAM belleğindeki izleri incelemek için Volatility 3 ve SANS SIFT Workstation platformlarını kullanıyor. Saldırganların disk yüzeyinde iz bırakmadan işletim sistemi süreçlerine (lsass.exe, svchost.exe) enjekte ettiği zararlılar, Volatility eklentileri (windows.pslist, windows.malfind) sayesinde dakikalar içinde tespit ediliyor.\n\nİndirme ve Kurulum Rehberi:\n- Volatility 3 Deposu: github.com/volatilityfoundation/volatility3\n- Kurulum İpucu: python3 vol.py -f memory.raw windows.info komutuyla işletim sistemi çekirdek sembollerini otomatik yükleyebilirsiniz."
   },
   {
-    "id": "PSEO-03",
-    "title": "Adım Adım Node.js v26 Kurulumu ve Çevre Değişkenleri Rehberi",
-    "excerpt": "Geliştiriciler için yeni nesil Node.js v26 sürümünün işletim sistemlerine göre adım adım hatasız kurulum yönergeleri ve terminal konfigürasyonları.",
+    "id": "sec-103",
+    "title": "Burp Suite ve OWASP ZAP İle Modern API Güvenlik Testleri: En Sık Yapılan 5 Yetkilendirme Hatası",
+    "excerpt": "Web ve mobil API uygulamalarında BOLA, BFLA ve SQL Injection zafiyetleri Burp Suite Professional, OWASP ZAP ve SQLMap ile saniyeler içinde keşfediliyor.",
+    "category": "Siber Güvenlik",
+    "subcategory": "Zafiyet & Web Güvenliği",
+    "subCategory": "Zafiyet & Web Güvenliği",
+    "date": "17 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "5 dk",
+    "author": "Web Security Lead",
+    "authorTitle": "AppSec & Penetration Testing",
+    "verifiedSource": true,
+    "sentiment": "Boğa 🐂",
+    "executiveSummary": "Modern GraphQL ve REST API mimarilerinde Burp Suite, OWASP ZAP, Gobuster, ffuf ve SQLMap araçlarıyla gerçekleştirilen güvenlik otomasyonları, bozuk nesne seviyesinde yetkilendirme (BOLA) ve parametre enjeksiyonu zafiyetlerini proaktif olarak ortadan kaldırmaktadır.",
+    "content": "Uygulama güvenliği (AppSec) süreçlerinde Burp Suite Pro, OWASP ZAP, ffuf, Wfuzz ve Commix entegrasyonu, CI/CD hatlarında zafiyet taramasını otomatikleştirdi. Özellikle Arjun ve ParamSpider ile gizli API parametrelerinin keşfedilmesi, SQLMap ve NoSQLMap otomasyonlarıyla veri sızıntılarının engellenmesini sağlıyor.\n\nİndirme ve Kurulum Rehberi:\n- OWASP ZAP Deposu: github.com/zaproxy/zaproxy\n- ffuf Kurulumu: go install github.com/ffuf/ffuf/v2@latest\n- Kurulum İpucu: ffuf -w wordlist.txt -u https://api.sirket.com/FUZZ -mc 200 komutuyla API endpointlerini hızlıca haritalayın."
+  },
+  {
+    "id": "sec-104",
+    "title": "Active Directory Ağlarında BloodHound Tehlikesi: Domain Admin Yetkisine Giden Kestirme Yollar Nasıl Kapatılır?",
+    "excerpt": "Kurumsal Windows ağlarında BloodHound, Metasploit, CrackMapExec ve Rubeus araçlarıyla yapılan yetki yükseltme analizleri Active Directory güvenliğini baştan yazıyor.",
+    "category": "Siber Güvenlik",
+    "subcategory": "Sızma Testi & Red Team",
+    "subCategory": "Sızma Testi & Red Team",
+    "date": "17 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1510511459019-5dda7724fd87?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "6 dk",
+    "author": "Red Team Lead",
+    "authorTitle": "Offensive Security & Red Teaming",
+    "verifiedSource": true,
+    "sentiment": "Boğa 🐂",
+    "executiveSummary": "Red Team operasyonlarında BloodHound CE ve SharpHound veri toplayıcıları, Kerberoasting (Rubeus) ve Pass-the-Hash (CrackMapExec) vektörlerini kullanarak Active Directory ağlarındaki kritik yetki yollarını görselleştirir. Mavi takım (Blue Team) sıkılaştırma rehberi.",
+    "content": "Kırmızı Takım (Red Team) simülasyonlarında Cobalt Strike, Metasploit Framework, Evilginx2 ve Gophish gibi gelişmiş saldırı altyapıları, BloodHound graph veritabanı analizleriyle birleştirildiğinde yetkisiz nesne erişimlerini ortaya çıkarıyor. Azure AD ve şirket içi Active Directory yapılarında Kerberoasting saldırılarına karşı Managed Service Accounts (gMSA) kullanımına geçilmesi öneriliyor.\n\nİndirme ve Kurulum Rehberi:\n- BloodHound CE Deposu: github.com/SpecterOps/BloodHound\n- Kurulum İpucu: Docker Compose ile BloodHound CE ortamını podman/docker üzerinden saniyeler içinde ayağa kaldırabilirsiniz."
+  },
+  {
+    "id": "sec-105",
+    "title": "NSA’in Açık Kaynak Aracı Ghidra 11 Güncellemesi Yayınlandı: Hata Ayıklama Artık Çok Daha Hızlı",
+    "excerpt": "Tersine mühendislik dünyasının devrim niteliğindeki disassembler yazılımı Ghidra 11, x64dbg ve IDA Pro entegrasyonuyla zararlı yazılım analiz süresini yarıya indirdi.",
+    "category": "Siber Güvenlik",
+    "subcategory": "Tersine Mühendislik & Malware",
+    "subCategory": "Tersine Mühendislik & Malware",
+    "date": "16 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "5 dk",
+    "author": "Malware Analyst",
+    "authorTitle": "Reverse Engineering & YARA",
+    "verifiedSource": true,
+    "sentiment": "Boğa 🐂",
+    "executiveSummary": "Zararlı yazılım analistleri ve tersine mühendislik uzmanları, Ghidra 11 ve REMnux platformunda YARA kuralları yazarak fidye yazılımları (Ransomware) ve C2 iletişim kanallarını dekompile kod seviyesinde çözümlüyor. Tam analiz rehberi.",
+    "content": "Zararlı yazılım incelemelerinde Ghidra, IDA Pro, x64dbg ve YARA kural motoru birleşerek anti-analysis ve kod karartma (obfuscation) katmanlarını ortadan kaldırıyor. REMnux izolasyon ortamında çalışan yeni Ghidra decompiler motoru, PDB sembol tanımlarını otomatik çıkararak karmaşık C/C++ fonksiyonlarını okunabilir hale getiriyor.\n\nİndirme ve Kurulum Rehberi:\n- Ghidra Resmi Deposu: github.com/NationalSecurityAgency/ghidra\n- YARA Kural Motoru: github.com/VirusTotal/yara\n- Kurulum İpucu: JDK 21 mimarisini kurduktan sonra ./ghidraRun komut dosyası ile arayüzü başlatabilirsiniz."
+  },
+  {
+    "id": "sec-106",
+    "title": "Hashcat ve RTX 5090 Gücüyle 8 Karakterli Şifreler Kaç Dakikada Kırılıyor? 2026 Kriptoanaliz Raporu",
+    "excerpt": "Gelişmiş parola kırma araçları Hashcat, John the Ripper ve Hydra, yüksek güçlü GPU küme mimarileriyle karmaşık NTLMv2 ve WPA3 parollarını test ediyor.",
+    "category": "Siber Güvenlik",
+    "subcategory": "Parola & Hashcat",
+    "subCategory": "Parola & Hashcat",
+    "date": "16 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "4 dk",
+    "author": "Siber Güvenlik Masası",
+    "authorTitle": "Kriptoanaliz & Parola Güvenliği",
+    "verifiedSource": true,
+    "sentiment": "Boğa 🐂",
+    "executiveSummary": "NVIDIA RTX 5090 ekran kartı kümesinde çalışan Hashcat v7.0, saniyede 400 milyar NTLM karması (hash) deneyerek 8 karakterli alfabe karmalarını dakikalar içinde çözebilmektedir. Şirketler için en az 14 karakterli Parolakarşılığı politikası önerilmektedir.",
+    "content": "Parola güvenliği audit çalışmalarında Hashcat, John the Ripper, Hydra, Medusa ve Ncrack araçları hibrit kural sözlükleriyle (mask attack) şirket içi parola zayıflıklarını ortaya koyuyor. Argon2id ve bcrypt şifreleme algoritmalarının kullanımı brute-force maliyetini üstel olarak artırıyor.\n\nİndirme ve Kurulum Rehberi:\n- Hashcat Deposu: github.com/hashcat/hashcat\n- Kurulum İpucu: hashcat -m 1000 -a 3 hashes.txt ?l?l?l?l?d?d?d?d komutuyla özel kural kombinasyonlarını çalıştırabilirsiniz."
+  },
+  {
+    "id": "sec-107",
+    "title": "Wazuh 4.8 ve Microsoft Sentinel Entegrasyonu: SOC Ekipleri İçin Otomatik Tehdit Avcılığı Rehberi",
+    "excerpt": "Ağ izleme ve SIEM çözümleri Nmap, Wireshark, Zeek, Suricata, Wazuh, Sysmon ve OpenCTI entegrasyonuyla 7/24 otomatik Güvenlik Operasyon Merkezi (SOC) sağlıyor.",
+    "category": "Siber Güvenlik",
+    "subcategory": "Ağ Keşfi & SIEM",
+    "subCategory": "Ağ Keşfi & SIEM",
+    "date": "15 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "5 dk",
+    "author": "SOC Team Lead",
+    "authorTitle": "SIEM & Threat Hunting",
+    "verifiedSource": true,
+    "sentiment": "Boğa 🐂",
+    "executiveSummary": "Ağ trafiği izleme aracı Wireshark, Zeek (Bro) ve Suricata IDS/IPS sistemleri; Wazuh SIEM, Graylog ve Microsoft Sentinel panelleriyle birleştirilerek APT saldırılarını anında tespit etmekte ve otomatik izole etmektedir.",
+    "content": "Ağ keşfi ve tehdit avcılığı süreçlerinde Nmap, Masscan, ZMap, Bettercap ve Tcpdump ile elde edilen PCAP paketleri; Wazuh SIEM, OSSEC, Sysmon ve OpenCTI tehdit istihbaratı platformlarıyla harmanlanıyor. Sınıra yerleştirilen Suricata IDS sistemleri bilinen zararlı imzalarını anında blokluyor.\n\nİndirme ve Kurulum Rehberi:\n- Wazuh Kurulum Deposu: github.com/wazuh/wazuh\n- Kurulum İpucu: wazuh-docker reponu klonlayarak tek komutla ELK tabanlı SIEM panelini çalıştırabilirsiniz."
+  },
+  {
+    "id": "ai-sub-1",
+    "title": "YENİ NESİL LLM: Claude 3.7 Sonnet ve GPT-4.5 Akıl Yürütme Sınırlarını Aştı",
+    "excerpt": "Gelişmiş mantık yürütme yetenekleriyle kod yazma, matematiksel analiz ve karmaşık problem çözme testlerinde %94 başarı elde edildi.",
+    "category": "Yapay Zeka",
+    "subcategory": "Büyük Dil Modelleri (LLM)",
+    "subCategory": "Büyük Dil Modelleri (LLM)",
+    "date": "18 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "5 dk",
+    "author": "AI Masası",
+    "authorTitle": "LLM Araştırma Heyeti",
+    "verifiedSource": true,
+    "sentiment": "Boğa 🐂"
+  },
+  {
+    "id": "ai-sub-2",
+    "title": "Otonom AI Ajanları Şirket Operasyonlarını İnsan Müdahalesi Olmadan Yönetiyor",
+    "excerpt": "Kendi kendine kararlar alan ve API bağlantılarıyla çoklu görev yürüten AI ajanları, B2B iş süreçlerinde iş gücü verimliliğini 5 katına çıkardı.",
+    "category": "Yapay Zeka",
+    "subcategory": "Otonom AI Ajanları",
+    "subCategory": "Otonom AI Ajanları",
+    "date": "18 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "4 dk",
+    "author": "AI Masası",
+    "authorTitle": "Ajan Sistemleri Raporu",
+    "verifiedSource": true,
+    "sentiment": "Boğa 🐂"
+  },
+  {
+    "id": "ai-sub-3",
+    "title": "Sora 2.0 ve Sinematik Görsel & Video Üretiminde 4K 60 FPS Standart Oldu",
+    "excerpt": "Fizik motoru simülasyonlarıyla gerçekçi kamera hareketleri üreten yeni video AI modelleri, reklam ve medya prodüksiyon maliyetlerini düşürdü.",
+    "category": "Yapay Zeka",
+    "subcategory": "Görsel & Video Üretimi",
+    "subCategory": "Görsel & Video Üretimi",
+    "date": "17 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "4 dk",
+    "author": "Medya Servisi",
+    "authorTitle": "Prodüksiyon & AI",
+    "verifiedSource": true,
+    "sentiment": "Boğa 🐂"
+  },
+  {
+    "id": "ai-sub-4",
+    "title": "Prompt Mühendisliğinde Meta-Prompting ve Structured Output Devrimi",
+    "excerpt": "Sistem talimatlarını dinamik olarak üreten ve JSON şemalarıyla %100 tip güvenliği sağlayan yeni prompting teknikleri yazılımcıların hizmetinde.",
+    "category": "Yapay Zeka",
+    "subcategory": "Prompt Mühendisliği",
+    "subCategory": "Prompt Mühendisliği",
+    "date": "16 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "3 dk",
+    "author": "AI Masası",
+    "authorTitle": "Geliştirici Rehberi",
+    "verifiedSource": true,
+    "sentiment": "Nötr ⚖️"
+  },
+  {
+    "id": "ai-sub-5",
+    "title": "Nöromorfik Çipler İnsan Beyni Hücre Yapısıyla Yüzde 90 Daha Az Güç Tüketiyor",
+    "excerpt": "Spiking Neural Networks (SNN) mimarisiyle çalışan nöromorfik donanımlar, uç cihazlarda kesintisiz yapay zeka çıkarımı sağlıyor.",
+    "category": "Yapay Zeka",
+    "subcategory": "Nöromorfik Çipler",
+    "subCategory": "Nöromorfik Çipler",
+    "date": "15 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "5 dk",
+    "author": "Donanım Servisi",
+    "authorTitle": "Yarı İletken Mimarisi",
+    "verifiedSource": true,
+    "sentiment": "Boğa 🐂"
+  },
+  {
+    "id": "hw-sub-1",
+    "title": "NVIDIA RTX 5090 Ekran Kartı 32 GB GDDR7 Bellekle Performans Rekoru Kırdı",
+    "excerpt": "Blackwell mimarili yeni nesil GPU, DLSS 4 ve sinirsel ışın izleme teknolojisiyle 4K oyunlarda 240 Hz tazeleme oranına ulaşıyor.",
+    "category": "Donanım",
+    "subcategory": "Ekran Kartı & GPU",
+    "subCategory": "Ekran Kartı & GPU",
+    "date": "18 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "5 dk",
+    "author": "Donanım Masası",
+    "authorTitle": "GPU İnceleme Laboratuvarı",
+    "verifiedSource": true,
+    "sentiment": "Boğa 🐂"
+  },
+  {
+    "id": "hw-sub-2",
+    "title": "Intel Core Ultra 9 ve AMD Ryzen 9000 İncelemesi: Hangisini Seçmelisiniz?",
+    "excerpt": "3nm üretim süreciyle üretilen yeni nesil masaüstü işlemcilerde tek çekirdek hızı 6.2 GHz seviyesine çıkarken güç tüketimi düşürüldü.",
+    "category": "Donanım",
+    "subcategory": "İşlemciler",
+    "subCategory": "İşlemciler",
+    "date": "17 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "6 dk",
+    "author": "Donanım Masası",
+    "authorTitle": "İşlemci Mimarisi Testi",
+    "verifiedSource": true,
+    "sentiment": "Boğa 🐂"
+  },
+  {
+    "id": "hw-sub-3",
+    "title": "MacBook Pro M4 Max ve Surface Dev Box: En İyi Yazılımcı Laptopları 2026",
+    "excerpt": "128 GB birleşik bellek, 24 saat pil ömrü ve yerel LLM çalıştırma kapasitesiyle mobil yazılım geliştiricilerin vazgeçilmezi olan modeller.",
+    "category": "Donanım",
+    "subcategory": "Yazılımcı Laptopları",
+    "subCategory": "Yazılımcı Laptopları",
+    "date": "16 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "4 dk",
+    "author": "Mobil Teknolojiler",
+    "authorTitle": "Laptop Test Merkezi",
+    "verifiedSource": true,
+    "sentiment": "Boğa 🐂"
+  },
+  {
+    "id": "hw-sub-4",
+    "title": "49 İnç 240Hz QD-OLED Kavisli Monitörler İle Maksimum Kodlama Ergonomisi",
+    "excerpt": "Dual QHD çözünürlük, KVM anahtarı ve göz sağlığını koruyan mavi ışık filtreli paneller kod geliştiricilerin odaklanmasını kolaylaştırıyor.",
+    "category": "Donanım",
+    "subcategory": "Monitör & Ergonomi",
+    "subCategory": "Monitör & Ergonomi",
+    "date": "15 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "3 dk",
+    "author": "Donanım Masası",
+    "authorTitle": "Ergonomi & Ekran",
+    "verifiedSource": true,
+    "sentiment": "Nötr ⚖️"
+  },
+  {
+    "id": "hw-sub-5",
+    "title": "PCIe 5.0 NVMe SSD ve 10 GbE NAS Sunucuları İle Veri Güvenliği ve Hız",
+    "excerpt": "Saniyede 14.500 MB okuma hızına ulaşan depolama çözümleri ve RAID 6 yapılı yedekleme üniteleri stüdyolar için veri güvenliği sunuyor.",
+    "category": "Donanım",
+    "subcategory": "Depolama & NAS",
+    "subCategory": "Depolama & NAS",
+    "date": "14 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "4 dk",
+    "author": "Altyapı Servisi",
+    "authorTitle": "Depolama Sistemleri",
+    "verifiedSource": true,
+    "sentiment": "Boğa 🐂"
+  },
+  {
+    "id": "fin-sub-1",
+    "title": "Borsa İstanbul BIST 100 Endeksinde Teknoloji Hisseleri Yıllık Zirveyi Yeniledi",
+    "excerpt": "Yabancı kurumsal yatırımcıların teknoloji ve ihracatçı sanayi şirketlerine nakit girişiyle BIST 100 endeksi 11.200 seviyesini test etti.",
+    "category": "Finans & Ekonomi",
+    "subcategory": "Borsa İstanbul",
+    "subCategory": "Borsa İstanbul",
+    "date": "18 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "5 dk",
+    "author": "Finans Masası",
+    "authorTitle": "Borsa & Hisse Analizi",
+    "verifiedSource": true,
+    "sentiment": "Boğa 🐂"
+  },
+  {
+    "id": "fin-sub-2",
+    "title": "Merkez Bankası Faiz Kararını Açıkladı: Dezenflasyon Sürecinde Kararlı Adımlar",
+    "excerpt": "Para Politikası Kurulu, politika faizini sabit tutarken piyasa likiditesini dengelemek amacıyla sterilizasyon adımlarını güçlendirdi.",
+    "category": "Finans & Ekonomi",
+    "subcategory": "Merkez Bankası & Faiz",
+    "subCategory": "Merkez Bankası & Faiz",
+    "date": "17 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "4 dk",
+    "author": "Finans Masası",
+    "authorTitle": "Makro Ekonomi & TCMB",
+    "verifiedSource": true,
+    "sentiment": "Nötr ⚖️"
+  },
+  {
+    "id": "fin-sub-3",
+    "title": "Döviz Kurları ve Ons Altın Piyasalarında Küresel Risk İştahı Şekilleniyor",
+    "excerpt": "Ons altın $2.750 direncinin üzerine çıkarken ABD Dolar Endeksi (DXY) gelişmekte olan ülke para birimleri karşısında yatay seyretti.",
+    "category": "Finans & Ekonomi",
+    "subcategory": "Döviz & Emtia",
+    "subCategory": "Döviz & Emtia",
+    "date": "16 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "3 dk",
+    "author": "Emtia Masası",
+    "authorTitle": "Değerli Madenler Analizi",
+    "verifiedSource": true,
+    "sentiment": "Boğa 🐂"
+  },
+  {
+    "id": "fin-sub-4",
+    "title": "Bankacılık Sektöründe Kredi ve Mevduat Faiz Oranlarında Yeni Dönem",
+    "excerpt": "Türk Lirası mevduat payını artıran bankalar, konut ve taşıt kredilerinde vadeleri uzatarak finansmana erişimi kolaylaştırıyor.",
+    "category": "Finans & Ekonomi",
+    "subcategory": "Kredi & Mevduat",
+    "subCategory": "Kredi & Mevduat",
+    "date": "15 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "4 dk",
+    "author": "Bankacılık Servisi",
+    "authorTitle": "Finansal Piyasalar",
+    "verifiedSource": true,
+    "sentiment": "Nötr ⚖️"
+  },
+  {
+    "id": "fin-sub-5",
+    "title": "Algoritmik Ticaret (Algo-Trading) Botları İşlem Hacminde %65 Pay Aldı",
+    "excerpt": "C++ ve Python altyapılı yüksek frekanslı ticaret (HFT) algoritmaları, milisaniyelik emir iletimiyle arbitrage fırsatlarını değerlendiriyor.",
+    "category": "Finans & Ekonomi",
+    "subcategory": "Algoritmik Ticaret",
+    "subCategory": "Algoritmik Ticaret",
+    "date": "14 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "5 dk",
+    "author": "Finans Masası",
+    "authorTitle": "Kantitatif Ticaret",
+    "verifiedSource": true,
+    "sentiment": "Boğa 🐂"
+  },
+  {
+    "id": "crypto-sub-1",
+    "title": "Bitcoin Spot ETF Fonlarına Rekor Nakit Girişi: $152,000 Sınırı Aşıldı",
+    "excerpt": "Kurumsal fonların ve emeklilik şirketlerinin Bitcoin allocation oranlarını artırmasıyla lider kripto para birimi yeni zirveler test ediyor.",
+    "category": "Kripto & Web3",
+    "subcategory": "Bitcoin & ETF",
+    "subCategory": "Bitcoin & ETF",
+    "date": "18 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1518546305927-5a555bb7020d?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "5 dk",
+    "author": "Kripto Masası",
+    "authorTitle": "ETF & Kurumsal Akış",
+    "verifiedSource": true,
+    "sentiment": "Boğa 🐂"
+  },
+  {
+    "id": "crypto-sub-2",
+    "title": "Ethereum & DeFi Protokollerinde Toplam Kilitli Değer (TVL) $120 Milyara Ulaştı",
+    "excerpt": "Likit staking ve merkeziyetsiz borç verme protokollerinde işlem ücretlerinin düşmesiyle akıllı sözleşme hacimleri katlanarak büyüyor.",
+    "category": "Kripto & Web3",
+    "subcategory": "Ethereum & DeFi",
+    "subCategory": "Ethereum & DeFi",
+    "date": "17 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1622979135225-d2ba269bc1bd?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "4 dk",
+    "author": "DeFi Servisi",
+    "authorTitle": "Akıllı Sözleşmeler",
+    "verifiedSource": true,
+    "sentiment": "Boğa 🐂"
+  },
+  {
+    "id": "crypto-sub-3",
+    "title": "Layer 2 Ağları ZK-Rollup Teknolojisiyle Saniyede 100 Bin İşlem Sınırını Aştı",
+    "excerpt": "Arbitrum, Optimism ve Starknet ağlarında gaz ücretlerinin cent seviyelerine gerilemesi Web3 mikro ödemelerini ticarileştirdi.",
+    "category": "Kripto & Web3",
+    "subcategory": "Layer 2",
+    "subCategory": "Layer 2",
+    "date": "16 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "4 dk",
+    "author": "Kripto Masası",
+    "authorTitle": "L2 & Skalabilite",
+    "verifiedSource": true,
+    "sentiment": "Boğa 🐂"
+  },
+  {
+    "id": "crypto-sub-4",
+    "title": "Altcoin Piyasasında Yapay Zeka ve RWA Odaklı Projelerde Güçlü Ralli",
+    "excerpt": "Gerçek dünya varlıklarının (RWA) blokzincire taşınması ve AI tokenlarının ekosistem fonlarıyla desteklenmesi altcoin piyasasını canlandırdı.",
+    "category": "Kripto & Web3",
+    "subcategory": "Altcoin Piyasası",
+    "subCategory": "Altcoin Piyasası",
+    "date": "15 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "5 dk",
+    "author": "Kripto Masası",
+    "authorTitle": "Altcoin Raporu",
+    "verifiedSource": true,
+    "sentiment": "Boğa 🐂"
+  },
+  {
+    "id": "auto-sub-1",
+    "title": "Elektrikli Araçlar (EV) Pazarında Menteşe ve Gövde Entegrasyonlu Yeni Modeller",
+    "excerpt": "Tek parça döküm (Gigacasting) tekniğiyle üretilen yerli ve küresel elektrikli araçlar, üretim maliyetlerini düşürürken menzili %25 artırdı.",
+    "category": "Otomotiv",
+    "subcategory": "Elektrikli Araçlar (EV)",
+    "subCategory": "Elektrikli Araçlar (EV)",
+    "date": "18 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "5 dk",
+    "author": "Otomotiv Masası",
+    "authorTitle": "EV & Mobilite",
+    "verifiedSource": true,
+    "sentiment": "Boğa 🐂"
+  },
+  {
+    "id": "auto-sub-2",
+    "title": "Katı Hal Batarya ve 800V Şarj Altyapısıyla 10 Dakikada 500 KM Menzil",
+    "excerpt": "Sıvı elektrolit riskini ortadan kaldıran yeni nesil batarya hücreleri, soğuk iklimlerde dahi şarj hızını ve güvenliğini koruyor.",
+    "category": "Otomotiv",
+    "subcategory": "Batarya & Şarj",
+    "subCategory": "Batarya & Şarj",
+    "date": "17 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "4 dk",
+    "author": "Otomotiv Masası",
+    "authorTitle": "Şarj Teknolojileri",
+    "verifiedSource": true,
+    "sentiment": "Boğa 🐂"
+  },
+  {
+    "id": "auto-sub-3",
+    "title": "Toyota Yaris & Prius Hibrit Modellerinde 5. Nesil Tork Konvertörü Başarısı",
+    "excerpt": "100 km’de 3.2 litre yakıt tüketimiyle şehir içi kullanımda tam elektrikli sürüş oranını %80’e çıkaran yeni nesil hibrit teknolojisi.",
+    "category": "Otomotiv",
+    "subcategory": "Hibrit Modeller",
+    "subCategory": "Hibrit Modeller",
+    "date": "16 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "4 dk",
+    "author": "Mobilite Servisi",
+    "authorTitle": "Hibrit Araç İnceleme",
+    "verifiedSource": true,
+    "sentiment": "Nötr ⚖️"
+  },
+  {
+    "id": "auto-sub-4",
+    "title": "Seviye 4 Otonom Sürüş Testleri Sürücüsüz Taksi Filolarında Başarıyla Tamamlandı",
+    "excerpt": "Katı hal Lidar ve ultrasonik sensörlerle donatılan otonom araçlar, şehir içi trafikte sıfır kaza oranıyla sürücüsüz yolcu taşıyor.",
+    "category": "Otomotiv",
+    "subcategory": "Otonom Sürüş",
+    "subCategory": "Otonom Sürüş",
+    "date": "15 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "5 dk",
+    "author": "Otomotiv Masası",
+    "authorTitle": "Otonom Sürüş Testleri",
+    "verifiedSource": true,
+    "sentiment": "Boğa 🐂"
+  },
+  {
+    "id": "auto-sub-5",
+    "title": "Akıllı Kokpit Sistemleri Artırılmış Gerçeklikli Head-Up Display İle Yenilendi",
+    "excerpt": "Sürücü göz takibi ve artırılmış gerçeklik navigasyonu sunan yeni nesil OLED kokpit camları kaza risklerini %30 azaltıyor.",
+    "category": "Otomotiv",
+    "subcategory": "Akıllı Kokpit",
+    "subCategory": "Akıllı Kokpit",
+    "date": "14 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "4 dk",
+    "author": "Mobilite Servisi",
+    "authorTitle": "Kokpit & UI",
+    "verifiedSource": true,
+    "sentiment": "Boğa 🐂"
+  },
+  {
+    "id": "saas-sub-1",
+    "title": "Geliştirici Araçları ve AI Copilot Araçları Kodlama Verimliliğini %200 Artırdı",
+    "excerpt": "VS Code, JetBrains ve Cursor eklentileriyle tam entegre çalışan AI kod üreticileri test yazma ve refactoring süreçlerini otomatikleştirdi.",
     "category": "SaaS & Yazılım",
     "subcategory": "Geliştirici Araçları",
-    "date": "8 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1618401471353-b98aedd07871?auto=format&fit=crop&w=1600&q=80",
+    "subCategory": "Geliştirici Araçları",
+    "date": "18 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&h=675&q=80",
     "readTime": "5 dk",
-    "author": "Teknoloji Servisi",
-    "authorTitle": "Teknoloji & AI Yayın Masası",
+    "author": "Yazılım Masası",
+    "authorTitle": "Geliştirici Ekosistemi",
     "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "pSeoType": "howto",
-    "pSeoData": {
-      "duration": "15 dk",
-      "steps": [
-        {
-          "heading": "1. Adım: Node Version Manager (NVM) Güncellemesi",
-          "body": "Terminalinizden 'nvm install v26' komutunu koşturarak en son kararlı sürümü indirin ve sisteminize dahil edin."
-        },
-        {
-          "heading": "2. Adım: Çevre Değişkenlerinin Yapılandırılması",
-          "body": "Sisteminizin PATH değişkenine yeni Node ikili dosyalarının (bin) yolunu ekleyin ve aktif kılmak için terminal oturumunuzu yeniden başlatın."
-        },
-        {
-          "heading": "3. Adım: Versiyon Kontrolü ve Doğrulama",
-          "body": "Terminalden 'node -v' komutunu koşturarak 'v26.0.0' çıktısını aldığınızdan emin olun. Bu sayede aktif Node sürümü onaylanmış olacaktır."
-        }
-      ],
-      "commonError": "Port Conflict Error (EADDRINUSE): Geliştirici portunuz arka plandaki eski Node servisleri tarafından işgal edildiğinde oluşur. Çözüm için terminalden 'killall node' komutunu çalıştırarak portu boşaltın."
-    },
-    "sections": [
-      {
-        "id": "howto-sec-1",
-        "heading": "Neden v26 Sürümüne Yükseltmelisiniz?",
-        "body": "Node.js v26 sürümü, %30 daha hızlı startup süreleri sağlayan optimize edilmiş V8 motoru ve dahili TypeScript derleyici desteğiyle birlikte geliyor. Artık ek bir ts-node paketine ihtiyaç duymadan doğrudan .ts dosyalarını koşturabilirsiniz."
-      }
-    ]
+    "sentiment": "Boğa 🐂"
   },
   {
-    "id": "PSEO-04",
-    "title": "v0.dev AI Yapay Zeka Arayüz Oluşturucu Derinlemesine İncelemesi",
-    "excerpt": "Vercel'in popüler yapay zeka arayüz motoru v0.dev'i kod kalitesi, tasarım kabiliyetleri ve 2026 fiyat tarifesi üzerinden mercek altına alıyoruz.",
-    "category": "Yapay Zeka & LLM",
-    "subcategory": "AI Arayüz Araçları",
-    "date": "8 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1600&q=80",
-    "readTime": "4 dk",
-    "author": "Teknoloji Servisi",
-    "authorTitle": "Teknoloji & AI Yayın Masası",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "pSeoType": "review",
-    "pSeoData": {
-      "score": 9.6,
-      "pros": [
-        "React ve Tailwind CSS ile saniyeler içinde mükemmel arayüz tasarımları üretir.",
-        "Figma çıktılarını doğrudan temiz koda dönüştürebilir.",
-        "Vercel ekosistemiyle anında dağıtım ve canlı önizleme sunar."
-      ],
-      "cons": [
-        "Çok karmaşık backend entegrasyonlarında manuel kodlama gerektirir.",
-        "Ücretsiz plandaki kredi limitleri yoğun projeler için yetersiz kalabilir."
-      ],
-      "affiliateUrl": "https://v0.dev",
-      "affiliateText": "Ücretsiz Dene & Hemen Başla"
-    },
-    "sections": [
-      {
-        "id": "rev-sec-1",
-        "heading": "v0.dev Kod Kalitesi ve Üretim Hızı Testi",
-        "body": "Vercel v0.dev, özellikle Tailwind CSS ve Radix UI bileşenlerini birleştirerek son derece kurumsal, temiz ve erişilebilir React kodu üretiyor. AI tarafından üretilen şablonlar, elle yazılmışçasına temiz ve modüler bir yapıda dışarı aktarılabiliyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-01",
-    "title": "Kuantum Bilgisayarlarda 10,000 Qubit Eşiği Aşıldı: Post-Kuantum Şifrelemeye Geçiş Başladı",
-    "excerpt": "Küresel çip üreticileri tarafından duyurulan yeni kuantum işlemcisi, klasik şifreleme yöntemlerini saniyeler içinde çözebilecek devasa bir hesaplama gücüne ulaştı.",
+    "id": "saas-sub-2",
+    "title": "No-Code & Otomasyon Platformlarında Kurumsal İş Akışları Yapay Zekayla Şekillendi",
+    "excerpt": "Kod yazmadan karmaşık backend mantığı ve CRM entegrasyonu sunan platformlar, şirketlerin dijital dönüşüm maliyetlerini düşürdü.",
     "category": "SaaS & Yazılım",
-    "subcategory": "Kuantum Bilgisayarlar",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1600&q=80",
-    "readTime": "6 dk",
-    "author": "WebdeHepSeek Haber Merkezi",
-    "authorTitle": "Editoryal Yayın Kurulu",
-    "verifiedSource": true,
-    "isEditorsChoice": true,
-    "sentiment": "Boğa 🐂",
-    "youtubeVideoId": "y9Trz1R1s3M",
-    "executiveSummary": "10,000 fiziksel qubit seviyesinin aşılması, RSA ve AES-256 gibi geleneksel kriptografi standartlarının ömrünü kısaltarak post-kuantum şifreleme geçişini acil hale getirdi.",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-01",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Kuantum Süperpozisyonu ve Donanımsal Atılım",
-        "body": "Post-silikon çağının kapılarını aralayan yeni kuantum işlemcisi, mutlak sıfıra yakın sıcaklıkta çalışan 10,000 kararlı qubiti tek bir çip üzerinde birleştirmeyi başardı. Bu eşik, hata payını milyonda bire indirgeyen gelişmiş kuantum eş-evresizlik kontrol algoritmaları sayesinde kilitlendi."
-      },
-      {
-        "id": "sec-2",
-        "heading": "2. Geleneksel Şifreleme Algoritmalarının Sonu",
-        "body": "Shor Algoritması'nın kuantum işlemcilerdeki simülasyonları, günümüzün en yaygın bankacılık ve askeri şifreleme altyapısı olan RSA-2048'in saatler içinde kırılabileceğini doğruluyor. Bilgi güvenliği otoriteleri, finansal kuruluşlara kuantum dayanıklı şifreleme standartlarına geçme çağrısı yapıyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-02",
-    "title": "6G Kablosuz Ağ Protokollerinde Terahertz Frekans Rekoru: Saniyede 1 Tbps Veri Transferi",
-    "excerpt": "Uluslararası Telekomünikasyon Birliği tarafından onaylanan yeni 6G standartları, kablosuz veri iletiminde fiziksel sınırları zorlayarak 1 Terabit hıza ulaştı.",
-    "category": "SaaS & Yazılım",
-    "subcategory": "Mobil Dünya & 6G",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "WebdeHepSeek Haber Merkezi",
-    "authorTitle": "Editoryal Yayın Kurulu",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-02",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Alt-Terahertz Frekans Modülasyonu",
-        "body": "0.1 ila 1 THz bant aralığında çalışan yeni nesil akıllı faset baz istasyonları, hiyerarşik hüzme şekillendirme (beamforming) teknolojisiyle kapsama alanını iki katına çıkardı."
-      },
-      {
-        "id": "sec-2",
-        "heading": "2. Otonom Mobilite ve Holografik İletişim",
-        "body": "Sıfıra yakın gecikme süresi (0.1ms), otonom şehir araçlarının ve uzaktan cerrahi operasyonlarının kesintisiz gerçekleşmesini sağlıyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-03",
-    "title": "Endüstri 5.0 ve Akıllı Fabrikalar: İnsan-Robot Hibrit Üretim Hatlarında %300 Verimlilik",
-    "excerpt": "Siber-fiziksel sistemler ve kobot teknolojilerinin üretken yapay zekayla entegrasyonu, imalat sanayisinde radikal bir verimlilik artışı başlattı.",
-    "category": "SaaS & Yazılım",
-    "subcategory": "Robotik & Otomasyon",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80",
+    "subcategory": "No-Code & Otomasyon",
+    "subCategory": "No-Code & Otomasyon",
+    "date": "17 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&h=675&q=80",
     "readTime": "4 dk",
-    "author": "Teknoloji Servisi",
-    "authorTitle": "Kıdemli Teknoloji Editörü",
-    "verifiedSource": true,
-    "sentiment": "Nötr ⚖️",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-03",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. İş Birlikçi Robotların (Kobot) Yükselişi",
-        "body": "Gelişmiş vizyon sensörleri ve dokunsal bildirimlerle donatılmış kobotlar, insan operatörlerle yan yana güvenlik bariyeri olmadan çalışabiliyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-04",
-    "title": "AGI Seviyesine Bir Adım Daha: Otonom Muhakeme Yapabilen Llama-4 ve Claude-4 Modelleri",
-    "excerpt": "Yapay Genel Zeka mimarisinde çığır açan yeni mantık zinciri (Chain of Thought) algoritmaları, karmaşık matematiksel teoremleri insandan hızlı çözüyor.",
-    "category": "Yapay Zeka & LLM",
-    "subcategory": "AGI (Yapay Genel Zeka)",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=80",
-    "readTime": "6 dk",
-    "author": "WebdeHepSeek Haber Merkezi",
-    "authorTitle": "Editoryal Yayın Kurulu",
-    "verifiedSource": true,
-    "isEditorsChoice": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-04",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Mantık Yürütme Motorlarında Derinleşme",
-        "body": "Yeni nesil AI modelleri sadece kelime tahmini yapmakla kalmıyor, probleme yaklaşmadan önce kendi içinde hipotez kurup doğrulama adımlarını yürütüyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-05",
-    "title": "Otonom AI Ajanları Yazılım Sektörünü Yeniden Şekillendiriyor: Devin v2 ve AutoCode 2026",
-    "excerpt": "Geliştirici ekiplerinin yerini alan otonom yapay zeka ajanları, taranan gereksinim dokümanından baştan sona çalışan yazılım mimarileri üretiyor.",
-    "category": "Yapay Zeka & LLM",
-    "subcategory": "Otonom AI Ajanları",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "Teknoloji Servisi",
-    "authorTitle": "Editoryal Yayın Kurulu",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-05",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Kodlama Dillerinde Otonom Refactoring",
-        "body": "Yapay zeka ajanları eski kütüphaneleri ve güvenlik açıklarını tespit ederek binlerce satırlık sistemleri dakikalar içinde güncelliyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-06",
-    "title": "Nöromorfik Biyo-Çipler: İnsan Beyin Hücreleriyle Çalışan Hibrit İşlemci Mimarileri",
-    "excerpt": "Biyolojik nöronlarla silikon devrelerin bir araya getirildiği nöromorfik işlemciler, enerji tüketimini %99 azaltarak AI hesaplamalarında devrim yaptı.",
-    "category": "Yapay Zeka & LLM",
-    "subcategory": "Nöromorfik Çipler",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "Teknoloji Servisi",
-    "authorTitle": "Teknoloji Editörü",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-06",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Biyo-Silikon Hibrit Hesaplama",
-        "body": "Canlı sinir dokularından esinlenen spikeli nöral ağlar (SNN), milivat seviyesinde güç tüketimiyle karmaşık örüntü tanıma süreçlerini çalıştırıyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-07",
-    "title": "Bitcoin $150,000 Barajını Aşarak Yeni Zirve Yaptı: Spot ETF Girişleri Rekor Kırdı",
-    "excerpt": "Kurumsal sermayenin ve emeklilik fonlarının doğrudan tahsisat yapmasıyla lider kripto para birimi Bitcoin tarihi seviyelerini yeniledi.",
-    "category": "Kripto & Web3",
-    "subcategory": "Bitcoin (BTC) Analiz",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1518546305927-5a555bb7020d?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "6 dk",
-    "author": "WebdeHepSeek Haber Merkezi",
-    "authorTitle": "Editoryal Yayın Kurulu",
-    "verifiedSource": true,
-    "isEditorsChoice": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-07",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Kurumsal Bilançolarda Bitcoin Ağırlığı",
-        "body": "S&P 500 devleri enflasyondan korunma aracı olarak bilançolarına BTC eklemeye devam ediyor. Günlük ETF akışları $2 Milyar seviyesini aştı."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-08",
-    "title": "Ethereum Pectra Güncellemesi Devrede: Sıfır Bilgi İspatı (ZK-Rollup) İle Ücretsiz İşlemler",
-    "excerpt": "Ethereum ağının son ana güncellemesi olan Pectra, Layer-2 ölçekleme kapasitesini 100 kat artırarak gaz ücretlerini sıfırladı.",
-    "category": "Kripto & Web3",
-    "subcategory": "Ethereum & Smart Contracts",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1622979135225-d2ba269bc1bd?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "Ekonomi Servisi",
-    "authorTitle": "Kripto Masası Şefi",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-08",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Akıllı Sözleşmelerde ZK-STARK Entegrasyonu",
-        "body": "Pectra hard fork'u ile birlikte hesap soyutlama (account abstraction) standart hale geldi, cüzdan kullanımı kredi kartı kolaylığına ulaştı."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-09",
-    "title": "Kurumsal DeFi ve Gerçek Dünya Varlıkları (RWA): $50 Milyarlık Tahvil Blokzincirde",
-    "excerpt": "Wall Street bankaları Hazine bonolarını ve gayrimenkul portföylerini zincir üstüne taşıyarak anlık likidite havuzları oluşturdu.",
-    "category": "Kripto & Web3",
-    "subcategory": "DeFi & Likidite Havuzları",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1642543492481-44e81e3914a7?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 dk",
-    "author": "WebdeHepSeek Haber Merkezi",
-    "authorTitle": "Editoryal Yayın Kurulu",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-09",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Tokenize Varlık Piyasasının Büyüklüğü",
-        "body": "Geleneksel finans devleri (TradFi) ile ademi merkeziyetçi protokollerin entegrasyonu küresel borç piyasasını blokzincirine entegre ediyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-10",
-    "title": "BIST 100 Rekor Tazeledi: Yabancı Sermaye Akışı ve Teknoloji Hisselerinde Güçlü Ralli",
-    "excerpt": "Borsa İstanbul, yabancı kurumsal fon girişlerinin ivme kazanmasıyla 10,800 puan barajını aşarak tüm zamanların en yüksek seviyesini test etti.",
-    "category": "Finans & Küresel Piyasalar",
-    "subcategory": "Borsa İstanbul (BIST 100)",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "WebdeHepSeek Haber Merkezi",
-    "authorTitle": "Editoryal Yayın Kurulu",
-    "verifiedSource": true,
-    "isEditorsChoice": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-10",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. BIST Teknoloji ve Sanayi Endeksi Öncülüğünde Yükseliş",
-        "body": "Uluslararası derecelendirme kuruluşlarının not artışları sonrası Borsa İstanbul'a giren yabancı sermaye hacmi haftalık $850 Milyona ulaştı."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-11",
-    "title": "Ons Altın $3,200 Seviyesinde Zirve Yaptı: Küresel Merkez Bankaları Rezervlerini Artırıyor",
-    "excerpt": "Jeopolitik riskler ve faiz indirimi beklentileriyle ons altın tarihi rekorunu kırarken gram altın iç piyasada yeni zirvesini gördü.",
-    "category": "Finans & Küresel Piyasalar",
-    "subcategory": "Altın & Değerli Madenler",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1610375461246-83df859d849d?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 dk",
-    "author": "Ekonomi Servisi",
-    "authorTitle": "Finans Analisti",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-11",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Değerli Madenlerde Güvenli Liman Talebi",
-        "body": "Doğu Avrupa ve Uzak Doğu merkez bankalarının külçe altın alımları fiziki talepte rekor kırılmasına yol açtı."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-12",
-    "title": "Federal Rezerv Faiz İndirim Döngüsünü Hızlandırdı: Gelişmekte Olan Piyasalarda Bahar Havası",
-    "excerpt": "Fed Başkanı tarafından yapılan güvercin tondaki açıklamalar sonrası Dolar Endeksi gerilerken gelişmekte olan ülke para birimleri değer kazandı.",
-    "category": "Finans & Küresel Piyasalar",
-    "subcategory": "Fed & Merkez Bankaları",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "WebdeHepSeek Haber Merkezi",
-    "authorTitle": "Editoryal Yayın Kurulu",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-12",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Küresel Likidite Koşullarında Rahatlama",
-        "body": "ABD faiz oranlarının düşüş patikasına girmesi küresel sermayenin riske odaklı gelişen piyasalara yönelmesini tetikledi."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-13",
-    "title": "Milli Teknoloji Hamlesi ve Savunma Sanayii: KAAN ve KIZILELMA Seri Üretime Geçti",
-    "excerpt": "Yerli 5. nesil savaş uçağı KAAN ve otonom insansız savaş uçağı KIZILELMA hava kuvvetleri envanterine katılarak ilk ihraç anlaşmalarına imza attı.",
-    "category": "Donanım & Çipler",
-    "subcategory": "Savunma Sanayii (SİHA/Milli)",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1517976487492-5750f3195933?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "WebdeHepSeek Haber Merkezi",
-    "authorTitle": "Editoryal Yayın Kurulu",
-    "verifiedSource": true,
-    "isEditorsChoice": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-13",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Görünmezlik ve Yerli AESA Radar Entegrasyonu",
-        "body": "Milli imkanlarla geliştirilen radar ve mühimmat sistemleri sayesinde KAAN, küresel pazarın en iddialı 5. nesil platformları arasına girdi."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-14",
-    "title": "Küresel Dijital Diplomasi Zirvesi: Uluslararası AI Güvenlik ve Veri Tüzüğü İmzalandı",
-    "excerpt": "50 ülkeden katılan liderler ve teknoloji devleri, otonom silah sistemlerinin sınırlandırılması ve veri gizliliği üzerinde tarihi anlaşmaya vardı.",
-    "category": "Donanım & Çipler",
-    "subcategory": "Dış Politika & Diplomasi",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 dk",
-    "author": "Siyaset Masası",
-    "authorTitle": "Diplomasi Editörü",
-    "verifiedSource": true,
-    "sentiment": "Nötr ⚖️",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-14",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Siber Sınırlar ve Uluslararası Hukuk",
-        "body": "Devletlerin siber alandaki egemenlik hakları ve otonom yazılımların sorumlulukları uluslararası protokollerle tescillendi."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-15",
-    "title": "Ankara Gündemi: Yerli Yapay Zeka Yasası ve Kişisel Veri Güvenliği Reformu Mecliste",
-    "excerpt": "Türkiye Büyük Millet Meclisi genel kuruluna sunulan yeni teknoloji paketi, AI şirketlerine teşvik sağlarken veri güvenliğini güçlendiriyor.",
-    "category": "Donanım & Çipler",
-    "subcategory": "Ankara Gündemi & Meclis",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1575517111478-7f6afd0973db?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 dk",
-    "author": "WebdeHepSeek Haber Merkezi",
-    "authorTitle": "Editoryal Yayın Kurulu",
-    "verifiedSource": true,
-    "sentiment": "Nötr ⚖️",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-15",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Yerli Veri Merkezlerine Vergi Muafiyeti",
-        "body": "Yeni yasal düzenleme ile Türkiye sınırları içerisinde veri merkezi kuran yerli ve yabancı yatırımcılara 10 yıl vergi istisnası tanınıyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-16",
-    "title": "Creator Economy 2026 Raporu: Dijital İçerik Üreticilerinin Küresel Pazar Hacmi $480 Milyarı Aştı",
-    "excerpt": "Geleneksel medya kanallarını geride bırakan içerik üretici ekosistemi, markaların reklam bütçelerinin ana odağı haline geldi.",
-    "category": "SaaS & Yazılım",
-    "subcategory": "Creator Economy",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "WebdeHepSeek Haber Merkezi",
-    "authorTitle": "Editoryal Yayın Kurulu",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-16",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Mikrofondan Küresel Yayına: Podcast ve 4K Stüdyolar",
-        "body": "Bireysel içerik üreticileri kurumsal prodüksiyon kalitesine ulaşarak doğrudan izleyici aboneliklerinden milyon dolarlık gelirler elde ediyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-17",
-    "title": "Yapay Zeka Fenomenleri Sanal Reklam Pazarına Damga Vuruyor: $100M Sosyal Medya Anlaşmaları",
-    "excerpt": "Tamamen fotogerçekçi AI algoritmalarıyla üretilen sanal influencerlar, dünya devlerinin marka yüzü olarak sözleşmelere imza atıyor.",
-    "category": "SaaS & Yazılım",
-    "subcategory": "Yapay Zeka Fenomenleri",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1616469829941-c7200edec809?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 dk",
-    "author": "Sosyal Medya Masası",
-    "authorTitle": "Trend Editörü",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-17",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Dijital Kimlikler ve Etik Etiketleme",
-        "body": "Sosyal medya platformları, yapay zeka ile üretilen avatar ve fenomenlerin profil açıklamalarında filigran bulundurmasını zorunlu kıldı."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-18",
-    "title": "Platform Savaşları: TikTok, Instagram ve YouTube Kısa Video Gelir Paylaşımında Devrim Yapıyor",
-    "excerpt": "Kısa dikey içerik rekabetinde öne geçmek isteyen teknoloji devleri, üreticilere reklam gelirlerinin %55'ini doğrudan aktarmaya başladı.",
-    "category": "SaaS & Yazılım",
-    "subcategory": "Platform Savaşları",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 dk",
-    "author": "WebdeHepSeek Haber Merkezi",
-    "authorTitle": "Editoryal Yayın Kurulu",
-    "verifiedSource": true,
-    "sentiment": "Nötr ⚖️",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-18",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Mobil Algoritmalar ve İzleyici Bağlılığı",
-        "body": "Tavsiye motorlarında yapılan son yapay zeka optimizasyonları, nitelikli ve bilgi odaklı kısa videoların öne çıkmasını sağladı."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-19",
-    "title": "2026 Dünya Kupası Teknolojik Yenilikleri: Çipli Toplar ve Anlık Otonom Ofsayt Tespiti",
-    "excerpt": "Amerika, Kanada ve Meksika ortaklığında düzenlenen Dünya Kupası'nda devrim niteliğinde yapay zeka hakem asistanları sahaya indi.",
-    "category": "Donanım & Çipler",
-    "subcategory": "2026 Dünya Kupası Özel",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "WebdeHepSeek Haber Merkezi",
-    "authorTitle": "Editoryal Yayın Kurulu",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-19",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Ultra Hassas İki Yüz Hz Sensörlü Futbol Topu",
-        "body": "Topun içine yerleştirilen ultra geniş bant (UWB) çipleri, darbe ve temas verisini saliseler içinde stadyum veri merkezine iletiyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-20",
-    "title": "Formula 1 2026 Hibrit Motor Çağı Başladı: %100 Sürdürülebilir Yakıt ve Aktif Aerodinamik",
-    "excerpt": "F1 tarihinin en büyük kural değişikliğiyle beraber elektrik gücü %50'ye yükseltildi, sürdürülebilir sentetik yakıt kullanımı zorunlu kılındı.",
-    "category": "Donanım & Çipler",
-    "subcategory": "Formula 1 & Motor Sporları",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "Spor Servisi",
-    "authorTitle": "Motor Sporları Uzmanı",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-20",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. MGU-K Gücü ve Karbon Nötr Yarışlar",
-        "body": "350kW elektrik motoru desteği ve hareketli kanat tasarımları düzlüklerde yüksek hız ve virajlarda Maksimum basma kuvveti sağlıyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-21",
-    "title": "E-Spor Dünyasında Rekor Ödül: $50 Milyonluk Valorant ve League of Legends Dünya Şampiyonası",
-    "excerpt": "Global arenada düzenlenen e-spor turnuvaları, geleneksel spor organizasyonlarını izlenme oranlarında geride bırakarak milyonları ekrana kilitledi.",
-    "category": "Donanım & Çipler",
-    "subcategory": "E-Spor Turnuvaları",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 dk",
-    "author": "WebdeHepSeek Haber Merkezi",
-    "authorTitle": "Editoryal Yayın Kurulu",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-21",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Profesyonel Kulüpler ve Stadyum Arenaları",
-        "body": "Geleneksel spor kulüpleri e-spor branşlarına yaptığı yatırımlarla genç kitleye doğrudan ulaşan dijital sponsorluk modelleri geliştiriyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-22",
-    "title": "Türkiye'nin Yeni Unicorn'ları: Yapay Zeka ve SaaS Odaklı 3 Türk Girişimi Değerlemesini Katladı",
-    "excerpt": "Silikon Vadisi fonlarından aldıkları yatırımlarla milyar dolar değerlemeyi aşan Türk girişimciler, küresel teknoloji pazarında fırtına estiriyor.",
-    "category": "Finans & Küresel Piyasalar",
-    "subcategory": "Startup Hikayeleri & Unicorns",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "WebdeHepSeek Haber Merkezi",
-    "authorTitle": "Editoryal Yayın Kurulu",
-    "verifiedSource": true,
-    "isEditorsChoice": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-22",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Yerli Yazılım İhracatında Rekor Hacim",
-        "body": "Geliştirilen yapay zeka altyapıları ve mikro-SaaS ürünleri Amerika ve Avrupa pazarında milyonlarca aktif kullanıcıya ulaştı."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-23",
-    "title": "Yatırım Sermayesinde AI Dönemi: VC'ler Kararlarının %40'ını Otonom Veri Robotlarıyla Alıyor",
-    "excerpt": "Girişim sermayesi fonları, yatırım yapacakları şirketleri seçerken artık yapay zeka destekli kohort ve büyüme simülasyonlarını kullanıyor.",
-    "category": "Finans & Küresel Piyasalar",
-    "subcategory": "Yatırım Turları & Seed",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 dk",
-    "author": "Girişim Masası",
-    "authorTitle": "VC Analisti",
-    "verifiedSource": true,
-    "sentiment": "Nötr ⚖️",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-23",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Veriye Dayalı Pitch Deck Analizleri",
-        "body": "Yapay zeka sistemleri girişimcilerin finansal projeksiyonlarını ve pazar rekabet haritasını dakikalar içinde doğruluyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-24",
-    "title": "Küresel Dijital Göçebe (Nomad) Haritası: İstanbul ve Lizbon Teknoloji Çalışanlarının Favorisi",
-    "excerpt": "Uzaktan ve hibrit çalışma kültürünün kalıcı hale gelmesiyle beraber yüksek nitelikli yazılımcı ve tasarımcılar İstanbul ve Lizbon'a akın etti.",
-    "category": "Finans & Küresel Piyasalar",
-    "subcategory": "Dijital Göçebelik (Nomad)",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 dk",
-    "author": "WebdeHepSeek Haber Merkezi",
-    "authorTitle": "Editoryal Yayın Kurulu",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-24",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Dijital Nomad Vizeleri ve Ortak Çalışma Alanları",
-        "body": "İstanbul'daki yüksek hızlı fiber altyapı ve sosyal imkanlar, küresel teknoloji şirketlerinin çalışanlarını Türkiye'ye çekiyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-25",
-    "title": "Giyilebilir Biyometrik Sensörler ve Longevity: Erken Teşhiste %95 Başarı Oranı",
-    "excerpt": "Akıllı saatler ve yüzükler, sürekli kan şekeri ve metabolik veri takibi yaparak kronik rahatsızlıkları yıllar öncesinden haber veriyor.",
-    "category": "SaaS & Yazılım",
-    "subcategory": "Giyilebilir Sağlık Teknolojisi",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1510017803434-a899398421b3?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "WebdeHepSeek Haber Merkezi",
-    "authorTitle": "Editoryal Yayın Kurulu",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-25",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Biyometrik Verilerin Sürekli Analizi",
-        "body": "Derinizin altındaki kılcal damarlardan gelen optik veri akışları yapay zeka modelleriyle işlenerek kişiye özel beslenme haritası çıkarılıyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-26",
-    "title": "Biyoteknolojide Hücresel Gen Terapisi Çığıra Yol Açıyor: Yaşlanma Karşıtı Yeni Molekül",
-    "excerpt": "Klinik araştırmaları tamamlanan yeni hücresel yenilenme molekülü, telomer boyunu koruyarak hücresel yaşlanmayı yavaşlatmayı başardı.",
-    "category": "SaaS & Yazılım",
-    "subcategory": "Longevity (Uzun Yaşam)",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "Sağlık Servisi",
-    "authorTitle": "Biyoteknoloji Editörü",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-26",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Telomer Onarımı ve Kök Hücre Yenilenmesi",
-        "body": "Biyoteknoloji lablarında geliştirilen hücresel programlama yöntemleri organ fonksiyonlarının daha uzun süre genç kalmasını sağlıyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-27",
-    "title": "Zihinsel Performans ve Odaklanma: Bilişsel Nörobilimde Nörofeedback Yöntemleri",
-    "excerpt": "Yoğun bilgi yükü altında çalışan yöneticiler ve yazılımcılar için geliştirilen nörofeedback cihazları odak süresini iki katına çıkarıyor.",
-    "category": "SaaS & Yazılım",
-    "subcategory": "Zihinsel Sağlık & Odak",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 dk",
-    "author": "WebdeHepSeek Haber Merkezi",
-    "authorTitle": "Editoryal Yayın Kurulu",
-    "verifiedSource": true,
-    "sentiment": "Nötr ⚖️",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-27",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Beyin Dalgalarının Real-Time Eğitimi",
-        "body": "Alpha ve Beta beyin dalgalarını anlık olarak izleyen hafif kafa bantları, derin çalışma (deep work) moduna geçmeyi kolaylaştırıyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-28",
-    "title": "Unreal Engine 6 ve Foto-Gerçekçi Oyunlar: Sinema İle Oyun Arasındaki Sınır Kalktı",
-    "excerpt": "Epic Games tarafından tanıtılan yeni nesil oyun motoru Unreal Engine 6, gerçek zamanlı ışık izleme ve AI destekli karakterlerle nefes kesti.",
-    "category": "Donanım & Çipler",
-    "subcategory": "Oyun Geliştirme (Unreal/Unity)",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "WebdeHepSeek Haber Merkezi",
-    "authorTitle": "Editoryal Yayın Kurulu",
-    "verifiedSource": true,
-    "isEditorsChoice": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-28",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Nite 2 ve Lumen Teknolojilerinde Sıçrama",
-        "body": "Milyarlarca poligonu akıcı bir şekilde ekrana getiren yeni mimari, bağımsız stüdyoların bile AAA kalitesinde yapımlar üretmesini sağlıyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-29",
-    "title": "Cloud Gaming Ekosistemi Katlanarak Büyüyor: Oyun Konsolları Tarihe mi Karışıyor?",
-    "excerpt": "GeForce NOW ve Xbox Cloud Gaming hizmetlerinin 4K 120 FPS seviyesine ulaşmasıyla beraber fiziksel konsol satışlarında gerileme başladı.",
-    "category": "Donanım & Çipler",
-    "subcategory": "Cloud Gaming (GeForce NOW)",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 dk",
-    "author": "Oyun Masası",
-    "authorTitle": "Oyun Editörü",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-29",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Sunucu Tabanlı İşleme Gücü",
-        "body": "Herhangi bir akıllı TV veya ucuz dizüstü bilgisayardan en yüksek sistem gereksinimli oyunları oynamak artık tek tıkla mümkün."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-30",
-    "title": "Apple Vision Pro 2 ve VR Oyun Dünyası: Tam Derinlikli Sanal Gerçeklik Deneyimi",
-    "excerpt": "Apple'ın yeni uzamsal bilgisayarı, hafifleyen yapısı ve uzamsal ses teknolojisiyle oyuncuları doğrudan sanal evrenin merkezine koyuyor.",
-    "category": "Donanım & Çipler",
-    "subcategory": "VR / AR Oyun Deneyimi",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1592478411213-6153e4ebc07d?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 dk",
-    "author": "WebdeHepSeek Haber Merkezi",
-    "authorTitle": "Editoryal Yayın Kurulu",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-30",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. El ve Göz Takibinde %100 Doğruluk",
-        "body": "Fiziksel kumandalara ihtiyaç duymadan sadece el jestleri ve göz odaklanmasıyla oynanan yeni nesil oyunlar interaktif eğlenceyi baştan yazıyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-31",
-    "title": "SpaceX Starship Mars Görevi İçin Geri Sayım Başladı: İnsanlı İlk Gezegenler Arası Yolculuk",
-    "excerpt": "Dünyanın en güçlü roketi Starship'in Mars yörüngesine kargo ve yaşam modülleri taşıyacak tarihi uçuş tarihi resmen açıklandı.",
-    "category": "Donanım & Çipler",
-    "subcategory": "Mars Kolonisi & Starship",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1516849841032-87cbac4d88f7?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "6 dk",
-    "author": "WebdeHepSeek Haber Merkezi",
-    "authorTitle": "Editoryal Yayın Kurulu",
-    "verifiedSource": true,
-    "isEditorsChoice": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-31",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Yörüngede Yakıt İkmali ve Yaşam Destek Sistemleri",
-        "body": "Dünya yörüngesinde gerçekleştirilecek otomatik sıvı metan ikmali, roketin Mars'a tam tonajlı kargo indirmesine imkan veriyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-32",
-    "title": "Nükleer Füzyon Santrallerinde Sınırsız Temiz Enerji Rekoru: 100 Milyon Derece Plazma",
-    "excerpt": "Küresel füzyon konsorsiyumu, Güneş'in çekirdeğinden 7 kat daha sıcak plazmayı kararlı bir şekilde tutarak pozitif net enerji elde etti.",
-    "category": "Donanım & Çipler",
-    "subcategory": "Nükleer Füzyon Enerjisi",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "Bilim Servisi",
-    "authorTitle": "Fizik Uzmanı",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-32",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Tokamak Mıknatıslarında Süper-İletkenlik",
-        "body": "Yüksek sıcaklık süper iletken magnetler sayesinde füzyon reaktörlerinin ebadı küçülerek ticari şebekelere bağlanma aşamasına geldi."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-33",
-    "title": "James Webb Teleskobu Evrenin İlk Galaksilerini Görüntüledi: Big Bang Kuramında Yeni Sayfa",
-    "excerpt": "Derin uzay gözlemlerini sürdüren James Webb Teleskobu, Büyük Patlama'dan sadece 200 milyon yıl sonra oluşmuş olgun galaksileri tespit etti.",
-    "category": "Donanım & Çipler",
-    "subcategory": "Derin Uzay Teleskopları",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "WebdeHepSeek Haber Merkezi",
-    "authorTitle": "Editoryal Yayın Kurulu",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-33",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Kırmızıya Kayma ve Kozmolojik Gizemler",
-        "body": "Elde edilen tayf verileri ilk yıldızların ve karadeliklerin evrenin başlangıcında sanılandan çok daha hızlı kütle kazandığını kanıtlıyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-34",
-    "title": "2026 Yapay Zeka Kariyer Raporu: En Çok Aranan 10 Meslek ve $200k+ Maaş Skalası",
-    "excerpt": "Prompt Mühendisliği, AI Etik Denetçiliği ve Otonom Sistem Mimarisi küresel iş gücü pazarının en yüksek maaşlı pozisyonları oldu.",
-    "category": "SaaS & Yazılım",
-    "subcategory": "Kariyer Dönüşüm Rehberi",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "WebdeHepSeek Haber Merkezi",
-    "authorTitle": "Editoryal Yayın Kurulu",
-    "verifiedSource": true,
-    "isEditorsChoice": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-34",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Disiplinler Arası Yet Yetkinliklerinin Önemi",
-        "body": "Yazılım bilgisinin yanı sıra psikoloji, hukuk ve veri analitiğini harmanlayabilen profesyoneller küresel şirketlerin ilk tercihi haline geliyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-35",
-    "title": "No-Code ve AI Destekli Kodlama: Yazılımcı Olmadan Uygulama Geliştirme Çağı",
-    "excerpt": "Gelişmiş görsel geliştirme platformları sayesinde teknik altyapısı olmayan girişimciler bile kompleks SaaS platformları inşa edebiliyor.",
-    "category": "SaaS & Yazılım",
-    "subcategory": "No-Code / Low-Code",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 dk",
-    "author": "Eğitim Masası",
-    "authorTitle": "Kariyer Editörü",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-35",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Fikirden Canlı Ürüne Saatler İçinde Geçiş",
-        "body": "Sürükle-bırak arayüzler ve entegre veri tabanları fikrin hızlıca doğrulanmasını ve pazara sürülmesini sağlıyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-36",
-    "title": "LinkedIn Algoritmasında Yeni Dönem: Etkileşim Artıran İçerik ve Profil Stratejileri",
-    "excerpt": "Profesyonel iş ağında öne çıkmak isteyen yöneticiler için onaylanmış içerik mimarisi ve organik görünürlük ipuçları yayınlandı.",
-    "category": "SaaS & Yazılım",
-    "subcategory": "LinkedIn Algoritma Taktikleri",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 dk",
-    "author": "WebdeHepSeek Haber Merkezi",
-    "authorTitle": "Editoryal Yayın Kurulu",
-    "verifiedSource": true,
-    "sentiment": "Nötr ⚖️",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-36",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Derinlemesine Sektörel Analizlerin Gücü",
-        "body": "Görsel ve metin dengesini iyi kuran, değer katan sektörel dosyalar Linkedin akışında organik olarak milyonlarca kişiye ulaşıyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-37",
-    "title": "Küresel Lüks Gayrimenkul Endeksi: İstanbul, Dubai ve Londra Portföylerinde Rekor Değer",
-    "excerpt": "Uluslararası yatırımcıların markalı konut projelerine olan ilgisiyle İstanbul ve Dubai lüks gayrimenkul fiyatlarında %40 prim yaptı.",
-    "category": "Finans & Küresel Piyasalar",
-    "subcategory": "Lüks Gayrimenkul Trendleri",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "WebdeHepSeek Haber Merkezi",
-    "authorTitle": "Editoryal Yayın Kurulu",
-    "verifiedSource": true,
-    "isEditorsChoice": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-37",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Markalı Rezidanslar ve Akıllı Ev Konsepti",
-        "body": "Özel helipadı, akıllı otomasyonu ve sürdürülebilir mimarisi olan ultra lüks yapılar küresel fonların ana yatırım hedefi haline geldi."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-38",
-    "title": "Akıllı Binalar ve PropTech Teknolojileri: Enerji Tüketimini %40 Azaltan Sistemler",
-    "excerpt": "Yapay zeka ile iklimlendirilen ticari binalar ve gökdelenler, karbon ayak izini düşürerek işletme maliyetlerini en aza indiriyor.",
-    "category": "Finans & Küresel Piyasalar",
-    "subcategory": "PropTech Teknolojileri",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 dk",
-    "author": "Emlak Servisi",
-    "authorTitle": "PropTech Editörü",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-38",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Yeşil Mimaride Nesnelerin İnterneti (IoT)",
-        "body": "Güneş paneli kaplı cam cepheler ve bina içi enerji depolama üniteleri akıllı şehirlerin temel taşı haline geldi."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-39",
-    "title": "REIT ve Gayrimenkul Fonları: Küçük Yatırımcı İçin Ticari Emlak Geliri Modeli",
-    "excerpt": "Gayrimenkul yatırım ortaklıkları (GYO), bireysel yatırımcılara yüksek bedelli plaza ve otellerden kirasal temettü elde etme fırsatı sunuyor.",
-    "category": "Finans & Küresel Piyasalar",
-    "subcategory": "REIT & Gayrimenkul Fonları",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 dk",
-    "author": "WebdeHepSeek Haber Merkezi",
-    "authorTitle": "Editoryal Yayın Kurulu",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-39",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Likit Emlak Yatırımlarının Avantajları",
-        "body": "Tapu süreçleriyle uğraşmadan borsa üzerinden hisse alır gibi nitelikli emlak portföylerine ortak olunabiliyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-40",
-    "title": "Togg T10X ve T10F Yeni Nesil Otonom Güncellemesi Yayınlandı: Seviye 3 Otonom Sürüş",
-    "excerpt": "Yerli mobilite doğuştan elektrikli Togg modelleri, otonom şerit değiştirme ve akıllı park özelliklerini içeren yeni yazılım paketini sundu.",
-    "category": "Otomotiv & Mobilite",
-    "subcategory": "Togg & Yerli Otomobil",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "WebdeHepSeek Haber Merkezi",
-    "authorTitle": "Editoryal Yayın Kurulu",
-    "verifiedSource": true,
-    "isEditorsChoice": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-40",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Trumore Ekosistemi ve Dijital Varlık Cüzdanı",
-        "body": "Araç içi kokpit ekranından doğrudan akıllı şarj ödemeleri ve blokzincir tabanlı araç geçmişi kontrol edilebiliyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-41",
-    "title": "Solid-State (Kuru Tip) Batarya Devrimi: 10 Dakika Şarj İle 1,200 Km Kesintisiz Menzil",
-    "excerpt": "Akü üreticilerinin seri üretime başladığı kuru tip bataryalar, elektrikli araçlarda menzil kaygısını tamamen ortadan kaldırdı.",
-    "category": "Otomotiv & Mobilite",
-    "subcategory": "Batarya Teknolojileri",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "Otomotiv Servisi",
-    "authorTitle": "Mobilite Editörü",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-41",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Lityum-Metal Elektrotlar ve Yanmazlık",
-        "body": "Sıvı elektrolit barındırmayan yeni bataryalar aşırı sıcakta ve kaza anında alev almama garantisi sunuyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-42",
-    "title": "eVTOL Uçan Taksi Filoları Şehir İçi Ulaşımda Başlıyor: 2026 Şehir İçi Uçuş İzinleri",
-    "excerpt": "Sessiz ve sıfır emisyonlu elektrikli dikey iniş kalkış araçları (eVTOL), havalimanı ve şehir merkezleri arasında yolcu taşımaya başladı.",
-    "category": "Otomotiv & Mobilite",
-    "subcategory": "Uçan Arabalar & eVTOL",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 dk",
-    "author": "WebdeHepSeek Haber Merkezi",
-    "authorTitle": "Editoryal Yayın Kurulu",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-42",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Vertiport İstasyonları ve Hava Trafik Yönetimi",
-        "body": "Şehir içi özel koridorlarda otonom rotalarda uçan taksiler, trafik sıkışıklığını tamamen baypas ediyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-43",
-    "title": "Kurumsal CRM ve Yapay Zeka Entegrasyonu: Müşteri Deneyiminde %300 Dönüşüm Oranı",
-    "excerpt": "Bulut tabanlı müşteri ilişkileri yönetimi yazılımları, satış tahminleme ve e-posta yanıtlarını otonom olarak yönetiyor.",
-    "category": "SaaS & Yazılım",
-    "subcategory": "CRM Sistemleri",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "WebdeHepSeek Haber Merkezi",
-    "authorTitle": "Editoryal Yayın Kurulu",
-    "verifiedSource": true,
-    "isEditorsChoice": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-43",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Müşteri Davranışlarının Kestirimci Analitiği",
-        "body": "Yapay zeka agentları, müşterinin terk etme (churn) ihtimalini aylar öncesinden sezip otomatik teklifler sunuyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-44",
-    "title": "Bulut Sunucu & Multi-Cloud Mimarisi: AWS, Azure ve Google Cloud Karşılaştırması",
-    "excerpt": "Yüksek erişilebilirlik gerektiren küresel uygulamalar, birden fazla bulut sağlayıcısını tek bir orkestrasyon paneli üzerinden yönetiyor.",
-    "category": "SaaS & Yazılım",
-    "subcategory": "Bulut Sunucu & Hosting",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
     "author": "Yazılım Servisi",
-    "authorTitle": "SaaS Mimarı",
+    "authorTitle": "No-Code & SaaS",
     "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-44",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Kubernetes ve Sunucusuz (Serverless) Sistemler",
-        "body": "Trafik patlamalarında anında otomatik ölçeklenen bulut sunucular işletim maliyetlerini %50'ye varan oranda düşürüyor."
-      }
-    ]
+    "sentiment": "Boğa 🐂"
   },
   {
-    "id": "NEWS-45",
-    "title": "Micro-SaaS Girişimleri İle Aylık $50,000 Düzenli Gelir (MRR) Elde Etme Yolları",
-    "excerpt": "Tek kişilik yazılım projeleri olarak kurulan Micro-SaaS ürünleri, niş problemleri çözerek yüksek karlı abonelik modelleri yaratıyor.",
+    "id": "saas-sub-3",
+    "title": "API & Backend Mimarilerinde Rust ve Go İle Yüksek Eşzamanlılık Standart Oldu",
+    "excerpt": "Saniyede 1 milyon istek işleyen microservice mimarilerinde bellek güvenliği sağlayan Rust, kurumsal backend projelerinin ilk tercihi.",
     "category": "SaaS & Yazılım",
-    "subcategory": "Micro-SaaS Çözümleri",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 dk",
-    "author": "WebdeHepSeek Haber Merkezi",
-    "authorTitle": "Editoryal Yayın Kurulu",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-45",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Niş Pazarlar ve Yalın Ürün Mimarisi",
-        "body": "Karmaşık kurumsal yazılımların yerine tek bir işe odaklanan pratik API ve web eklentileri hızlıca pazarı domine ediyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-46",
-    "title": "Bireysel Emeklilik (BES) Devlet Katkısı %30'a Yükseltildi: Emeklilikte Fon Yönetimi",
-    "excerpt": "Devlet katkısıyla güçlenen BES fonları, hisse ve altın ağırlıklı portföy tercihleriyle enflasyonun üzerinde getiri sağladı.",
-    "category": "Finans & Küresel Piyasalar",
-    "subcategory": "BES Fonları & Emeklilik",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1200&q=80",
+    "subcategory": "API & Backend",
+    "subCategory": "API & Backend",
+    "date": "16 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&h=675&q=80",
     "readTime": "5 dk",
-    "author": "WebdeHepSeek Haber Merkezi",
-    "authorTitle": "Editoryal Yayın Kurulu",
+    "author": "Yazılım Masası",
+    "authorTitle": "Backend & Mimari",
     "verifiedSource": true,
-    "isEditorsChoice": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-46",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Fon Değişikliği Hakları ve Birikim Stratejileri",
-        "body": "Yılda 12 kez yapılabilen fon değişim hakkını piyasa konjonktürüne göre kullanan katılımcılar birikimlerini katladı."
-      }
-    ]
+    "sentiment": "Boğa 🐂"
   },
   {
-    "id": "NEWS-47",
-    "title": "Akıllı Kasko ve Telematik Sigortacılık: Güvenli Sürücüye %40 Prim İndirimi Fırsatı",
-    "excerpt": "Araç mobil uygulamaları üzerinden sürüş tarzını izleyen sigorta şirketleri, kurallara uyan sürücülere özel kasko fiyatı sunuyor.",
-    "category": "Finans & Küresel Piyasalar",
-    "subcategory": "Kasko & Trafik Sigortası",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 dk",
-    "author": "Finans Servisi",
-    "authorTitle": "Sigorta Uzmanı",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-47",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Telematik Veri Takibi ve Dinamik Fiyatlama",
-        "body": "Ani fren, hız ihlali ve gece sürüşü yapmayan sürücüler kasko poliçelerinde önemli bir maliyet avantajı elde ediyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-48",
-    "title": "Kredi Skoru ve Finansal Sağlık: Bankaların Onay Verdiği 5 Temel Yatırım Kriteri",
-    "excerpt": "Findeks kredi notunu yükseltmek ve düşük faizli finansmana erişmek isteyen bireyler için adım adım rehber açıklandı.",
-    "category": "Finans & Küresel Piyasalar",
-    "subcategory": "Kredi Skoru Yönetimi",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "4 dk",
-    "author": "WebdeHepSeek Haber Merkezi",
-    "authorTitle": "Editoryal Yayın Kurulu",
-    "verifiedSource": true,
-    "sentiment": "Nötr ⚖️",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-48",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Düzenli Ödeme Alışkanlıkları ve Limit Kullanımı",
-        "body": "Kredi kartı limitinin %30'undan fazlasını sürekli kullanmamak ve asgari ödeme yerine tam borç kapatmak notu hızla yükseltiyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-49",
-    "title": "Fidye Yazılımı (Ransomware) Saldırılarına Karşı 'Sıfır Güven (Zero Trust)' Mimarisi",
-    "excerpt": "Kurumsal ağlarda hiçe sayılan yetkilendirme modeli Zero Trust, tüm kullanıcıları ve cihazları sürekli olarak doğrulamayı şart koşuyor.",
+    "id": "saas-sub-4",
+    "title": "Cloud Hosting ve Serverless Kenar Sunucularda Milisaniyelik Tepki Süreleri",
+    "excerpt": "Vercel, AWS Lambda ve Cloudflare Workers üzerinde çalışan kenar hesaplama (Edge Computing) altyapıları veritabanı gecikmelerini sıfırladı.",
     "category": "SaaS & Yazılım",
-    "subcategory": "Fidye Yazılımı (Ransomware) Koruması",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "WebdeHepSeek Haber Merkezi",
-    "authorTitle": "Editoryal Yayın Kurulu",
-    "verifiedSource": true,
-    "isEditorsChoice": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-49",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Asla Güvenme, Daima Doğrula İlkesi",
-        "body": "Şirket içi ağda bulunsanız dahi her dosya erişiminde çok faktörlü kimlik doğrulama (MFA) ve şifreli veri tüneli kullanımı zorunlu tutuluyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-50",
-    "title": "Kurumsal KVKK & GDPR Uyumlu Veri Şifreleme: 2026 Yeni Şifreleme Standartları",
-    "excerpt": "Kişisel verileri işleyen şirketlere getirilen yeni cezai yaptırımlar sonrası uçtan uca anonomizasyon teknolojileri yaygınlaştı.",
-    "category": "SaaS & Yazılım",
-    "subcategory": "KVKK & GDPR Uyumluluğu",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1510511459019-5dda7724fd87?auto=format&fit=crop&w=1200&q=80",
+    "subcategory": "Cloud Hosting",
+    "subCategory": "Cloud Hosting",
+    "date": "15 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&h=675&q=80",
     "readTime": "4 dk",
-    "author": "Güvenlik Servisi",
-    "authorTitle": "Siber Güvenlik Şefi",
+    "author": "Bulut Bilişim Servisi",
+    "authorTitle": "DevOps & Cloud",
     "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-50",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Homomorfik Şifreleme İle Veri İşleme",
-        "body": "Verileri çözmeden (decrypt etmeden) doğrudan şifreli haliyle analiz edebilen yeni algoritmalar veri ihlali riskini tamamen ortadan kaldırıyor."
-      }
-    ]
+    "sentiment": "Boğa 🐂"
   },
   {
-    "id": "NEWS-51",
-    "title": "Kurumsal Phishing (Kimlik Avı) Tehdit İzleme: Yapay Zeka Destekli Erken Uyarı",
-    "excerpt": "Otonom siber güvenlik robotları, sahte alan adlarını ve çalışanlara gönderilen oltalama e-postalarını saliseler içinde engelliyor.",
-    "category": "SaaS & Yazılım",
-    "subcategory": "Tehdit İzleme & Analiz",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80",
+    "id": "startup-sub-1",
+    "title": "Seri A Yatırım Turlarında AI ve B2B SaaS Girişimlerine Rekor Sermaye Akışı",
+    "excerpt": "Türkiye ve Doğu Avrupa merkezli erken aşama yazılım girişimleri, Seri A turlarında ortalama 15 milyon dolar değerlemeyle fonlandı.",
+    "category": "Girişimcilik",
+    "subcategory": "Seri A Turları",
+    "subCategory": "Seri A Turları",
+    "date": "18 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "5 dk",
+    "author": "Girişimcilik Masası",
+    "authorTitle": "VC & Yatırım",
+    "verifiedSource": true,
+    "sentiment": "Boğa 🐂"
+  },
+  {
+    "id": "startup-sub-2",
+    "title": "Unicorn Girişimler Kulübüne Katılan Yeni Yerli Yazılım Şirketleri",
+    "excerpt": "1 milyar dolar değerleme barajını aşarak Unicorn unvanı kazanan yerli derin teknoloji girişimleri küresel pazarda büyümeye devam ediyor.",
+    "category": "Girişimcilik",
+    "subcategory": "Unicorn Girişimler",
+    "subCategory": "Unicorn Girişimler",
+    "date": "17 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "5 dk",
+    "author": "Girişimcilik Masası",
+    "authorTitle": "Unicorn Analizi",
+    "verifiedSource": true,
+    "sentiment": "Boğa 🐂"
+  },
+  {
+    "id": "startup-sub-3",
+    "title": "Kuluçka Merkezleri ve Hızlandırma Programlarında Yeni Dönem Başvuruları Açıldı",
+    "excerpt": "Teknoparklar ve üniversite kuluçka merkezleri, mentörlük, prototip desteği ve melek yatırımcı ağlarıyla girişimcilere kapılarını açtı.",
+    "category": "Girişimcilik",
+    "subcategory": "Kuluçka",
+    "subCategory": "Kuluçka",
+    "date": "16 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1200&h=675&q=80",
     "readTime": "4 dk",
-    "author": "WebdeHepSeek Haber Merkezi",
-    "authorTitle": "Editoryal Yayın Kurulu",
+    "author": "Ekosistem Servisi",
+    "authorTitle": "Kuluçka & Hızlandırma",
     "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-51",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Derin Sahtecilik (Deepfake) Ses ve Görüntü Tespiti",
-        "body": "Üst düzey yöneticilerin sesini taklit eden CEO dolandırıcılığı vakalarına karşı AI doğrulama katmanları devreye giriyor."
-      }
-    ]
+    "sentiment": "Nötr ⚖️"
   },
   {
-    "id": "NEWS-52",
-    "title": "En İyi AI Metin ve Makale Yazma Araçları 2026: GPT-5, Claude-3.5 ve Gemini Ultra Karşılaştırması",
-    "excerpt": "Akademik metinlerden pazarlama içeriklerine kadar profesyonellerin en çok tercih ettiği yapay zeka modelleri test edildi.",
-    "category": "Yapay Zeka & LLM",
-    "subcategory": "AI Metin Yazma Araçları",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1200&q=80",
+    "id": "startup-sub-4",
+    "title": "B2B SaaS Yatırımlarında Karlılık ve Yıllık Tekrarlayan Gelir (ARR) Kriterleri",
+    "excerpt": "Girişim sermayesi fonları, müşteri edinme maliyeti (CAC) ve net tutundurma oranı (NDR) yüksek SaaS girişimlerini radarına aldı.",
+    "category": "Girişimcilik",
+    "subcategory": "B2B SaaS Yatırımları",
+    "subCategory": "B2B SaaS Yatırımları",
+    "date": "15 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&h=675&q=80",
     "readTime": "5 dk",
-    "author": "WebdeHepSeek Haber Merkezi",
-    "authorTitle": "Editoryal Yayın Kurulu",
+    "author": "Girişimcilik Masası",
+    "authorTitle": "SaaS Metrikleri",
     "verifiedSource": true,
-    "isEditorsChoice": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-52",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Dil Modellerinde Doğruluk ve Kaynak Gösterimi",
-        "body": "Halüsinasyon oranı en düşük olan ve doğrudan akademik makalelere atıf yapabilen yapay zeka araçları performans kriterleriyle sıralandı."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-53",
-    "title": "Foto-Gerçekçi AI Görsel Oluşturucular Karşılaştırması: Midjourney v7 ve FLUX.1 Pro",
-    "excerpt": "Metin istemlerinden fotogerçekçi 8K görseller üreten yapay zeka araçları, reklam ve grafik tasarım sektörünün vazgeçilmezi oldu.",
-    "category": "Yapay Zeka & LLM",
-    "subcategory": "AI Görsel Oluşturucular",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "Tasarım Servisi",
-    "authorTitle": "AI Art Editörü",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-53",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. İstem Mühendisliği ve Işık/Dokusu Ayarları",
-        "body": "Kamera açısı, diyafram açıklığı ve odak uzaklığı gibi fotoğrafçılık terimlerini anlayan yeni görsel modeller harikalar yaratıyor."
-      }
-    ]
-  },
-  {
-    "id": "NEWS-54",
-    "title": "Yazılımcılar İçin AI Kodlama Asistanları: GitHub Copilot vs Cursor vs Claude Dev",
-    "excerpt": "Yazılım geliştirme sürecini 3 kat hızlandıran otomatik tamamlama, hata ayıklama ve test yazma araçlarının detaylı incelemesi.",
-    "category": "Yapay Zeka & LLM",
-    "subcategory": "AI Kodlama Asistanları",
-    "date": "7 Ekim 2026",
-    "imageUrl": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80",
-    "readTime": "5 dk",
-    "author": "WebdeHepSeek Haber Merkezi",
-    "authorTitle": "Editoryal Yayın Kurulu",
-    "verifiedSource": true,
-    "sentiment": "Boğa 🐂",
-    "canonicalUrl": "https://webdehepseek.com/haber/NEWS-54",
-    "sections": [
-      {
-        "id": "sec-1",
-        "heading": "1. Kod Tabanının Tümünü Anlayan Bağlam Penceresi",
-        "body": "Milyonlarca satırlık repoları hafızasına alan gelişmiş yapay zeka asistanları, mimari kararlarda geliştiricilere rehberlik ediyor."
-      }
-    ]
+    "sentiment": "Boğa 🐂"
   }
 ];
 
 export const LEGAL_DOCUMENTS = {
   kvkk: {
-    title: "KVKK Aydınlatma Metni (6698 Sayılı Kanun)",
-    content: `WebdeHepSeek Journal ("Platform"), 6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK") m. 10 uyarınca veri sahiplerini bilgilendirmektedir.
-
-Veri Sorumlusu: Ahmet Karadağ (WebdeHepSeek Yayın Grubu - İletişim: iletisim@webdehepseek.com)
-
-1. Toplanan Kişisel Veriler ve İşleme Amaçları
-Platformumuz, ziyaretçilerin gezinme deneyimini geliştirmek, içerik kalitesini optimize etmek ve yasal yükümlülükleri yerine getirmek amacıyla sınırlı kişisel verileri işlemektedir:
-* Analitik ve Trafik Verileri: Google Analytics 4 altyapısı aracılığıyla IP adresiniz anonimleştirilerek; tarayıcı türünüz, cihaz modeliniz, ziyaret ettiğiniz haber sayfaları ve sitede kalma süreniz istatistiki amaçlarla kaydedilir.
-* İletişim ve Bülten Verileri: E-posta bültenimize abone olduğunuzda veya basın bülteni gönderdiğinizde ilettiğiniz e-posta adresi ve ad-soyad bilgileri, yalnızca onay verdiğiniz bültenlerin iletimi amacıyla saklanır; üçüncü şahıslarla paylaşılmaz veya satılmaz.
-
-2. Kişisel Verilerin Aktarılması
-Kişisel verileriniz, kanunen yetkili kamu kurum ve kuruluşları hariç olmak üzere üçüncü şahıslara satılamaz, kiralanamaz veya ticari amaçla paylaşılamaz. Sunucu altyapısı ve e-posta gönderim hizmeti sağlayıcıları ile veri güvenliği protokollerine uygun olarak çalışılmaktadır.
-
-3. KVKK Kapsamındaki Haklarınız
-6698 sayılı KVKK'nın 11. maddesi uyarınca veri sahipleri; kişisel verilerinin işlenip işlenmediğini öğrenme, işlenmişse buna ilişkin bilgi talep etme, verilerin düzeltilmesini veya silinmesini isteme ve aleyhine bir sonucun ortaya çıkmasına itiraz etme haklarına sahiptir.
-Başvurularınızı iletisim@webdehepseek.com adresine iletebilirsiniz.`
+    title: "KVKK Aydınlatma Metni ve Veri Gizliliği Politikası",
+    content: "WebdeHepSeek Medya Grubu olarak 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) uyarınca okurlarımızın gizliliğini ve veri güvenliğini en üst düzeyde koruyoruz. Sitemizde çerezler yalnızca oturum yönetimi ve performans ölçümü amacıyla işlenmektedir."
   },
-  privacy: {
-    title: "Gizlilik ve Çerez Politikası (KVKK / GDPR / AdSense)",
-    content: `WebdeHepSeek Journal — Gizlilik ve Çerez Politikası
-
-Son Güncelleme: 8 Ekim 2026
-Veri Sorumlusu: Ahmet Karadağ (WebdeHepSeek Yayın Grubu)
-İletişim: iletisim@webdehepseek.com
-
-WebdeHepSeek Journal ("Platform"), ziyaretçilerinin kişisel verilerinin gizliliğine, 6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK") ve Avrupa Birliği Genel Veri Koruma Tüzüğü ("GDPR") ilkelerine azami özen göstermektedir. Bu metin, platformumuzu ziyaret ettiğinizde toplanan verilerin mahiyetini, kullanım amaçlarını ve çerez politikamızı açıklamaktadır.
-
-1. Toplanan Kişisel Veriler ve Toplama Amaçları
-Platformumuz, ziyaretçilerin gezinme deneyimini geliştirmek, içerik kalitesini optimize etmek ve yasal yükümlülükleri yerine getirmek amacıyla sınırlı kişisel verileri işlemektedir:
-* Analitik ve Trafik Verileri: Google Analytics 4 altyapısı aracılığıyla IP adresiniz anonimleştirilerek; tarayıcı türünüz, cihaz modeliniz, ziyaret ettiğiniz haber sayfaları ve sitede kalma süreniz istatistiki amaçlarla kaydedilir.
-* İletişim ve Bülten Verileri: E-posta bültenimize abone olduğunuzda veya basın bülteni gönderdiğinizde ilettiğiniz e-posta adresi ve ad-soyad bilgileri, yalnızca onay verdiğiniz bültenlerin iletimi amacıyla saklanır; üçüncü şahıslarla paylaşılmaz veya satılmaz.
-
-2. Çerez (Cookie) Kullanımı ve Türleri
-Sitemizde sunulan yayıncılık hizmetlerinin kesintisiz işlemesi ve kişiselleştirilmiş reklam/içerik sunumu için çerezler kullanılmaktadır:
-* Zorunlu Çerezler: Sitenin temel fonksiyonlarının (oturum açma, çerez tercihlerini saklama) çalışması için şarttır.
-* Analitik Çerezler: Ziyaretçi davranışlarını analiz ederek en çok okunan haber kategorilerini ve kullanıcı etkileşimini tespit etmemizi sağlar.
-* Pazarlama ve AdSense Çerezleri: Google AdSense ve yetkili reklam ortaklarımız tarafından, ilgi alanlarınıza uygun kişiselleştirilmiş reklamlar sunmak amacıyla üçüncü taraf çerezleri kullanılır.
-
-3. Google AdSense ve Üçüncü Taraf Reklamcılık
-* Üçüncü taraf satıcı olarak Google, sitemizde reklam yayınlamak için çerezlerden yararlanır.
-* Google'ın DART çerezlerini kullanması, sitemize ve İnternet'teki diğer sitelere yaptığınız ziyaretlere dayalı olarak reklamlar sunmasını sağlar.
-* Ziyaretçiler, Google Reklam ve İçerik Ağı Gizlilik Politikası sayfasını ziyaret ederek DART çerezinin kullanımını devre dışı bırakabilirler.
-
-4. KVKK / GDPR Kapsamındaki Haklarınız
-6698 sayılı KVKK'nın 11. maddesi uyarınca veri sahipleri; kişisel verilerinin işlenip işlenmediğini öğrenme, işlenmişse bilgi talep etme, verilerin düzeltilmesini veya silinmesini isteme haklarına sahiptir. Tüm taleplerinizi iletisim@webdehepseek.com e-posta adresine iletebilirsiniz.`
+  editorial: {
+    title: "Gazetecilik İlke ve Etik Kuralları",
+    content: "WebdeHepSeek Yayın İlkeleri: Tarafsızlık, doğruluk, şeffaflık ve cevap hakkı kurumsal gazetecilik anlayışımızın temelini oluşturur. Finans, teknoloji ve yapay zeka haberlerinde kaynak doğrulama (E-E-A-T) standartları uygulanır."
   },
-  terms: {
-    title: "Kullanım Koşulları ve Yayın Hakları",
-    content: `WebdeHepSeek Journal Yayın Hakları ve Kullanım Şartları
-
-1. Yayın Etiği ve Telif Hakları
-WebdeHepSeek platformunda yayınlanan tüm özel analizler, grafikler, finans yorumları, otonom haber akışları ve editoryal içerikler 5846 Sayılı Fikir ve Sanat Eserleri Kanunu ile uluslararası telif hakları antlaşmaları uyarınca koruma altındadır.
-
-2. İçerik Alıntılama Kuralları
-Haber ve analizlerimiz, aktif hiperlink (Backlink) verilerek ve "WebdeHepSeek" kaynak gösterilerek makul seviyede alıntılanabilir. İçeriğin tamamının izinsiz kopyalanması, otomatik botlarla çekilmesi veya ticari amaçla dağıtılması yasaktır.
-
-3. Yatırım Tavsiyesi Muafiyeti (Disclaimer)
-Sitemizde yer alan finansal analizler, kripto varlık değerlendirmeleri, piyasa indeksleri ve hisse senedi yorumları hiçbir şekilde "Yatırım Tavsiyesi" (YTD) niteliğinde değildir. Yatırım kararlarınızı yetkili lisanslı yatırım danışmanlarına danışarak almanız gerekmektedir.
-
-4. Sorumluluk Sınırı
-Platformumuz, üçüncü taraf kaynaklardan veya otonom veri akışlarından elde edilen bilgilerin anlık doğruluğunu garanti etmekle birlikte, doğrudan ya da dolaylı olarak doğabilecek maddi/manevi zararlardan sorumlu tutulamaz.`
+  disclaimer: {
+    title: "Finansal Sorumluluk Reddi Beyanı",
+    content: "Sitemizde yer alan finans, piyasa, borsa ve kripto varlık haberleri yalnızca bilgilendirme ve analiz amaçlıdır. Hiçbir içerik yatırım tavsiyesi (YTD) niteliği taşımaz."
   },
-  cookies: {
-    title: "Çerez (Cookie) Aydınlatma Bildirimi",
-    content: `WebdeHepSeek Çerez Aydınlatma Bildirimi
-
-Sitemizi ziyaret ettiğinizde cihazınıza yerleştirilen çerezler (cookies), daha hızlı ve güvenli bir kullanıcı deneyimi sunabilmek amacıyla kullanılmaktadır.
-
-Çerez Yönetimi:
-Tarayıcınızın ayarlar menüsünden çerezleri istediğiniz zaman engelleyebilir veya silebilirsiniz. Ancak zorunlu çerezlerin kapatılması durumunda platformun bazı fonksiyonları kısıtlanabilir.
-
-Google AdSense & İletişim:
-Reklam ortaklarımız ilgi alanlarınıza özel içerik sunmak için çerez verilerinden faydalanabilir. Detaylı bilgi veya veri silme talepleri için: iletisim@webdehepseek.com`
+  cookie: {
+    title: "Çerez Politikası",
+    content: "WebdeHepSeek kullanıcı deneyimini iyileştirmek, içerik kişiselleştirmesi sağlamak ve analitik ölçümler yapmak için teknik ve performans çerezleri kullanır."
   }
 };
+

@@ -58,6 +58,8 @@ import {
   Lock,
   Unlock,
   CheckCircle,
+  Sliders,
+  Filter,
   Clock,
   RefreshCw,
   Flame,
@@ -65,7 +67,8 @@ import {
   Percent,
   Copy,
   Gift,
-  Code
+  Code,
+  Building2
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { GoogleGenAI } from "@google/genai";
@@ -100,6 +103,7 @@ import { PriceAlertTrigger } from './components/PriceAlertTrigger';
 import { AffiliateComparisonCard } from './components/AffiliateComparisonCard';
 import { CouponHubCard } from './components/CouponHubCard';
 import { PressReleaseModal } from './components/PressReleaseModal';
+import { LeadGenModal } from './components/LeadGenModal';
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -109,6 +113,7 @@ function cn(...inputs: ClassValue[]) {
 // Reuters/ShiftDelete style editoryal hiyerarşi yardımcıları
 const getCleanCategoryBadge = (category: string) => {
   const norm = (category || '').toLowerCase();
+  if (norm.includes('siber') || norm.includes('güvenlik') || norm.includes('security')) return 'SİBER GÜVENLİK';
   if (norm.includes('yapay zeka') || norm.includes('llm') || norm.includes('ai')) return 'YAPAY ZEKA';
   if (norm.includes('donanım') || norm.includes('çip') || norm.includes('işlemci') || norm.includes('gpu')) return 'DONANIM';
   if (norm.includes('finans') || norm.includes('piyasa') || norm.includes('borsa')) return 'FİNANS';
@@ -169,6 +174,64 @@ const DEFAULT_CATEGORY_FALLBACKS: Record<string, string> = {
   'Girişimcilik & Yatırım': 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1200&h=675&q=80',
   'E-Ticaret & Pazarlama': 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&h=675&q=80',
   'default': 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&h=675&q=80'
+};
+
+export const LEVEL_2_SUBCATEGORIES: Record<string, string[]> = {
+  'Siber Güvenlik': [
+    'OSINT & İz Sürme',
+    'Ağ Keşfi & SIEM',
+    'Adli Bilişim (Forensics)',
+    'Zafiyet & Web Güvenliği',
+    'Sızma Testi & Red Team',
+    'Parola & Hashcat',
+    'Tersine Mühendislik & Malware'
+  ],
+  'Yapay Zeka': [
+    'Büyük Dil Modelleri (LLM)',
+    'Otonom AI Ajanları',
+    'Görsel & Video Üretimi',
+    'Prompt Mühendisliği',
+    'Nöromorfik Çipler'
+  ],
+  'Donanım': [
+    'Ekran Kartı & GPU',
+    'İşlemciler',
+    'Yazılımcı Laptopları',
+    'Monitör & Ergonomi',
+    'Depolama & NAS'
+  ],
+  'Finans & Ekonomi': [
+    'Borsa İstanbul',
+    'Merkez Bankası & Faiz',
+    'Döviz & Emtia',
+    'Kredi & Mevduat',
+    'Algoritmik Ticaret'
+  ],
+  'Kripto & Web3': [
+    'Bitcoin & ETF',
+    'Ethereum & DeFi',
+    'Layer 2',
+    'Altcoin Piyasası'
+  ],
+  'Otomotiv': [
+    'Elektrikli Araçlar (EV)',
+    'Batarya & Şarj',
+    'Hibrit Modeller',
+    'Otonom Sürüş',
+    'Akıllı Kokpit'
+  ],
+  'SaaS & Yazılım': [
+    'Geliştirici Araçları',
+    'No-Code & Otomasyon',
+    'API & Backend',
+    'Cloud Hosting'
+  ],
+  'Girişimcilik': [
+    'Seri A Turları',
+    'Unicorn Girişimler',
+    'Kuluçka',
+    'B2B SaaS Yatırımları'
+  ]
 };
 
 // Rule-based image deduplicator to prevent consecutive duplicate images
@@ -1390,6 +1453,29 @@ export default function App() {
   const [seoActiveTab, setSeoActiveTab] = useState<'reader' | 'eeat' | 'seo' | 'schema'>('reader');
   const [seoStep, setSeoStep] = useState<string>('');
   const [selectedNewsletterInterest, setSelectedNewsletterInterest] = useState<'finans' | 'ai'>('finans');
+
+  // Web Push Notification State
+  const [isPushSubscribed, setIsPushSubscribed] = useState<boolean>(() => {
+    if (typeof localStorage !== 'undefined') {
+      return localStorage.getItem('push_subscribed') === 'true';
+    }
+    return false;
+  });
+
+  const handleTogglePush = () => {
+    if (isPushSubscribed) {
+      setIsPushSubscribed(false);
+      if (typeof localStorage !== 'undefined') localStorage.setItem('push_subscribed', 'false');
+      showToast("Web push bildirim aboneliğiniz durduruldu.");
+    } else {
+      setIsPushSubscribed(true);
+      if (typeof localStorage !== 'undefined') localStorage.setItem('push_subscribed', 'true');
+      showToast("🔔 Web Push Bildirim Aboneliğiniz Başarıyla Aktifleştirildi!");
+    }
+  };
+
+  // B2B Lead Modal State
+  const [isLeadGenModalOpen, setIsLeadGenModalOpen] = useState(false);
 
   // B2B Lead Form state
   const [b2bLeads, setB2bLeads] = useState<any[]>(() => {
@@ -3130,6 +3216,14 @@ export default function App() {
                 <Send size={13} className="text-[#2563EB]" />
                 <span>Basın Bülteni</span>
               </button>
+
+              <button
+                onClick={() => setIsLeadGenModalOpen(true)}
+                className="px-3 py-1.5 rounded-xl text-xs font-bold text-emerald-400 border border-emerald-500/30 hover:bg-emerald-950/40 transition-all flex items-center gap-1.5 shrink-0 shadow-sm"
+              >
+                <Building2 size={13} className="text-emerald-400" />
+                <span>Teklif Al</span>
+              </button>
             </nav>
 
             {/* Actions */}
@@ -3170,6 +3264,21 @@ export default function App() {
                 </span>
               </button>
 
+              {/* Web Push Subscription Button */}
+              <button
+                onClick={handleTogglePush}
+                className={cn(
+                  "flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all border shadow-sm shrink-0",
+                  isPushSubscribed
+                    ? "bg-emerald-950/60 border-emerald-500/40 text-emerald-400 font-extrabold"
+                    : "bg-[#111827] border-zinc-800 text-zinc-300 hover:text-white hover:border-[#2563EB]"
+                )}
+                title="Web Push Bildirim Aboneliği"
+              >
+                <Bell size={14} className={isPushSubscribed ? "text-emerald-400 animate-pulse" : "text-[#2563EB]"} />
+                <span className="hidden xl:inline">{isPushSubscribed ? "Bildirimler Açık" : "BİLDİRİMLERİ AÇ"}</span>
+              </button>
+
               <button 
                 onClick={() => {
                   const next = language === 'TR' ? 'EN' : 'TR';
@@ -3206,12 +3315,14 @@ export default function App() {
         <div className="border-t border-slate-800/80 bg-[#0A0E17] py-3 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto flex items-center gap-2.5 overflow-x-auto no-scrollbar scroll-smooth">
             {[
-              { name: null, label: "Tümü", icon: "🔥" },
-              { name: "Yapay Zeka & SaaS", label: "Yapay Zeka & SaaS", icon: "🤖" },
-              { name: "Donanım & Oyun", label: "Donanım & Oyun", icon: "💻" },
+              { name: null, label: "Tüm Haberler", icon: "🔥" },
+              { name: "Siber Güvenlik", label: "Siber Güvenlik", icon: "🔒" },
+              { name: "Yapay Zeka", label: "Yapay Zeka", icon: "🤖" },
+              { name: "Donanım", label: "Donanım", icon: "💻" },
               { name: "Finans & Ekonomi", label: "Finans & Ekonomi", icon: "📈" },
               { name: "Kripto & Web3", label: "Kripto & Web3", icon: "🪙" },
-              { name: "Otomotiv & Enerji", label: "Otomotiv & Enerji", icon: "🚗" },
+              { name: "Otomotiv", label: "Otomotiv", icon: "🚗" },
+              { name: "SaaS & Yazılım", label: "SaaS & Yazılım", icon: "⚡" },
               { name: "Girişimcilik", label: "Girişimcilik", icon: "💼" }
             ].map((pill) => {
               const isSelected = pill.name === null ? (!selectedCategory && !onlyBookmarks) : (selectedCategory === pill.name);
@@ -3239,33 +3350,49 @@ export default function App() {
           </div>
         </div>
 
-          {/* Subcategories Horizontal Bar when Category is Selected */}
-          {selectedCategory && (
-            <div className="max-w-7xl mx-auto flex items-center gap-2 overflow-x-auto no-scrollbar pt-2 border-t border-zinc-900 mt-2 px-4 sm:px-6 lg:px-8">
-              <span className="text-[10px] font-mono text-[#2563EB] uppercase tracking-wider shrink-0 mr-1">Alt Konular:</span>
+        {/* 2. KADEME: DİNAMİK ALT KATEGORİ ÇUBUĞU (PILL TABS) */}
+        {selectedCategory && (LEVEL_2_SUBCATEGORIES[selectedCategory] || Array.from(new Set(filteredNews.map(n => n.subcategory || (n as any).subCategory))).filter(Boolean).length > 0) && (
+          <div className="border-t border-slate-800/80 bg-[#0A0E17]/95 py-2.5 px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto flex items-center gap-2 overflow-x-auto no-scrollbar scroll-smooth">
+              <span className="text-[10px] font-mono text-[#2563EB] font-bold uppercase tracking-wider shrink-0 mr-1 flex items-center gap-1">
+                <Sliders size={12} />
+                Alt Konular:
+              </span>
+
+              {/* [Tümü] Pill Tab */}
               <button
                 onClick={() => setSelectedSubcategory(null)}
                 className={cn(
-                  "px-2.5 py-1 rounded-lg text-[11px] font-medium whitespace-nowrap shrink-0 transition-colors",
-                  !selectedSubcategory ? "bg-[#2563EB] text-white font-bold" : "text-zinc-400 hover:text-white"
+                  "px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all flex items-center gap-1.5 shrink-0 shadow-sm",
+                  !selectedSubcategory
+                    ? "bg-[#2563EB] text-white shadow-md font-extrabold border border-blue-400"
+                    : "bg-[#111827] text-slate-400 border border-slate-800 hover:border-slate-700 hover:text-slate-200"
                 )}
               >
-                Tüm Alt Konular
+                <span>Tümü</span>
               </button>
-              {Array.from(new Set(filteredNews.map(n => n.subcategory))).filter(Boolean).map(sub => (
-                <button
-                  key={sub}
-                  onClick={() => setSelectedSubcategory(selectedSubcategory === sub ? null : sub)}
-                  className={cn(
-                    "px-2.5 py-1 rounded-lg text-[11px] font-medium whitespace-nowrap shrink-0 transition-colors",
-                    selectedSubcategory === sub ? "bg-[#2563EB]/20 border border-[#2563EB] text-[#2563EB] font-bold" : "text-zinc-400 hover:text-white"
-                  )}
-                >
-                  {sub}
-                </button>
-              ))}
+
+              {/* Specific Subcategory Pills */}
+              {(LEVEL_2_SUBCATEGORIES[selectedCategory] || (Array.from(new Set(filteredNews.map(n => n.subcategory || (n as any).subCategory))).filter(Boolean) as string[])).map(sub => {
+                const isSubSelected = selectedSubcategory === sub;
+                return (
+                  <button
+                    key={sub}
+                    onClick={() => setSelectedSubcategory(isSubSelected ? null : sub)}
+                    className={cn(
+                      "px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all flex items-center gap-1.5 shrink-0 shadow-sm",
+                      isSubSelected
+                        ? "bg-[#2563EB] text-white shadow-md font-extrabold border border-blue-400"
+                        : "bg-[#111827] text-slate-400 border border-slate-800 hover:border-slate-700 hover:text-slate-200"
+                    )}
+                  >
+                    <span>{sub}</span>
+                  </button>
+                );
+              })}
             </div>
-          )}
+          </div>
+        )}
 
           {/* TAG CLOUD HORIZONTAL ARCHIVE BAR */}
           <div className="max-w-7xl mx-auto flex items-center gap-2 overflow-x-auto no-scrollbar pt-2 border-t border-zinc-900/80 mt-2">
@@ -5924,7 +6051,7 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
             </div>
             <div className="flex items-center gap-3 shrink-0">
               <button 
-                onClick={() => setActiveLegalModal('cookies')}
+                onClick={() => setActiveLegalModal('cookie')}
                 className="text-[#2563EB] hover:underline text-xs"
               >
                 Çerez Detayları
@@ -6175,9 +6302,9 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
               <h4 className="font-bold text-white uppercase text-[10px] tracking-widest mb-3 text-[#2563EB]">Kurumsal & Yasal</h4>
               <ul className="space-y-2">
                 <li onClick={() => setActiveLegalModal('kvkk')} className="hover:text-white cursor-pointer">KVKK Aydınlatma Metni</li>
-                <li onClick={() => setActiveLegalModal('privacy')} className="hover:text-white cursor-pointer">Gizlilik Politikası</li>
-                <li onClick={() => setActiveLegalModal('terms')} className="hover:text-white cursor-pointer">Kullanım Koşulları</li>
-                <li onClick={() => setActiveLegalModal('cookies')} className="hover:text-white cursor-pointer">Çerez Politikası</li>
+                <li onClick={() => setActiveLegalModal('editorial')} className="hover:text-white cursor-pointer">Gizlilik & Yayın İlkeleri</li>
+                <li onClick={() => setActiveLegalModal('disclaimer')} className="hover:text-white cursor-pointer">Finansal Sorumluluk Reddi</li>
+                <li onClick={() => setActiveLegalModal('cookie')} className="hover:text-white cursor-pointer">Çerez Politikası</li>
                 <li onClick={() => setIsPressReleaseModalOpen(true)} className="text-[#2563EB] hover:brightness-110 font-semibold cursor-pointer flex items-center gap-1">
                   <Send size={11} />
                   <span>Basın Bülteni Gönder</span>
@@ -6229,6 +6356,13 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
             handleSelectArticle(found);
           }
         }}
+        onShowToast={showToast}
+      />
+      {/* LeadGen B2B Modal */}
+      <LeadGenModal
+        isOpen={isLeadGenModalOpen}
+        onClose={() => setIsLeadGenModalOpen(false)}
+        category={selectedCategory || 'B2B Kurumsal'}
         onShowToast={showToast}
       />
 

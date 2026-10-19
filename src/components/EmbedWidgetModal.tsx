@@ -18,21 +18,21 @@ export const EmbedWidgetModal: React.FC<EmbedWidgetModalProps> = ({
 
   if (!isOpen) return null;
 
-  // Frame URL based on type
-  const embedCode = `<iframe src="https://webdehepseek.com" width="100%" height="450" frameborder="0"></iframe><p><a href="https://webdehepseek.com">Altyapı: WebdeHepSeek</a></p>`;
+  // Frame URL based on type with dofollow backlink credit
+  const embedCode = `<iframe src="https://webdehepseek.com/widget/${widgetType}" width="100%" height="480" frameborder="0" loading="lazy"></iframe><p><a href="https://webdehepseek.com" target="_blank" title="WebdeHepSeek Finans & Teknoloji Araçları">Kaynak & Altyapı: WebdeHepSeek</a></p>`;
 
   const handleCopy = () => {
     if (navigator.clipboard) {
       navigator.clipboard.writeText(embedCode);
       setCopied(true);
-      onShowToast("📋 Embed kodu başarıyla panoya kopyalandı!");
+      onShowToast("📋 Embed widget backlink kodu panoya kopyalandı!");
       setTimeout(() => setCopied(false), 2000);
     }
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
-      <div className="relative w-full max-w-md bg-[#0B0B0C] border border-[#D4AF37]/50 rounded-3xl p-6 shadow-[0_0_50px_rgba(212,175,55,0.15)] text-left font-sans animate-scale-up">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in">
+      <div className="relative w-full max-w-md bg-[#111827] border border-[#2563EB]/40 rounded-3xl p-6 shadow-2xl text-left font-sans">
         {/* Close Button */}
         <button 
           onClick={onClose}
@@ -43,22 +43,22 @@ export const EmbedWidgetModal: React.FC<EmbedWidgetModalProps> = ({
 
         {/* Header */}
         <div className="space-y-1 pr-8">
-          <div className="flex items-center gap-1.5 text-[9px] font-mono text-[#D4AF37] font-bold uppercase tracking-widest bg-[#D4AF37]/10 px-2.5 py-0.5 rounded w-max">
-            White-Label Dağıtım Modülü
+          <div className="flex items-center gap-1.5 text-[9px] font-mono text-[#2563EB] font-bold uppercase tracking-widest bg-[#2563EB]/10 px-2.5 py-0.5 rounded w-max border border-[#2563EB]/30">
+            White-Label Widget Dağıtım & Backlink Modülü
           </div>
           <h4 className="text-base font-serif font-black text-white flex items-center gap-2 mt-2">
-            <Code size={16} className="text-[#D4AF37]" />
-            Bu Aracı Sitene Ekle
+            <Code size={16} className="text-[#2563EB]" />
+            Bu Hesaplayıcıyı Sitene Ekle
           </h4>
           <p className="text-xs text-zinc-400">
-            Aşağıdaki HTML kodunu kendi sitenize yapıştırarak bu profesyonel hesaplama widget'ını sıfır lisans ücretiyle yayınlayabilirsiniz.
+            Aşağıdaki HTML kodunu web sitenize yapıştırarak bu interaktif hesaplama aracını ücretsiz yayınlayabilir ve ziyaretçilerinize sunabilirsiniz.
           </p>
         </div>
 
         {/* Text Area */}
         <div className="mt-4 space-y-2">
-          <label className="text-[10px] font-mono font-bold text-zinc-500 uppercase tracking-widest block">HTML Embed Kodu:</label>
-          <div className="relative bg-[#121214] border border-zinc-850 rounded-2xl p-3.5">
+          <label className="text-[10px] font-mono font-bold text-zinc-400 uppercase tracking-widest block">HTML Embed & Backlink Kodu:</label>
+          <div className="relative bg-[#0A0E17] border border-zinc-800 rounded-2xl p-3.5">
             <textarea
               readOnly
               value={embedCode}
@@ -68,10 +68,10 @@ export const EmbedWidgetModal: React.FC<EmbedWidgetModalProps> = ({
         </div>
 
         {/* Features / Benefits */}
-        <div className="mt-4 p-3 bg-zinc-900/50 border border-zinc-850 rounded-2xl flex gap-3 text-[10px] text-zinc-400 leading-relaxed font-sans">
-          <Shield size={16} className="text-[#D4AF37] shrink-0 mt-0.5" />
+        <div className="mt-4 p-3 bg-[#0A0E17] border border-zinc-800 rounded-2xl flex gap-3 text-[10px] text-zinc-400 leading-relaxed font-sans">
+          <Shield size={16} className="text-[#2563EB] shrink-0 mt-0.5" />
           <div>
-            <strong className="text-white">Tam Sorumluluk Reddi:</strong> Widget responsive olarak çalışır. CSS stilleri sitenize otomatik uyum sağlar. Reklam içermez, hızı etkilemez.
+            <strong className="text-white">Otomatik Uyumlu & Hızlı:</strong> Widget mobil uyumludur, sitenizin hızını etkilemez.
           </div>
         </div>
 
@@ -85,7 +85,7 @@ export const EmbedWidgetModal: React.FC<EmbedWidgetModalProps> = ({
           </button>
           <button
             onClick={handleCopy}
-            className="flex-1 py-2.5 bg-[#D4AF37] hover:brightness-110 text-black font-extrabold text-xs rounded-xl transition-all uppercase flex items-center justify-center gap-1.5"
+            className="flex-1 py-2.5 bg-[#2563EB] hover:brightness-110 text-white font-extrabold text-xs rounded-xl transition-all uppercase flex items-center justify-center gap-1.5 shadow-lg"
           >
             {copied ? (
               <>
