@@ -1,5 +1,290 @@
 [
   {
+    "id": "auto-101",
+    "title": "Toyota Yaris & Prius Hibrit Modellerinde 5. Nesil Verimlilik Devrimi",
+    "excerpt": "Toyota Yaris Hibrit, yeni nesil tork konvertörü ve hafifletilmiş batarya paketiyle şehir içi kullanımda 100 km’de 3.2 litre yakıt tüketim rekoru kırdı.",
+    "category": "Otomotiv & Mobilite",
+    "subcategory": "Hibrit Modeller",
+    "date": "18 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "4 dk",
+    "author": "Otomotiv Masası",
+    "authorTitle": "Mobilite & Hibrit Raporu",
+    "verifiedSource": true,
+    "sentiment": "Nötr ⚖️",
+    "content": "Toyota, hibrit araç teknolojisindeki liderliğini 5. nesil sistem güncellemeleriyle pekiştirdi. Yeni Yaris Hibrit modelinde sunulan elektrik motoru desteği..."
+  },
+  {
+    "id": "auto-102",
+    "title": "Katı Hal Bataryalı Elektrikli Araç Şarj İstasyonu Ağları Genişliyor",
+    "excerpt": "800V yüksek voltaj mimarisine sahip yeni nesil DC ultra hızlı şarj istasyonları, 10 dakikada %80 batarya doluluğu sağlayarak menzil kaygısını bitiriyor.",
+    "category": "Otomotiv & Mobilite",
+    "subcategory": "Batarya & Şarj",
+    "date": "17 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "5 dk",
+    "author": "Mobilite Servisi",
+    "authorTitle": "EV & Şarj Teknolojileri",
+    "verifiedSource": true,
+    "sentiment": "Boğa 🐂",
+    "content": "Elektrikli araç şarj altyapısı, katı hal batarya hücrelerinin pazara girmesiyle birlikte köklü bir değişim geçiriyor..."
+  },
+  {
+    "id": "auto-103",
+    "title": "Otonom Sürüş Seviye 4 Lidar ve Yapay Zeka Sensör Paketleriyle Sahada",
+    "excerpt": "Şehir içi sürücüsüz taksi filolarında kullanılan yeni nesil 360 derece katı hal Lidar sistemleri, olumsuz hava koşullarında milisaniyelik tepki veriyor.",
+    "category": "Otomotiv & Mobilite",
+    "subcategory": "Otonom Sürüş",
+    "date": "16 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "6 dk",
+    "author": "Otomotiv Masası",
+    "authorTitle": "Otonom Sürüş Testleri",
+    "verifiedSource": true,
+    "sentiment": "Boğa 🐂",
+    "content": "Otonom araç dünyasında sürücüsüz sürüş güvenlik sınırları Seviye 4 standartlarıyla yeniden belirleniyor..."
+  },
+  {
+    "id": "game-201",
+    "title": "Unreal Engine 5.5 İle Fotogerçekçi Grafikler Oyun Dünyasını Değiştiriyor",
+    "excerpt": "Epic Games, Unreal Engine 5.5 güncellemesiyle Nanite ve Lumen teknolojilerinde işlemci yükünü %40 azaltarak konsollarda 60 FPS sınırını aştı.",
+    "category": "Oyun & Espor",
+    "subcategory": "Unreal Engine 5",
+    "date": "18 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "5 dk",
+    "author": "Oyun & Espor Masası",
+    "authorTitle": "Oyun Motorları Raporu",
+    "verifiedSource": true,
+    "sentiment": "Boğa 🐂",
+    "content": "Oyun geliştirmede yeni bir çağ başlatan Unreal Engine 5.5, grafik kalitesinde çığır açarken ışık izleme performansını optimize etti..."
+  },
+  {
+    "id": "game-202",
+    "title": "PS5 Pro ve Konsol Dünyasında 8K Ray-Tracing Dönemi Başladı",
+    "excerpt": "Yeni nesil konsol mimarisi, donanımsal AI fidanlama (PSSR) desteğiyle 4K 120 FPS akıcı oyun deneyimini standart hale getiriyor.",
+    "category": "Oyun & Espor",
+    "subcategory": "Konsol Dünyası",
+    "date": "17 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "4 dk",
+    "author": "Oyun Editörü",
+    "authorTitle": "Konsol & Donanım",
+    "verifiedSource": true,
+    "sentiment": "Boğa 🐂",
+    "content": "Konsol donanımlarındaki son gelişmeler oyunculara yüksek çözünürlüklü ve kesintisiz kare hızları sunuyor..."
+  },
+  {
+    "id": "game-203",
+    "title": "Espor Dünya Şampiyonası Finallerinde Anlık 5 Milyon İzleyici Rekoru",
+    "excerpt": "Küresel Espor arenasında düzenlenen şampiyona finalleri, izleyici rekorlarını altüst ederken toplam ödül havuzu 15 milyon dolara ulaştı.",
+    "category": "Oyun & Espor",
+    "subcategory": "Espor",
+    "date": "15 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "3 dk",
+    "author": "Espor Servisi",
+    "authorTitle": "Turnuva & Lig Analizi",
+    "verifiedSource": true,
+    "sentiment": "Boğa 🐂",
+    "content": "Espor organizasyonlarının yayın hakları ve stadyum katılım oranları geleneksel spor dallarını yakalamaya devam ediyor..."
+  },
+  {
+    "id": "health-301",
+    "title": "Apple Watch ve Giyilebilir Cihazlarda Kandan Şekersiz Glukoz Takip Biyosensörü",
+    "excerpt": "İnvaziv olmayan yeni optik biyosensörler, diyabet hastalarının kan almadan glukoz seviyelerini saniyelik olarak akıllı saat ekranından izlemesini sağlıyor.",
+    "category": "Yaşam & Sağlık",
+    "subcategory": "Giyilebilir Cihazlar",
+    "date": "18 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1510017803434-a899398421b3?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "5 dk",
+    "author": "Sağlık Teknolojileri Masası",
+    "authorTitle": "Biyosensör & Sağlık Analizi",
+    "verifiedSource": true,
+    "sentiment": "Boğa 🐂",
+    "content": "Giyilebilir sağlık teknolojilerinde uzun yıllardır beklenen non-invaziv şeker ölçümü nihayet klinik onay süreçlerini tamamladı..."
+  },
+  {
+    "id": "health-302",
+    "title": "Biyoteknoloji ve CRISPR Gen Tedavisi Kalıtsal Hastalıklarda İyileşme Sağladı",
+    "excerpt": "FDA onaylı yeni gen düzenleme terapileri, tek dozluk uygulama ile hücre mutasyonlarını düzelterek kalıtsal hastalıklarda %95 başarı oranına ulaştı.",
+    "category": "Yaşam & Sağlık",
+    "subcategory": "Biyoteknoloji",
+    "date": "16 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "6 dk",
+    "author": "Biyo-Medikal Servisi",
+    "authorTitle": "Genetik Araştırma Masası",
+    "verifiedSource": true,
+    "sentiment": "Boğa 🐂",
+    "content": "CRISPR-Cas9 ve gen hedeflerinin hedeflenmesi konusunda kaydedilen aşama biyoteknoloji sektöründe çığır açıyor..."
+  },
+  {
+    "id": "health-303",
+    "title": "Oura Ring Gen 4 Uyku ve Biyometri Analiziyle Derin REM Uyku Süresini Uzatıyor",
+    "excerpt": "Gelişmiş sıcaklık ve kalp atış hızı değişkenliği (HRV) sensörleri, kişiselleştirilmiş sirkadiyen ritim tavsiyeleriyle uyku kalitesini artırıyor.",
+    "category": "Yaşam & Sağlık",
+    "subcategory": "Uyku & Biyometri",
+    "date": "14 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "4 dk",
+    "author": "Sağlık Editörü",
+    "authorTitle": "Dijital Biyometri",
+    "verifiedSource": true,
+    "sentiment": "Boğa 🐂",
+    "content": "Uyku biyometrisi takibi, giyilebilir yüzükler ve yapay zeka analiz motorlarıyla daha hassas sonuçlar sunuyor..."
+  },
+  {
+    "id": "science-401",
+    "title": "James Webb Uzay Teleskobu Evrenin İlk Galaksilerinin Detaylı Fotoğrafını Yayınladı",
+    "excerpt": "Büyük Patlama’dan sadece 200 milyon yıl sonra oluşan ilk galaksilerin kimyasal bileşimi, karanlık madde ve evrenin genişleme teorilerine yeni ışık tutuyor.",
+    "category": "Bilim & Uzay",
+    "subcategory": "James Webb",
+    "date": "18 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "5 dk",
+    "author": "Astrofizik Masası",
+    "authorTitle": "Derin Uzay Araştırmaları",
+    "verifiedSource": true,
+    "sentiment": "Boğa 🐂",
+    "content": "James Webb Teleskobu kızılötesi kameralarıyla evrenin en ücra köşelerinden gözlem verileri aktarmaya devam ediyor..."
+  },
+  {
+    "id": "science-402",
+    "title": "SpaceX Starship Yörünge İçi Yakıt İkmal Testini Başarıyla Tamamladı",
+    "excerpt": "Mars görevlerinin belkemiğini oluşturan sıvı kriyojenik yakıt transferi uzay boşluğunda sıfır kayıpla gerçekleştirildi.",
+    "category": "Bilim & Uzay",
+    "subcategory": "Starship & Roketler",
+    "date": "17 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1517976487492-5750f3195933?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "5 dk",
+    "author": "Uzay Teknolojileri",
+    "authorTitle": "Roket Sanayi Masası",
+    "verifiedSource": true,
+    "sentiment": "Boğa 🐂",
+    "content": "SpaceX tarafından geliştirilen Starship roketi, uzayda yörünge içi depolama ve yakıt ikmali kabiliyetini kanıtladı..."
+  },
+  {
+    "id": "science-403",
+    "title": "Nükleer Füzyon Reaktöründe Pozitif Net Enerji Üretimi Rekoru Kırıldı",
+    "excerpt": "Magnetik sıkıştırmalı Tokamak reaktörü, harcadığı enerjinin 2.8 katını üreterek kesintisiz temiz enerji çağına kapı araladı.",
+    "category": "Bilim & Uzay",
+    "subcategory": "Nükleer Füzyon",
+    "date": "15 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "6 dk",
+    "author": "Fizik Araştırma Servisi",
+    "authorTitle": "Temiz Enerji & Füzyon",
+    "verifiedSource": true,
+    "sentiment": "Boğa 🐂",
+    "content": "Nükleer füzyon teknolojisinde ulaşılan yeni plazma kararlılığı seviyesi ticari santraller için kritik bir dönüm noktası oldu..."
+  },
+  {
+    "id": "energy-501",
+    "title": "Sodyum-İyon Ev Enerji Depolama Üniteleri Şebeke Bağımsızlığı Sunuyor",
+    "excerpt": "Lityuma kıyasla %60 daha ucuz ve yanma riski olmayan Sodyum-İyon ev bataryaları, konutlarda kesintisiz yeşil enerji depolaması sağlıyor.",
+    "category": "Yeşil Enerji",
+    "subcategory": "Sodyum-İyon Batarya",
+    "date": "18 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1558441719-670b357024bf?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "4 dk",
+    "author": "Temiz Enerji Masası",
+    "authorTitle": "Batarya & Depolama Raporu",
+    "verifiedSource": true,
+    "sentiment": "Boğa 🐂",
+    "content": "Sodyum-İyon bataryalarının seri üretimiyle birlikte ev tipi güneş enerjisi depolama sistemleri geniş kitlelere ulaşıyor..."
+  },
+  {
+    "id": "energy-502",
+    "title": "Perovskit-Silikon Hibrit Güneş Panellerinde %34 Verimlilik Sınırı Aşıldı",
+    "excerpt": "Çift katmanlı fotovoltaik hücre yapısı, güneş ışığının farklı dalga boylarını emerek geleneksel panellerin verim sınırını geride bıraktı.",
+    "category": "Yeşil Enerji",
+    "subcategory": "Perovskit Güneş Panelleri",
+    "date": "16 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "5 dk",
+    "author": "Yenilenebilir Enerji",
+    "authorTitle": "Fotovoltaik Teknolojiler",
+    "verifiedSource": true,
+    "sentiment": "Boğa 🐂",
+    "content": "Güneş enerjisi panellerinde Perovskit malzeme kullanımıyla sağlanan verim artışı tarlalarda ve çatılarda elektrik üretim maliyetini düşürüyor..."
+  },
+  {
+    "id": "energy-503",
+    "title": "Offshore Rüzgar Türbinlerinde Dev Rotor Teknolojisi ve Yüksek Güç Üretimi",
+    "excerpt": "18 Megavat kapasiteli açık deniz rüzgar türbinleri, tek bir dönüşte bir hanenin günlük elektrik ihtiyacını karşılayabiliyor.",
+    "category": "Yeşil Enerji",
+    "subcategory": "Rüzgar Türbinleri",
+    "date": "14 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "4 dk",
+    "author": "Rüzgar Enerjisi Masası",
+    "authorTitle": "Açık Deniz Türbinleri",
+    "verifiedSource": true,
+    "sentiment": "Boğa 🐂",
+    "content": "Offshore rüzgar santralleri dev kanat yapılarıyla deniz fırtınalarından maksimum elektrik üretmeyi başarıyor..."
+  },
+  {
+    "id": "startup-601",
+    "title": "Türkiye Merkezli AI Girişimi Seri A Turunda 45 Milyon Dolar Yatırım Aldı",
+    "excerpt": "Otonom B2B süreç otomasyonu geliştiren yerli girişim, Silikon Vadisi ve Avrupa merkezli VC fonlarının katıldığı turla değerlemesini 220 milyon dolara çıkardı.",
+    "category": "Girişimcilik & Yatırım",
+    "subcategory": "Seri A Turları",
+    "date": "18 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "5 dk",
+    "author": "Girişimcilik Masası",
+    "authorTitle": "Yatırım & Venture Capital",
+    "verifiedSource": true,
+    "sentiment": "Boğa 🐂",
+    "content": "Yerli teknoloji ekosistemi yapay zeka odaklı yazılım girişimlerinin küresel başarısıyla Seri A turlarında rekor tazeledi..."
+  },
+  {
+    "id": "startup-602",
+    "title": "B2B SaaS ve AI Ajan Girişimlerinin 2026 Unicorn Değerleme Analizi",
+    "excerpt": "Son 12 ayda 1 milyar dolar değerlemeyi aşan B2B SaaS girişimlerinin ortak özellikleri: Yıllık tekrarlanan gelirde (ARR) %300 üzeri büyüme hızı.",
+    "category": "Girişimcilik & Yatırım",
+    "subcategory": "Unicorn Girişimler",
+    "date": "16 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "6 dk",
+    "author": "Finans & Ekosistem",
+    "authorTitle": "Unicorn Analiz Heyeti",
+    "verifiedSource": true,
+    "sentiment": "Boğa 🐂",
+    "content": "Girişim sermayesi fonlarının B2B yazılımlara olan ilgisi karlılık hedefleri ve ölçeklenme hızıyla ivme kazanıyor..."
+  },
+  {
+    "id": "ecommerce-701",
+    "title": "Ticaret Bakanlığı Pazar Yeri Komisyon Oranlarına Düzenleme Getirdi",
+    "excerpt": "E-ticaret pazar yerlerinin satıcılardan aldığı kategori komisyon oranları ve erken ödeme vadeleri için satıcı dostu standartlar yürürlüğe girdi.",
+    "category": "E-Ticaret & Pazarlama",
+    "subcategory": "Pazar Yeri Komisyonları",
+    "date": "18 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "4 dk",
+    "author": "E-Ticaret Masası",
+    "authorTitle": "Pazar Yeri & Düzenleme",
+    "verifiedSource": true,
+    "sentiment": "Nötr ⚖️",
+    "content": "Elektronik ticaret pazar yerlerindeki komisyon oranları ve satıcı hakları yapılan yeni yasal mevzuatla koruma altına alındı..."
+  },
+  {
+    "id": "ecommerce-702",
+    "title": "E-İhracatta Yeni Kargo ve Gümrük Teşvikleriyle Satışlar %180 Arttı",
+    "excerpt": "Mikro ihracat prosedürlerinin dijitalleşmesi ve lojistik destekleri sayesinde Türk üreticileri Avrupa ve Amerika pazarına doğrudan satış yapıyor.",
+    "category": "E-Ticaret & Pazarlama",
+    "subcategory": "E-İhracat",
+    "date": "16 Ekim 2026",
+    "imageUrl": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&h=675&q=80",
+    "readTime": "5 dk",
+    "author": "Dijital Pazarlama Servisi",
+    "authorTitle": "E-İhracat Raporu",
+    "verifiedSource": true,
+    "sentiment": "Boğa 🐂",
+    "content": "E-ihracat gerçekleştiren mikro firmaların artan kargo sübvansiyonları ve gümrük kolaylıkları ciro büyümesine doğrudan katkı sağladı..."
+  },
+  {
     "id": "whs-1",
     "title": "Borsa İstanbul'da Teknoloji Hisselerine Rekor Yabancı Sermaye Girişi",
     "summary": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_1 analiz raporunda, finans & küresel piyasalar alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
@@ -33,7 +318,7 @@
     "authorTitle": "Makro Finans & Analiz Servisi",
     "date": "08 Ekim 2026",
     "readTime": "4 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-1",
     "tags": [
       "Finans",
@@ -84,7 +369,7 @@
     "authorTitle": "Makro Finans & Analiz Servisi",
     "date": "08 Ekim 2026",
     "readTime": "4 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-2",
     "tags": [
       "Finans",
@@ -135,7 +420,7 @@
     "authorTitle": "Makro Finans & Analiz Servisi",
     "date": "08 Ekim 2026",
     "readTime": "4 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-3",
     "tags": [
       "Finans",
@@ -186,7 +471,7 @@
     "authorTitle": "Makro Finans & Analiz Servisi",
     "date": "08 Ekim 2026",
     "readTime": "4 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-4",
     "tags": [
       "Finans",
@@ -237,7 +522,7 @@
     "authorTitle": "Makro Finans & Analiz Servisi",
     "date": "08 Ekim 2026",
     "readTime": "4 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-5",
     "tags": [
       "Finans",
@@ -288,7 +573,7 @@
     "authorTitle": "Makro Finans & Analiz Servisi",
     "date": "08 Ekim 2026",
     "readTime": "4 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1610375461246-83df859d849d?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-6",
     "tags": [
       "Finans",
@@ -310,7 +595,7 @@
     "title": "Yapay Zeka Veri Merkezlerinde Enerji Devrimi: Nükleer ve Yeşil Enerji İş Birlikleri",
     "summary": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_1 analiz raporunda, yapay zeka & gelecek alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
     "excerpt": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_1 analiz raporunda, yapay zeka & gelecek alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
-    "category": "Yapay Zeka & Gelecek",
+    "category": "Yapay Zeka & LLM",
     "subcategory": "Yapay Zeka & Akıl Yürütme",
     "content": "Küresel finans ve teknoloji ekosisteminde yapay zeka & gelecek alanında yaşanan son gelişmeler, kurumsal yatırımcılar ve sektör liderleri için hayati önem taşıyan bir dönüm noktasına işaret etmektedir. WebdeHepSeek Analitik Veri Masası'nın derlediği makro verilere göre, piyasa hacminde %35'i aşan bir hareketlilik kaydedilmiştir.\n\nPazar lideri kurumların yapay zeka & gelecek odaklı altyapı hamleleri, önümüzdeki çeyrek dönemin ana stratejisini belirlemektedir. Özellikle veri güvenliği, otomasyon ve verimlilik başlıklarında atılan adımlar, geleneksel iş modellerini hızla dönüştürmektedir.\n\nSektörel uzmanlar, hızlı büyüme sürecinde ortaya çıkabilecek regülasyon ve uyum risklerine dikkat çekmektedir. Küresel otoritelerin yeni nesil standartları belirleme çabası, pazardaki rekabet dengelerini yeniden şekillendirmektedir.\n\nÖzetle; yapay zeka & gelecek başlığında gerçekleşen bu stratejik atılım, orta ve uzun vadeli yatırım kararlarını doğrudan etkileyecek güce sahiptir. WebdeHepSeek Journal, analitik raporları ve anlık veri akışlarıyla okurlarına rehberlik etmeye devam edecektir.",
     "sections": [
@@ -339,7 +624,7 @@
     "authorTitle": "Teknoloji & AI Yayın Masası",
     "date": "08 Ekim 2026",
     "readTime": "4 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-7",
     "tags": [
       "Yapay",
@@ -361,7 +646,7 @@
     "title": "Kurumsal LLM Entegrasyonlarında Veri Mahremiyeti ve Güvenlik Protokolleri",
     "summary": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_1 analiz raporunda, yapay zeka & gelecek alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
     "excerpt": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_1 analiz raporunda, yapay zeka & gelecek alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
-    "category": "Yapay Zeka & Gelecek",
+    "category": "Yapay Zeka & LLM",
     "subcategory": "Yapay Zeka & Akıl Yürütme",
     "content": "Küresel finans ve teknoloji ekosisteminde yapay zeka & gelecek alanında yaşanan son gelişmeler, kurumsal yatırımcılar ve sektör liderleri için hayati önem taşıyan bir dönüm noktasına işaret etmektedir. WebdeHepSeek Analitik Veri Masası'nın derlediği makro verilere göre, piyasa hacminde %35'i aşan bir hareketlilik kaydedilmiştir.\n\nPazar lideri kurumların yapay zeka & gelecek odaklı altyapı hamleleri, önümüzdeki çeyrek dönemin ana stratejisini belirlemektedir. Özellikle veri güvenliği, otomasyon ve verimlilik başlıklarında atılan adımlar, geleneksel iş modellerini hızla dönüştürmektedir.\n\nSektörel uzmanlar, hızlı büyüme sürecinde ortaya çıkabilecek regülasyon ve uyum risklerine dikkat çekmektedir. Küresel otoritelerin yeni nesil standartları belirleme çabası, pazardaki rekabet dengelerini yeniden şekillendirmektedir.\n\nÖzetle; yapay zeka & gelecek başlığında gerçekleşen bu stratejik atılım, orta ve uzun vadeli yatırım kararlarını doğrudan etkileyecek güce sahiptir. WebdeHepSeek Journal, analitik raporları ve anlık veri akışlarıyla okurlarına rehberlik etmeye devam edecektir.",
     "sections": [
@@ -390,7 +675,7 @@
     "authorTitle": "Teknoloji & AI Yayın Masası",
     "date": "08 Ekim 2026",
     "readTime": "4 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-8",
     "tags": [
       "Yapay",
@@ -412,7 +697,7 @@
     "title": "Generative AI Sistemlerinin İş Gücü ve Yazılım Sektörüne Makro Etkileri",
     "summary": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_1 analiz raporunda, yapay zeka & gelecek alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
     "excerpt": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_1 analiz raporunda, yapay zeka & gelecek alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
-    "category": "Yapay Zeka & Gelecek",
+    "category": "Yapay Zeka & LLM",
     "subcategory": "Yapay Zeka & Akıl Yürütme",
     "content": "Küresel finans ve teknoloji ekosisteminde yapay zeka & gelecek alanında yaşanan son gelişmeler, kurumsal yatırımcılar ve sektör liderleri için hayati önem taşıyan bir dönüm noktasına işaret etmektedir. WebdeHepSeek Analitik Veri Masası'nın derlediği makro verilere göre, piyasa hacminde %35'i aşan bir hareketlilik kaydedilmiştir.\n\nPazar lideri kurumların yapay zeka & gelecek odaklı altyapı hamleleri, önümüzdeki çeyrek dönemin ana stratejisini belirlemektedir. Özellikle veri güvenliği, otomasyon ve verimlilik başlıklarında atılan adımlar, geleneksel iş modellerini hızla dönüştürmektedir.\n\nSektörel uzmanlar, hızlı büyüme sürecinde ortaya çıkabilecek regülasyon ve uyum risklerine dikkat çekmektedir. Küresel otoritelerin yeni nesil standartları belirleme çabası, pazardaki rekabet dengelerini yeniden şekillendirmektedir.\n\nÖzetle; yapay zeka & gelecek başlığında gerçekleşen bu stratejik atılım, orta ve uzun vadeli yatırım kararlarını doğrudan etkileyecek güce sahiptir. WebdeHepSeek Journal, analitik raporları ve anlık veri akışlarıyla okurlarına rehberlik etmeye devam edecektir.",
     "sections": [
@@ -441,7 +726,7 @@
     "authorTitle": "Teknoloji & AI Yayın Masası",
     "date": "08 Ekim 2026",
     "readTime": "4 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-9",
     "tags": [
       "Yapay",
@@ -463,7 +748,7 @@
     "title": "Derin Öğrenme Algoritmalarında Terabayt Düzeyinde Model Eğitim Verimliliği",
     "summary": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_1 analiz raporunda, yapay zeka & gelecek alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
     "excerpt": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_1 analiz raporunda, yapay zeka & gelecek alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
-    "category": "Yapay Zeka & Gelecek",
+    "category": "Yapay Zeka & LLM",
     "subcategory": "Yapay Zeka & Akıl Yürütme",
     "content": "Küresel finans ve teknoloji ekosisteminde yapay zeka & gelecek alanında yaşanan son gelişmeler, kurumsal yatırımcılar ve sektör liderleri için hayati önem taşıyan bir dönüm noktasına işaret etmektedir. WebdeHepSeek Analitik Veri Masası'nın derlediği makro verilere göre, piyasa hacminde %35'i aşan bir hareketlilik kaydedilmiştir.\n\nPazar lideri kurumların yapay zeka & gelecek odaklı altyapı hamleleri, önümüzdeki çeyrek dönemin ana stratejisini belirlemektedir. Özellikle veri güvenliği, otomasyon ve verimlilik başlıklarında atılan adımlar, geleneksel iş modellerini hızla dönüştürmektedir.\n\nSektörel uzmanlar, hızlı büyüme sürecinde ortaya çıkabilecek regülasyon ve uyum risklerine dikkat çekmektedir. Küresel otoritelerin yeni nesil standartları belirleme çabası, pazardaki rekabet dengelerini yeniden şekillendirmektedir.\n\nÖzetle; yapay zeka & gelecek başlığında gerçekleşen bu stratejik atılım, orta ve uzun vadeli yatırım kararlarını doğrudan etkileyecek güce sahiptir. WebdeHepSeek Journal, analitik raporları ve anlık veri akışlarıyla okurlarına rehberlik etmeye devam edecektir.",
     "sections": [
@@ -492,7 +777,7 @@
     "authorTitle": "Teknoloji & AI Yayın Masası",
     "date": "08 Ekim 2026",
     "readTime": "4 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-10",
     "tags": [
       "Yapay",
@@ -514,7 +799,7 @@
     "title": "Otonom Yazılım Ajanları (AI Agents) Şirket Operasyonlarını Devralıyor",
     "summary": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_1 analiz raporunda, yapay zeka & gelecek alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
     "excerpt": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_1 analiz raporunda, yapay zeka & gelecek alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
-    "category": "Yapay Zeka & Gelecek",
+    "category": "Otomotiv & Mobilite",
     "subcategory": "Yapay Zeka & Akıl Yürütme",
     "content": "Küresel finans ve teknoloji ekosisteminde yapay zeka & gelecek alanında yaşanan son gelişmeler, kurumsal yatırımcılar ve sektör liderleri için hayati önem taşıyan bir dönüm noktasına işaret etmektedir. WebdeHepSeek Analitik Veri Masası'nın derlediği makro verilere göre, piyasa hacminde %35'i aşan bir hareketlilik kaydedilmiştir.\n\nPazar lideri kurumların yapay zeka & gelecek odaklı altyapı hamleleri, önümüzdeki çeyrek dönemin ana stratejisini belirlemektedir. Özellikle veri güvenliği, otomasyon ve verimlilik başlıklarında atılan adımlar, geleneksel iş modellerini hızla dönüştürmektedir.\n\nSektörel uzmanlar, hızlı büyüme sürecinde ortaya çıkabilecek regülasyon ve uyum risklerine dikkat çekmektedir. Küresel otoritelerin yeni nesil standartları belirleme çabası, pazardaki rekabet dengelerini yeniden şekillendirmektedir.\n\nÖzetle; yapay zeka & gelecek başlığında gerçekleşen bu stratejik atılım, orta ve uzun vadeli yatırım kararlarını doğrudan etkileyecek güce sahiptir. WebdeHepSeek Journal, analitik raporları ve anlık veri akışlarıyla okurlarına rehberlik etmeye devam edecektir.",
     "sections": [
@@ -543,7 +828,7 @@
     "authorTitle": "Teknoloji & AI Yayın Masası",
     "date": "08 Ekim 2026",
     "readTime": "4 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-11",
     "tags": [
       "Yapay",
@@ -565,7 +850,7 @@
     "title": "AGI Seviyesine Bir Adım Daha: Otonom Akıl Yürütme ve Nöral Ağ Donanımları",
     "summary": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_1 analiz raporunda, yapay zeka & gelecek alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
     "excerpt": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_1 analiz raporunda, yapay zeka & gelecek alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
-    "category": "Yapay Zeka & Gelecek",
+    "category": "Otomotiv & Mobilite",
     "subcategory": "Yapay Zeka & Akıl Yürütme",
     "content": "Küresel finans ve teknoloji ekosisteminde yapay zeka & gelecek alanında yaşanan son gelişmeler, kurumsal yatırımcılar ve sektör liderleri için hayati önem taşıyan bir dönüm noktasına işaret etmektedir. WebdeHepSeek Analitik Veri Masası'nın derlediği makro verilere göre, piyasa hacminde %35'i aşan bir hareketlilik kaydedilmiştir.\n\nPazar lideri kurumların yapay zeka & gelecek odaklı altyapı hamleleri, önümüzdeki çeyrek dönemin ana stratejisini belirlemektedir. Özellikle veri güvenliği, otomasyon ve verimlilik başlıklarında atılan adımlar, geleneksel iş modellerini hızla dönüştürmektedir.\n\nSektörel uzmanlar, hızlı büyüme sürecinde ortaya çıkabilecek regülasyon ve uyum risklerine dikkat çekmektedir. Küresel otoritelerin yeni nesil standartları belirleme çabası, pazardaki rekabet dengelerini yeniden şekillendirmektedir.\n\nÖzetle; yapay zeka & gelecek başlığında gerçekleşen bu stratejik atılım, orta ve uzun vadeli yatırım kararlarını doğrudan etkileyecek güce sahiptir. WebdeHepSeek Journal, analitik raporları ve anlık veri akışlarıyla okurlarına rehberlik etmeye devam edecektir.",
     "sections": [
@@ -594,7 +879,7 @@
     "authorTitle": "Teknoloji & AI Yayın Masası",
     "date": "08 Ekim 2026",
     "readTime": "4 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-12",
     "tags": [
       "Yapay",
@@ -645,7 +930,7 @@
     "authorTitle": "Makro Finans & Analiz Servisi",
     "date": "08 Ekim 2026",
     "readTime": "4 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1518546305927-5a555bb7020d?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-13",
     "tags": [
       "Kripto",
@@ -696,7 +981,7 @@
     "authorTitle": "Makro Finans & Analiz Servisi",
     "date": "08 Ekim 2026",
     "readTime": "4 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1622979135225-d2ba269bc1bd?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-14",
     "tags": [
       "Kripto",
@@ -747,7 +1032,7 @@
     "authorTitle": "Makro Finans & Analiz Servisi",
     "date": "08 Ekim 2026",
     "readTime": "4 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-15",
     "tags": [
       "Kripto",
@@ -798,7 +1083,7 @@
     "authorTitle": "Makro Finans & Analiz Servisi",
     "date": "08 Ekim 2026",
     "readTime": "4 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-16",
     "tags": [
       "Kripto",
@@ -849,7 +1134,7 @@
     "authorTitle": "Makro Finans & Analiz Servisi",
     "date": "08 Ekim 2026",
     "readTime": "4 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-17",
     "tags": [
       "Kripto",
@@ -900,7 +1185,7 @@
     "authorTitle": "Makro Finans & Analiz Servisi",
     "date": "08 Ekim 2026",
     "readTime": "4 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1642543492481-44e81e3914a7?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-18",
     "tags": [
       "Kripto",
@@ -922,7 +1207,7 @@
     "title": "Multi-Tenant Bulut Veri Tabanlarında Yüksek Erişilebilirlik ve NVMe Performansı",
     "summary": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_1 analiz raporunda, saas & bulut yazılımları alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
     "excerpt": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_1 analiz raporunda, saas & bulut yazılımları alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
-    "category": "SaaS & Bulut Yazılımları",
+    "category": "SaaS & Yazılım",
     "subcategory": "Bulut & Kurumsal Yazılım",
     "content": "Küresel finans ve teknoloji ekosisteminde saas & bulut yazılımları alanında yaşanan son gelişmeler, kurumsal yatırımcılar ve sektör liderleri için hayati önem taşıyan bir dönüm noktasına işaret etmektedir. WebdeHepSeek Analitik Veri Masası'nın derlediği makro verilere göre, piyasa hacminde %35'i aşan bir hareketlilik kaydedilmiştir.\n\nPazar lideri kurumların saas & bulut yazılımları odaklı altyapı hamleleri, önümüzdeki çeyrek dönemin ana stratejisini belirlemektedir. Özellikle veri güvenliği, otomasyon ve verimlilik başlıklarında atılan adımlar, geleneksel iş modellerini hızla dönüştürmektedir.\n\nSektörel uzmanlar, hızlı büyüme sürecinde ortaya çıkabilecek regülasyon ve uyum risklerine dikkat çekmektedir. Küresel otoritelerin yeni nesil standartları belirleme çabası, pazardaki rekabet dengelerini yeniden şekillendirmektedir.\n\nÖzetle; saas & bulut yazılımları başlığında gerçekleşen bu stratejik atılım, orta ve uzun vadeli yatırım kararlarını doğrudan etkileyecek güce sahiptir. WebdeHepSeek Journal, analitik raporları ve anlık veri akışlarıyla okurlarına rehberlik etmeye devam edecektir.",
     "sections": [
@@ -951,7 +1236,7 @@
     "authorTitle": "Teknoloji & AI Yayın Masası",
     "date": "08 Ekim 2026",
     "readTime": "4 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-19",
     "tags": [
       "SaaS",
@@ -973,7 +1258,7 @@
     "title": "Yazılım Hizmetlerinde (SaaS) Yapay Zeka Copilot Entegrasyon Standartları",
     "summary": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_1 analiz raporunda, saas & bulut yazılımları alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
     "excerpt": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_1 analiz raporunda, saas & bulut yazılımları alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
-    "category": "SaaS & Bulut Yazılımları",
+    "category": "Yapay Zeka & LLM",
     "subcategory": "Bulut & Kurumsal Yazılım",
     "content": "Küresel finans ve teknoloji ekosisteminde saas & bulut yazılımları alanında yaşanan son gelişmeler, kurumsal yatırımcılar ve sektör liderleri için hayati önem taşıyan bir dönüm noktasına işaret etmektedir. WebdeHepSeek Analitik Veri Masası'nın derlediği makro verilere göre, piyasa hacminde %35'i aşan bir hareketlilik kaydedilmiştir.\n\nPazar lideri kurumların saas & bulut yazılımları odaklı altyapı hamleleri, önümüzdeki çeyrek dönemin ana stratejisini belirlemektedir. Özellikle veri güvenliği, otomasyon ve verimlilik başlıklarında atılan adımlar, geleneksel iş modellerini hızla dönüştürmektedir.\n\nSektörel uzmanlar, hızlı büyüme sürecinde ortaya çıkabilecek regülasyon ve uyum risklerine dikkat çekmektedir. Küresel otoritelerin yeni nesil standartları belirleme çabası, pazardaki rekabet dengelerini yeniden şekillendirmektedir.\n\nÖzetle; saas & bulut yazılımları başlığında gerçekleşen bu stratejik atılım, orta ve uzun vadeli yatırım kararlarını doğrudan etkileyecek güce sahiptir. WebdeHepSeek Journal, analitik raporları ve anlık veri akışlarıyla okurlarına rehberlik etmeye devam edecektir.",
     "sections": [
@@ -1002,7 +1287,7 @@
     "authorTitle": "Teknoloji & AI Yayın Masası",
     "date": "08 Ekim 2026",
     "readTime": "4 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-20",
     "tags": [
       "SaaS",
@@ -1024,7 +1309,7 @@
     "title": "Kurumsal Bulut Depolama Maliyetlerinde %40 Verimlilik Sağlayan Yeni Altyapı",
     "summary": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_1 analiz raporunda, saas & bulut yazılımları alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
     "excerpt": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_1 analiz raporunda, saas & bulut yazılımları alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
-    "category": "SaaS & Bulut Yazılımları",
+    "category": "SaaS & Yazılım",
     "subcategory": "Bulut & Kurumsal Yazılım",
     "content": "Küresel finans ve teknoloji ekosisteminde saas & bulut yazılımları alanında yaşanan son gelişmeler, kurumsal yatırımcılar ve sektör liderleri için hayati önem taşıyan bir dönüm noktasına işaret etmektedir. WebdeHepSeek Analitik Veri Masası'nın derlediği makro verilere göre, piyasa hacminde %35'i aşan bir hareketlilik kaydedilmiştir.\n\nPazar lideri kurumların saas & bulut yazılımları odaklı altyapı hamleleri, önümüzdeki çeyrek dönemin ana stratejisini belirlemektedir. Özellikle veri güvenliği, otomasyon ve verimlilik başlıklarında atılan adımlar, geleneksel iş modellerini hızla dönüştürmektedir.\n\nSektörel uzmanlar, hızlı büyüme sürecinde ortaya çıkabilecek regülasyon ve uyum risklerine dikkat çekmektedir. Küresel otoritelerin yeni nesil standartları belirleme çabası, pazardaki rekabet dengelerini yeniden şekillendirmektedir.\n\nÖzetle; saas & bulut yazılımları başlığında gerçekleşen bu stratejik atılım, orta ve uzun vadeli yatırım kararlarını doğrudan etkileyecek güce sahiptir. WebdeHepSeek Journal, analitik raporları ve anlık veri akışlarıyla okurlarına rehberlik etmeye devam edecektir.",
     "sections": [
@@ -1053,7 +1338,7 @@
     "authorTitle": "Teknoloji & AI Yayın Masası",
     "date": "08 Ekim 2026",
     "readTime": "4 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1600267175161-cfaa711b4a81?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-21",
     "tags": [
       "SaaS",
@@ -1075,7 +1360,7 @@
     "title": "Mikro-SaaS Ekosistemi ve Küresel Pazaryeri Başarı Hikayeleri",
     "summary": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_1 analiz raporunda, saas & bulut yazılımları alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
     "excerpt": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_1 analiz raporunda, saas & bulut yazılımları alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
-    "category": "SaaS & Bulut Yazılımları",
+    "category": "SaaS & Yazılım",
     "subcategory": "Bulut & Kurumsal Yazılım",
     "content": "Küresel finans ve teknoloji ekosisteminde saas & bulut yazılımları alanında yaşanan son gelişmeler, kurumsal yatırımcılar ve sektör liderleri için hayati önem taşıyan bir dönüm noktasına işaret etmektedir. WebdeHepSeek Analitik Veri Masası'nın derlediği makro verilere göre, piyasa hacminde %35'i aşan bir hareketlilik kaydedilmiştir.\n\nPazar lideri kurumların saas & bulut yazılımları odaklı altyapı hamleleri, önümüzdeki çeyrek dönemin ana stratejisini belirlemektedir. Özellikle veri güvenliği, otomasyon ve verimlilik başlıklarında atılan adımlar, geleneksel iş modellerini hızla dönüştürmektedir.\n\nSektörel uzmanlar, hızlı büyüme sürecinde ortaya çıkabilecek regülasyon ve uyum risklerine dikkat çekmektedir. Küresel otoritelerin yeni nesil standartları belirleme çabası, pazardaki rekabet dengelerini yeniden şekillendirmektedir.\n\nÖzetle; saas & bulut yazılımları başlığında gerçekleşen bu stratejik atılım, orta ve uzun vadeli yatırım kararlarını doğrudan etkileyecek güce sahiptir. WebdeHepSeek Journal, analitik raporları ve anlık veri akışlarıyla okurlarına rehberlik etmeye devam edecektir.",
     "sections": [
@@ -1104,7 +1389,7 @@
     "authorTitle": "Teknoloji & AI Yayın Masası",
     "date": "08 Ekim 2026",
     "readTime": "4 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-22",
     "tags": [
       "SaaS",
@@ -1126,7 +1411,7 @@
     "title": "DevOps ve Sunucusuz (Serverless) Mimari Trendleri Raporu",
     "summary": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_1 analiz raporunda, saas & bulut yazılımları alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
     "excerpt": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_1 analiz raporunda, saas & bulut yazılımları alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
-    "category": "SaaS & Bulut Yazılımları",
+    "category": "SaaS & Yazılım",
     "subcategory": "Bulut & Kurumsal Yazılım",
     "content": "Küresel finans ve teknoloji ekosisteminde saas & bulut yazılımları alanında yaşanan son gelişmeler, kurumsal yatırımcılar ve sektör liderleri için hayati önem taşıyan bir dönüm noktasına işaret etmektedir. WebdeHepSeek Analitik Veri Masası'nın derlediği makro verilere göre, piyasa hacminde %35'i aşan bir hareketlilik kaydedilmiştir.\n\nPazar lideri kurumların saas & bulut yazılımları odaklı altyapı hamleleri, önümüzdeki çeyrek dönemin ana stratejisini belirlemektedir. Özellikle veri güvenliği, otomasyon ve verimlilik başlıklarında atılan adımlar, geleneksel iş modellerini hızla dönüştürmektedir.\n\nSektörel uzmanlar, hızlı büyüme sürecinde ortaya çıkabilecek regülasyon ve uyum risklerine dikkat çekmektedir. Küresel otoritelerin yeni nesil standartları belirleme çabası, pazardaki rekabet dengelerini yeniden şekillendirmektedir.\n\nÖzetle; saas & bulut yazılımları başlığında gerçekleşen bu stratejik atılım, orta ve uzun vadeli yatırım kararlarını doğrudan etkileyecek güce sahiptir. WebdeHepSeek Journal, analitik raporları ve anlık veri akışlarıyla okurlarına rehberlik etmeye devam edecektir.",
     "sections": [
@@ -1155,7 +1440,7 @@
     "authorTitle": "Teknoloji & AI Yayın Masası",
     "date": "08 Ekim 2026",
     "readTime": "4 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-23",
     "tags": [
       "SaaS",
@@ -1177,7 +1462,7 @@
     "title": "SaaS Girişimlerinde Büyüme Yılı: Bulut Sunucu Mimarilerinde Devrim",
     "summary": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_1 analiz raporunda, saas & bulut yazılımları alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
     "excerpt": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_1 analiz raporunda, saas & bulut yazılımları alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
-    "category": "SaaS & Bulut Yazılımları",
+    "category": "SaaS & Yazılım",
     "subcategory": "Bulut & Kurumsal Yazılım",
     "content": "Küresel finans ve teknoloji ekosisteminde saas & bulut yazılımları alanında yaşanan son gelişmeler, kurumsal yatırımcılar ve sektör liderleri için hayati önem taşıyan bir dönüm noktasına işaret etmektedir. WebdeHepSeek Analitik Veri Masası'nın derlediği makro verilere göre, piyasa hacminde %35'i aşan bir hareketlilik kaydedilmiştir.\n\nPazar lideri kurumların saas & bulut yazılımları odaklı altyapı hamleleri, önümüzdeki çeyrek dönemin ana stratejisini belirlemektedir. Özellikle veri güvenliği, otomasyon ve verimlilik başlıklarında atılan adımlar, geleneksel iş modellerini hızla dönüştürmektedir.\n\nSektörel uzmanlar, hızlı büyüme sürecinde ortaya çıkabilecek regülasyon ve uyum risklerine dikkat çekmektedir. Küresel otoritelerin yeni nesil standartları belirleme çabası, pazardaki rekabet dengelerini yeniden şekillendirmektedir.\n\nÖzetle; saas & bulut yazılımları başlığında gerçekleşen bu stratejik atılım, orta ve uzun vadeli yatırım kararlarını doğrudan etkileyecek güce sahiptir. WebdeHepSeek Journal, analitik raporları ve anlık veri akışlarıyla okurlarına rehberlik etmeye devam edecektir.",
     "sections": [
@@ -1206,7 +1491,7 @@
     "authorTitle": "Teknoloji & AI Yayın Masası",
     "date": "08 Ekim 2026",
     "readTime": "4 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-24",
     "tags": [
       "SaaS",
@@ -1228,7 +1513,7 @@
     "title": "6G Kablosuz Ağ Protokollerinde Terahertz Frekans Rekoru Kırıldı",
     "summary": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_2 analiz raporunda, teknoloji & dijital dönüşüm alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
     "excerpt": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_2 analiz raporunda, teknoloji & dijital dönüşüm alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
-    "category": "Teknoloji & Dijital Dönüşüm",
+    "category": "Finans & Küresel Piyasalar",
     "subcategory": "Piyasa & Teknoloji Raporları",
     "content": "Teknoloji ve mobilite dünyasında teknoloji & dijital dönüşüm alanında gerçekleşen son gelişmeler, kullanıcı deneyimini ve endüstriyel standartları üst seviyeye taşımaktadır. Yapılan saha testleri verimlilikte belirgin bir artış göstermektedir.\n\nŞirketlerin teknoloji & dijital dönüşüm yatırımları, yerel ve küresel pazarlardaki rekabet avantajını doğrudan etkilemektedir. Önümüzdeki günlerde pazara sunulacak yeni çözümler rekabeti kızıştıracaktır.\n\nGelişmelerin hızı, sektörün dijital dönüşüm takvimini öne çekmiştir. WebdeHepSeek Yayın Grubu, gelişmeleri anlık olarak takip etmektedir.",
     "sections": [
@@ -1252,7 +1537,7 @@
     "authorTitle": "Teknoloji & AI Yayın Masası",
     "date": "08 Ekim 2026",
     "readTime": "3 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-25",
     "tags": [
       "Teknoloji",
@@ -1267,7 +1552,7 @@
     "title": "Endüstri 5.0 ve Akıllı Fabrikalar: İnsan-Robot Hibrit Dönemi",
     "summary": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_2 analiz raporunda, teknoloji & dijital dönüşüm alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
     "excerpt": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_2 analiz raporunda, teknoloji & dijital dönüşüm alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
-    "category": "Teknoloji & Dijital Dönüşüm",
+    "category": "Finans & Küresel Piyasalar",
     "subcategory": "Piyasa & Teknoloji Raporları",
     "content": "Teknoloji ve mobilite dünyasında teknoloji & dijital dönüşüm alanında gerçekleşen son gelişmeler, kullanıcı deneyimini ve endüstriyel standartları üst seviyeye taşımaktadır. Yapılan saha testleri verimlilikte belirgin bir artış göstermektedir.\n\nŞirketlerin teknoloji & dijital dönüşüm yatırımları, yerel ve küresel pazarlardaki rekabet avantajını doğrudan etkilemektedir. Önümüzdeki günlerde pazara sunulacak yeni çözümler rekabeti kızıştıracaktır.\n\nGelişmelerin hızı, sektörün dijital dönüşüm takvimini öne çekmiştir. WebdeHepSeek Yayın Grubu, gelişmeleri anlık olarak takip etmektedir.",
     "sections": [
@@ -1291,7 +1576,7 @@
     "authorTitle": "Teknoloji & AI Yayın Masası",
     "date": "08 Ekim 2026",
     "readTime": "3 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-26",
     "tags": [
       "Teknoloji",
@@ -1306,7 +1591,7 @@
     "title": "SaaS Yazılımlarında Yapay Zeka Entegrasyonları Hız Kesmiyor",
     "summary": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_2 analiz raporunda, teknoloji & dijital dönüşüm alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
     "excerpt": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_2 analiz raporunda, teknoloji & dijital dönüşüm alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
-    "category": "Teknoloji & Dijital Dönüşüm",
+    "category": "Yapay Zeka & LLM",
     "subcategory": "Piyasa & Teknoloji Raporları",
     "content": "Teknoloji ve mobilite dünyasında teknoloji & dijital dönüşüm alanında gerçekleşen son gelişmeler, kullanıcı deneyimini ve endüstriyel standartları üst seviyeye taşımaktadır. Yapılan saha testleri verimlilikte belirgin bir artış göstermektedir.\n\nŞirketlerin teknoloji & dijital dönüşüm yatırımları, yerel ve küresel pazarlardaki rekabet avantajını doğrudan etkilemektedir. Önümüzdeki günlerde pazara sunulacak yeni çözümler rekabeti kızıştıracaktır.\n\nGelişmelerin hızı, sektörün dijital dönüşüm takvimini öne çekmiştir. WebdeHepSeek Yayın Grubu, gelişmeleri anlık olarak takip etmektedir.",
     "sections": [
@@ -1330,7 +1615,7 @@
     "authorTitle": "Teknoloji & AI Yayın Masası",
     "date": "08 Ekim 2026",
     "readTime": "3 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-27",
     "tags": [
       "Teknoloji",
@@ -1345,7 +1630,7 @@
     "title": "Küresel Çip Üretiminde Kuantum Sınırı Aşıldı: Altyapılar Yenileniyor",
     "summary": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_2 analiz raporunda, teknoloji & dijital dönüşüm alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
     "excerpt": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_2 analiz raporunda, teknoloji & dijital dönüşüm alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
-    "category": "Teknoloji & Dijital Dönüşüm",
+    "category": "Finans & Küresel Piyasalar",
     "subcategory": "Piyasa & Teknoloji Raporları",
     "content": "Teknoloji ve mobilite dünyasında teknoloji & dijital dönüşüm alanında gerçekleşen son gelişmeler, kullanıcı deneyimini ve endüstriyel standartları üst seviyeye taşımaktadır. Yapılan saha testleri verimlilikte belirgin bir artış göstermektedir.\n\nŞirketlerin teknoloji & dijital dönüşüm yatırımları, yerel ve küresel pazarlardaki rekabet avantajını doğrudan etkilemektedir. Önümüzdeki günlerde pazara sunulacak yeni çözümler rekabeti kızıştıracaktır.\n\nGelişmelerin hızı, sektörün dijital dönüşüm takvimini öne çekmiştir. WebdeHepSeek Yayın Grubu, gelişmeleri anlık olarak takip etmektedir.",
     "sections": [
@@ -1369,7 +1654,7 @@
     "authorTitle": "Teknoloji & AI Yayın Masası",
     "date": "08 Ekim 2026",
     "readTime": "3 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-28",
     "tags": [
       "Teknoloji",
@@ -1384,7 +1669,7 @@
     "title": "Bulut Sunucu Güvenliği ve Otomatik Tehdit Tespit Sistemleri",
     "summary": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_2 analiz raporunda, siber güvenlik & veri koruma alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
     "excerpt": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_2 analiz raporunda, siber güvenlik & veri koruma alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
-    "category": "Siber Güvenlik & Veri Koruma",
+    "category": "SaaS & Yazılım",
     "subcategory": "Siber Güvenlik & Koruma",
     "content": "Teknoloji ve mobilite dünyasında siber güvenlik & veri koruma alanında gerçekleşen son gelişmeler, kullanıcı deneyimini ve endüstriyel standartları üst seviyeye taşımaktadır. Yapılan saha testleri verimlilikte belirgin bir artış göstermektedir.\n\nŞirketlerin siber güvenlik & veri koruma yatırımları, yerel ve küresel pazarlardaki rekabet avantajını doğrudan etkilemektedir. Önümüzdeki günlerde pazara sunulacak yeni çözümler rekabeti kızıştıracaktır.\n\nGelişmelerin hızı, sektörün dijital dönüşüm takvimini öne çekmiştir. WebdeHepSeek Yayın Grubu, gelişmeleri anlık olarak takip etmektedir.",
     "sections": [
@@ -1408,7 +1693,7 @@
     "authorTitle": "Teknoloji & AI Yayın Masası",
     "date": "08 Ekim 2026",
     "readTime": "3 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1510511459019-5dda7724fd87?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-29",
     "tags": [
       "Siber",
@@ -1423,7 +1708,7 @@
     "title": "Post-Kuantum Şifreleme Standartları Finansal Ağlara Entegre Ediliyor",
     "summary": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_2 analiz raporunda, siber güvenlik & veri koruma alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
     "excerpt": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_2 analiz raporunda, siber güvenlik & veri koruma alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
-    "category": "Siber Güvenlik & Veri Koruma",
+    "category": "Finans & Küresel Piyasalar",
     "subcategory": "Siber Güvenlik & Koruma",
     "content": "Teknoloji ve mobilite dünyasında siber güvenlik & veri koruma alanında gerçekleşen son gelişmeler, kullanıcı deneyimini ve endüstriyel standartları üst seviyeye taşımaktadır. Yapılan saha testleri verimlilikte belirgin bir artış göstermektedir.\n\nŞirketlerin siber güvenlik & veri koruma yatırımları, yerel ve küresel pazarlardaki rekabet avantajını doğrudan etkilemektedir. Önümüzdeki günlerde pazara sunulacak yeni çözümler rekabeti kızıştıracaktır.\n\nGelişmelerin hızı, sektörün dijital dönüşüm takvimini öne çekmiştir. WebdeHepSeek Yayın Grubu, gelişmeleri anlık olarak takip etmektedir.",
     "sections": [
@@ -1447,7 +1732,7 @@
     "authorTitle": "Teknoloji & AI Yayın Masası",
     "date": "08 Ekim 2026",
     "readTime": "3 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-30",
     "tags": [
       "Siber",
@@ -1462,7 +1747,7 @@
     "title": "Sıfır Güven (Zero Trust) Mimarilerinde Kurumsal Güvenlik Trendleri",
     "summary": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_2 analiz raporunda, siber güvenlik & veri koruma alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
     "excerpt": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_2 analiz raporunda, siber güvenlik & veri koruma alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
-    "category": "Siber Güvenlik & Veri Koruma",
+    "category": "SaaS & Yazılım",
     "subcategory": "Siber Güvenlik & Koruma",
     "content": "Teknoloji ve mobilite dünyasında siber güvenlik & veri koruma alanında gerçekleşen son gelişmeler, kullanıcı deneyimini ve endüstriyel standartları üst seviyeye taşımaktadır. Yapılan saha testleri verimlilikte belirgin bir artış göstermektedir.\n\nŞirketlerin siber güvenlik & veri koruma yatırımları, yerel ve küresel pazarlardaki rekabet avantajını doğrudan etkilemektedir. Önümüzdeki günlerde pazara sunulacak yeni çözümler rekabeti kızıştıracaktır.\n\nGelişmelerin hızı, sektörün dijital dönüşüm takvimini öne çekmiştir. WebdeHepSeek Yayın Grubu, gelişmeleri anlık olarak takip etmektedir.",
     "sections": [
@@ -1486,7 +1771,7 @@
     "authorTitle": "Teknoloji & AI Yayın Masası",
     "date": "08 Ekim 2026",
     "readTime": "3 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-31",
     "tags": [
       "Siber",
@@ -1501,7 +1786,7 @@
     "title": "Bulut Sunucu Güvenliği ve Otomatik Tehdit Tespit Sistemleri",
     "summary": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_2 analiz raporunda, siber güvenlik & veri koruma alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
     "excerpt": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_2 analiz raporunda, siber güvenlik & veri koruma alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
-    "category": "Siber Güvenlik & Veri Koruma",
+    "category": "SaaS & Yazılım",
     "subcategory": "Siber Güvenlik & Koruma",
     "content": "Teknoloji ve mobilite dünyasında siber güvenlik & veri koruma alanında gerçekleşen son gelişmeler, kullanıcı deneyimini ve endüstriyel standartları üst seviyeye taşımaktadır. Yapılan saha testleri verimlilikte belirgin bir artış göstermektedir.\n\nŞirketlerin siber güvenlik & veri koruma yatırımları, yerel ve küresel pazarlardaki rekabet avantajını doğrudan etkilemektedir. Önümüzdeki günlerde pazara sunulacak yeni çözümler rekabeti kızıştıracaktır.\n\nGelişmelerin hızı, sektörün dijital dönüşüm takvimini öne çekmiştir. WebdeHepSeek Yayın Grubu, gelişmeleri anlık olarak takip etmektedir.",
     "sections": [
@@ -1525,7 +1810,7 @@
     "authorTitle": "Teknoloji & AI Yayın Masası",
     "date": "08 Ekim 2026",
     "readTime": "3 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-32",
     "tags": [
       "Siber",
@@ -1564,7 +1849,7 @@
     "authorTitle": "Otomotiv & Sektör Analiz Servisi",
     "date": "08 Ekim 2026",
     "readTime": "3 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-33",
     "tags": [
       "Otomotiv",
@@ -1603,7 +1888,7 @@
     "authorTitle": "Otomotiv & Sektör Analiz Servisi",
     "date": "08 Ekim 2026",
     "readTime": "3 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-34",
     "tags": [
       "Otomotiv",
@@ -1642,7 +1927,7 @@
     "authorTitle": "Otomotiv & Sektör Analiz Servisi",
     "date": "08 Ekim 2026",
     "readTime": "3 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-35",
     "tags": [
       "Otomotiv",
@@ -1681,7 +1966,7 @@
     "authorTitle": "Otomotiv & Sektör Analiz Servisi",
     "date": "08 Ekim 2026",
     "readTime": "3 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-36",
     "tags": [
       "Otomotiv",
@@ -1696,7 +1981,7 @@
     "title": "Unicorn Adayı Yerli Girişimler Küresel Pazara Açılıyor",
     "summary": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_2 analiz raporunda, girişimcilik & startup alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
     "excerpt": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_2 analiz raporunda, girişimcilik & startup alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
-    "category": "Girişimcilik & Startup",
+    "category": "Finans & Küresel Piyasalar",
     "subcategory": "Girişim Sermayesi & Yatırım",
     "content": "Teknoloji ve mobilite dünyasında girişimcilik & startup alanında gerçekleşen son gelişmeler, kullanıcı deneyimini ve endüstriyel standartları üst seviyeye taşımaktadır. Yapılan saha testleri verimlilikte belirgin bir artış göstermektedir.\n\nŞirketlerin girişimcilik & startup yatırımları, yerel ve küresel pazarlardaki rekabet avantajını doğrudan etkilemektedir. Önümüzdeki günlerde pazara sunulacak yeni çözümler rekabeti kızıştıracaktır.\n\nGelişmelerin hızı, sektörün dijital dönüşüm takvimini öne çekmiştir. WebdeHepSeek Yayın Grubu, gelişmeleri anlık olarak takip etmektedir.",
     "sections": [
@@ -1720,7 +2005,7 @@
     "authorTitle": "Editoryal Yayın Kurulu",
     "date": "08 Ekim 2026",
     "readTime": "3 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-37",
     "tags": [
       "Girişimcilik",
@@ -1735,7 +2020,7 @@
     "title": "Startup Kuluçka Merkezleri ve Melek Yatırımcı Ağları Raporu",
     "summary": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_2 analiz raporunda, girişimcilik & startup alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
     "excerpt": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_2 analiz raporunda, girişimcilik & startup alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
-    "category": "Girişimcilik & Startup",
+    "category": "Finans & Küresel Piyasalar",
     "subcategory": "Girişim Sermayesi & Yatırım",
     "content": "Teknoloji ve mobilite dünyasında girişimcilik & startup alanında gerçekleşen son gelişmeler, kullanıcı deneyimini ve endüstriyel standartları üst seviyeye taşımaktadır. Yapılan saha testleri verimlilikte belirgin bir artış göstermektedir.\n\nŞirketlerin girişimcilik & startup yatırımları, yerel ve küresel pazarlardaki rekabet avantajını doğrudan etkilemektedir. Önümüzdeki günlerde pazara sunulacak yeni çözümler rekabeti kızıştıracaktır.\n\nGelişmelerin hızı, sektörün dijital dönüşüm takvimini öne çekmiştir. WebdeHepSeek Yayın Grubu, gelişmeleri anlık olarak takip etmektedir.",
     "sections": [
@@ -1759,7 +2044,7 @@
     "authorTitle": "Editoryal Yayın Kurulu",
     "date": "08 Ekim 2026",
     "readTime": "3 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-38",
     "tags": [
       "Girişimcilik",
@@ -1774,7 +2059,7 @@
     "title": "Girişim Sermayesi (VC) Fonlarında Teknolojiye Rekor Yatırım Hacmi",
     "summary": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_2 analiz raporunda, girişimcilik & startup alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
     "excerpt": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_2 analiz raporunda, girişimcilik & startup alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
-    "category": "Girişimcilik & Startup",
+    "category": "Finans & Küresel Piyasalar",
     "subcategory": "Girişim Sermayesi & Yatırım",
     "content": "Teknoloji ve mobilite dünyasında girişimcilik & startup alanında gerçekleşen son gelişmeler, kullanıcı deneyimini ve endüstriyel standartları üst seviyeye taşımaktadır. Yapılan saha testleri verimlilikte belirgin bir artış göstermektedir.\n\nŞirketlerin girişimcilik & startup yatırımları, yerel ve küresel pazarlardaki rekabet avantajını doğrudan etkilemektedir. Önümüzdeki günlerde pazara sunulacak yeni çözümler rekabeti kızıştıracaktır.\n\nGelişmelerin hızı, sektörün dijital dönüşüm takvimini öne çekmiştir. WebdeHepSeek Yayın Grubu, gelişmeleri anlık olarak takip etmektedir.",
     "sections": [
@@ -1798,7 +2083,7 @@
     "authorTitle": "Editoryal Yayın Kurulu",
     "date": "08 Ekim 2026",
     "readTime": "3 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-39",
     "tags": [
       "Girişimcilik",
@@ -1813,7 +2098,7 @@
     "title": "Unicorn Adayı Yerli Girişimler Küresel Pazara Açılıyor",
     "summary": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_2 analiz raporunda, girişimcilik & startup alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
     "excerpt": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_2 analiz raporunda, girişimcilik & startup alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
-    "category": "Girişimcilik & Startup",
+    "category": "Finans & Küresel Piyasalar",
     "subcategory": "Girişim Sermayesi & Yatırım",
     "content": "Teknoloji ve mobilite dünyasında girişimcilik & startup alanında gerçekleşen son gelişmeler, kullanıcı deneyimini ve endüstriyel standartları üst seviyeye taşımaktadır. Yapılan saha testleri verimlilikte belirgin bir artış göstermektedir.\n\nŞirketlerin girişimcilik & startup yatırımları, yerel ve küresel pazarlardaki rekabet avantajını doğrudan etkilemektedir. Önümüzdeki günlerde pazara sunulacak yeni çözümler rekabeti kızıştıracaktır.\n\nGelişmelerin hızı, sektörün dijital dönüşüm takvimini öne çekmiştir. WebdeHepSeek Yayın Grubu, gelişmeleri anlık olarak takip etmektedir.",
     "sections": [
@@ -1837,7 +2122,7 @@
     "authorTitle": "Editoryal Yayın Kurulu",
     "date": "08 Ekim 2026",
     "readTime": "3 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-40",
     "tags": [
       "Girişimcilik",
@@ -1852,14 +2137,14 @@
     "title": "Dijital Sağlık Takip Sistemleri ve Giyilebilir Teknoloji Trendleri",
     "summary": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_3 analiz raporunda, yaşam & sağlık alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
     "excerpt": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_3 analiz raporunda, yaşam & sağlık alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
-    "category": "Yaşam & Sağlık",
+    "category": "Donanım & Çipler",
     "subcategory": "Biyoteknoloji & Tıp",
-    "content": "Yaşam & Sağlık alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir.\n\nUzmanlar, yaşam & sağlık konusundaki yeniliklerin kısa sürede günlük hayata entegre olacağını öngörmektedir.",
+    "content": "Teknoloji & Dijital Dönüşüm alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir.\n\nUzmanlar, yaşam & sağlık konusundaki yeniliklerin kısa sürede günlük hayata entegre olacağını öngörmektedir.",
     "sections": [
       {
         "id": "sec-42-1",
         "heading": "1. Özet Gelişmeler ve Saha Verileri",
-        "body": "Yaşam & Sağlık alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir."
+        "body": "Teknoloji & Dijital Dönüşüm alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir."
       },
       {
         "id": "sec-42-2",
@@ -1871,7 +2156,7 @@
     "authorTitle": "Editoryal Yayın Kurulu",
     "date": "08 Ekim 2026",
     "readTime": "3 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1510017803434-a899398421b3?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-41",
     "tags": [
       "Yaşam",
@@ -1886,14 +2171,14 @@
     "title": "Biyoteknoloji ve Gen Tedavisinde Kişiselleştirilmiş Tıp Devrimi",
     "summary": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_3 analiz raporunda, yaşam & sağlık alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
     "excerpt": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_3 analiz raporunda, yaşam & sağlık alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
-    "category": "Yaşam & Sağlık",
+    "category": "Donanım & Çipler",
     "subcategory": "Biyoteknoloji & Tıp",
-    "content": "Yaşam & Sağlık alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir.\n\nUzmanlar, yaşam & sağlık konusundaki yeniliklerin kısa sürede günlük hayata entegre olacağını öngörmektedir.",
+    "content": "Teknoloji & Dijital Dönüşüm alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir.\n\nUzmanlar, yaşam & sağlık konusundaki yeniliklerin kısa sürede günlük hayata entegre olacağını öngörmektedir.",
     "sections": [
       {
         "id": "sec-43-1",
         "heading": "1. Özet Gelişmeler ve Saha Verileri",
-        "body": "Yaşam & Sağlık alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir."
+        "body": "Teknoloji & Dijital Dönüşüm alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir."
       },
       {
         "id": "sec-43-2",
@@ -1905,7 +2190,7 @@
     "authorTitle": "Editoryal Yayın Kurulu",
     "date": "08 Ekim 2026",
     "readTime": "3 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-42",
     "tags": [
       "Yaşam",
@@ -1920,14 +2205,14 @@
     "title": "Kuantum Fizik Deneylerinde Süper İletkenlik Rekoru Kırıldı",
     "summary": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_3 analiz raporunda, bilim & uzay alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
     "excerpt": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_3 analiz raporunda, bilim & uzay alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
-    "category": "Bilim & Uzay",
+    "category": "Donanım & Çipler",
     "subcategory": "Kuantum & Uzay",
-    "content": "Bilim & Uzay alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir.\n\nUzmanlar, bilim & uzay konusundaki yeniliklerin kısa sürede günlük hayata entegre olacağını öngörmektedir.",
+    "content": "Savunma Sanayi & Havacılık alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir.\n\nUzmanlar, bilim & uzay konusundaki yeniliklerin kısa sürede günlük hayata entegre olacağını öngörmektedir.",
     "sections": [
       {
         "id": "sec-44-1",
         "heading": "1. Özet Gelişmeler ve Saha Verileri",
-        "body": "Bilim & Uzay alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir."
+        "body": "Savunma Sanayi & Havacılık alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir."
       },
       {
         "id": "sec-44-2",
@@ -1939,7 +2224,7 @@
     "authorTitle": "Editoryal Yayın Kurulu",
     "date": "08 Ekim 2026",
     "readTime": "3 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-43",
     "tags": [
       "Bilim",
@@ -1954,14 +2239,14 @@
     "title": "Derin Uzay Teleskoplarından Gelen Yeni Verilerle Evrenin Yaşı Tartışılıyor",
     "summary": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_3 analiz raporunda, bilim & uzay alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
     "excerpt": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_3 analiz raporunda, bilim & uzay alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
-    "category": "Bilim & Uzay",
+    "category": "Donanım & Çipler",
     "subcategory": "Kuantum & Uzay",
-    "content": "Bilim & Uzay alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir.\n\nUzmanlar, bilim & uzay konusundaki yeniliklerin kısa sürede günlük hayata entegre olacağını öngörmektedir.",
+    "content": "Savunma Sanayi & Havacılık alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir.\n\nUzmanlar, bilim & uzay konusundaki yeniliklerin kısa sürede günlük hayata entegre olacağını öngörmektedir.",
     "sections": [
       {
         "id": "sec-45-1",
         "heading": "1. Özet Gelişmeler ve Saha Verileri",
-        "body": "Bilim & Uzay alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir."
+        "body": "Savunma Sanayi & Havacılık alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir."
       },
       {
         "id": "sec-45-2",
@@ -1973,7 +2258,7 @@
     "authorTitle": "Editoryal Yayın Kurulu",
     "date": "08 Ekim 2026",
     "readTime": "3 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-44",
     "tags": [
       "Bilim",
@@ -1988,14 +2273,14 @@
     "title": "Uzaktan Çalışma ve Hibrit Ofis Kültüründe Performans Yönetimi",
     "summary": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_3 analiz raporunda, eğitim & kariyer alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
     "excerpt": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_3 analiz raporunda, eğitim & kariyer alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
-    "category": "Eğitim & Kariyer",
+    "category": "SaaS & Yazılım",
     "subcategory": "Kariyer & Eğitim",
-    "content": "Eğitim & Kariyer alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir.\n\nUzmanlar, eğitim & kariyer konusundaki yeniliklerin kısa sürede günlük hayata entegre olacağını öngörmektedir.",
+    "content": "SaaS & Yazılım alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir.\n\nUzmanlar, eğitim & kariyer konusundaki yeniliklerin kısa sürede günlük hayata entegre olacağını öngörmektedir.",
     "sections": [
       {
         "id": "sec-46-1",
         "heading": "1. Özet Gelişmeler ve Saha Verileri",
-        "body": "Eğitim & Kariyer alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir."
+        "body": "SaaS & Yazılım alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir."
       },
       {
         "id": "sec-46-2",
@@ -2007,7 +2292,7 @@
     "authorTitle": "Editoryal Yayın Kurulu",
     "date": "08 Ekim 2026",
     "readTime": "3 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-45",
     "tags": [
       "Eğitim",
@@ -2022,14 +2307,14 @@
     "title": "Geleceğin Meslekleri Raporu: Yapay Zeka ve Veri Mühendisliği Ön Planda",
     "summary": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_3 analiz raporunda, eğitim & kariyer alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
     "excerpt": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_3 analiz raporunda, eğitim & kariyer alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
-    "category": "Eğitim & Kariyer",
+    "category": "Yapay Zeka & LLM",
     "subcategory": "Kariyer & Eğitim",
-    "content": "Eğitim & Kariyer alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir.\n\nUzmanlar, eğitim & kariyer konusundaki yeniliklerin kısa sürede günlük hayata entegre olacağını öngörmektedir.",
+    "content": "SaaS & Yazılım alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir.\n\nUzmanlar, eğitim & kariyer konusundaki yeniliklerin kısa sürede günlük hayata entegre olacağını öngörmektedir.",
     "sections": [
       {
         "id": "sec-47-1",
         "heading": "1. Özet Gelişmeler ve Saha Verileri",
-        "body": "Eğitim & Kariyer alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir."
+        "body": "SaaS & Yazılım alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir."
       },
       {
         "id": "sec-47-2",
@@ -2041,7 +2326,7 @@
     "authorTitle": "Editoryal Yayın Kurulu",
     "date": "08 Ekim 2026",
     "readTime": "3 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-46",
     "tags": [
       "Eğitim",
@@ -2056,14 +2341,14 @@
     "title": "Bireysel Emeklilik ve Fon Seçimi Stratejileri",
     "summary": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_3 analiz raporunda, kişisel finans alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
     "excerpt": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_3 analiz raporunda, kişisel finans alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
-    "category": "Kişisel Finans",
+    "category": "Finans & Küresel Piyasalar",
     "subcategory": "Bireysel Yatırım & Portföy",
-    "content": "Kişisel Finans alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir.\n\nUzmanlar, kişisel finans konusundaki yeniliklerin kısa sürede günlük hayata entegre olacağını öngörmektedir.",
+    "content": "Finans & Küresel Piyasalar alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir.\n\nUzmanlar, kişisel finans konusundaki yeniliklerin kısa sürede günlük hayata entegre olacağını öngörmektedir.",
     "sections": [
       {
         "id": "sec-48-1",
         "heading": "1. Özet Gelişmeler ve Saha Verileri",
-        "body": "Kişisel Finans alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir."
+        "body": "Finans & Küresel Piyasalar alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir."
       },
       {
         "id": "sec-48-2",
@@ -2075,7 +2360,7 @@
     "authorTitle": "Makro Finans & Analiz Servisi",
     "date": "08 Ekim 2026",
     "readTime": "3 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-47",
     "tags": [
       "Kişisel",
@@ -2090,14 +2375,14 @@
     "title": "Enflasyona Karşı Birikimleri Koruma Rehberi: Portföy Çeşitlendirmesi",
     "summary": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_3 analiz raporunda, kişisel finans alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
     "excerpt": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_3 analiz raporunda, kişisel finans alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
-    "category": "Kişisel Finans",
+    "category": "Finans & Küresel Piyasalar",
     "subcategory": "Bireysel Yatırım & Portföy",
-    "content": "Kişisel Finans alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir.\n\nUzmanlar, kişisel finans konusundaki yeniliklerin kısa sürede günlük hayata entegre olacağını öngörmektedir.",
+    "content": "Finans & Küresel Piyasalar alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir.\n\nUzmanlar, kişisel finans konusundaki yeniliklerin kısa sürede günlük hayata entegre olacağını öngörmektedir.",
     "sections": [
       {
         "id": "sec-49-1",
         "heading": "1. Özet Gelişmeler ve Saha Verileri",
-        "body": "Kişisel Finans alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir."
+        "body": "Finans & Küresel Piyasalar alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir."
       },
       {
         "id": "sec-49-2",
@@ -2109,7 +2394,7 @@
     "authorTitle": "Makro Finans & Analiz Servisi",
     "date": "08 Ekim 2026",
     "readTime": "3 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-48",
     "tags": [
       "Kişisel",
@@ -2124,14 +2409,14 @@
     "title": "6G Kablosuz Ağ Protokollerinde Terahertz Frekans Rekoru Kırıldı",
     "summary": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_3 analiz raporunda, siyaset & jeopolitik alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
     "excerpt": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_3 analiz raporunda, siyaset & jeopolitik alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
-    "category": "Siyaset & Jeopolitik",
+    "category": "Donanım & Çipler",
     "subcategory": "Jeopolitik & Ekonomi",
-    "content": "Siyaset & Jeopolitik alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir.\n\nUzmanlar, siyaset & jeopolitik konusundaki yeniliklerin kısa sürede günlük hayata entegre olacağını öngörmektedir.",
+    "content": "Savunma Sanayi & Havacılık alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir.\n\nUzmanlar, siyaset & jeopolitik konusundaki yeniliklerin kısa sürede günlük hayata entegre olacağını öngörmektedir.",
     "sections": [
       {
         "id": "sec-50-1",
         "heading": "1. Özet Gelişmeler ve Saha Verileri",
-        "body": "Siyaset & Jeopolitik alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir."
+        "body": "Savunma Sanayi & Havacılık alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir."
       },
       {
         "id": "sec-50-2",
@@ -2143,7 +2428,7 @@
     "authorTitle": "Editoryal Yayın Kurulu",
     "date": "08 Ekim 2026",
     "readTime": "3 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1517976487492-5750f3195933?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-49",
     "tags": [
       "Siyaset",
@@ -2158,14 +2443,14 @@
     "title": "Endüstri 5.0 ve Akıllı Fabrikalar: İnsan-Robot Hibrit Dönemi",
     "summary": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_3 analiz raporunda, siyaset & jeopolitik alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
     "excerpt": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_3 analiz raporunda, siyaset & jeopolitik alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
-    "category": "Siyaset & Jeopolitik",
+    "category": "Donanım & Çipler",
     "subcategory": "Jeopolitik & Ekonomi",
-    "content": "Siyaset & Jeopolitik alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir.\n\nUzmanlar, siyaset & jeopolitik konusundaki yeniliklerin kısa sürede günlük hayata entegre olacağını öngörmektedir.",
+    "content": "Savunma Sanayi & Havacılık alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir.\n\nUzmanlar, siyaset & jeopolitik konusundaki yeniliklerin kısa sürede günlük hayata entegre olacağını öngörmektedir.",
     "sections": [
       {
         "id": "sec-51-1",
         "heading": "1. Özet Gelişmeler ve Saha Verileri",
-        "body": "Siyaset & Jeopolitik alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir."
+        "body": "Savunma Sanayi & Havacılık alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir."
       },
       {
         "id": "sec-51-2",
@@ -2177,7 +2462,7 @@
     "authorTitle": "Editoryal Yayın Kurulu",
     "date": "08 Ekim 2026",
     "readTime": "3 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-50",
     "tags": [
       "Siyaset",
@@ -2192,14 +2477,14 @@
     "title": "SaaS Yazılımlarında Yapay Zeka Entegrasyonları Hız Kesmiyor",
     "summary": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_3 analiz raporunda, emlak & gayrimenkul alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
     "excerpt": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_3 analiz raporunda, emlak & gayrimenkul alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
-    "category": "Emlak & Gayrimenkul",
+    "category": "Yapay Zeka & LLM",
     "subcategory": "Emlak Piyasası & Yatırım",
-    "content": "Emlak & Gayrimenkul alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir.\n\nUzmanlar, emlak & gayrimenkul konusundaki yeniliklerin kısa sürede günlük hayata entegre olacağını öngörmektedir.",
+    "content": "Finans & Küresel Piyasalar alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir.\n\nUzmanlar, emlak & gayrimenkul konusundaki yeniliklerin kısa sürede günlük hayata entegre olacağını öngörmektedir.",
     "sections": [
       {
         "id": "sec-52-1",
         "heading": "1. Özet Gelişmeler ve Saha Verileri",
-        "body": "Emlak & Gayrimenkul alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir."
+        "body": "Finans & Küresel Piyasalar alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir."
       },
       {
         "id": "sec-52-2",
@@ -2211,7 +2496,7 @@
     "authorTitle": "Makro Finans & Analiz Servisi",
     "date": "08 Ekim 2026",
     "readTime": "3 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-51",
     "tags": [
       "Emlak",
@@ -2226,14 +2511,14 @@
     "title": "Küresel Çip Üretiminde Kuantum Sınırı Aşıldı: Altyapılar Yenileniyor",
     "summary": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_3 analiz raporunda, emlak & gayrimenkul alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
     "excerpt": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_3 analiz raporunda, emlak & gayrimenkul alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
-    "category": "Emlak & Gayrimenkul",
+    "category": "Finans & Küresel Piyasalar",
     "subcategory": "Emlak Piyasası & Yatırım",
-    "content": "Emlak & Gayrimenkul alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir.\n\nUzmanlar, emlak & gayrimenkul konusundaki yeniliklerin kısa sürede günlük hayata entegre olacağını öngörmektedir.",
+    "content": "Finans & Küresel Piyasalar alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir.\n\nUzmanlar, emlak & gayrimenkul konusundaki yeniliklerin kısa sürede günlük hayata entegre olacağını öngörmektedir.",
     "sections": [
       {
         "id": "sec-53-1",
         "heading": "1. Özet Gelişmeler ve Saha Verileri",
-        "body": "Emlak & Gayrimenkul alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir."
+        "body": "Finans & Küresel Piyasalar alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir."
       },
       {
         "id": "sec-53-2",
@@ -2245,7 +2530,7 @@
     "authorTitle": "Makro Finans & Analiz Servisi",
     "date": "08 Ekim 2026",
     "readTime": "3 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1562813733-b31f71025d54?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-52",
     "tags": [
       "Emlak",
@@ -2260,14 +2545,14 @@
     "title": "6G Kablosuz Ağ Protokollerinde Terahertz Frekans Rekoru Kırıldı",
     "summary": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_3 analiz raporunda, ai araç rehberi alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
     "excerpt": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_3 analiz raporunda, ai araç rehberi alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
-    "category": "AI Araç Rehberi",
+    "category": "Yapay Zeka & LLM",
     "subcategory": "AI Araçları & İpuçları",
-    "content": "AI Araç Rehberi alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir.\n\nUzmanlar, ai araç rehberi konusundaki yeniliklerin kısa sürede günlük hayata entegre olacağını öngörmektedir.",
+    "content": "Yapay Zeka & Gelecek alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir.\n\nUzmanlar, ai araç rehberi konusundaki yeniliklerin kısa sürede günlük hayata entegre olacağını öngörmektedir.",
     "sections": [
       {
         "id": "sec-54-1",
         "heading": "1. Özet Gelişmeler ve Saha Verileri",
-        "body": "AI Araç Rehberi alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir."
+        "body": "Yapay Zeka & Gelecek alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir."
       },
       {
         "id": "sec-54-2",
@@ -2279,7 +2564,7 @@
     "authorTitle": "Teknoloji & AI Yayın Masası",
     "date": "08 Ekim 2026",
     "readTime": "3 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-53",
     "tags": [
       "AI",
@@ -2294,14 +2579,14 @@
     "title": "Endüstri 5.0 ve Akıllı Fabrikalar: İnsan-Robot Hibrit Dönemi",
     "summary": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_3 analiz raporunda, ai araç rehberi alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
     "excerpt": "WebdeHepSeek Algoritmik Editör Masası tarafından hazırlanan bu TIER_3 analiz raporunda, ai araç rehberi alanında yaşanan en son gelişmeler ve sektörel etkiler 5N1K formatında değerlendirilmektedir.",
-    "category": "AI Araç Rehberi",
+    "category": "Yapay Zeka & LLM",
     "subcategory": "AI Araçları & İpuçları",
-    "content": "AI Araç Rehberi alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir.\n\nUzmanlar, ai araç rehberi konusundaki yeniliklerin kısa sürede günlük hayata entegre olacağını öngörmektedir.",
+    "content": "Yapay Zeka & Gelecek alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir.\n\nUzmanlar, ai araç rehberi konusundaki yeniliklerin kısa sürede günlük hayata entegre olacağını öngörmektedir.",
     "sections": [
       {
         "id": "sec-55-1",
         "heading": "1. Özet Gelişmeler ve Saha Verileri",
-        "body": "AI Araç Rehberi alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir."
+        "body": "Yapay Zeka & Gelecek alanında kaydedilen son güncellemeler, disiplinler arası araştırmalara yeni bir boyut kazandırmaktadır. Konuyla ilgili saha çalışmaları devam etmektedir."
       },
       {
         "id": "sec-55-2",
@@ -2313,7 +2598,7 @@
     "authorTitle": "Teknoloji & AI Yayın Masası",
     "date": "08 Ekim 2026",
     "readTime": "3 dk",
-    "imageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80",
+    "imageUrl": "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=1200&h=675&q=80",
     "canonicalUrl": "https://webdehepseek.com/haber/whs-54",
     "tags": [
       "AI",

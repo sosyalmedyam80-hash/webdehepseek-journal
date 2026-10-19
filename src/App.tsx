@@ -106,13 +106,21 @@ function cn(...inputs: ClassValue[]) {
 }
 
 // Reuters/ShiftDelete style editoryal hiyerarşi yardımcıları
+// Reuters/ShiftDelete style editoryal hiyerarşi yardımcıları
 const getCleanCategoryBadge = (category: string) => {
-  const norm = category.toLowerCase();
-  if (norm.includes('yapay zeka') || norm.includes('ai')) return 'YAPAY ZEKA';
-  if (norm.includes('finans') || norm.includes('kripto') || norm.includes('piyasa') || norm.includes('borsa')) return 'FİNANS';
-  if (norm.includes('otomotiv') || norm.includes('mobilite')) return 'OTOMOTİV';
-  if (norm.includes('enerji') || norm.includes('solar') || norm.includes('ges')) return 'ENERJİ';
-  if (norm.includes('siber') || norm.includes('güvenlik') || norm.includes('yazılım')) return 'TEKNOLOJİ';
+  const norm = (category || '').toLowerCase();
+  if (norm.includes('yapay zeka') || norm.includes('llm') || norm.includes('ai')) return 'YAPAY ZEKA';
+  if (norm.includes('donanım') || norm.includes('çip') || norm.includes('işlemci') || norm.includes('gpu')) return 'DONANIM';
+  if (norm.includes('finans') || norm.includes('piyasa') || norm.includes('borsa')) return 'FİNANS';
+  if (norm.includes('kripto') || norm.includes('web3') || norm.includes('bitcoin')) return 'KRİPTO';
+  if (norm.includes('saas') || norm.includes('yazılım') || norm.includes('kodlama')) return 'YAZILIM';
+  if (norm.includes('otomotiv') || norm.includes('mobilite') || norm.includes('otonom')) return 'OTOMOTİV';
+  if (norm.includes('oyun') || norm.includes('espor')) return 'OYUN & ESPOR';
+  if (norm.includes('sağlık') || norm.includes('yaşam') || norm.includes('biyoteknoloji')) return 'SAĞLIK';
+  if (norm.includes('bilim') || norm.includes('uzay') || norm.includes('roket')) return 'BİLİM & UZAY';
+  if (norm.includes('yeşil enerji') || norm.includes('enerji') || norm.includes('güneş')) return 'YEŞİL ENERJİ';
+  if (norm.includes('girişimcilik') || norm.includes('yatırım') || norm.includes('unicorn')) return 'GİRİŞİMCİLİK';
+  if (norm.includes('e-ticaret') || norm.includes('pazarlama') || norm.includes('ihracat')) return 'E-TİCARET';
   return 'TEKNOLOJİ';
 };
 
@@ -148,29 +156,110 @@ const BACKGROUND_ROUTINES = [
 ];
 
 const DEFAULT_CATEGORY_FALLBACKS: Record<string, string> = {
-  'Teknoloji & Dijital Dönüşüm': 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1200&q=80',
-  'Yapay Zeka & Gelecek': 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80',
-  'Kripto & Web3': 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80',
-  'Finans & Küresel Piyasalar': 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80',
-  'Otomotiv & Otonom Sürüş': 'https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=1200&q=80',
-  'Siber Güvenlik & Veri Koruma': 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80',
-  'SaaS & Bulut Yazılımları': 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80',
-  'Kişisel Finans & Sigorta': 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1200&q=80',
-  'Yapay Zeka Araç Rehberi': 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80',
-  'default': 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80'
+  'Yapay Zeka & LLM': 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&h=675&q=80',
+  'Donanım & Çipler': 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&h=675&q=80',
+  'Finans & Küresel Piyasalar': 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&h=675&q=80',
+  'Kripto & Web3': 'https://images.unsplash.com/photo-1518546305927-5a555bb7020d?auto=format&fit=crop&w=1200&h=675&q=80',
+  'SaaS & Yazılım': 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&h=675&q=80',
+  'Otomotiv & Mobilite': 'https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=1200&h=675&q=80',
+  'Oyun & Espor': 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&h=675&q=80',
+  'Yaşam & Sağlık': 'https://images.unsplash.com/photo-1510017803434-a899398421b3?auto=format&fit=crop&w=1200&h=675&q=80',
+  'Bilim & Uzay': 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&h=675&q=80',
+  'Yeşil Enerji': 'https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&w=1200&h=675&q=80',
+  'Girişimcilik & Yatırım': 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1200&h=675&q=80',
+  'E-Ticaret & Pazarlama': 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&h=675&q=80',
+  'default': 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&h=675&q=80'
+};
+
+// Rule-based image deduplicator to prevent consecutive duplicate images
+const EDITORIAL_IMAGE_POOLS: Record<string, string[]> = {
+  'Yapay Zeka & LLM': [
+    'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&h=675&q=80',
+    'https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=1200&h=675&q=80',
+    'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&h=675&q=80'
+  ],
+  'Donanım & Çipler': [
+    'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&h=675&q=80',
+    'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1200&h=675&q=80',
+    'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=1200&h=675&q=80'
+  ],
+  'Finans & Küresel Piyasalar': [
+    'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&h=675&q=80',
+    'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1200&h=675&q=80',
+    'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=1200&h=675&q=80'
+  ],
+  'Kripto & Web3': [
+    'https://images.unsplash.com/photo-1518546305927-5a555bb7020d?auto=format&fit=crop&w=1200&h=675&q=80',
+    'https://images.unsplash.com/photo-1622979135225-d2ba269bc1bd?auto=format&fit=crop&w=1200&h=675&q=80',
+    'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=1200&h=675&q=80'
+  ],
+  'SaaS & Yazılım': [
+    'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&h=675&q=80',
+    'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&h=675&q=80',
+    'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&h=675&q=80'
+  ],
+  'Otomotiv & Mobilite': [
+    'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1200&h=675&q=80',
+    'https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=1200&h=675&q=80',
+    'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1200&h=675&q=80'
+  ],
+  'Oyun & Espor': [
+    'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&h=675&q=80',
+    'https://images.unsplash.com/photo-1606813907291-d86efa9b94db?auto=format&fit=crop&w=1200&h=675&q=80',
+    'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&h=675&q=80'
+  ],
+  'Yaşam & Sağlık': [
+    'https://images.unsplash.com/photo-1510017803434-a899398421b3?auto=format&fit=crop&w=1200&h=675&q=80',
+    'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=1200&h=675&q=80',
+    'https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?auto=format&fit=crop&w=1200&h=675&q=80'
+  ],
+  'Bilim & Uzay': [
+    'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&h=675&q=80',
+    'https://images.unsplash.com/photo-1517976487492-5750f3195933?auto=format&fit=crop&w=1200&h=675&q=80',
+    'https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&w=1200&h=675&q=80'
+  ],
+  'Yeşil Enerji': [
+    'https://images.unsplash.com/photo-1558441719-670b357024bf?auto=format&fit=crop&w=1200&h=675&q=80',
+    'https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&w=1200&h=675&q=80',
+    'https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1200&h=675&q=80'
+  ],
+  'Girişimcilik & Yatırım': [
+    'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1200&h=675&q=80',
+    'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&h=675&q=80'
+  ],
+  'E-Ticaret & Pazarlama': [
+    'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&h=675&q=80',
+    'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&h=675&q=80'
+  ]
+};
+
+export const uniqueImageSelector = (currentUrl: string, category: string, previousUrl?: string): string => {
+  if (!previousUrl || currentUrl !== previousUrl) {
+    return currentUrl;
+  }
+  const pool = EDITORIAL_IMAGE_POOLS[category] || EDITORIAL_IMAGE_POOLS['SaaS & Yazılım'];
+  const alt = pool.find(url => url !== currentUrl && url !== previousUrl);
+  return alt || pool[0];
 };
 
 interface NewsImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   category?: string;
   fallbackUrl?: string;
+  previousUrl?: string;
 }
 
-function NewsImage({ src, alt, category, fallbackUrl, className, ...props }: NewsImageProps) {
-  const [imgSrc, setImgSrc] = useState<string>(src || '');
+function NewsImage({ src, alt, category, fallbackUrl, previousUrl, className, ...props }: NewsImageProps) {
+  const initialUrl = useMemo(() => {
+    const raw = src || '';
+    return uniqueImageSelector(raw, category || 'default', previousUrl);
+  }, [src, category, previousUrl]);
+
+  const [imgSrc, setImgSrc] = useState<string>(initialUrl);
 
   useEffect(() => {
-    setImgSrc(src || '');
-  }, [src]);
+    const computed = uniqueImageSelector(src || '', category || 'default', previousUrl);
+    setImgSrc(computed);
+  }, [src, category, previousUrl]);
 
   const handleError = () => {
     const fallback = fallbackUrl || (category ? DEFAULT_CATEGORY_FALLBACKS[category] : null) || DEFAULT_CATEGORY_FALLBACKS['default'];
@@ -188,6 +277,73 @@ function NewsImage({ src, alt, category, fallbackUrl, className, ...props }: New
       className={cn("aspect-video object-cover", className)}
       {...props}
     />
+  );
+}
+
+// DONANIMHABER / SHIFTDELETE STİLİ HABER KARTI
+function NewsCard({
+  news,
+  onSelect,
+  bookmarked,
+  onToggleBookmark,
+  getDynamicReadTime
+}: {
+  news: NewsItem;
+  onSelect: (news: NewsItem) => void;
+  bookmarked: boolean;
+  onToggleBookmark: (id: string, e: React.MouseEvent) => void;
+  getDynamicReadTime: (news: NewsItem) => string;
+}) {
+  return (
+    <div
+      onClick={() => onSelect(news)}
+      className="bg-[#111827] border border-slate-800 hover:border-blue-500/80 rounded-2xl p-5 transition-all duration-300 cursor-pointer group flex flex-col justify-between space-y-4 shadow-xl hover:-translate-y-1 relative overflow-hidden"
+    >
+      <div className="space-y-3">
+        {/* Top Image & Overlay Badge */}
+        <div className="w-full aspect-video rounded-xl overflow-hidden relative border border-slate-800">
+          <NewsImage
+            src={news.imageUrl}
+            alt={news.title}
+            category={news.category}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+          <span className="absolute top-2.5 left-2.5 px-2.5 py-1 bg-slate-950/85 backdrop-blur-md text-blue-400 border border-blue-500/30 text-[10px] font-black rounded-lg uppercase tracking-wider shadow-md font-mono">
+            {getCleanCategoryBadge(news.category)}
+          </span>
+          <button
+            onClick={(e) => onToggleBookmark(news.id, e)}
+            className={cn(
+              "absolute top-2.5 right-2.5 p-2 rounded-full backdrop-blur-md transition-all shadow-md",
+              bookmarked ? "bg-blue-600 text-white" : "bg-black/60 text-slate-300 hover:text-white"
+            )}
+            title="Yer İmlerine Ekle"
+          >
+            <Bookmark size={14} />
+          </button>
+        </div>
+
+        {/* Title */}
+        <h4 className="text-lg font-bold text-slate-100 group-hover:text-blue-400 transition-colors leading-snug">
+          {news.title}
+        </h4>
+
+        {/* 2-line Excerpt */}
+        <p className="text-sm text-slate-400 line-clamp-2 leading-relaxed font-sans">
+          {news.excerpt}
+        </p>
+      </div>
+
+      {/* Footer / Editorial Signature */}
+      <div className="pt-3 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400 font-sans">
+        <div className="flex items-center gap-1.5 font-medium">
+          <span className="text-slate-300">WebdeHepSeek Masası</span>
+          <span>•</span>
+          <span>{getDynamicReadTime(news)} okuma</span>
+        </div>
+        <span className="text-[11px] font-mono text-slate-500">{news.date}</span>
+      </div>
+    </div>
   );
 }
 
@@ -218,15 +374,15 @@ function HeroHeadlineSection({ newsList, onSelectArticle, bookmarkedIds, onToggl
   return (
     <section className="space-y-4 my-4">
       {/* Header bar */}
-      <div className="flex items-center justify-between border-b border-[#D4AF37]/30 pb-3">
+      <div className="flex items-center justify-between border-b border-[#2563EB]/30 pb-3">
         <div className="flex items-center gap-2">
-          <span className="w-3 h-3 rounded-full bg-[#D4AF37] animate-pulse" />
+          <span className="w-3 h-3 rounded-full bg-[#2563EB] animate-pulse" />
           <h3 className="text-lg font-serif font-bold text-white uppercase tracking-wider flex items-center gap-2">
             <span>Günün Sıcak Manşetleri & Canlı Analizler</span>
           </h3>
         </div>
-        <div className="flex items-center gap-2 text-xs font-mono text-[#D4AF37]">
-          <span className="hidden sm:inline bg-[#D4AF37]/10 px-2.5 py-1 rounded border border-[#D4AF37]/30">
+        <div className="flex items-center gap-2 text-xs font-mono text-[#2563EB]">
+          <span className="hidden sm:inline bg-[#2563EB]/10 px-2.5 py-1 rounded border border-[#2563EB]/30">
             {activeIndex + 1} / {top5.length} MANŞET
           </span>
         </div>
@@ -239,7 +395,7 @@ function HeroHeadlineSection({ newsList, onSelectArticle, bookmarkedIds, onToggl
         onMouseLeave={() => setIsPaused(false)}
       >
         {/* Left Main Hero Card */}
-        <div className="lg:col-span-7 bg-[#121215] border border-[#D4AF37]/40 hover:border-[#D4AF37] rounded-3xl overflow-hidden shadow-2xl relative group flex flex-col justify-between min-h-[420px] transition-all">
+        <div className="lg:col-span-7 bg-[#111827] border border-[#2563EB]/40 hover:border-[#2563EB] rounded-3xl overflow-hidden shadow-2xl relative group flex flex-col justify-between min-h-[420px] transition-all">
           <div className="relative h-72 sm:h-80 overflow-hidden">
             <NewsImage 
               src={mainArticle.imageUrl} 
@@ -247,14 +403,14 @@ function HeroHeadlineSection({ newsList, onSelectArticle, bookmarkedIds, onToggl
               category={mainArticle.category}
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#121215] via-[#121215]/30 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#111827] via-[#111827]/30 to-transparent" />
             
             {/* Badges & Bookmark */}
             <div className="absolute top-4 left-4 flex items-center gap-2">
-              <span className="px-3 py-1 bg-[#D4AF37] text-black text-xs font-black rounded-lg uppercase tracking-wider shadow-lg">
+              <span className="px-3 py-1 bg-[#2563EB] text-black text-xs font-black rounded-lg uppercase tracking-wider shadow-lg">
                 {getCleanCategoryBadge(mainArticle.category)}
               </span>
-              <span className="px-2.5 py-1 bg-black/70 backdrop-blur-md text-[#D4AF37] text-[10px] font-mono font-bold rounded-lg border border-[#D4AF37]/30">
+              <span className="px-2.5 py-1 bg-black/70 backdrop-blur-md text-[#2563EB] text-[10px] font-mono font-bold rounded-lg border border-[#2563EB]/30">
                 {getMasaImzasi(mainArticle.category)}
               </span>
             </div>
@@ -263,7 +419,7 @@ function HeroHeadlineSection({ newsList, onSelectArticle, bookmarkedIds, onToggl
               onClick={(e) => onToggleBookmark(mainArticle.id, e)}
               className={cn(
                 "absolute top-4 right-4 p-2.5 rounded-full backdrop-blur-md transition-all shadow-md",
-                bookmarkedIds.includes(mainArticle.id) ? "bg-[#D4AF37] text-black" : "bg-black/60 text-white hover:text-[#D4AF37]"
+                bookmarkedIds.includes(mainArticle.id) ? "bg-[#2563EB] text-black" : "bg-black/60 text-white hover:text-[#2563EB]"
               )}
               title="Yer İmlerine Ekle"
             >
@@ -273,14 +429,14 @@ function HeroHeadlineSection({ newsList, onSelectArticle, bookmarkedIds, onToggl
             {/* Slide Navigation Buttons */}
             <button
               onClick={() => setActiveIndex((prev) => (prev - 1 + top5.length) % top5.length)}
-              className="absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/60 hover:bg-[#D4AF37] text-white hover:text-black transition-all border border-white/10 shadow-lg"
+              className="absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/60 hover:bg-[#2563EB] text-white hover:text-black transition-all border border-white/10 shadow-lg"
               title="Önceki Manşet"
             >
               <ChevronLeft size={20} />
             </button>
             <button
               onClick={() => setActiveIndex((prev) => (prev + 1) % top5.length)}
-              className="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/60 hover:bg-[#D4AF37] text-white hover:text-black transition-all border border-white/10 shadow-lg"
+              className="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/60 hover:bg-[#2563EB] text-white hover:text-black transition-all border border-white/10 shadow-lg"
               title="Sonraki Manşet"
             >
               <ChevronRight size={20} />
@@ -293,7 +449,7 @@ function HeroHeadlineSection({ newsList, onSelectArticle, bookmarkedIds, onToggl
             className="p-6 space-y-3 cursor-pointer flex-grow flex flex-col justify-between"
           >
             <div className="space-y-2">
-              <h2 className="text-xl sm:text-2xl font-serif font-bold text-white group-hover:text-[#D4AF37] transition-colors leading-tight">
+              <h2 className="text-xl sm:text-2xl font-serif font-bold text-white group-hover:text-[#2563EB] transition-colors leading-tight">
                 {mainArticle.title}
               </h2>
               <p className="text-xs sm:text-sm text-zinc-300 line-clamp-2 leading-relaxed">
@@ -307,7 +463,7 @@ function HeroHeadlineSection({ newsList, onSelectArticle, bookmarkedIds, onToggl
                 <span className="text-zinc-600">•</span>
                 <span className="text-[11px] font-mono text-zinc-400">{mainArticle.date}</span>
                 <span className="text-zinc-600">•</span>
-                <span className="px-1.5 py-0.5 bg-[#D4AF37]/10 text-[#D4AF37] border border-[#D4AF37]/20 rounded text-[9px] font-mono font-bold shrink-0">{getDynamicReadTime(mainArticle)}</span>
+                <span className="px-1.5 py-0.5 bg-[#2563EB]/10 text-[#2563EB] border border-[#2563EB]/20 rounded text-[9px] font-mono font-bold shrink-0">{getDynamicReadTime(mainArticle)}</span>
               </div>
 
               {/* Slider Dots/Numbers */}
@@ -318,7 +474,7 @@ function HeroHeadlineSection({ newsList, onSelectArticle, bookmarkedIds, onToggl
                     onClick={() => setActiveIndex(idx)}
                     className={cn(
                       "h-2 rounded-full transition-all",
-                      idx === activeIndex ? "bg-[#D4AF37] w-6" : "bg-zinc-700 hover:bg-zinc-500 w-2"
+                      idx === activeIndex ? "bg-[#2563EB] w-6" : "bg-zinc-700 hover:bg-zinc-500 w-2"
                     )}
                     title={`Manşet ${idx + 1}`}
                   />
@@ -341,8 +497,8 @@ function HeroHeadlineSection({ newsList, onSelectArticle, bookmarkedIds, onToggl
                 className={cn(
                   "p-3 rounded-2xl border transition-all cursor-pointer flex items-center gap-3 group relative overflow-hidden",
                   isActive 
-                    ? "bg-[#1c1c24] border-[#D4AF37] shadow-lg ring-1 ring-[#D4AF37]/50" 
-                    : "bg-[#121215] border-zinc-800/80 hover:border-[#D4AF37]/50 hover:bg-[#16161b]"
+                    ? "bg-[#1c1c24] border-[#2563EB] shadow-lg ring-1 ring-[#2563EB]/50" 
+                    : "bg-[#111827] border-zinc-800/80 hover:border-[#2563EB]/50 hover:bg-[#16161b]"
                 )}
               >
                 <div className="relative w-28 h-20 shrink-0 rounded-xl overflow-hidden border border-zinc-800">
@@ -352,14 +508,14 @@ function HeroHeadlineSection({ newsList, onSelectArticle, bookmarkedIds, onToggl
                     category={item.category}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
-                  <span className="absolute top-1 left-1 px-1.5 py-0.5 bg-black/80 text-[#D4AF37] font-mono text-[9px] font-bold rounded">
+                  <span className="absolute top-1 left-1 px-1.5 py-0.5 bg-black/80 text-[#2563EB] font-mono text-[9px] font-bold rounded">
                     #{idx + 1}
                   </span>
                 </div>
 
                 <div className="space-y-1 flex-grow min-w-0">
                   <div className="flex items-center justify-between gap-2">
-                    <span className="px-2 py-0.5 bg-[#D4AF37]/15 text-[#D4AF37] border border-[#D4AF37]/30 text-[9px] font-bold rounded uppercase truncate">
+                    <span className="px-2 py-0.5 bg-[#2563EB]/15 text-[#2563EB] border border-[#2563EB]/30 text-[9px] font-bold rounded uppercase truncate">
                       {getCleanCategoryBadge(item.category)}
                     </span>
                     <span className="text-[10px] text-zinc-500 font-mono shrink-0">{item.date}</span>
@@ -367,7 +523,7 @@ function HeroHeadlineSection({ newsList, onSelectArticle, bookmarkedIds, onToggl
 
                   <h4 className={cn(
                     "text-xs font-bold leading-snug line-clamp-2 transition-colors",
-                    isActive ? "text-[#D4AF37]" : "text-white group-hover:text-[#D4AF37]"
+                    isActive ? "text-[#2563EB]" : "text-white group-hover:text-[#2563EB]"
                   )}>
                     {item.title}
                   </h4>
@@ -379,7 +535,7 @@ function HeroHeadlineSection({ newsList, onSelectArticle, bookmarkedIds, onToggl
                         e.stopPropagation();
                         onSelectArticle(item);
                       }}
-                      className="text-[#D4AF37] hover:underline font-bold text-[10px] flex items-center gap-0.5"
+                      className="text-[#2563EB] hover:underline font-bold text-[10px] flex items-center gap-0.5"
                     >
                       <span>Oku</span>
                       <ChevronRight size={10} />
@@ -413,16 +569,16 @@ function AdSenseSlot({ format }: AdSenseSlotProps) {
 
   let layoutClasses = "";
   if (format === 'horizontal') {
-    layoutClasses = "w-full min-h-[90px] sm:min-h-[110px] bg-[#0B0B0C] border border-[#D4AF37]/20 hover:border-[#D4AF37]/40 flex flex-col items-center justify-center p-3 rounded-xl relative overflow-hidden";
+    layoutClasses = "w-full min-h-[90px] sm:min-h-[110px] bg-[#0A0E17] border border-[#2563EB]/20 hover:border-[#2563EB]/40 flex flex-col items-center justify-center p-3 rounded-xl relative overflow-hidden";
   } else if (format === 'in-feed') {
-    layoutClasses = "w-full min-h-[130px] bg-[#0B0B0C] border border-zinc-800 hover:border-[#D4AF37]/35 flex flex-col items-center justify-center p-4 rounded-xl relative overflow-hidden";
+    layoutClasses = "w-full min-h-[130px] bg-[#0A0E17] border border-zinc-800 hover:border-[#2563EB]/35 flex flex-col items-center justify-center p-4 rounded-xl relative overflow-hidden";
   } else if (format === 'sidebar') {
-    layoutClasses = "w-full min-h-[220px] bg-[#0B0B0C] border border-zinc-800 hover:border-[#D4AF37]/40 flex flex-col items-center justify-center p-4 rounded-xl relative overflow-hidden";
+    layoutClasses = "w-full min-h-[220px] bg-[#0A0E17] border border-zinc-800 hover:border-[#2563EB]/40 flex flex-col items-center justify-center p-4 rounded-xl relative overflow-hidden";
   }
 
   return (
     <div className={`${layoutClasses} transition-all duration-300 shadow-sm`}>
-      <div className="absolute top-2 left-3 text-[7px] font-mono tracking-widest text-[#D4AF37]/75 uppercase font-bold">
+      <div className="absolute top-2 left-3 text-[7px] font-mono tracking-widest text-[#2563EB]/75 uppercase font-bold">
         SPONSORLU BAĞLANTI
       </div>
 
@@ -473,17 +629,17 @@ function AffiliateCtaCard({ layout = 'sidebar', customCta }: AffiliateCtaCardPro
 
   if (layout === 'inline') {
     return (
-      <div className="p-5 my-6 bg-[#0B0B0C] border border-[#D4AF37]/40 rounded-xl space-y-4 shadow-lg relative overflow-hidden">
-        <div className="absolute top-0 right-0 bg-[#D4AF37] text-black font-mono font-bold px-3 py-0.5 text-[8px] uppercase tracking-widest shadow-sm">
+      <div className="p-5 my-6 bg-[#0A0E17] border border-[#2563EB]/40 rounded-xl space-y-4 shadow-lg relative overflow-hidden">
+        <div className="absolute top-0 right-0 bg-[#2563EB] text-black font-mono font-bold px-3 py-0.5 text-[8px] uppercase tracking-widest shadow-sm">
           {customCta?.badge || "TIER 1 SPONSORLU TEKLİF"}
         </div>
         
         <div className="flex flex-col sm:flex-row gap-4 items-center">
-          <img src={product.imageUrl} alt={product.title} className="w-16 h-16 object-cover rounded-lg border border-[#D4AF37]/30 shrink-0" />
+          <img src={product.imageUrl} alt={product.title} className="w-16 h-16 object-cover rounded-lg border border-[#2563EB]/30 shrink-0" />
           <div className="space-y-1.5 flex-grow">
             <div className="flex items-center gap-2">
-              <span className="text-[9px] font-mono text-[#D4AF37] uppercase tracking-wider font-extrabold flex items-center gap-1">
-                <Sparkles size={11} className="text-[#D4AF37]" />
+              <span className="text-[9px] font-mono text-[#2563EB] uppercase tracking-wider font-extrabold flex items-center gap-1">
+                <Sparkles size={11} className="text-[#2563EB]" />
                 SPONSORLU FİNANS & TEKNOLOJİ TEKLİFİ
               </span>
             </div>
@@ -502,7 +658,7 @@ function AffiliateCtaCard({ layout = 'sidebar', customCta }: AffiliateCtaCardPro
           </span>
           <button 
             onClick={handleCtaClick}
-            className="px-4 py-2 bg-[#D4AF37] text-black text-[11px] font-extrabold rounded-lg hover:brightness-110 uppercase transition-all flex items-center gap-1.5 shrink-0 shadow-md"
+            className="px-4 py-2 bg-[#2563EB] text-black text-[11px] font-extrabold rounded-lg hover:brightness-110 uppercase transition-all flex items-center gap-1.5 shrink-0 shadow-md"
           >
             <span>{product.buttonText}</span>
             <ExternalLink size={11} />
@@ -513,13 +669,13 @@ function AffiliateCtaCard({ layout = 'sidebar', customCta }: AffiliateCtaCardPro
   }
 
   return (
-    <div className="p-4 bg-[#0B0B0C] border border-[#D4AF37]/30 hover:border-[#D4AF37] rounded-xl space-y-3.5 shadow-sm relative overflow-hidden transition-all duration-300">
+    <div className="p-4 bg-[#0A0E17] border border-[#2563EB]/30 hover:border-[#2563EB] rounded-xl space-y-3.5 shadow-sm relative overflow-hidden transition-all duration-300">
       <div className="flex items-center justify-between border-b border-zinc-800 pb-2">
-        <span className="text-[9px] font-mono text-[#D4AF37] uppercase tracking-wider font-bold flex items-center gap-1">
+        <span className="text-[9px] font-mono text-[#2563EB] uppercase tracking-wider font-bold flex items-center gap-1">
           <Sparkles size={10} />
           ÖNERİLEN FIRSAT
         </span>
-        <span className="text-[8px] font-mono text-[#D4AF37] uppercase font-bold bg-[#D4AF37]/10 px-1.5 py-0.5 rounded border border-[#D4AF37]/20">Affiliate</span>
+        <span className="text-[8px] font-mono text-[#2563EB] uppercase font-bold bg-[#2563EB]/10 px-1.5 py-0.5 rounded border border-[#2563EB]/20">Affiliate</span>
       </div>
 
       <img src={product.imageUrl} alt={product.title} className="w-full h-28 object-cover rounded-lg border border-zinc-800" />
@@ -533,7 +689,7 @@ function AffiliateCtaCard({ layout = 'sidebar', customCta }: AffiliateCtaCardPro
         </p>
         
         {product.discountNote && (
-          <div className="p-1.5 bg-[#D4AF37]/10 border border-[#D4AF37]/30 text-[#D4AF37] text-[9px] font-mono font-bold rounded text-center">
+          <div className="p-1.5 bg-[#2563EB]/10 border border-[#2563EB]/30 text-[#2563EB] text-[9px] font-mono font-bold rounded text-center">
             🎁 {product.discountNote}
           </div>
         )}
@@ -541,7 +697,7 @@ function AffiliateCtaCard({ layout = 'sidebar', customCta }: AffiliateCtaCardPro
 
       <button 
         onClick={handleCtaClick}
-        className="w-full py-2 bg-[#D4AF37] text-black font-extrabold text-[10px] rounded-lg hover:brightness-110 shadow-sm transition-all uppercase flex items-center justify-center gap-1"
+        className="w-full py-2 bg-[#2563EB] text-black font-extrabold text-[10px] rounded-lg hover:brightness-110 shadow-sm transition-all uppercase flex items-center justify-center gap-1"
       >
         <span>{product.buttonText}</span>
         <ExternalLink size={10} />
@@ -586,15 +742,15 @@ function HotDealsWidget() {
   ];
 
   return (
-    <div className="bg-[#121215] border border-[#D4AF37]/35 rounded-2xl p-4 space-y-4 shadow-xl font-sans">
+    <div className="bg-[#111827] border border-[#2563EB]/35 rounded-2xl p-4 space-y-4 shadow-xl font-sans">
       <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
         <div className="flex items-center gap-2">
-          <Zap size={18} className="text-[#D4AF37] animate-pulse" />
+          <Zap size={18} className="text-[#2563EB] animate-pulse" />
           <h3 className="font-serif font-bold text-white text-sm">
             🔥 Günün Fırsatları
           </h3>
         </div>
-        <span className="text-[10px] font-mono text-[#D4AF37] bg-[#D4AF37]/15 border border-[#D4AF37]/30 px-2 py-0.5 rounded font-extrabold uppercase">
+        <span className="text-[10px] font-mono text-[#2563EB] bg-[#2563EB]/15 border border-[#2563EB]/30 px-2 py-0.5 rounded font-extrabold uppercase">
           DonanımHaber Radar
         </span>
       </div>
@@ -604,7 +760,7 @@ function HotDealsWidget() {
           <div 
             key={deal.id}
             onClick={() => window.open(deal.link, '_blank')}
-            className="p-3 bg-[#0B0B0C] border border-zinc-800 hover:border-[#D4AF37] rounded-xl flex gap-3 items-center transition-all group cursor-pointer"
+            className="p-3 bg-[#0A0E17] border border-zinc-800 hover:border-[#2563EB] rounded-xl flex gap-3 items-center transition-all group cursor-pointer"
           >
             <img 
               src={deal.imageUrl} 
@@ -614,16 +770,16 @@ function HotDealsWidget() {
             <div className="space-y-1 flex-1 min-w-0">
               <div className="flex items-center justify-between gap-1">
                 <span className="text-[9px] font-mono text-zinc-400 truncate">{deal.category}</span>
-                <span className="text-[9px] font-mono font-extrabold text-black bg-[#D4AF37] px-1.5 py-0.2 rounded shrink-0">
+                <span className="text-[9px] font-mono font-extrabold text-black bg-[#2563EB] px-1.5 py-0.2 rounded shrink-0">
                   {deal.discount}
                 </span>
               </div>
-              <h4 className="text-xs font-bold text-white truncate group-hover:text-[#D4AF37] transition-colors">
+              <h4 className="text-xs font-bold text-white truncate group-hover:text-[#2563EB] transition-colors">
                 {deal.title}
               </h4>
               <div className="flex items-center gap-2 text-xs">
                 <span className="text-zinc-500 line-through text-[10px] font-mono">{deal.oldPrice}</span>
-                <span className="text-[#D4AF37] font-extrabold font-mono text-xs">{deal.newPrice}</span>
+                <span className="text-[#2563EB] font-extrabold font-mono text-xs">{deal.newPrice}</span>
               </div>
             </div>
           </div>
@@ -633,7 +789,7 @@ function HotDealsWidget() {
       <div className="pt-2 border-t border-zinc-800 text-center">
         <button 
           onClick={() => window.open('https://webdehepseek.com/firsatlar', '_blank')}
-          className="w-full py-2 bg-[#D4AF37] text-black text-xs font-extrabold rounded-xl hover:brightness-110 uppercase transition-all shadow-md flex items-center justify-center gap-1.5"
+          className="w-full py-2 bg-[#2563EB] text-black text-xs font-extrabold rounded-xl hover:brightness-110 uppercase transition-all shadow-md flex items-center justify-center gap-1.5"
         >
           <span>Fırsatı Yakala (Affiliate Radar)</span>
           <ExternalLink size={12} />
@@ -761,39 +917,39 @@ function SidebarCalculatorWidget() {
   };
 
   return (
-    <div className="bg-[#121215] border border-[#D4AF37]/30 rounded-3xl p-5 space-y-4 shadow-xl text-left font-sans">
+    <div className="bg-[#111827] border border-[#2563EB]/30 rounded-3xl p-5 space-y-4 shadow-xl text-left font-sans">
       <div className="flex items-center justify-between border-b border-zinc-800 pb-2.5">
         <div className="flex items-center gap-2">
-          <Calculator size={16} className="text-[#D4AF37]" />
+          <Calculator size={16} className="text-[#2563EB]" />
           <h4 className="font-serif font-bold text-white text-xs uppercase tracking-wider">
             Finans & Getiri Hesaplayıcı
           </h4>
         </div>
-        <span className="text-[9px] font-mono text-[#D4AF37] bg-[#D4AF37]/10 px-1.5 py-0.5 rounded font-bold">PRO PLUS</span>
+        <span className="text-[9px] font-mono text-[#2563EB] bg-[#2563EB]/10 px-1.5 py-0.5 rounded font-bold">PRO PLUS</span>
       </div>
 
-      <div className="grid grid-cols-2 gap-1.5 p-0.5 bg-[#0B0B0C] rounded-lg border border-zinc-850 text-[10px]">
+      <div className="grid grid-cols-2 gap-1.5 p-0.5 bg-[#0A0E17] rounded-lg border border-zinc-850 text-[10px]">
         <button 
           onClick={() => setCalcTab('profit_loss')}
-          className={cn("py-1 rounded font-bold transition-all text-center whitespace-nowrap", calcTab === 'profit_loss' ? "bg-[#D4AF37] text-black" : "text-zinc-400 hover:text-white")}
+          className={cn("py-1 rounded font-bold transition-all text-center whitespace-nowrap", calcTab === 'profit_loss' ? "bg-[#2563EB] text-black" : "text-zinc-400 hover:text-white")}
         >
           Kâr/Zarar
         </button>
         <button 
           onClick={() => { setCalcTab('deposit'); setRate(45); setDuration(32); }}
-          className={cn("py-1 rounded font-bold transition-all text-center whitespace-nowrap", calcTab === 'deposit' ? "bg-[#D4AF37] text-black" : "text-zinc-400 hover:text-white")}
+          className={cn("py-1 rounded font-bold transition-all text-center whitespace-nowrap", calcTab === 'deposit' ? "bg-[#2563EB] text-black" : "text-zinc-400 hover:text-white")}
         >
           Mevduat Getirisi
         </button>
         <button 
           onClick={() => setCalcTab('currency')}
-          className={cn("py-1 rounded font-bold transition-all text-center whitespace-nowrap", calcTab === 'currency' ? "bg-[#D4AF37] text-black" : "text-zinc-400 hover:text-white")}
+          className={cn("py-1 rounded font-bold transition-all text-center whitespace-nowrap", calcTab === 'currency' ? "bg-[#2563EB] text-black" : "text-zinc-400 hover:text-white")}
         >
           Altın & Döviz
         </button>
         <button 
           onClick={() => setCalcTab('severance')}
-          className={cn("py-1 rounded font-bold transition-all text-center whitespace-nowrap", calcTab === 'severance' ? "bg-[#D4AF37] text-black" : "text-zinc-400 hover:text-white")}
+          className={cn("py-1 rounded font-bold transition-all text-center whitespace-nowrap", calcTab === 'severance' ? "bg-[#2563EB] text-black" : "text-zinc-400 hover:text-white")}
         >
           Kıdem Tazminatı
         </button>
@@ -809,7 +965,7 @@ function SidebarCalculatorWidget() {
                 type="number" 
                 value={entryPrice} 
                 onChange={(e) => setEntryPrice(Number(e.target.value))} 
-                className="w-full bg-[#0B0B0C] border border-zinc-800 rounded-lg px-2.5 py-1.5 text-white font-mono text-xs outline-none focus:border-[#D4AF37]" 
+                className="w-full bg-[#0A0E17] border border-zinc-800 rounded-lg px-2.5 py-1.5 text-white font-mono text-xs outline-none focus:border-[#2563EB]" 
               />
             </div>
             <div className="grid grid-cols-2 gap-2">
@@ -819,7 +975,7 @@ function SidebarCalculatorWidget() {
                   type="number" 
                   value={exitPrice} 
                   onChange={(e) => setExitPrice(Number(e.target.value))} 
-                  className="w-full bg-[#0B0B0C] border border-zinc-800 rounded-lg px-2.5 py-1.5 text-white font-mono text-xs outline-none focus:border-[#D4AF37]" 
+                  className="w-full bg-[#0A0E17] border border-zinc-800 rounded-lg px-2.5 py-1.5 text-white font-mono text-xs outline-none focus:border-[#2563EB]" 
                 />
               </div>
               <div>
@@ -828,7 +984,7 @@ function SidebarCalculatorWidget() {
                   type="number" 
                   value={quantity} 
                   onChange={(e) => setQuantity(Number(e.target.value))} 
-                  className="w-full bg-[#0B0B0C] border border-zinc-800 rounded-lg px-2.5 py-1.5 text-white font-mono text-xs outline-none focus:border-[#D4AF37]" 
+                  className="w-full bg-[#0A0E17] border border-zinc-800 rounded-lg px-2.5 py-1.5 text-white font-mono text-xs outline-none focus:border-[#2563EB]" 
                 />
               </div>
             </div>
@@ -844,7 +1000,7 @@ function SidebarCalculatorWidget() {
                 type="number" 
                 value={amount} 
                 onChange={(e) => setAmount(Number(e.target.value))} 
-                className="w-full bg-[#0B0B0C] border border-zinc-800 rounded-lg px-2.5 py-1.5 text-white font-mono text-xs outline-none focus:border-[#D4AF37]" 
+                className="w-full bg-[#0A0E17] border border-zinc-800 rounded-lg px-2.5 py-1.5 text-white font-mono text-xs outline-none focus:border-[#2563EB]" 
               />
             </div>
 
@@ -856,7 +1012,7 @@ function SidebarCalculatorWidget() {
                   step="0.1"
                   value={rate} 
                   onChange={(e) => setRate(Number(e.target.value))} 
-                  className="w-full bg-[#0B0B0C] border border-zinc-850 rounded-lg px-2.5 py-1.5 text-white font-mono text-xs outline-none focus:border-[#D4AF37]" 
+                  className="w-full bg-[#0A0E17] border border-zinc-850 rounded-lg px-2.5 py-1.5 text-white font-mono text-xs outline-none focus:border-[#2563EB]" 
                 />
               </div>
               <div>
@@ -865,7 +1021,7 @@ function SidebarCalculatorWidget() {
                   type="number" 
                   value={duration} 
                   onChange={(e) => setDuration(Number(e.target.value))} 
-                  className="w-full bg-[#0B0B0C] border border-zinc-850 rounded-lg px-2.5 py-1.5 text-white font-mono text-xs outline-none focus:border-[#D4AF37]" 
+                  className="w-full bg-[#0A0E17] border border-zinc-850 rounded-lg px-2.5 py-1.5 text-white font-mono text-xs outline-none focus:border-[#2563EB]" 
                 />
               </div>
             </div>
@@ -882,7 +1038,7 @@ function SidebarCalculatorWidget() {
                   type="number" 
                   value={currencyInput} 
                   onChange={(e) => setCurrencyInput(Number(e.target.value))} 
-                  className="w-full bg-[#0B0B0C] border border-zinc-800 rounded-lg px-2.5 py-1.5 text-white font-mono text-xs outline-none focus:border-[#D4AF37]" 
+                  className="w-full bg-[#0A0E17] border border-zinc-800 rounded-lg px-2.5 py-1.5 text-white font-mono text-xs outline-none focus:border-[#2563EB]" 
                 />
               </div>
               <div>
@@ -890,7 +1046,7 @@ function SidebarCalculatorWidget() {
                 <select 
                   value={currencyUnit}
                   onChange={(e: any) => setCurrencyUnit(e.target.value)}
-                  className="w-full bg-[#0B0B0C] border border-zinc-800 rounded-lg px-1 py-1.5 text-white text-xs outline-none focus:border-[#D4AF37]"
+                  className="w-full bg-[#0A0E17] border border-zinc-800 rounded-lg px-1 py-1.5 text-white text-xs outline-none focus:border-[#2563EB]"
                 >
                   <option value="TRY">TRY (₺)</option>
                   <option value="USD">USD ($)</option>
@@ -915,7 +1071,7 @@ function SidebarCalculatorWidget() {
                   step="0.5"
                   value={severanceYears} 
                   onChange={(e) => setSeveranceYears(Number(e.target.value))} 
-                  className="w-full bg-[#0B0B0C] border border-zinc-800 rounded-lg px-2.5 py-1.5 text-white font-mono text-xs outline-none focus:border-[#D4AF37]" 
+                  className="w-full bg-[#0A0E17] border border-zinc-800 rounded-lg px-2.5 py-1.5 text-white font-mono text-xs outline-none focus:border-[#2563EB]" 
                 />
               </div>
               <div>
@@ -924,7 +1080,7 @@ function SidebarCalculatorWidget() {
                   type="number" 
                   value={severanceSalary} 
                   onChange={(e) => setSeveranceSalary(Number(e.target.value))} 
-                  className="w-full bg-[#0B0B0C] border border-zinc-800 rounded-lg px-2.5 py-1.5 text-white font-mono text-xs outline-none focus:border-[#D4AF37]" 
+                  className="w-full bg-[#0A0E17] border border-zinc-800 rounded-lg px-2.5 py-1.5 text-white font-mono text-xs outline-none focus:border-[#2563EB]" 
                 />
               </div>
             </div>
@@ -932,7 +1088,7 @@ function SidebarCalculatorWidget() {
         )}
 
         {/* OUTPUT DISPLAY PANEL */}
-        <div className="p-3 bg-[#0B0B0C] border border-zinc-850 rounded-2xl space-y-2 font-mono text-[11px]">
+        <div className="p-3 bg-[#0A0E17] border border-zinc-850 rounded-2xl space-y-2 font-mono text-[11px]">
           {calcTab === 'profit_loss' && (
             <div className="space-y-1.5">
               <div className="flex justify-between">
@@ -994,11 +1150,11 @@ function SidebarCalculatorWidget() {
               </div>
               <div className="flex justify-between">
                 <span className="text-zinc-500">Altın (Gram):</span>
-                <strong className="text-[#D4AF37]">{currencyResult.XAU.toFixed(3)} gr</strong>
+                <strong className="text-[#2563EB]">{currencyResult.XAU.toFixed(3)} gr</strong>
               </div>
               <div className="flex justify-between">
                 <span className="text-zinc-500">Altın (Çeyrek):</span>
-                <strong className="text-[#D4AF37]">{currencyResult.XAQ.toFixed(2)} Adet</strong>
+                <strong className="text-[#2563EB]">{currencyResult.XAQ.toFixed(2)} Adet</strong>
               </div>
             </div>
           )}
@@ -1015,7 +1171,7 @@ function SidebarCalculatorWidget() {
               </div>
               <div className="flex justify-between border-t border-zinc-900 pt-1.5 text-xs">
                 <span className="text-zinc-400 font-bold">Net Kıdem Tazminatı:</span>
-                <strong className="text-[#D4AF37] font-black">{severanceResult.netSeverance.toLocaleString('tr-TR', { maximumFractionDigits: 2 })} ₺</strong>
+                <strong className="text-[#2563EB] font-black">{severanceResult.netSeverance.toLocaleString('tr-TR', { maximumFractionDigits: 2 })} ₺</strong>
               </div>
             </div>
           )}
@@ -1023,22 +1179,22 @@ function SidebarCalculatorWidget() {
 
         {/* Legal Disclaimer & Copy Action */}
         <div className="space-y-2.5">
-          <div className="text-[9px] text-zinc-500 leading-relaxed bg-[#0B0B0C] border border-zinc-900 p-2.5 rounded-xl">
+          <div className="text-[9px] text-zinc-500 leading-relaxed bg-[#0A0E17] border border-zinc-900 p-2.5 rounded-xl">
             ⚠️ <strong>Yasal Uyarı:</strong> Bu hesaplama sonuçları tamamen bilgilendirme amaçlı olup, resmi ve hukuki tavsiye niteliği taşımaz.
           </div>
           <div className="grid grid-cols-2 gap-2">
             <button 
               onClick={handleShareCalculation}
-              className="py-2 bg-zinc-900 border border-zinc-800 hover:border-[#D4AF37]/50 text-zinc-300 hover:text-[#D4AF37] font-bold text-[10px] uppercase rounded-xl transition-all flex items-center justify-center gap-1.5"
+              className="py-2 bg-zinc-900 border border-zinc-800 hover:border-[#2563EB]/50 text-zinc-300 hover:text-[#2563EB] font-bold text-[10px] uppercase rounded-xl transition-all flex items-center justify-center gap-1.5"
             >
               <Copy size={11} />
               <span>Sonucu Kopyala</span>
             </button>
             <button 
               onClick={() => setIsEmbedModalOpen(true)}
-              className="py-2 bg-zinc-900 border border-zinc-800 hover:border-[#D4AF37]/50 text-zinc-300 hover:text-[#D4AF37] font-bold text-[10px] uppercase rounded-xl transition-all flex items-center justify-center gap-1.5"
+              className="py-2 bg-zinc-900 border border-zinc-800 hover:border-[#2563EB]/50 text-zinc-300 hover:text-[#2563EB] font-bold text-[10px] uppercase rounded-xl transition-all flex items-center justify-center gap-1.5"
             >
-              <Code size={11} className="text-[#D4AF37]" />
+              <Code size={11} className="text-[#2563EB]" />
               <span>Sitene Ekle</span>
             </button>
           </div>
@@ -1067,10 +1223,10 @@ function StickyAnchorBanner({ isCookieConsentVisible }: { isCookieConsentVisible
   if (isDismissed || isCookieConsentVisible) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-40 bg-[#0B0B0C]/95 border-t border-[#D4AF37]/30 shadow-2xl backdrop-blur-md px-3 py-2.5 transition-all">
+    <div className="fixed bottom-0 left-0 right-0 z-40 bg-[#0A0E17]/95 border-t border-[#2563EB]/30 shadow-2xl backdrop-blur-md px-3 py-2.5 transition-all">
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
         <div className="flex items-center gap-2 overflow-hidden flex-1">
-          <span className="px-2 py-0.5 bg-[#D4AF37] text-black text-[9px] font-extrabold rounded shrink-0 uppercase tracking-wider">
+          <span className="px-2 py-0.5 bg-[#2563EB] text-black text-[9px] font-extrabold rounded shrink-0 uppercase tracking-wider">
             SPONSOR
           </span>
           <p className="text-[11px] text-zinc-300 font-medium truncate font-sans">
@@ -1080,7 +1236,7 @@ function StickyAnchorBanner({ isCookieConsentVisible }: { isCookieConsentVisible
         <div className="flex items-center gap-2 shrink-0">
           <button 
             onClick={() => window.open('https://pagead2.googlesyndication.com', '_blank')}
-            className="px-3 py-1 bg-[#D4AF37] text-black text-[10px] font-bold rounded-lg hover:brightness-110 shrink-0 uppercase font-sans shadow-sm"
+            className="px-3 py-1 bg-[#2563EB] text-black text-[10px] font-bold rounded-lg hover:brightness-110 shrink-0 uppercase font-sans shadow-sm"
           >
             İncele
           </button>
@@ -1488,24 +1644,19 @@ export default function App() {
     const categoryScores: Record<string, number> = {};
 
     const categoryKeywords: Record<string, string[]> = {
-      "Teknoloji & Dijital Dönüşüm": ["teknoloji", "tech", "çip", "donanım", "yazılım", "siber", "güvenlik", "kuantum", "6g", "internet", "bulut", "cloud", "server", "veritabanı", "iot", "robotik"],
-      "Yapay Zeka & Gelecek": ["yapay zeka", "ai", "llm", "gpt", "model", "makine öğrenimi", "deep learning", "derin öğrenme", "agi", "gemini", "openai", "claude", "prompt", "otonom", "humanoid", "sentez", "sinir ağları"],
+      "Teknoloji & Dijital Dönüşüm": ["teknoloji", "tech", "çip", "donanım", "yazılım", "6g", "internet", "iot", "cihaz"],
+      "Yapay Zeka & Gelecek": ["yapay zeka", "ai", "llm", "gpt", "model", "makine öğrenimi", "deep learning", "derin öğrenme", "agi", "gemini", "openai", "claude", "prompt", "sentez", "sinir ağları"],
       "Kripto & Web3": ["bitcoin", "btc", "ethereum", "eth", "kripto", "crypto", "blockchain", "blokzincir", "token", "solana", "defi", "nft", "web3", "cüzdan", "coin", "altcoin", "binance", "staking", "mining", "halving"],
-      "Finans & Küresel Piyasalar": ["borsa", "bist", "hisse", "finans", "ekonomi", "enflasyon", "faiz", "fed", "merkez bankası", "usd", "try", "dolar", "euro", "altın", "emtia", "yatırım", "makro", "wall street", "türev"],
-      "Siyaset & Strateji": ["siyaset", "ankara", "meclis", "seçim", "hükümet", "diplomasi", "savunma", "milli", "siha", "parti", "bakan", "cumhurbaşkanı", "tüzük", "milletvekili", "koalisyon"],
-      "Sosyal Medya & Viral": ["sosyal medya", "instagram", "tiktok", "twitter", "viral", "influencer", "twitch", "youtube", "podcast", "creator", "fenomen", "platform"],
-      "Spor & E-Spor": ["spor", "futbol", "basketbol", "formula 1", "f1", "transfer", "derbi", "maç", "espor", "turnuva", "lig", "tenis", "grand slam", "fitness"],
-      "Girişimcilik & Startup": ["girişim", "startup", "yatırım", "unicorn", "saas", "eticaret", "marketing", "pazarlama", "branding", "freelance", "dropshipping", "seed"],
-      "Yaşam & Sağlık": ["sağlık", "yaşam", "longevity", "biyoloji", "biohacking", "beslenme", "minimalizm", "uyku", "odak", "biyoteknoloji", "tıp", "diet"],
-      "Oyun & Eğlence": ["oyun", "game", "ps5", "xbox", "gaming", "steam", "netflix", "sinema", "dizi", "marvel", "disney", "indie", "vr", "ar"],
-      "Bilim & Uzay": ["bilim", "uzay", "nasa", "spacex", "mars", "starship", "fizik", "genetik", "crispr", "neuralink", "teleskop", "füzyon"],
-      "Eğitim & Kariyer": ["eğitim", "kariyer", "sertifika", "mülakat", "cv", "linkedin", "ders", "okul", "akademi", "kurs", "kodlama"],
-      "Emlak & Lüks Yatırım": ["emlak", "konut", "gayrimenkul", "luxury", "lüks", "reit", "arsa", "villa", "daire", "rezidans", "proptech"],
-      "Otomotiv & Mobilite": ["otomotiv", "araba", "otomobil", "togg", "ev", "elektrikli araç", "batarya", "sürüş", "otonom", "sedan", "suv", "motor"],
-      "SaaS & Bulut Yazılımları": ["saas", "crm", "bulut", "hosting", "sunucu", "api", "entegrasyon", "veritabanı", "depolama", "yazılım", "analitik", "otomasyon", "workflow"],
-      "Kişisel Finans & Sigorta": ["kredi", "faiz", "mevduat", "kasko", "sigorta", "bes", "emeklilik", "fon", "yatırım", "vergi", "borç", "skor", "birikim"],
-      "Siber Güvenlik & Veri Koruma": ["antivirüs", "vpn", "siber", "güvenlik", "veri", "koruma", "phishing", "phising", "phish", "firewall", "zero trust", "kvkk", "gdpr", "hacking", "penetrasyon", "ransomware", "fidye"],
-      "Yapay Zeka Araç Rehberi": ["metin", "görsel", "video", "kodlama", "ses", "müzik", "sunum", "tasarım", "çeviri", "verimlilik", "arama", "keşif", "tool", "araç", "rehber"]
+      "Finans & Küresel Piyasalar": ["borsa", "bist", "hisse", "finans", "ekonomi", "enflasyon", "faiz", "fed", "merkez bankası", "usd", "try", "dolar", "euro", "altın", "emtia", "yatırım", "makro", "wall street", "türev", "kredi", "mevduat", "sigorta", "emlak", "gayrimenkul"],
+      "Siber Güvenlik": ["antivirüs", "vpn", "siber", "güvenlik", "veri koruma", "phishing", "firewall", "zero trust", "kvkk", "gdpr", "hacking", "penetrasyon", "ransomware", "fidye"],
+      "SaaS & Yazılım": ["saas", "crm", "yazılım", "api", "entegrasyon", "kodlama", "developer", "geliştirici", "micro-saas", "otomasyon", "workflow", "low-code"],
+      "E-Ticaret & Pazar Yerleri": ["e-ticaret", "eticaret", "pazar yeri", "pazaryeri", "trendyol", "hepsiburada", "amazon", "e-ihracat", "lojistik", "depolama", "ödeme", "pos"],
+      "Otonom Sistemler & Robotik": ["otonom", "robotik", "robot", "humanoid", "insansı", "elektrikli araç", "ev", "togg", "tesla", "sürücüsüz", "evtol", "otomasyon"],
+      "Girişimcilik & Yatırım": ["girişim", "girişimcilik", "startup", "investor", "yatırımcı", "unicorn", "melek yatırım", "vc", "seed", "fon"],
+      "Dijital Pazarlama & SEO": ["seo", "aeo", "geo", "dijital pazarlama", "içerik pazarlaması", "cro", "performans pazarlaması", "sosyal medya", "viral", "influencer", "ads"],
+      "Bulut Bilişim & Altyapı": ["bulut", "cloud", "aws", "azure", "gcp", "kubernetes", "docker", "serverless", "sunucu", "cdn", "hosting", "veritabanı"],
+      "Oyun & MetaEvren": ["oyun", "game", "gaming", "ps5", "xbox", "steam", "vr", "ar", "metaverse", "metaevren", "unreal", "unity", "e-spor", "espor"],
+      "Savunma Sanayi & Havacılık": ["savunma", "havacılık", "iha", "siha", "savaş uçağı", "uydu", "uzay", "nasa", "spacex", "radar", "elektronik harp", "roket"]
     };
 
     Object.entries(categoryKeywords).forEach(([catName, keywords]) => {
@@ -1614,9 +1765,9 @@ export default function App() {
       "Finans & Küresel Piyasalar": 154,
       "Yapay Zeka & Gelecek": 142,
       "Kripto & Web3": 128,
-      "SaaS & Bulut Yazılımları": 96,
+      "SaaS & Yazılım": 96,
       "Teknoloji & Dijital Dönüşüm": 88,
-      "Siber Güvenlik & Veri Koruma": 72
+      "Siber Güvenlik": 72
     };
   });
 
@@ -2102,7 +2253,27 @@ export default function App() {
   // Filtered News Stream
   const filteredNews = useMemo(() => {
     return newsList.filter(news => {
-      const matchCat = !selectedCategory || news.category === selectedCategory;
+      let matchCat = true;
+      if (selectedCategory) {
+        const sel = selectedCategory.toLowerCase();
+        const newsCat = news.category.toLowerCase();
+        if (sel.includes('yapay zeka') || sel.includes('saas')) {
+          matchCat = newsCat.includes('yapay zeka') || newsCat.includes('saas') || newsCat.includes('yazılım') || newsCat.includes('llm') || newsCat.includes('ai');
+        } else if (sel.includes('donanım') || sel.includes('oyun')) {
+          matchCat = newsCat.includes('donanım') || newsCat.includes('çip') || newsCat.includes('oyun') || newsCat.includes('espor');
+        } else if (sel.includes('finans') || sel.includes('ekonomi')) {
+          matchCat = newsCat.includes('finans') || newsCat.includes('piyasa') || newsCat.includes('e-ticaret') || newsCat.includes('pazarlama');
+        } else if (sel.includes('kripto') || sel.includes('web3')) {
+          matchCat = newsCat.includes('kripto') || newsCat.includes('web3') || newsCat.includes('bitcoin');
+        } else if (sel.includes('otomotiv') || sel.includes('enerji')) {
+          matchCat = newsCat.includes('otomotiv') || newsCat.includes('mobilite') || newsCat.includes('enerji') || newsCat.includes('bilim') || newsCat.includes('uzay');
+        } else if (sel.includes('girişimcilik')) {
+          matchCat = newsCat.includes('girişimcilik') || newsCat.includes('yatırım') || newsCat.includes('sağlık') || newsCat.includes('yaşam');
+        } else {
+          matchCat = news.category === selectedCategory || newsCat.includes(sel);
+        }
+      }
+
       const matchSub = !selectedSubcategory || news.subcategory === selectedSubcategory;
       const matchTag = !selectedTag || news.title.toLowerCase().includes(selectedTag.toLowerCase()) || news.excerpt.toLowerCase().includes(selectedTag.toLowerCase());
       const matchSearch = !searchQuery.trim() || 
@@ -2661,8 +2832,8 @@ export default function App() {
 
   return (
     <div className={cn(
-      "min-h-screen flex flex-col transition-colors duration-300 font-sans antialiased selection:bg-[#D4AF37] selection:text-black pb-16 sm:pb-0", 
-      isDarkMode ? "bg-[#0B0B0C] text-zinc-100" : "bg-zinc-50 text-zinc-900"
+      "min-h-screen flex flex-col transition-colors duration-300 font-sans antialiased selection:bg-[#2563EB] selection:text-black pb-16 sm:pb-0", 
+      isDarkMode ? "bg-[#0A0E17] text-zinc-100" : "bg-zinc-50 text-zinc-900"
     )}>
       
       {/* Toast Notification */}
@@ -2672,9 +2843,9 @@ export default function App() {
             initial={{ opacity: 0, y: -50, x: '-50%' }}
             animate={{ opacity: 1, y: 20, x: '-50%' }}
             exit={{ opacity: 0, y: -50, x: '-50%' }}
-            className="fixed top-0 left-1/2 z-50 bg-[#121215] border border-[#D4AF37] text-white text-xs font-bold px-6 py-3 rounded-full shadow-2xl flex items-center gap-3 backdrop-blur-md"
+            className="fixed top-0 left-1/2 z-50 bg-[#111827] border border-[#2563EB] text-white text-xs font-bold px-6 py-3 rounded-full shadow-2xl flex items-center gap-3 backdrop-blur-md"
           >
-            <Sparkles size={16} className="text-[#D4AF37]" />
+            <Sparkles size={16} className="text-[#2563EB]" />
             <span>{toastMessage}</span>
           </motion.div>
         )}
@@ -2687,11 +2858,11 @@ export default function App() {
             initial={{ opacity: 0, y: -60 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -60 }}
-            className="sticky top-0 left-0 right-0 z-50 bg-[#121215]/95 border-b border-[#D4AF37]/50 shadow-xl backdrop-blur-md px-4 py-3"
+            className="sticky top-0 left-0 right-0 z-50 bg-[#111827]/95 border-b border-[#2563EB]/50 shadow-xl backdrop-blur-md px-4 py-3"
           >
             <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-left font-sans">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-full bg-[#D4AF37]/10 flex items-center justify-center border border-[#D4AF37]/35 text-[#D4AF37] shrink-0 animate-pulse">
+                <div className="w-8 h-8 rounded-full bg-[#2563EB]/10 flex items-center justify-center border border-[#2563EB]/35 text-[#2563EB] shrink-0 animate-pulse">
                   <Bell size={15} />
                 </div>
                 <div>
@@ -2706,7 +2877,7 @@ export default function App() {
                     setShowPushBar(false);
                     showToast("Bildirim daveti daha sonra gösterilmek üzere kapatıldı.");
                   }}
-                  className="px-3 py-1.5 bg-[#0B0B0C] border border-zinc-800 hover:border-zinc-700 text-zinc-400 hover:text-white text-[10px] font-bold rounded-xl transition-all"
+                  className="px-3 py-1.5 bg-[#0A0E17] border border-zinc-800 hover:border-zinc-700 text-zinc-400 hover:text-white text-[10px] font-bold rounded-xl transition-all"
                 >
                   Daha Sonra
                 </button>
@@ -2726,7 +2897,7 @@ export default function App() {
                       showToast("⚡ Bildirim aboneliğiniz sanal olarak aktif edildi!");
                     }
                   }}
-                  className="px-4 py-1.5 bg-[#D4AF37] hover:brightness-110 text-black text-[10px] font-extrabold uppercase rounded-xl transition-all whitespace-nowrap"
+                  className="px-4 py-1.5 bg-[#2563EB] hover:brightness-110 text-black text-[10px] font-extrabold uppercase rounded-xl transition-all whitespace-nowrap"
                 >
                   Bildirimleri Aç
                 </button>
@@ -2737,14 +2908,14 @@ export default function App() {
       </AnimatePresence>
 
       {/* TOP CURRENCY & ASSET TICKER BAR */}
-      <div className="bg-[#0B0B0C] text-[#D4AF37] py-2 border-b border-[#D4AF37]/20 overflow-hidden text-[11px] font-mono">
+      <div className="bg-[#0A0E17] text-[#2563EB] py-2 border-b border-[#2563EB]/20 overflow-hidden text-[11px] font-mono">
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-between gap-6">
-          <div className="flex items-center gap-3 shrink-0 text-[#D4AF37] font-bold uppercase text-[10px] tracking-wider">
-            <div className="flex items-center gap-1 text-[#D4AF37]">
+          <div className="flex items-center gap-3 shrink-0 text-[#2563EB] font-bold uppercase text-[10px] tracking-wider">
+            <div className="flex items-center gap-1 text-[#2563EB]">
               <TrendingUp size={13} />
               <span>PİYASA BÜLTENİ:</span>
             </div>
-            <div className="hidden lg:flex items-center gap-1.5 bg-[#121215] border border-[#D4AF37]/40 px-2 py-0.5 rounded-full text-[#D4AF37] text-[9px]">
+            <div className="hidden lg:flex items-center gap-1.5 bg-[#111827] border border-[#2563EB]/40 px-2 py-0.5 rounded-full text-[#2563EB] text-[9px]">
               <span>Korku & Açgözlülük:</span>
               <strong className="text-emerald-400 font-bold">{liveFearGreed}/100 Boğa</strong>
             </div>
@@ -2753,7 +2924,7 @@ export default function App() {
             {liveRates.map((curr) => (
               <div key={curr.symbol} className="flex items-center gap-2 shrink-0">
                 <span className="text-zinc-400 font-medium">{curr.label}:</span>
-                <strong className="text-[#D4AF37] font-extrabold tracking-wide">{curr.value}</strong>
+                <strong className="text-[#2563EB] font-extrabold tracking-wide">{curr.value}</strong>
                 <span className={cn(
                   "font-bold text-[10px] px-1.5 py-0.5 rounded border",
                   curr.isPositive ? "text-emerald-400 bg-emerald-950/60 border-emerald-500/30" : "text-rose-400 bg-rose-950/60 border-rose-500/30"
@@ -2765,16 +2936,16 @@ export default function App() {
       </div>
 
       {/* Top Ticker Marquee Header */}
-      <div className="bg-[#0B0B0C] text-[#D4AF37] py-2.5 border-b border-[#D4AF37]/30 overflow-hidden text-xs">
+      <div className="bg-[#0A0E17] text-[#2563EB] py-2.5 border-b border-[#2563EB]/30 overflow-hidden text-xs">
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-between gap-6">
           <div className="flex items-center gap-4 overflow-hidden flex-grow">
-            <div className="flex items-center gap-2 bg-[#D4AF37] text-black text-[10px] font-extrabold px-3 py-1 rounded tracking-widest shrink-0 uppercase shadow-md">
+            <div className="flex items-center gap-2 bg-[#2563EB] text-black text-[10px] font-extrabold px-3 py-1 rounded tracking-widest shrink-0 uppercase shadow-md">
               <Radio size={12} className="animate-pulse" />
               <span>CANLI AKIŞ</span>
             </div>
             
             <div className="overflow-hidden w-full relative flex items-center">
-              <div className="animate-marquee whitespace-nowrap font-mono text-xs flex items-center gap-12 text-[#D4AF37]">
+              <div className="animate-marquee whitespace-nowrap font-mono text-xs flex items-center gap-12 text-[#2563EB]">
                 {/* Loop items rendered twice for seamless animation without gaps */}
                 {[
                   { icon: TrendingUp, label: "BIST 100 & Finans:", text: "Borsa İstanbul 10,845 Seviyesiyle Yıllık Zirveyi Yeniledi." },
@@ -2788,8 +2959,8 @@ export default function App() {
                   { icon: Shield, label: "Siber Güvenlik:", text: "Küresel Finans Ağları Post-Kuantum Şifreleme Protokollerine Geçiyor." }
                 ].map((item, idx) => (
                   <div key={idx} className="flex items-center gap-2.5 shrink-0">
-                    <item.icon size={13} className="text-[#D4AF37] shrink-0" />
-                    <strong className="text-[#D4AF37] font-bold">{item.label}</strong>
+                    <item.icon size={13} className="text-[#2563EB] shrink-0" />
+                    <strong className="text-[#2563EB] font-bold">{item.label}</strong>
                     <span className="text-zinc-200 font-medium">{item.text}</span>
                   </div>
                 ))}
@@ -2798,7 +2969,7 @@ export default function App() {
           </div>
 
           {/* Status Indicator */}
-          <div className="hidden md:flex items-center gap-2 px-3 py-1 bg-[#0B0B0C] border border-[#D4AF37]/40 rounded-full shrink-0 text-[10px] font-mono text-[#D4AF37]">
+          <div className="hidden md:flex items-center gap-2 px-3 py-1 bg-[#0A0E17] border border-[#2563EB]/40 rounded-full shrink-0 text-[10px] font-mono text-[#2563EB]">
             <Activity size={12} className="animate-spin text-emerald-400" />
             <AnimatePresence mode="wait">
               <motion.span 
@@ -2816,10 +2987,10 @@ export default function App() {
       </div>
 
       {/* Dynamic Trending Categories Top Bar ("🔥 Bu Hafta En Çok Okunanlar") */}
-      <div className="bg-[#121215] border-b border-[#D4AF37]/20 py-2 px-4 shadow-inner">
+      <div className="bg-[#111827] border-b border-[#2563EB]/20 py-2 px-4 shadow-inner">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-3 text-xs">
           <div className="flex items-center gap-2.5">
-            <span className="flex items-center gap-1.5 px-3 py-1 bg-[#D4AF37] text-black font-extrabold rounded-lg text-[11px] tracking-wide uppercase shadow-sm shrink-0">
+            <span className="flex items-center gap-1.5 px-3 py-1 bg-[#2563EB] text-black font-extrabold rounded-lg text-[11px] tracking-wide uppercase shadow-sm shrink-0">
               <Flame size={14} className="text-amber-950 animate-bounce" />
               <span>BU HAFTA EN ÇOK OKUNANLAR</span>
             </span>
@@ -2839,13 +3010,13 @@ export default function App() {
                   trackCategoryClick(catName);
                   showToast(`${catName} kategorisi öne çıkarıldı.`);
                 }}
-                className="flex items-center gap-2 px-3 py-1 bg-[#0B0B0C] border border-[#D4AF37]/35 hover:border-[#D4AF37] text-zinc-200 hover:text-white rounded-xl text-[11px] font-semibold transition-all group shrink-0 shadow-sm"
+                className="flex items-center gap-2 px-3 py-1 bg-[#0A0E17] border border-[#2563EB]/35 hover:border-[#2563EB] text-zinc-200 hover:text-white rounded-xl text-[11px] font-semibold transition-all group shrink-0 shadow-sm"
               >
-                <span className="w-4 h-4 rounded-full bg-[#D4AF37] text-black font-extrabold flex items-center justify-center text-[10px]">
+                <span className="w-4 h-4 rounded-full bg-[#2563EB] text-black font-extrabold flex items-center justify-center text-[10px]">
                   {idx + 1}
                 </span>
-                <span className="group-hover:text-[#D4AF37] transition-colors">{catName}</span>
-                <span className="px-1.5 py-0.5 text-[9px] font-mono font-bold bg-[#D4AF37]/15 text-[#D4AF37] rounded-md border border-[#D4AF37]/25 group-hover:bg-[#D4AF37] group-hover:text-black transition-colors">
+                <span className="group-hover:text-[#2563EB] transition-colors">{catName}</span>
+                <span className="px-1.5 py-0.5 text-[9px] font-mono font-bold bg-[#2563EB]/15 text-[#2563EB] rounded-md border border-[#2563EB]/25 group-hover:bg-[#2563EB] group-hover:text-black transition-colors">
                   {count} İlgilenim
                 </span>
               </button>
@@ -2855,7 +3026,7 @@ export default function App() {
       </div>
       <header className={cn(
         "sticky top-0 z-40 border-b backdrop-blur-xl transition-all",
-        isDarkMode ? "bg-[#0B0B0C]/90 border-[#D4AF37]/25" : "bg-white/90 border-zinc-200"
+        isDarkMode ? "bg-[#0A0E17]/90 border-[#2563EB]/25" : "bg-white/90 border-zinc-200"
       )}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-20 items-center">
@@ -2870,14 +3041,14 @@ export default function App() {
                 setActiveTab('news');
               }}
             >
-              <div className="w-12 h-12 bg-gradient-to-br from-[#121215] to-[#27272A] rounded-xl flex items-center justify-center border border-[#D4AF37]/50 shadow-md group-hover:border-[#D4AF37] transition-all">
+              <div className="w-12 h-12 bg-gradient-to-br from-[#111827] to-[#27272A] rounded-xl flex items-center justify-center border border-[#2563EB]/50 shadow-md group-hover:border-[#2563EB] transition-all">
                 <span className="gold-gradient-text font-serif font-black text-2xl italic">W</span>
               </div>
               <div>
                 <h1 className="text-2xl font-serif font-bold tracking-tight flex items-center gap-1">
                   WebdeHep<span className="gold-gradient-text">SeeK</span>
                 </h1>
-                <p className="text-[9px] uppercase tracking-widest font-mono text-[#D4AF37]">
+                <p className="text-[9px] uppercase tracking-widest font-mono text-[#2563EB]">
                   Teknoloji & Finans Haber Portalı
                 </p>
               </div>
@@ -2895,11 +3066,11 @@ export default function App() {
                 className={cn(
                   "px-3.5 py-2 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 relative",
                   (activeTab === 'news' && !selectedCategory && !onlyBookmarks)
-                    ? (isDarkMode ? "bg-[#121215] text-[#D4AF37] border border-[#D4AF37]/50 shadow-sm font-bold" : "bg-zinc-100 text-zinc-900 border border-zinc-300 font-bold")
+                    ? (isDarkMode ? "bg-[#111827] text-[#2563EB] border border-[#2563EB]/50 shadow-sm font-bold" : "bg-zinc-100 text-zinc-900 border border-zinc-300 font-bold")
                     : (isDarkMode ? "text-zinc-400 hover:text-white hover:bg-zinc-900" : "text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100")
                 )}
               >
-                <Radio size={14} className={activeTab === 'news' && !selectedCategory ? "text-[#D4AF37]" : "opacity-70"} />
+                <Radio size={14} className={activeTab === 'news' && !selectedCategory ? "text-[#2563EB]" : "opacity-70"} />
                 <span>Gündem</span>
               </button>
 
@@ -2913,11 +3084,11 @@ export default function App() {
                 className={cn(
                   "px-3.5 py-2 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 relative",
                   selectedCategory === 'Teknoloji & Dijital Dönüşüm'
-                    ? (isDarkMode ? "bg-[#121215] text-[#D4AF37] border border-[#D4AF37]/50 shadow-sm font-bold" : "bg-zinc-100 text-zinc-900 border border-zinc-300 font-bold")
+                    ? (isDarkMode ? "bg-[#111827] text-[#2563EB] border border-[#2563EB]/50 shadow-sm font-bold" : "bg-zinc-100 text-zinc-900 border border-zinc-300 font-bold")
                     : (isDarkMode ? "text-zinc-400 hover:text-white hover:bg-zinc-900" : "text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100")
                 )}
               >
-                <Zap size={14} className={selectedCategory === 'Teknoloji & Dijital Dönüşüm' ? "text-[#D4AF37]" : "opacity-70"} />
+                <Zap size={14} className={selectedCategory === 'Teknoloji & Dijital Dönüşüm' ? "text-[#2563EB]" : "opacity-70"} />
                 <span>Teknoloji</span>
               </button>
 
@@ -2931,11 +3102,11 @@ export default function App() {
                 className={cn(
                   "px-3.5 py-2 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 relative",
                   selectedCategory === 'Finans & Küresel Piyasalar'
-                    ? (isDarkMode ? "bg-[#121215] text-[#D4AF37] border border-[#D4AF37]/50 shadow-sm font-bold" : "bg-zinc-100 text-zinc-900 border border-zinc-300 font-bold")
+                    ? (isDarkMode ? "bg-[#111827] text-[#2563EB] border border-[#2563EB]/50 shadow-sm font-bold" : "bg-zinc-100 text-zinc-900 border border-zinc-300 font-bold")
                     : (isDarkMode ? "text-zinc-400 hover:text-white hover:bg-zinc-900" : "text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100")
                 )}
               >
-                <TrendingUp size={14} className={selectedCategory === 'Finans & Küresel Piyasalar' ? "text-[#D4AF37]" : "opacity-70"} />
+                <TrendingUp size={14} className={selectedCategory === 'Finans & Küresel Piyasalar' ? "text-[#2563EB]" : "opacity-70"} />
                 <span>Finans</span>
               </button>
 
@@ -2944,19 +3115,19 @@ export default function App() {
                 className={cn(
                   "px-3.5 py-2 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 relative",
                   activeTab === 'nav'
-                    ? (isDarkMode ? "bg-[#121215] text-[#D4AF37] border border-[#D4AF37]/50 shadow-sm font-bold" : "bg-zinc-100 text-zinc-900 border border-zinc-300 font-bold")
+                    ? (isDarkMode ? "bg-[#111827] text-[#2563EB] border border-[#2563EB]/50 shadow-sm font-bold" : "bg-zinc-100 text-zinc-900 border border-zinc-300 font-bold")
                     : (isDarkMode ? "text-zinc-400 hover:text-white hover:bg-zinc-900" : "text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100")
                 )}
               >
-                <LayoutGrid size={14} className={activeTab === 'nav' ? "text-[#D4AF37]" : "opacity-70"} />
+                <LayoutGrid size={14} className={activeTab === 'nav' ? "text-[#2563EB]" : "opacity-70"} />
                 <span>Kategoriler</span>
               </button>
 
               <button
                 onClick={() => setIsPressReleaseModalOpen(true)}
-                className="px-3.5 py-2 rounded-xl text-xs font-semibold text-zinc-400 hover:text-[#D4AF37] hover:bg-zinc-900/60 transition-all flex items-center gap-1.5 shrink-0"
+                className="px-3.5 py-2 rounded-xl text-xs font-semibold text-zinc-400 hover:text-[#2563EB] hover:bg-zinc-900/60 transition-all flex items-center gap-1.5 shrink-0"
               >
-                <Send size={13} className="text-[#D4AF37]" />
+                <Send size={13} className="text-[#2563EB]" />
                 <span>Basın Bülteni</span>
               </button>
             </nav>
@@ -2974,7 +3145,7 @@ export default function App() {
                     if (e.target.value) setActiveTab('news');
                   }} 
                   placeholder="Haberlerde ara..." 
-                  className="pl-9 pr-3 py-1.5 bg-[#121215] border border-zinc-800 focus:border-[#D4AF37] text-xs text-white rounded-xl focus:outline-none w-36 xl:w-52 transition-all placeholder:text-zinc-500 font-sans" 
+                  className="pl-9 pr-3 py-1.5 bg-[#111827] border border-zinc-800 focus:border-[#2563EB] text-xs text-white rounded-xl focus:outline-none w-36 xl:w-52 transition-all placeholder:text-zinc-500 font-sans" 
                 />
                 {searchQuery && (
                   <button 
@@ -2989,7 +3160,7 @@ export default function App() {
               {/* Manager & Reader Profile Badge */}
               <button
                 onClick={() => setIsProfileModalOpen(true)}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-[#D4AF37] text-black hover:brightness-110 transition-all shadow-md"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-[#2563EB] text-black hover:brightness-110 transition-all shadow-md"
                 title="Yönetici & Okur Profili"
               >
                 <User size={15} className="text-black shrink-0" />
@@ -3005,9 +3176,9 @@ export default function App() {
                   setLanguage(next);
                   showToast(`Dil değiştirildi: ${next}`);
                 }}
-                className="flex items-center gap-1 text-[11px] font-bold px-2.5 py-1.5 rounded-xl border border-[#D4AF37]/30 hover:bg-[#D4AF37]/10 transition-colors"
+                className="flex items-center gap-1 text-[11px] font-bold px-2.5 py-1.5 rounded-xl border border-[#2563EB]/30 hover:bg-[#2563EB]/10 transition-colors"
               >
-                <Globe size={13} className="text-[#D4AF37]" />
+                <Globe size={13} className="text-[#2563EB]" />
                 <span>{language}</span>
               </button>
 
@@ -3016,7 +3187,7 @@ export default function App() {
                   setIsDarkMode(!isDarkMode);
                   showToast(isDarkMode ? "Açık Lüks Tema Aktif" : "Obsidian Gold Koyu Tema Aktif");
                 }}
-                className="p-2 rounded-xl border border-zinc-700/50 hover:border-[#D4AF37] transition-all text-[#D4AF37]"
+                className="p-2 rounded-xl border border-zinc-700/50 hover:border-[#2563EB] transition-all text-[#2563EB]"
               >
                 {isDarkMode ? <Sun size={18} className="text-amber-400" /> : <Moon size={18} className="text-zinc-700" />}
               </button>
@@ -3031,73 +3202,63 @@ export default function App() {
           </div>
         </div>
 
-        {/* HORIZONTAL CATEGORIES SLIDER BAR (15 CORE CATEGORIES & 150 SUB-TOPICS) */}
-        <div className="border-t border-zinc-800/80 bg-[#0B0B0C] py-2.5 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto flex items-center gap-3 overflow-x-auto no-scrollbar scroll-smooth">
-            <button
-              onClick={() => {
-                setSelectedCategory(null);
-                setSelectedSubcategory(null);
-                setOnlyBookmarks(false);
-                setActiveTab('news');
-              }}
-              className={cn(
-                "px-3.5 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-all flex items-center gap-1.5 shrink-0",
-                (!selectedCategory && !onlyBookmarks)
-                  ? "bg-[#D4AF37] text-black shadow-md font-extrabold"
-                  : "bg-[#121215] text-zinc-400 border border-zinc-800 hover:border-[#D4AF37]/50"
-              )}
-            >
-              <Sparkles size={12} />
-              <span>Tüm Haberler</span>
-            </button>
-
-            {SITE_STRUCTURE.map((cat) => (
-              <button
-                key={cat.id}
-                onClick={() => {
-                  setSelectedCategory(cat.name);
-                  setSelectedSubcategory(null);
-                  setOnlyBookmarks(false);
-                  setActiveTab('news');
-                }}
-                className={cn(
-                  "px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all shrink-0 flex items-center gap-1.5",
-                  selectedCategory === cat.name
-                    ? "bg-[#D4AF37] text-black font-extrabold shadow-md"
-                    : "bg-[#121215] text-zinc-300 border border-zinc-800/90 hover:border-[#D4AF37]/60 hover:text-white"
-                )}
-              >
-                <span>{cat.name}</span>
-                {cat.badge && (
-                  <span className="bg-[#D4AF37]/20 text-[#D4AF37] text-[9px] font-bold px-1.5 py-0.2 rounded-full uppercase">
-                    {cat.badge}
-                  </span>
-                )}
-              </button>
-            ))}
+        {/* MODERLEŞTİRİLMİŞ YATAY KATEGORİ HAPLARI (PILL BADGES) */}
+        <div className="border-t border-slate-800/80 bg-[#0A0E17] py-3 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto flex items-center gap-2.5 overflow-x-auto no-scrollbar scroll-smooth">
+            {[
+              { name: null, label: "Tümü", icon: "🔥" },
+              { name: "Yapay Zeka & SaaS", label: "Yapay Zeka & SaaS", icon: "🤖" },
+              { name: "Donanım & Oyun", label: "Donanım & Oyun", icon: "💻" },
+              { name: "Finans & Ekonomi", label: "Finans & Ekonomi", icon: "📈" },
+              { name: "Kripto & Web3", label: "Kripto & Web3", icon: "🪙" },
+              { name: "Otomotiv & Enerji", label: "Otomotiv & Enerji", icon: "🚗" },
+              { name: "Girişimcilik", label: "Girişimcilik", icon: "💼" }
+            ].map((pill) => {
+              const isSelected = pill.name === null ? (!selectedCategory && !onlyBookmarks) : (selectedCategory === pill.name);
+              return (
+                <button
+                  key={pill.label}
+                  onClick={() => {
+                    setSelectedCategory(pill.name);
+                    setSelectedSubcategory(null);
+                    setOnlyBookmarks(false);
+                    setActiveTab('news');
+                  }}
+                  className={cn(
+                    "px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap transition-all flex items-center gap-2 shrink-0 shadow-sm",
+                    isSelected
+                      ? "bg-[#2563EB] text-white shadow-lg shadow-blue-600/30 border border-blue-400 font-extrabold"
+                      : "bg-[#111827] text-slate-400 border border-slate-800 hover:border-slate-700 hover:text-slate-200"
+                  )}
+                >
+                  <span>{pill.icon}</span>
+                  <span>{pill.label}</span>
+                </button>
+              );
+            })}
           </div>
+        </div>
 
           {/* Subcategories Horizontal Bar when Category is Selected */}
           {selectedCategory && (
-            <div className="max-w-7xl mx-auto flex items-center gap-2 overflow-x-auto no-scrollbar pt-2 border-t border-zinc-900 mt-2">
-              <span className="text-[10px] font-mono text-[#D4AF37] uppercase tracking-wider shrink-0 mr-1">Alt Konular:</span>
+            <div className="max-w-7xl mx-auto flex items-center gap-2 overflow-x-auto no-scrollbar pt-2 border-t border-zinc-900 mt-2 px-4 sm:px-6 lg:px-8">
+              <span className="text-[10px] font-mono text-[#2563EB] uppercase tracking-wider shrink-0 mr-1">Alt Konular:</span>
               <button
                 onClick={() => setSelectedSubcategory(null)}
                 className={cn(
                   "px-2.5 py-1 rounded-lg text-[11px] font-medium whitespace-nowrap shrink-0 transition-colors",
-                  !selectedSubcategory ? "bg-zinc-800 text-white font-bold" : "text-zinc-400 hover:text-white"
+                  !selectedSubcategory ? "bg-[#2563EB] text-white font-bold" : "text-zinc-400 hover:text-white"
                 )}
               >
                 Tüm Alt Konular
               </button>
-              {SITE_STRUCTURE.find(c => c.name === selectedCategory)?.subcategories.map(sub => (
+              {Array.from(new Set(filteredNews.map(n => n.subcategory))).filter(Boolean).map(sub => (
                 <button
                   key={sub}
-                  onClick={() => setSelectedSubcategory(sub)}
+                  onClick={() => setSelectedSubcategory(selectedSubcategory === sub ? null : sub)}
                   className={cn(
                     "px-2.5 py-1 rounded-lg text-[11px] font-medium whitespace-nowrap shrink-0 transition-colors",
-                    selectedSubcategory === sub ? "bg-[#D4AF37]/20 border border-[#D4AF37] text-[#D4AF37] font-bold" : "text-zinc-400 hover:text-white"
+                    selectedSubcategory === sub ? "bg-[#2563EB]/20 border border-[#2563EB] text-[#2563EB] font-bold" : "text-zinc-400 hover:text-white"
                   )}
                 >
                   {sub}
@@ -3109,13 +3270,13 @@ export default function App() {
           {/* TAG CLOUD HORIZONTAL ARCHIVE BAR */}
           <div className="max-w-7xl mx-auto flex items-center gap-2 overflow-x-auto no-scrollbar pt-2 border-t border-zinc-900/80 mt-2">
             <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider shrink-0 flex items-center gap-1">
-              <Tag size={10} className="text-[#D4AF37]" />
+              <Tag size={10} className="text-[#2563EB]" />
               Etiketler:
             </span>
             {selectedTag && (
               <button 
                 onClick={() => setSelectedTag(null)}
-                className="px-2 py-0.5 bg-[#D4AF37] text-black text-[10px] font-bold rounded flex items-center gap-1 shrink-0"
+                className="px-2 py-0.5 bg-[#2563EB] text-black text-[10px] font-bold rounded flex items-center gap-1 shrink-0"
               >
                 <span>#{selectedTag}</span>
                 <X size={10} />
@@ -3127,14 +3288,13 @@ export default function App() {
                 onClick={() => setSelectedTag(selectedTag === tag ? null : tag)}
                 className={cn(
                   "px-2 py-0.5 rounded text-[10px] font-mono whitespace-nowrap shrink-0 transition-colors",
-                  selectedTag === tag ? "bg-[#D4AF37] text-black font-bold" : "bg-zinc-900 text-zinc-400 hover:text-[#D4AF37]"
+                  selectedTag === tag ? "bg-[#2563EB] text-black font-bold" : "bg-zinc-900 text-zinc-400 hover:text-[#2563EB]"
                 )}
               >
                 #{tag}
               </button>
             ))}
           </div>
-        </div>
       </header>
 
       {/* Mobile Drawer */}
@@ -3144,7 +3304,7 @@ export default function App() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-[#121215] border-b border-[#D4AF37]/30 p-4 space-y-2 z-30"
+            className="lg:hidden bg-[#111827] border-b border-[#2563EB]/30 p-4 space-y-2 z-30"
           >
             {[
               { id: 'news', label: 'Haber Akışı', icon: Newspaper },
@@ -3168,7 +3328,7 @@ export default function App() {
                 className={cn(
                   "w-full text-left px-4 py-3 rounded-xl text-sm font-medium flex items-center justify-between",
                   activeTab === item.id 
-                    ? "bg-[#D4AF37] text-black font-bold" 
+                    ? "bg-[#2563EB] text-black font-bold" 
                     : "text-zinc-300 hover:bg-zinc-800"
                 )}
               >
@@ -3199,8 +3359,8 @@ export default function App() {
               </div>
 
               {/* Search input */}
-              <div className="flex items-center gap-2 bg-[#121215] border border-[#D4AF37]/30 rounded-xl px-4 py-2 w-full sm:w-72 focus-within:border-[#D4AF37] transition-all">
-                <Search size={16} className="text-[#D4AF37]" />
+              <div className="flex items-center gap-2 bg-[#111827] border border-[#2563EB]/30 rounded-xl px-4 py-2 w-full sm:w-72 focus-within:border-[#2563EB] transition-all">
+                <Search size={16} className="text-[#2563EB]" />
                 <input 
                   type="text" 
                   value={searchQuery}
@@ -3218,8 +3378,8 @@ export default function App() {
 
             {/* EMPTY STATE IF NO NEWS */}
             {filteredNews.length === 0 ? (
-              <div className="bg-[#121215] border border-[#D4AF37]/30 rounded-3xl p-12 text-center space-y-4 my-8 shadow-2xl">
-                <div className="w-16 h-16 bg-[#0B0B0C] border border-[#D4AF37]/50 text-[#D4AF37] rounded-2xl flex items-center justify-center mx-auto shadow-md">
+              <div className="bg-[#111827] border border-[#2563EB]/30 rounded-3xl p-12 text-center space-y-4 my-8 shadow-2xl">
+                <div className="w-16 h-16 bg-[#0A0E17] border border-[#2563EB]/50 text-[#2563EB] rounded-2xl flex items-center justify-center mx-auto shadow-md">
                   <Newspaper size={32} />
                 </div>
                 <h3 className="text-xl font-serif font-bold text-white">
@@ -3230,7 +3390,7 @@ export default function App() {
                 </p>
                 <button 
                   onClick={() => { setSearchQuery(''); setSelectedCategory(null); setSelectedSubcategory(null); setOnlyBookmarks(false); }}
-                  className="px-4 py-2 bg-[#D4AF37] text-black text-xs font-bold rounded-xl"
+                  className="px-4 py-2 bg-[#2563EB] text-black text-xs font-bold rounded-xl"
                 >
                   Filtreleri Temizle
                 </button>
@@ -3254,9 +3414,9 @@ export default function App() {
                 </div>
 
                 {/* PROGRAMMATIC LUXURY AD SLOT BANNER */}
-                <div className="bg-gradient-to-r from-[#121215] via-[#1c1a14] to-[#121215] border border-[#D4AF37]/40 rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl my-6">
+                <div className="bg-gradient-to-r from-[#111827] via-[#1c1a14] to-[#111827] border border-[#2563EB]/40 rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl my-6">
                   <div className="flex items-center gap-3">
-                    <span className="px-2 py-0.5 bg-[#D4AF37]/20 border border-[#D4AF37]/50 text-[#D4AF37] text-[9px] font-mono font-bold uppercase rounded">
+                    <span className="px-2 py-0.5 bg-[#2563EB]/20 border border-[#2563EB]/50 text-[#2563EB] text-[9px] font-mono font-bold uppercase rounded">
                       Sponsorlu İlan
                     </span>
                     <div>
@@ -3266,7 +3426,7 @@ export default function App() {
                   </div>
                   <button 
                     onClick={() => setIsSupportModalOpen(true)}
-                    className="px-4 py-1.5 bg-[#D4AF37] text-black text-xs font-extrabold rounded-xl hover:brightness-110 shrink-0"
+                    className="px-4 py-1.5 bg-[#2563EB] text-black text-xs font-extrabold rounded-xl hover:brightness-110 shrink-0"
                   >
                     Detaylı Bilgi
                   </button>
@@ -3279,7 +3439,7 @@ export default function App() {
                     <section className="space-y-6">
                       <div className="border-b border-zinc-800 pb-3 flex items-center justify-between">
                         <h3 className="text-lg font-serif font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                          <Newspaper size={18} className="text-[#D4AF37]" />
+                          <Newspaper size={18} className="text-[#2563EB]" />
                           <span>{selectedCategory ? `${selectedCategory} Tüm Yayınlar` : "Kategorilere Göre Temiz Haber Akışı"}</span>
                         </h3>
                       </div>
@@ -3300,13 +3460,13 @@ export default function App() {
                               return (
                                 <div 
                                   key={`cat-bento-${cat.id}`}
-                                  className="bg-[#121215] border border-zinc-800 hover:border-[#D4AF37]/50 rounded-3xl p-5 space-y-4 shadow-xl transition-all flex flex-col justify-between group"
+                                  className="bg-[#111827] border border-zinc-800 hover:border-[#2563EB]/50 rounded-3xl p-5 space-y-4 shadow-xl transition-all flex flex-col justify-between group"
                                 >
                                   <div className="space-y-3">
                                     {/* Category Header */}
                                     <div className="flex items-center justify-between border-b border-zinc-800/80 pb-2.5">
                                       <div className="flex items-center gap-2">
-                                        <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
+                                        <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB]" />
                                         <h4 className="font-serif font-bold text-white text-xs uppercase tracking-wider">
                                           {cat.name}
                                         </h4>
@@ -3316,7 +3476,7 @@ export default function App() {
                                           setSelectedCategory(cat.name);
                                           window.scrollTo({ top: 400, behavior: 'smooth' });
                                         }}
-                                        className="text-[10px] font-mono text-[#D4AF37] hover:underline flex items-center gap-1"
+                                        className="text-[10px] font-mono text-[#2563EB] hover:underline flex items-center gap-1"
                                       >
                                         <span>Tümünü Gör</span>
                                         <ArrowRight size={10} />
@@ -3336,10 +3496,10 @@ export default function App() {
                                           className="w-full sm:w-28 h-20 object-cover rounded-xl shrink-0 border border-zinc-800"
                                         />
                                         <div className="space-y-1.5 flex-grow">
-                                          <span className="text-[9px] font-mono text-[#D4AF37] font-bold uppercase">
+                                          <span className="text-[9px] font-mono text-[#2563EB] font-bold uppercase">
                                             {getCleanCategoryBadge(featuredArticle.category)}
                                           </span>
-                                          <h5 className="text-xs font-serif font-bold text-white hover:text-[#D4AF37] transition-colors leading-snug line-clamp-2">
+                                          <h5 className="text-xs font-serif font-bold text-white hover:text-[#2563EB] transition-colors leading-snug line-clamp-2">
                                             {featuredArticle.title}
                                           </h5>
                                           <div className="flex items-center gap-1.5 text-[9px] text-zinc-500 font-mono">
@@ -3361,8 +3521,8 @@ export default function App() {
                                             className="flex items-center justify-between gap-3 py-1 px-2 hover:bg-zinc-900/30 rounded-lg cursor-pointer transition-colors"
                                           >
                                             <div className="flex items-center gap-2 overflow-hidden">
-                                              <span className="text-[#D4AF37] text-xs">▪</span>
-                                              <span className="text-xs font-serif text-zinc-300 hover:text-[#D4AF37] transition-colors truncate max-w-[190px] sm:max-w-[280px]">
+                                              <span className="text-[#2563EB] text-xs">▪</span>
+                                              <span className="text-xs font-serif text-zinc-300 hover:text-[#2563EB] transition-colors truncate max-w-[190px] sm:max-w-[280px]">
                                                 {article.title}
                                               </span>
                                             </div>
@@ -3386,66 +3546,17 @@ export default function App() {
                           </div>
                         </div>
                       ) : (
-                        /* Flat row list when any filters or search are active */
-                        <div className="space-y-4">
-                          {filteredNews.slice(0, 12).map((news) => (
-                            <div 
-                              key={`row-${news.id}`}
-                              onClick={() => setSelectedNewsArticle(news)}
-                              className="bg-[#121215] border border-zinc-800 hover:border-[#D4AF37]/80 rounded-2xl p-4 sm:p-5 transition-all cursor-pointer group flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 shadow-xl"
-                            >
-                              <div className="w-full sm:w-48 h-32 rounded-xl overflow-hidden shrink-0 relative">
-                                <NewsImage 
-                                  src={news.imageUrl} 
-                                  alt={news.title}
-                                  category={news.category}
-                                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
-                                />
-                                <span className="absolute top-2 left-2 px-2 py-0.5 bg-black/80 text-[9px] font-bold text-[#D4AF37] rounded">
-                                  {getCleanCategoryBadge(news.category)}
-                                </span>
-                              </div>
-
-                              <div className="flex-grow space-y-2">
-                                <div className="flex items-center gap-2 text-[10px] text-zinc-400 font-mono flex-wrap">
-                                  <span className="text-[#D4AF37] font-bold">{getCleanCategoryBadge(news.category)}</span>
-                                  <span>•</span>
-                                  <span>{news.date}</span>
-                                  <span>•</span>
-                                  <span className="font-semibold text-zinc-300">{getDynamicReadTime(news)} okuma</span>
-                                  <span>•</span>
-                                  <span className="text-zinc-500 font-bold italic">{getMasaImzasi(news.category)}</span>
-                                </div>
-
-                                <h4 className="text-base sm:text-lg font-bold text-white group-hover:text-[#D4AF37] transition-colors leading-snug">
-                                  {news.title}
-                                </h4>
-
-                                <p className="text-xs text-zinc-400 line-clamp-2 leading-relaxed">
-                                  {news.excerpt}
-                                </p>
-
-                                <div className="text-[11px] text-zinc-300 font-medium pt-1">
-                                  Yazar: <span className="text-white font-semibold">{news.author}</span>
-                                </div>
-                              </div>
-
-                              <div className="flex items-center gap-3 shrink-0 self-end sm:self-center">
-                                <button 
-                                  onClick={(e) => toggleBookmark(news.id, e)}
-                                  className={cn(
-                                    "p-2 rounded-xl border transition-colors",
-                                    bookmarkedIds.includes(news.id) ? "bg-[#D4AF37] text-black border-[#D4AF37]" : "bg-[#0B0B0C] text-zinc-400 border-zinc-800 hover:text-white"
-                                  )}
-                                >
-                                  <Bookmark size={14} />
-                                </button>
-                                <span className="text-xs font-bold text-[#D4AF37] group-hover:underline flex items-center gap-1">
-                                  <span>Oku</span>
-                                  <ArrowRight size={14} />
-                                </span>
-                              </div>
-                            </div>
+                        /* Modern DonanımHaber / ShiftDelete Style News Grid */
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                          {filteredNews.slice(0, 18).map((news) => (
+                            <NewsCard
+                              key={`grid-${news.id}`}
+                              news={news}
+                              onSelect={setSelectedNewsArticle}
+                              bookmarked={bookmarkedIds.includes(news.id)}
+                              onToggleBookmark={toggleBookmark}
+                              getDynamicReadTime={getDynamicReadTime}
+                            />
                           ))}
                         </div>
                       )}
@@ -3472,10 +3583,10 @@ export default function App() {
                 </div>
 
                 {/* MINUTE-BY-MINUTE LIVE BLOGGING SECTION */}
-                <section className="bg-[#121215] border border-[#D4AF37]/30 rounded-3xl p-6 shadow-2xl space-y-4 my-8">
+                <section className="bg-[#111827] border border-[#2563EB]/30 rounded-3xl p-6 shadow-2xl space-y-4 my-8">
                   <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
                     <div className="flex items-center gap-2">
-                      <Radio size={18} className="text-[#D4AF37] animate-pulse" />
+                      <Radio size={18} className="text-[#2563EB] animate-pulse" />
                       <h3 className="font-serif font-bold text-white text-base uppercase tracking-wider">
                         Dakika Dakika Canlı Takip & Anlık Borsa Gelişmeleri
                       </h3>
@@ -3487,15 +3598,15 @@ export default function App() {
 
                   <div className="space-y-3">
                     {LIVE_BLOG_ENTRIES.map(entry => (
-                      <div key={entry.id} className="p-3 bg-[#0B0B0C] border border-zinc-800 rounded-xl flex items-start gap-3">
-                        <span className="px-2 py-0.5 bg-[#D4AF37] text-black font-mono font-bold text-[10px] rounded shrink-0">
+                      <div key={entry.id} className="p-3 bg-[#0A0E17] border border-zinc-800 rounded-xl flex items-start gap-3">
+                        <span className="px-2 py-0.5 bg-[#2563EB] text-black font-mono font-bold text-[10px] rounded shrink-0">
                           {entry.time}
                         </span>
                         <div className="space-y-1">
                           <div className="flex items-center gap-2">
                             <h4 className="text-xs font-bold text-white">{entry.title}</h4>
                             {entry.badge && (
-                              <span className="text-[9px] bg-zinc-800 text-[#D4AF37] px-1.5 py-0.2 rounded font-mono">
+                              <span className="text-[9px] bg-zinc-800 text-[#2563EB] px-1.5 py-0.2 rounded font-mono">
                                 {entry.badge}
                               </span>
                             )}
@@ -3511,7 +3622,7 @@ export default function App() {
                 {recentlyViewedNews.length > 0 && (
                   <section className="space-y-3 my-8">
                     <div className="flex items-center gap-2 border-b border-zinc-800 pb-2">
-                      <Clock size={16} className="text-[#D4AF37]" />
+                      <Clock size={16} className="text-[#2563EB]" />
                       <h4 className="text-sm font-serif font-bold text-white uppercase tracking-wider">
                         Son Göz Atılan Haberler ({recentlyViewedNews.length})
                       </h4>
@@ -3521,11 +3632,15 @@ export default function App() {
                         <div 
                           key={`rec-${item.id}`}
                           onClick={() => handleSelectArticle(item)}
-                          className="bg-[#121215] border border-zinc-800 hover:border-[#D4AF37] p-2.5 rounded-xl cursor-pointer space-y-1.5 transition-all"
+                          className="bg-[#111827] border border-zinc-800 hover:border-[#2563EB] p-2.5 rounded-xl cursor-pointer space-y-2 transition-all group"
                         >
-                          <img src={item.imageUrl} alt={item.title} className="w-full h-16 object-cover rounded-lg" />
-                          <span className="text-[9px] text-[#D4AF37] font-bold block">{item.subcategory}</span>
-                          <h5 className="text-[11px] font-bold text-white line-clamp-2 leading-snug">{item.title}</h5>
+                          <div className="relative w-full h-20 rounded-lg overflow-hidden border border-zinc-800">
+                            <NewsImage src={item.imageUrl} alt={item.title} category={item.category} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                            <span className="absolute top-1 left-1 px-1.5 py-0.5 bg-black/80 backdrop-blur-md text-[#2563EB] border border-[#2563EB]/30 text-[8px] font-bold rounded uppercase tracking-wider">
+                              {getCleanCategoryBadge(item.category)}
+                            </span>
+                          </div>
+                          <h5 className="text-[11px] font-semibold text-zinc-100 group-hover:text-[#2563EB] line-clamp-2 leading-snug transition-colors">{item.title}</h5>
                         </div>
                       ))}
                     </div>
@@ -3537,10 +3652,10 @@ export default function App() {
             {/* DAILY POLL WIDGET & GLOSSARY BENTO ROW */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 my-8">
               {/* DAILY POLL WIDGET */}
-              <section className="col-span-1 lg:col-span-2 bg-[#121215] border border-[#D4AF37]/30 rounded-3xl p-6 shadow-2xl space-y-4">
+              <section className="col-span-1 lg:col-span-2 bg-[#111827] border border-[#2563EB]/30 rounded-3xl p-6 shadow-2xl space-y-4">
                 <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
                   <div className="flex items-center gap-2">
-                    <Vote size={20} className="text-[#D4AF37]" />
+                    <Vote size={20} className="text-[#2563EB]" />
                     <h3 className="font-serif font-bold text-white text-base">
                       Günün Anketi & Kamuoyu Araştırması
                     </h3>
@@ -3564,19 +3679,19 @@ export default function App() {
                         onClick={() => handleVote(opt.id)}
                         className={cn(
                           "w-full text-left p-3 rounded-2xl border text-xs transition-all relative overflow-hidden flex items-center justify-between",
-                          isSelected ? "bg-[#D4AF37]/20 border-[#D4AF37] text-white" : "bg-[#0B0B0C] border-zinc-800 hover:border-zinc-700 text-zinc-300"
+                          isSelected ? "bg-[#2563EB]/20 border-[#2563EB] text-white" : "bg-[#0A0E17] border-zinc-800 hover:border-zinc-700 text-zinc-300"
                         )}
                       >
                         {/* Vote progress fill bar */}
                         {pollVotedOption && (
                           <div 
-                            className="absolute left-0 top-0 bottom-0 bg-[#D4AF37]/15 transition-all duration-700" 
+                            className="absolute left-0 top-0 bottom-0 bg-[#2563EB]/15 transition-all duration-700" 
                             style={{ width: `${pct}%` }}
                           />
                         )}
                         <span className="relative z-10 font-medium truncate max-w-[80%]">{opt.label}</span>
                         {pollVotedOption && (
-                          <span className="relative z-10 font-mono font-bold text-[#D4AF37]">{pct}%</span>
+                          <span className="relative z-10 font-mono font-bold text-[#2563EB]">{pct}%</span>
                         )}
                       </button>
                     );
@@ -3585,10 +3700,10 @@ export default function App() {
               </section>
 
               {/* GLOSSARY TOOLTIPS BENTO */}
-              <section className="bg-[#121215] border border-zinc-800 rounded-3xl p-6 shadow-2xl space-y-4 flex flex-col justify-between">
+              <section className="bg-[#111827] border border-zinc-800 rounded-3xl p-6 shadow-2xl space-y-4 flex flex-col justify-between">
                 <div>
                   <div className="flex items-center gap-2 border-b border-zinc-800 pb-3 mb-3">
-                    <HelpCircle size={18} className="text-[#D4AF37]" />
+                    <HelpCircle size={18} className="text-[#2563EB]" />
                     <h3 className="font-serif font-bold text-white text-base">Teknik Sözlük & Kavramlar</h3>
                   </div>
                   <p className="text-xs text-zinc-400 leading-relaxed mb-4">
@@ -3599,7 +3714,7 @@ export default function App() {
                       <button
                         key={gt.term}
                         onClick={() => setActiveGlossaryTerm(gt)}
-                        className="px-3 py-1.5 bg-[#0B0B0C] border border-zinc-700 hover:border-[#D4AF37] text-[#D4AF37] rounded-xl text-xs font-mono font-bold transition-all"
+                        className="px-3 py-1.5 bg-[#0A0E17] border border-zinc-700 hover:border-[#2563EB] text-[#2563EB] rounded-xl text-xs font-mono font-bold transition-all"
                       >
                         {gt.term}
                       </button>
@@ -3614,9 +3729,9 @@ export default function App() {
             </div>
 
             {/* NEWSLETTER CAPTURE SECTION */}
-            <section className="bg-gradient-to-r from-[#121215] via-[#1a1a20] to-[#121215] border border-[#D4AF37]/30 rounded-3xl p-8 shadow-2xl relative overflow-hidden my-8">
+            <section className="bg-gradient-to-r from-[#111827] via-[#1a1a20] to-[#111827] border border-[#2563EB]/30 rounded-3xl p-8 shadow-2xl relative overflow-hidden my-8">
               <div className="max-w-3xl mx-auto text-center space-y-4">
-                <span className="px-3 py-1 bg-[#D4AF37]/20 border border-[#D4AF37] text-[#D4AF37] text-[10px] font-extrabold rounded-full uppercase tracking-widest inline-flex items-center gap-1.5">
+                <span className="px-3 py-1 bg-[#2563EB]/20 border border-[#2563EB] text-[#2563EB] text-[10px] font-extrabold rounded-full uppercase tracking-widest inline-flex items-center gap-1.5">
                   <Mail size={12} />
                   Borsa & Teknoloji Bülteni
                 </span>
@@ -3635,7 +3750,7 @@ export default function App() {
                     className={cn(
                       "px-3.5 py-1.5 rounded-xl text-xs font-bold border transition-all flex items-center gap-1.5",
                       selectedNewsletterInterest === 'finans' 
-                        ? "bg-[#D4AF37]/20 border-[#D4AF37] text-[#D4AF37] scale-102" 
+                        ? "bg-[#2563EB]/20 border-[#2563EB] text-[#2563EB] scale-102" 
                         : "bg-zinc-950 border-zinc-800 text-zinc-500 hover:text-zinc-300"
                     )}
                   >
@@ -3647,7 +3762,7 @@ export default function App() {
                     className={cn(
                       "px-3.5 py-1.5 rounded-xl text-xs font-bold border transition-all flex items-center gap-1.5",
                       selectedNewsletterInterest === 'ai' 
-                        ? "bg-[#D4AF37]/20 border-[#D4AF37] text-[#D4AF37] scale-102" 
+                        ? "bg-[#2563EB]/20 border-[#2563EB] text-[#2563EB] scale-102" 
                         : "bg-zinc-950 border-zinc-800 text-zinc-500 hover:text-zinc-300"
                     )}
                   >
@@ -3663,12 +3778,12 @@ export default function App() {
                     value={newsletterEmail}
                     onChange={(e) => setNewsletterEmail(e.target.value)}
                     placeholder="E-posta adresinizi girin..." 
-                    className="w-full bg-[#0B0B0C] border border-zinc-700 rounded-xl px-4 py-3 text-xs text-white outline-none focus:border-[#D4AF37] transition-all disabled:opacity-50"
+                    className="w-full bg-[#0A0E17] border border-zinc-700 rounded-xl px-4 py-3 text-xs text-white outline-none focus:border-[#2563EB] transition-all disabled:opacity-50"
                   />
                   <button 
                     type="submit"
                     disabled={isNewsletterSubmitting}
-                    className="w-full sm:w-auto px-6 py-3 bg-[#D4AF37] text-black font-extrabold text-xs uppercase rounded-xl hover:brightness-110 shrink-0 transition-all shadow-md flex items-center justify-center gap-2 disabled:opacity-50 disabled:pointer-events-none"
+                    className="w-full sm:w-auto px-6 py-3 bg-[#2563EB] text-black font-extrabold text-xs uppercase rounded-xl hover:brightness-110 shrink-0 transition-all shadow-md flex items-center justify-center gap-2 disabled:opacity-50 disabled:pointer-events-none"
                   >
                     {isNewsletterSubmitting ? (
                       <>
@@ -3690,12 +3805,12 @@ export default function App() {
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 15 }}
-                  className="fixed inset-0 z-50 bg-[#0B0B0C] text-white overflow-y-auto w-full min-h-screen font-sans"
+                  className="fixed inset-0 z-50 bg-[#0A0E17] text-white overflow-y-auto w-full min-h-screen font-sans"
                 >
                   {/* 1. OKUMA İLERLEME ÇUBUĞU */}
                   <div className="fixed top-0 left-0 right-0 z-50 h-1 bg-zinc-900">
                     <div 
-                      className="h-1 bg-[#D4AF37] transition-all duration-150" 
+                      className="h-1 bg-[#2563EB] transition-all duration-150" 
                       style={{ width: `${articleScrollProgress}%` }} 
                     />
                   </div>
@@ -3720,32 +3835,32 @@ export default function App() {
                         {/* ← Tüm Haberler Butonu */}
                         <button 
                           onClick={handleCloseArticle}
-                          className="inline-flex items-center gap-2 px-4 py-2 bg-[#121215] border border-zinc-700 hover:border-[#D4AF37] hover:text-[#D4AF37] text-zinc-200 text-xs font-bold rounded-xl transition-all shadow-md group"
+                          className="inline-flex items-center gap-2 px-4 py-2 bg-[#111827] border border-zinc-700 hover:border-[#2563EB] hover:text-[#2563EB] text-zinc-200 text-xs font-bold rounded-xl transition-all shadow-md group"
                         >
-                          <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform text-[#D4AF37]" />
+                          <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform text-[#2563EB]" />
                           <span>← Tüm Haberler</span>
                         </button>
 
                         {/* Metin Boyutu & Paylaş */}
                         <div className="flex items-center gap-3">
-                          <div className="flex items-center gap-1 bg-[#121215] border border-zinc-800 rounded-xl p-1 text-xs font-mono">
+                          <div className="flex items-center gap-1 bg-[#111827] border border-zinc-800 rounded-xl p-1 text-xs font-mono">
                             <button 
                               onClick={() => changeArticleFontSize('sm')}
-                              className={cn("px-2 py-1 rounded font-bold transition-colors", articleFontSize === 'sm' ? "bg-[#D4AF37] text-black" : "text-zinc-400 hover:text-white")}
+                              className={cn("px-2 py-1 rounded font-bold transition-colors", articleFontSize === 'sm' ? "bg-[#2563EB] text-black" : "text-zinc-400 hover:text-white")}
                               title="Küçük Metin"
                             >
                               A-
                             </button>
                             <button 
                               onClick={() => changeArticleFontSize('md')}
-                              className={cn("px-2 py-1 rounded font-bold transition-colors", articleFontSize === 'md' ? "bg-[#D4AF37] text-black" : "text-zinc-400 hover:text-white")}
+                              className={cn("px-2 py-1 rounded font-bold transition-colors", articleFontSize === 'md' ? "bg-[#2563EB] text-black" : "text-zinc-400 hover:text-white")}
                               title="Normal Metin"
                             >
                               A
                             </button>
                             <button 
                               onClick={() => changeArticleFontSize('lg')}
-                              className={cn("px-2 py-1 rounded font-bold transition-colors", articleFontSize === 'lg' ? "bg-[#D4AF37] text-black" : "text-zinc-400 hover:text-white")}
+                              className={cn("px-2 py-1 rounded font-bold transition-colors", articleFontSize === 'lg' ? "bg-[#2563EB] text-black" : "text-zinc-400 hover:text-white")}
                               title="Büyük Metin"
                             >
                               A+
@@ -3754,7 +3869,7 @@ export default function App() {
 
                           <button 
                             onClick={() => handleCopy(selectedNewsArticle.canonicalUrl || 'https://webdehepseek.com', "Makale bağlantısı")}
-                            className="p-2 bg-[#121215] border border-zinc-800 hover:border-[#D4AF37] text-zinc-300 hover:text-[#D4AF37] rounded-xl transition-all"
+                            className="p-2 bg-[#111827] border border-zinc-800 hover:border-[#2563EB] text-zinc-300 hover:text-[#2563EB] rounded-xl transition-all"
                             title="Bağlantıyı Kopyala"
                           >
                             <Share2 size={16} />
@@ -3776,7 +3891,7 @@ export default function App() {
                           setSelectedCategory(null);
                           setSelectedSubcategory(null);
                         }}
-                        className="hover:text-[#D4AF37] transition-colors"
+                        className="hover:text-[#2563EB] transition-colors"
                       >
                         Ana Sayfa
                       </button>
@@ -3788,12 +3903,12 @@ export default function App() {
                           setSelectedCategory(cat);
                           setSelectedSubcategory(null);
                         }}
-                        className="hover:text-[#D4AF37] transition-colors"
+                        className="hover:text-[#2563EB] transition-colors"
                       >
                         {selectedNewsArticle.category}
                       </button>
                       <ChevronRight size={10} className="text-zinc-600" />
-                      <span className="text-[#D4AF37] font-semibold truncate max-w-xs sm:max-w-md">
+                      <span className="text-[#2563EB] font-semibold truncate max-w-xs sm:max-w-md">
                         {selectedNewsArticle.subcategory}
                       </span>
                     </nav>
@@ -3802,14 +3917,14 @@ export default function App() {
                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-2 border-b border-zinc-800/60">
                        <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs text-zinc-400 font-mono">
                          {/* Tek Sade Kategori Rozeti */}
-                         <span className="px-2.5 py-1 bg-[#D4AF37] text-black text-[10px] font-black rounded-md tracking-wider uppercase">
+                         <span className="px-2.5 py-1 bg-[#2563EB] text-black text-[10px] font-black rounded-md tracking-wider uppercase">
                            {getCleanCategoryBadge(selectedNewsArticle.category)}
                          </span>
                          <span>•</span>
                          {/* Tarih & Okuma Süresi */}
                          <span>{selectedNewsArticle.date}</span>
                          <span>•</span>
-                         <span className="text-[#D4AF37] font-semibold">{currentArticleReadTime} okuma</span>
+                         <span className="text-[#2563EB] font-semibold">{currentArticleReadTime} okuma</span>
                          <span>•</span>
                          {/* Kurumsal Masa İmzası */}
                          <span className="text-zinc-500 font-bold italic">{getMasaImzasi(selectedNewsArticle.category)}</span>
@@ -3817,7 +3932,7 @@ export default function App() {
 
                        <button 
                          onClick={() => setIsAiSummaryExpanded(!isAiSummaryExpanded)}
-                         className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-[#D4AF37]/15 border border-[#D4AF37]/50 text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black text-xs font-extrabold rounded-xl transition-all shadow-sm self-start sm:self-auto"
+                         className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-[#2563EB]/15 border border-[#2563EB]/50 text-[#2563EB] hover:bg-[#2563EB] hover:text-black text-xs font-extrabold rounded-xl transition-all shadow-sm self-start sm:self-auto"
                        >
                          <Sparkles size={14} />
                          <span>{isAiSummaryExpanded ? 'AI Özetini Gizle' : 'AI ile Özetle'}</span>
@@ -3830,9 +3945,9 @@ export default function App() {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="p-4 bg-[#121215] border-l-4 border-[#D4AF37] rounded-r-2xl space-y-2.5 shadow-xl"
+                        className="p-4 bg-[#111827] border-l-4 border-[#2563EB] rounded-r-2xl space-y-2.5 shadow-xl"
                       >
-                        <span className="text-xs font-bold text-[#D4AF37] flex items-center gap-1.5 uppercase font-mono tracking-wider">
+                        <span className="text-xs font-bold text-[#2563EB] flex items-center gap-1.5 uppercase font-mono tracking-wider">
                           <Sparkles size={14} />
                           <span>3 Maddede Yapay Zeka Özeti:</span>
                         </span>
@@ -3850,14 +3965,14 @@ export default function App() {
                     </h1>
 
                     {/* SPOT (GİRİŞ) PARAGRAFI */}
-                    <p className="text-base sm:text-lg text-zinc-300 font-medium leading-relaxed border-l-4 border-[#D4AF37] pl-4 italic bg-[#121215]/50 py-3 rounded-r-xl">
+                    <p className="text-base sm:text-lg text-zinc-300 font-medium leading-relaxed border-l-4 border-[#2563EB] pl-4 italic bg-[#111827]/50 py-3 rounded-r-xl">
                       {selectedNewsArticle.excerpt}
                     </p>
 
                     {/* GEO / AEO (AJANİK SEO - KEY TAKEAWAYS PANEL) */}
-                    <div className="bg-[#0B0B0C] border border-[#D4AF37]/35 rounded-2xl p-4.5 space-y-3 font-sans shadow-xl text-left">
+                    <div className="bg-[#0A0E17] border border-[#2563EB]/35 rounded-2xl p-4.5 space-y-3 font-sans shadow-xl text-left">
                       <div className="flex items-center gap-2 border-b border-zinc-800 pb-2">
-                        <Sparkles className="text-[#D4AF37] animate-pulse" size={15} />
+                        <Sparkles className="text-[#2563EB] animate-pulse" size={15} />
                         <h4 className="text-xs font-bold text-white uppercase tracking-wider font-mono">
                           📌 HIZLI OLGULAR VE TEMEL VERİLER (AI Engine Takeaways)
                         </h4>
@@ -3873,7 +3988,7 @@ export default function App() {
                         <div className="space-y-1">
                           <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block font-bold">🏢 Sektörel Etki</span>
                           <p className="text-zinc-300 leading-relaxed font-sans font-semibold">
-                            {selectedNewsArticle.category} • <span className="text-[#D4AF37]">{selectedNewsArticle.subcategory}</span>
+                            {selectedNewsArticle.category} • <span className="text-[#2563EB]">{selectedNewsArticle.subcategory}</span>
                           </p>
                         </div>
                         <div className="space-y-1">
@@ -3890,7 +4005,7 @@ export default function App() {
                     </div>
 
                     {/* KÜNYE SATIRI */}
-                    <div className="flex flex-wrap items-center justify-between gap-4 p-4 bg-[#121215] border border-zinc-800/80 rounded-2xl text-xs">
+                    <div className="flex flex-wrap items-center justify-between gap-4 p-4 bg-[#111827] border border-zinc-800/80 rounded-2xl text-xs">
                       <div 
                         onClick={() => {
                           const matchAuth = AUTHORS_LIST.find(a => a.name === selectedNewsArticle.author) || AUTHORS_LIST[0];
@@ -3898,15 +4013,15 @@ export default function App() {
                         }}
                         className="flex items-center gap-3 cursor-pointer group"
                       >
-                        <div className="w-10 h-10 rounded-full bg-[#D4AF37] text-black font-serif font-extrabold flex items-center justify-center text-base shrink-0 group-hover:scale-105 transition-transform shadow-md">
+                        <div className="w-10 h-10 rounded-full bg-[#2563EB] text-black font-serif font-extrabold flex items-center justify-center text-base shrink-0 group-hover:scale-105 transition-transform shadow-md">
                           {selectedNewsArticle.author.slice(0, 1)}
                         </div>
                         <div>
                           <div className="flex items-center gap-2">
-                            <span className="font-bold text-white text-sm group-hover:text-[#D4AF37] transition-colors">
+                            <span className="font-bold text-white text-sm group-hover:text-[#2563EB] transition-colors">
                               {selectedNewsArticle.author}
                             </span>
-                            <span className="text-[10px] bg-zinc-800 text-[#D4AF37] px-2 py-0.5 rounded font-mono font-semibold">
+                            <span className="text-[10px] bg-zinc-800 text-[#2563EB] px-2 py-0.5 rounded font-mono font-semibold">
                               {selectedNewsArticle.authorTitle || 'Kıdemli Yazar'}
                             </span>
                           </div>
@@ -3917,7 +4032,7 @@ export default function App() {
                       </div>
 
                       <div className="flex items-center gap-3 text-zinc-400 font-mono text-xs">
-                        <span className="px-2.5 py-1 bg-[#0B0B0C] border border-zinc-800 text-[#D4AF37] font-bold rounded-lg flex items-center gap-1.5">
+                        <span className="px-2.5 py-1 bg-[#0A0E17] border border-zinc-800 text-[#2563EB] font-bold rounded-lg flex items-center gap-1.5">
                           <Clock size={13} />
                           <span>{currentArticleReadTime} Okuma</span>
                         </span>
@@ -3947,7 +4062,7 @@ export default function App() {
                           className="w-full h-72 sm:h-96 object-cover group-hover:scale-102 transition-transform duration-500"
                         />
                         <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-bold gap-2">
-                          <ExternalLink size={16} className="text-[#D4AF37]" />
+                          <ExternalLink size={16} className="text-[#2563EB]" />
                           <span>Görseli Tam Ekran Büyüt</span>
                         </div>
                       </div>
@@ -3959,8 +4074,8 @@ export default function App() {
                     {/* WEBDEHEPSEEK VİDEO VE MEDYA EMBED ALANI */}
                     {(selectedNewsArticle.youtubeVideoId || selectedNewsArticle.videoUrl) && (
                       <div className="space-y-2.5 my-6 font-sans">
-                        <div className="flex items-center gap-2 text-xs font-bold text-[#D4AF37] uppercase font-mono">
-                          <Play size={14} className="fill-[#D4AF37] text-[#D4AF37]" />
+                        <div className="flex items-center gap-2 text-xs font-bold text-[#2563EB] uppercase font-mono">
+                          <Play size={14} className="fill-[#2563EB] text-[#2563EB]" />
                           <span>WebdeHepSeek Video Analiz</span>
                         </div>
                         <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-zinc-800 shadow-2xl bg-black">
@@ -3976,22 +4091,22 @@ export default function App() {
                     )}
 
                     {/* SESLİ MAKALE DİNLEME (TTS) */}
-                    <div className="bg-[#121215] border border-[#D4AF37]/30 rounded-2xl p-4 space-y-3 shadow-md">
+                    <div className="bg-[#111827] border border-[#2563EB]/30 rounded-2xl p-4 space-y-3 shadow-md">
                       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                         <div className="flex items-center gap-3">
-                          <div className="p-2 bg-[#D4AF37]/10 border border-[#D4AF37]/30 rounded-xl text-[#D4AF37]">
+                          <div className="p-2 bg-[#2563EB]/10 border border-[#2563EB]/30 rounded-xl text-[#2563EB]">
                             <Volume2 size={20} className="animate-pulse" />
                           </div>
                           <div>
                             <span className="text-xs font-bold text-white block">AI Sesli Makale Dinle (TTS)</span>
                             <span className="text-[10px] text-zinc-400">Tarayıcı içi Türkçe (tr-TR) doğal ses motoru</span>
-                            <div className="flex items-center gap-1.5 mt-1 text-[8px] font-mono text-[#D4AF37] bg-[#D4AF37]/15 border border-[#D4AF37]/35 px-2 py-0.5 rounded font-black w-max uppercase tracking-wider">
-                              <Sparkles size={10} className="text-[#D4AF37]" />
+                            <div className="flex items-center gap-1.5 mt-1 text-[8px] font-mono text-[#2563EB] bg-[#2563EB]/15 border border-[#2563EB]/35 px-2 py-0.5 rounded font-black w-max uppercase tracking-wider">
+                              <Sparkles size={10} className="text-[#2563EB]" />
                               <span>Sponsorlu Dinleme Alanı</span>
                             </div>
                           </div>
                         </div>
-                        <span className="text-xs font-mono text-[#D4AF37] font-bold">
+                        <span className="text-xs font-mono text-[#2563EB] font-bold">
                           İlerleme: %{audioProgress}
                         </span>
                       </div>
@@ -4005,7 +4120,7 @@ export default function App() {
                               playSpeech(selectedNewsArticle);
                             }
                           }}
-                          className="flex items-center gap-1.5 px-3.5 py-2 bg-[#D4AF37] text-black text-[11px] font-extrabold rounded-xl hover:brightness-110 shadow-md transition-all uppercase"
+                          className="flex items-center gap-1.5 px-3.5 py-2 bg-[#2563EB] text-black text-[11px] font-extrabold rounded-xl hover:brightness-110 shadow-md transition-all uppercase"
                         >
                           {isPlayingAudio && !isPausedAudio ? (
                             <>
@@ -4023,7 +4138,7 @@ export default function App() {
                         <button 
                           onClick={stopSpeech}
                           disabled={!isPlayingAudio && audioProgress === 0}
-                          className="flex items-center gap-1.5 px-3.5 py-2 bg-[#0B0B0C] text-zinc-300 border border-zinc-800 hover:border-[#D4AF37] hover:text-white text-[11px] font-bold rounded-xl transition-all uppercase disabled:opacity-50 disabled:pointer-events-none"
+                          className="flex items-center gap-1.5 px-3.5 py-2 bg-[#0A0E17] text-zinc-300 border border-zinc-800 hover:border-[#2563EB] hover:text-white text-[11px] font-bold rounded-xl transition-all uppercase disabled:opacity-50 disabled:pointer-events-none"
                         >
                           <Square size={12} />
                           <span>Durdur</span>
@@ -4031,7 +4146,7 @@ export default function App() {
 
                         <button 
                           onClick={() => restartSpeech(selectedNewsArticle)}
-                          className="flex items-center gap-1.5 px-3.5 py-2 bg-[#0B0B0C] text-zinc-300 border border-zinc-800 hover:border-[#D4AF37] hover:text-white text-[11px] font-bold rounded-xl transition-all uppercase"
+                          className="flex items-center gap-1.5 px-3.5 py-2 bg-[#0A0E17] text-zinc-300 border border-zinc-800 hover:border-[#2563EB] hover:text-white text-[11px] font-bold rounded-xl transition-all uppercase"
                         >
                           <RotateCcw size={12} />
                           <span>Başa Sar</span>
@@ -4040,7 +4155,7 @@ export default function App() {
 
                       <div className="w-full h-1.5 bg-zinc-800 rounded-full overflow-hidden">
                         <div 
-                          className="h-full bg-[#D4AF37] transition-all duration-300" 
+                          className="h-full bg-[#2563EB] transition-all duration-300" 
                           style={{ width: `${audioProgress}%` }}
                         />
                       </div>
@@ -4048,8 +4163,8 @@ export default function App() {
 
                     {/* İÇİNDEKİLER */}
                     {selectedNewsArticle.sections && selectedNewsArticle.sections.length > 0 && (
-                      <div className="bg-[#121215] border border-[#D4AF37]/30 rounded-2xl p-4 space-y-2">
-                        <span className="text-xs font-serif font-bold text-[#D4AF37] flex items-center gap-2">
+                      <div className="bg-[#111827] border border-[#2563EB]/30 rounded-2xl p-4 space-y-2">
+                        <span className="text-xs font-serif font-bold text-[#2563EB] flex items-center gap-2">
                           <List size={14} />
                           <span>İçindekiler & Başlıklar</span>
                         </span>
@@ -4063,7 +4178,7 @@ export default function App() {
                                     element.scrollIntoView({ behavior: 'smooth' });
                                   }
                                 }}
-                                className="hover:text-[#D4AF37] text-left transition-colors font-sans block w-full py-0.5"
+                                className="hover:text-[#2563EB] text-left transition-colors font-sans block w-full py-0.5"
                               >
                                 • {sec.heading}
                               </button>
@@ -4083,14 +4198,14 @@ export default function App() {
                         <div className="space-y-6 font-sans">
                           {/* Hızlı Karar Kutusu */}
                           {selectedNewsArticle.pSeoData.quickDecision && (
-                            <div className="p-5 bg-zinc-950 border border-[#D4AF37]/45 rounded-2xl space-y-3 shadow-xl">
-                              <span className="px-2.5 py-0.5 bg-[#D4AF37]/10 text-[#D4AF37] border border-[#D4AF37]/30 text-[9px] font-mono rounded font-extrabold uppercase">HIZLI KARAR MATRİSİ</span>
+                            <div className="p-5 bg-zinc-950 border border-[#2563EB]/45 rounded-2xl space-y-3 shadow-xl">
+                              <span className="px-2.5 py-0.5 bg-[#2563EB]/10 text-[#2563EB] border border-[#2563EB]/30 text-[9px] font-mono rounded font-extrabold uppercase">HIZLI KARAR MATRİSİ</span>
                               <h4 className="text-sm font-bold text-white flex items-center gap-1.5 font-serif">
                                 <CheckCircle className="text-emerald-400" size={16} />
                                 {selectedNewsArticle.pSeoData.quickDecision.title || "Özet Karar Analizi"}
                               </h4>
                               <p className="text-xs text-zinc-300">
-                                <strong className="text-[#D4AF37]">Önerilen Seçim:</strong> {selectedNewsArticle.pSeoData.quickDecision.winner}
+                                <strong className="text-[#2563EB]">Önerilen Seçim:</strong> {selectedNewsArticle.pSeoData.quickDecision.winner}
                               </p>
                               <ul className="space-y-1.5 text-xs text-zinc-400 list-disc pl-5 leading-relaxed">
                                 {selectedNewsArticle.pSeoData.quickDecision.points.map((pt: string, idx: number) => (
@@ -4104,7 +4219,7 @@ export default function App() {
                           {selectedNewsArticle.pSeoData.table && (
                             <div className="space-y-2 pt-2 text-left">
                               <span className="text-[10px] font-mono text-zinc-400 uppercase tracking-widest block font-bold">📊 Detaylı Özellik Karşılaştırma Matrisi</span>
-                              <div className="overflow-x-auto rounded-2xl border border-zinc-800 bg-[#0B0B0C]">
+                              <div className="overflow-x-auto rounded-2xl border border-zinc-800 bg-[#0A0E17]">
                                 <table className="w-full text-left border-collapse text-xs">
                                   <thead>
                                     <tr className="bg-zinc-900 border-b border-zinc-800 text-zinc-300 font-semibold font-mono">
@@ -4117,7 +4232,7 @@ export default function App() {
                                     {selectedNewsArticle.pSeoData.table.rows.map((row: string[], rowIdx: number) => (
                                       <tr key={rowIdx} className="hover:bg-zinc-900/30 transition-colors">
                                         {row.map((cell: string, cellIdx: number) => (
-                                          <td key={cellIdx} className={cn("p-4", cellIdx === 0 ? "font-semibold text-zinc-300 font-sans" : "font-mono text-[#D4AF37]/90")}>
+                                          <td key={cellIdx} className={cn("p-4", cellIdx === 0 ? "font-semibold text-zinc-300 font-sans" : "font-mono text-[#2563EB]/90")}>
                                             {cell}
                                           </td>
                                         ))}
@@ -4185,7 +4300,7 @@ export default function App() {
                           {selectedNewsArticle.pSeoData.table && (
                             <div className="space-y-2 text-left">
                               <span className="text-[10px] font-mono text-zinc-400 uppercase tracking-widest block font-bold">🧾 Kalem Kalem Vergilendirme ve Maliyet Dökümü</span>
-                              <div className="overflow-x-auto rounded-2xl border border-zinc-800 bg-[#0B0B0C]">
+                              <div className="overflow-x-auto rounded-2xl border border-zinc-800 bg-[#0A0E17]">
                                 <table className="w-full text-left border-collapse text-xs">
                                   <thead>
                                     <tr className="bg-zinc-900 border-b border-zinc-800 text-zinc-300 font-semibold font-mono">
@@ -4231,7 +4346,7 @@ export default function App() {
                         <div className="space-y-6 font-sans">
                           {/* Tahmini Süre Kutusu */}
                           <div className="p-3 bg-zinc-900 border border-zinc-800 rounded-xl flex items-center gap-2.5 text-left">
-                            <Clock className="text-[#D4AF37]" size={16} />
+                            <Clock className="text-[#2563EB]" size={16} />
                             <span className="text-xs text-zinc-300 font-mono">
                               <strong>Tahmini Tamamlama Süresi:</strong> {selectedNewsArticle.pSeoData.duration || "15 Dakika"}
                             </span>
@@ -4243,8 +4358,8 @@ export default function App() {
                               <span className="text-[10px] font-mono text-zinc-400 uppercase tracking-widest block font-bold">🛠️ Sıralı Kurulum ve Uygulama Adımları</span>
                               <div className="space-y-3">
                                 {selectedNewsArticle.pSeoData.steps.map((step: any, idx: number) => (
-                                  <div key={idx} className="p-4 bg-[#0B0B0C] border border-zinc-800 rounded-xl flex items-start gap-4">
-                                    <span className="w-6 h-6 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/35 text-[#D4AF37] flex items-center justify-center text-xs font-mono font-bold shrink-0 mt-0.5">
+                                  <div key={idx} className="p-4 bg-[#0A0E17] border border-zinc-800 rounded-xl flex items-start gap-4">
+                                    <span className="w-6 h-6 rounded-full bg-[#2563EB]/10 border border-[#2563EB]/35 text-[#2563EB] flex items-center justify-center text-xs font-mono font-bold shrink-0 mt-0.5">
                                       {idx + 1}
                                     </span>
                                     <div className="space-y-1">
@@ -4275,12 +4390,12 @@ export default function App() {
                       {selectedNewsArticle.pSeoType === 'review' && selectedNewsArticle.pSeoData && (
                         <div className="space-y-6 font-sans">
                           {/* 10 Üzerinden Puanlama Kartı */}
-                          <div className="p-5 bg-zinc-950 border border-[#D4AF37]/30 rounded-2xl flex items-center justify-between gap-4 shadow-xl">
+                          <div className="p-5 bg-zinc-950 border border-[#2563EB]/30 rounded-2xl flex items-center justify-between gap-4 shadow-xl">
                             <div className="text-left">
-                              <span className="px-2.5 py-0.5 bg-[#D4AF37]/10 text-[#D4AF37] border border-[#D4AF37]/20 text-[9px] font-mono rounded font-extrabold uppercase">EDİTÖRYAL PUAN</span>
+                              <span className="px-2.5 py-0.5 bg-[#2563EB]/10 text-[#2563EB] border border-[#2563EB]/20 text-[9px] font-mono rounded font-extrabold uppercase">EDİTÖRYAL PUAN</span>
                               <h4 className="text-xs text-zinc-400 mt-1 font-serif">Arayüz Sektörel Değerlendirme Derecesi</h4>
                             </div>
-                            <div className="text-3xl font-mono font-black text-[#D4AF37] bg-[#D4AF37]/10 px-5 py-2.5 rounded-2xl border border-[#D4AF37]/30 flex items-baseline gap-1">
+                            <div className="text-3xl font-mono font-black text-[#2563EB] bg-[#2563EB]/10 px-5 py-2.5 rounded-2xl border border-[#2563EB]/30 flex items-baseline gap-1">
                               {selectedNewsArticle.pSeoData.score} <span className="text-xs text-zinc-500 font-normal">/ 10</span>
                             </div>
                           </div>
@@ -4318,7 +4433,7 @@ export default function App() {
                                 href={selectedNewsArticle.pSeoData.affiliateUrl} 
                                 target="_blank" 
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 px-8 py-3 bg-[#D4AF37] hover:brightness-110 text-black text-xs font-extrabold uppercase rounded-xl shadow-lg shadow-[#D4AF37]/10 transition-all scale-102 hover:scale-105 active:scale-98 animate-pulse"
+                                className="inline-flex items-center gap-2 px-8 py-3 bg-[#2563EB] hover:brightness-110 text-black text-xs font-extrabold uppercase rounded-xl shadow-lg shadow-[#2563EB]/10 transition-all scale-102 hover:scale-105 active:scale-98 animate-pulse"
                               >
                                 <Sparkles size={14} />
                                 {selectedNewsArticle.pSeoData.affiliateText || "Ücretsiz Dene & Hemen Başla"}
@@ -4398,13 +4513,13 @@ export default function App() {
                     />
 
                     {/* Pro Plus: B2B Kurumsal Teklif & Lead Toplama Formu */}
-                    {['SaaS & Bulut Yazılımları', 'Yapay Zeka & Gelecek', 'Finans & Küresel Piyasalar', 'Otomotiv & Mobilite'].includes(selectedNewsArticle.category) && (
-                      <div className="my-8 p-6 bg-[#121215] border border-zinc-800 rounded-3xl space-y-4 text-left font-sans relative overflow-hidden">
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-[#D4AF37]/5 rounded-full blur-2xl -z-10" />
+                    {['SaaS & Yazılım', 'Yapay Zeka & Gelecek', 'Finans & Küresel Piyasalar', 'Otonom Sistemler & Robotik'].includes(selectedNewsArticle.category) && (
+                      <div className="my-8 p-6 bg-[#111827] border border-zinc-800 rounded-3xl space-y-4 text-left font-sans relative overflow-hidden">
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-[#2563EB]/5 rounded-full blur-2xl -z-10" />
                         <div className="flex items-center gap-2 border-b border-zinc-850 pb-3">
-                          <Briefcase className="text-[#D4AF37]" size={16} />
+                          <Briefcase className="text-[#2563EB]" size={16} />
                           <div>
-                            <span className="text-[9px] font-mono text-[#D4AF37] uppercase tracking-wider block">PREMIUM B2B ANLAŞMALARI (YÜKSEK KOMİSYON)</span>
+                            <span className="text-[9px] font-mono text-[#2563EB] uppercase tracking-wider block">PREMIUM B2B ANLAŞMALARI (YÜKSEK KOMİSYON)</span>
                             <h4 className="text-sm font-serif font-bold text-white mt-0.5">Kurumsal Çözüm & Teklif Al</h4>
                           </div>
                         </div>
@@ -4451,7 +4566,7 @@ export default function App() {
                               value={b2bCompanyName}
                               onChange={(e) => setB2bCompanyName(e.target.value)}
                               placeholder="Örn: Karadağ Holding A.Ş." 
-                              className="w-full bg-[#0B0B0C] border border-zinc-800 focus:border-[#D4AF37] rounded-xl px-3 py-2 text-white outline-none"
+                              className="w-full bg-[#0A0E17] border border-zinc-800 focus:border-[#2563EB] rounded-xl px-3 py-2 text-white outline-none"
                             />
                           </div>
                           <div className="space-y-1">
@@ -4459,7 +4574,7 @@ export default function App() {
                             <select 
                               value={b2bService}
                               onChange={(e) => setB2bService(e.target.value)}
-                              className="w-full bg-[#0B0B0C] border border-zinc-800 focus:border-[#D4AF37] rounded-xl px-3 py-2 text-white outline-none"
+                              className="w-full bg-[#0A0E17] border border-zinc-800 focus:border-[#2563EB] rounded-xl px-3 py-2 text-white outline-none"
                             >
                               <option value="Güneş Enerjisi & GES Yatırımları">Güneş Enerjisi (GES Yatırımı)</option>
                               <option value="CRM & ERP Bulut Yazılımları">CRM & ERP Bulut Yazılımı</option>
@@ -4472,7 +4587,7 @@ export default function App() {
                             <select 
                               value={b2bBudget}
                               onChange={(e) => setB2bBudget(e.target.value)}
-                              className="w-full bg-[#0B0B0C] border border-zinc-800 focus:border-[#D4AF37] rounded-xl px-3 py-2 text-white outline-none font-mono"
+                              className="w-full bg-[#0A0E17] border border-zinc-800 focus:border-[#2563EB] rounded-xl px-3 py-2 text-white outline-none font-mono"
                             >
                               <option value="100.000 ₺ - 500.000 ₺">100.000 ₺ - 500.000 ₺</option>
                               <option value="500.000 ₺ - 2.000.000 ₺">500.000 ₺ - 2.000.000 ₺</option>
@@ -4489,7 +4604,7 @@ export default function App() {
                                 value={b2bEmail}
                                 onChange={(e) => setB2bEmail(e.target.value)}
                                 placeholder="E-posta..." 
-                                className="w-full bg-[#0B0B0C] border border-zinc-800 focus:border-[#D4AF37] rounded-xl px-2.5 py-2 text-white outline-none"
+                                className="w-full bg-[#0A0E17] border border-zinc-800 focus:border-[#2563EB] rounded-xl px-2.5 py-2 text-white outline-none"
                               />
                               <input 
                                 type="tel" 
@@ -4497,7 +4612,7 @@ export default function App() {
                                 value={b2bPhone}
                                 onChange={(e) => setB2bPhone(e.target.value)}
                                 placeholder="Telefon..." 
-                                className="w-full bg-[#0B0B0C] border border-zinc-800 focus:border-[#D4AF37] rounded-xl px-2.5 py-2 text-white outline-none font-mono"
+                                className="w-full bg-[#0A0E17] border border-zinc-800 focus:border-[#2563EB] rounded-xl px-2.5 py-2 text-white outline-none font-mono"
                               />
                             </div>
                           </div>
@@ -4505,7 +4620,7 @@ export default function App() {
                             <button 
                               type="submit" 
                               disabled={isB2bSubmitting}
-                              className="w-full py-2.5 bg-zinc-900 hover:bg-[#D4AF37] text-[#D4AF37] hover:text-black font-extrabold text-xs uppercase rounded-xl border border-[#D4AF37]/50 hover:border-[#D4AF37] transition-all flex items-center justify-center gap-1.5 disabled:opacity-50"
+                              className="w-full py-2.5 bg-zinc-900 hover:bg-[#2563EB] text-[#2563EB] hover:text-black font-extrabold text-xs uppercase rounded-xl border border-[#2563EB]/50 hover:border-[#2563EB] transition-all flex items-center justify-center gap-1.5 disabled:opacity-50"
                             >
                               {isB2bSubmitting ? "Talebiniz Gönderiliyor..." : "Kurumsal Çözüm & Teklif Al"}
                             </button>
@@ -4518,12 +4633,12 @@ export default function App() {
                             <span className="text-zinc-500 font-bold block">Aktif Kurumsal Talepleriniz:</span>
                             <div className="space-y-1.5 max-h-32 overflow-y-auto no-scrollbar">
                               {b2bLeads.map((lead) => (
-                                <div key={lead.id} className="flex justify-between items-center bg-[#0B0B0C] p-2.5 rounded-xl border border-zinc-850">
+                                <div key={lead.id} className="flex justify-between items-center bg-[#0A0E17] p-2.5 rounded-xl border border-zinc-850">
                                   <div>
                                     <strong className="text-white">{lead.company}</strong>
                                     <span className="text-zinc-500 font-mono text-[9px] block">{lead.service} • {lead.budget}</span>
                                   </div>
-                                  <span className="text-[10px] text-[#D4AF37] font-bold bg-[#D4AF37]/10 px-2 py-0.5 rounded font-mono">
+                                  <span className="text-[10px] text-[#2563EB] font-bold bg-[#2563EB]/10 px-2 py-0.5 rounded font-mono">
                                     {lead.status}
                                   </span>
                                 </div>
@@ -4545,7 +4660,7 @@ export default function App() {
                             setSelectedNewsArticle(null); // Closes modal and filters category
                             showToast(`${selectedNewsArticle.category} sütununa yönlendirildiniz.`);
                           }}
-                          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-zinc-900 border border-zinc-800 text-[#D4AF37] hover:border-[#D4AF37] text-xs font-bold transition-all hover:scale-101"
+                          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-zinc-900 border border-zinc-800 text-[#2563EB] hover:border-[#2563EB] text-xs font-bold transition-all hover:scale-101"
                         >
                           <ChevronLeft size={14} />
                           <span>{selectedNewsArticle.category} Sütun Rehberine Geri Dön (Pillar)</span>
@@ -4569,13 +4684,13 @@ export default function App() {
                                   scrollContainer.scrollTop = 0;
                                 }
                               }}
-                              className="bg-zinc-950 border border-zinc-800 hover:border-[#D4AF37]/50 rounded-2xl p-3.5 space-y-2 cursor-pointer transition-all hover:scale-102 group flex flex-col justify-between text-left"
+                              className="bg-zinc-950 border border-zinc-800 hover:border-[#2563EB]/50 rounded-2xl p-3.5 space-y-2 cursor-pointer transition-all hover:scale-102 group flex flex-col justify-between text-left"
                             >
                               <div className="space-y-1.5">
-                                <span className="text-[9px] font-mono text-[#D4AF37] bg-[#D4AF37]/10 px-2 py-0.5 rounded font-bold">
+                                <span className="text-[9px] font-mono text-[#2563EB] bg-[#2563EB]/10 px-2 py-0.5 rounded font-bold">
                                   {item.subcategory}
                                 </span>
-                                <h5 className="text-xs font-serif font-bold text-white group-hover:text-[#D4AF37] line-clamp-2 transition-colors">
+                                <h5 className="text-xs font-serif font-bold text-white group-hover:text-[#2563EB] line-clamp-2 transition-colors">
                                   {item.title}
                                 </h5>
                               </div>
@@ -4588,10 +4703,10 @@ export default function App() {
                       </div>
 
                       {/* 3. Newsletter Opt-In Call */}
-                      <div className="p-5 bg-gradient-to-r from-zinc-950 to-zinc-900 border border-[#D4AF37]/35 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-lg text-left">
+                      <div className="p-5 bg-gradient-to-r from-zinc-950 to-zinc-900 border border-[#2563EB]/35 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-lg text-left">
                         <div className="space-y-1">
                           <h4 className="text-xs font-serif font-bold text-white flex items-center gap-1.5">
-                            <Mail className="text-[#D4AF37]" size={15} />
+                            <Mail className="text-[#2563EB]" size={15} />
                             Haftalık Analitik Bültene Katılın
                           </h4>
                           <p className="text-[11px] text-zinc-400 leading-relaxed font-sans">
@@ -4603,7 +4718,7 @@ export default function App() {
                             type="email"
                             placeholder="E-posta adresiniz..."
                             id="silo-newsletter-email"
-                            className="bg-[#0B0B0C] border border-zinc-800 focus:border-[#D4AF37] rounded-xl px-3 py-2 text-xs text-white outline-none w-full sm:w-48 font-sans"
+                            className="bg-[#0A0E17] border border-zinc-800 focus:border-[#2563EB] rounded-xl px-3 py-2 text-xs text-white outline-none w-full sm:w-48 font-sans"
                             onKeyDown={(e) => {
                               if (e.key === 'Enter') {
                                 const input = document.getElementById('silo-newsletter-email') as HTMLInputElement;
@@ -4624,7 +4739,7 @@ export default function App() {
                                 showToast("Lütfen geçerli bir e-posta girin.");
                               }
                             }}
-                            className="bg-[#D4AF37] hover:brightness-110 text-black font-extrabold text-xs uppercase px-4 py-2 rounded-xl transition-all"
+                            className="bg-[#2563EB] hover:brightness-110 text-black font-extrabold text-xs uppercase px-4 py-2 rounded-xl transition-all"
                           >
                             Kayıt Ol
                           </button>
@@ -4634,9 +4749,9 @@ export default function App() {
 
                     {/* PAYLAŞIM VE GOOGLE NEWS TAKİP ROZETİ */}
                     <div className="pt-6 border-t border-zinc-800 space-y-4">
-                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#121215] border border-zinc-800 p-4 rounded-2xl">
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#111827] border border-zinc-800 p-4 rounded-2xl">
                         <div className="flex items-center gap-2 text-xs font-bold text-white">
-                          <Share2 size={16} className="text-[#D4AF37]" />
+                          <Share2 size={16} className="text-[#2563EB]" />
                           <span>Bu Haberi Paylaşın:</span>
                         </div>
                         <div className="flex flex-wrap items-center gap-2">
@@ -4654,19 +4769,19 @@ export default function App() {
                           </button>
                           <button 
                             onClick={() => window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(selectedNewsArticle.title)}&url=${encodeURIComponent(selectedNewsArticle.canonicalUrl || 'https://webdehepseek.com')}`, '_blank')}
-                            className="px-3 py-1.5 bg-zinc-800 hover:bg-[#D4AF37] hover:text-black text-zinc-200 text-xs font-bold rounded-xl transition-all"
+                            className="px-3 py-1.5 bg-zinc-800 hover:bg-[#2563EB] hover:text-black text-zinc-200 text-xs font-bold rounded-xl transition-all"
                           >
                             X (Twitter)
                           </button>
                           <button 
                             onClick={() => window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(selectedNewsArticle.canonicalUrl || 'https://webdehepseek.com')}`, '_blank')}
-                            className="px-3 py-1.5 bg-zinc-800 hover:bg-[#D4AF37] hover:text-black text-zinc-200 text-xs font-bold rounded-xl transition-all"
+                            className="px-3 py-1.5 bg-zinc-800 hover:bg-[#2563EB] hover:text-black text-zinc-200 text-xs font-bold rounded-xl transition-all"
                           >
                             LinkedIn
                           </button>
                           <button 
                             onClick={() => handleCopy(selectedNewsArticle.canonicalUrl || 'https://webdehepseek.com', "Makale bağlantısı")}
-                            className="px-3 py-1.5 bg-[#D4AF37] text-black font-extrabold text-xs rounded-xl hover:brightness-110 transition-all"
+                            className="px-3 py-1.5 bg-[#2563EB] text-black font-extrabold text-xs rounded-xl hover:brightness-110 transition-all"
                           >
                             Link Kopyala
                           </button>
@@ -4674,9 +4789,9 @@ export default function App() {
                       </div>
 
                       {/* GOOGLE NEWS TAKİP ROZETİ */}
-                      <div className="flex items-center justify-between bg-[#121215] border border-[#D4AF37]/30 p-4 rounded-2xl">
+                      <div className="flex items-center justify-between bg-[#111827] border border-[#2563EB]/30 p-4 rounded-2xl">
                         <div className="flex items-center gap-3">
-                          <div className="p-2 bg-[#D4AF37]/10 rounded-xl text-[#D4AF37]">
+                          <div className="p-2 bg-[#2563EB]/10 rounded-xl text-[#2563EB]">
                             <Globe size={20} />
                           </div>
                           <div>
@@ -4688,7 +4803,7 @@ export default function App() {
                           href="https://news.google.com" 
                           target="_blank" 
                           rel="noopener noreferrer"
-                          className="px-4 py-2 bg-[#D4AF37] text-black text-xs font-extrabold rounded-xl hover:brightness-110 transition-all shrink-0 uppercase"
+                          className="px-4 py-2 bg-[#2563EB] text-black text-xs font-extrabold rounded-xl hover:brightness-110 transition-all shrink-0 uppercase"
                         >
                           Google News'e Ekle
                         </a>
@@ -4701,24 +4816,24 @@ export default function App() {
                         const matchAuth = AUTHORS_LIST.find(a => a.name === selectedNewsArticle.author) || AUTHORS_LIST[0];
                         setSelectedAuthorProfile(matchAuth);
                       }}
-                      className="p-5 bg-[#121215] border border-zinc-800 hover:border-[#D4AF37] rounded-2xl flex items-start gap-4 shadow-md cursor-pointer transition-all group my-6"
+                      className="p-5 bg-[#111827] border border-zinc-800 hover:border-[#2563EB] rounded-2xl flex items-start gap-4 shadow-md cursor-pointer transition-all group my-6"
                     >
-                      <div className="w-12 h-12 rounded-full bg-[#D4AF37] text-black font-serif font-extrabold flex items-center justify-center text-lg shrink-0 group-hover:scale-105 transition-transform">
+                      <div className="w-12 h-12 rounded-full bg-[#2563EB] text-black font-serif font-extrabold flex items-center justify-center text-lg shrink-0 group-hover:scale-105 transition-transform">
                         {selectedNewsArticle.author.slice(0, 1)}
                       </div>
                       <div className="space-y-1 text-xs">
                         <div className="flex items-center gap-2">
-                          <span className="font-bold text-white text-sm group-hover:text-[#D4AF37] transition-colors">
+                          <span className="font-bold text-white text-sm group-hover:text-[#2563EB] transition-colors">
                             {selectedNewsArticle.author}
                           </span>
-                          <span className="text-[10px] bg-zinc-800 text-[#D4AF37] px-2 py-0.5 rounded font-mono">
+                          <span className="text-[10px] bg-zinc-800 text-[#2563EB] px-2 py-0.5 rounded font-mono">
                             {selectedNewsArticle.authorTitle || 'Kıdemli Yazar'}
                           </span>
                         </div>
                         <p className="text-zinc-400 leading-relaxed">
                           {selectedNewsArticle.authorBio || 'WebdeHepSeeK Yayın Grubu bünyesinde teknoloji, finans ve pazar analizleri hazırlayan uzman editör.'}
                         </p>
-                        <span className="text-[10px] text-[#D4AF37] font-bold block pt-1">
+                        <span className="text-[10px] text-[#2563EB] font-bold block pt-1">
                           Yazarın Tüm Makalelerini İncele →
                         </span>
                       </div>
@@ -4736,13 +4851,13 @@ export default function App() {
                     <div className="space-y-3">
                       <button 
                         onClick={() => setIsCommentsExpanded(!isCommentsExpanded)}
-                        className="w-full flex items-center justify-between p-4 bg-[#121215] border border-zinc-800 hover:border-[#D4AF37] rounded-2xl text-xs font-bold text-white transition-all shadow-sm"
+                        className="w-full flex items-center justify-between p-4 bg-[#111827] border border-zinc-800 hover:border-[#2563EB] rounded-2xl text-xs font-bold text-white transition-all shadow-sm"
                       >
                         <div className="flex items-center gap-2">
-                          <MessageSquare size={16} className="text-[#D4AF37]" />
+                          <MessageSquare size={16} className="text-[#2563EB]" />
                           <span>Okur Yorumları Yap ({commentsList.filter(c => c.newsId === selectedNewsArticle.id).length})</span>
                         </div>
-                        <ChevronRight size={16} className={cn("text-[#D4AF37] transition-transform duration-300", isCommentsExpanded && "rotate-90")} />
+                        <ChevronRight size={16} className={cn("text-[#2563EB] transition-transform duration-300", isCommentsExpanded && "rotate-90")} />
                       </button>
 
                       {isCommentsExpanded && (
@@ -4750,7 +4865,7 @@ export default function App() {
                           initial={{ opacity: 0, height: 0 }}
                           animate={{ opacity: 1, height: 'auto' }}
                           exit={{ opacity: 0, height: 0 }}
-                          className="p-4 bg-[#121215] border border-zinc-800 rounded-2xl space-y-4 font-sans shadow-inner"
+                          className="p-4 bg-[#111827] border border-zinc-800 rounded-2xl space-y-4 font-sans shadow-inner"
                         >
                           <form onSubmit={(e) => handleAddComment(selectedNewsArticle.id, e)} className="space-y-3">
                             <input 
@@ -4758,19 +4873,19 @@ export default function App() {
                               value={newCommentAuthor}
                               onChange={(e) => setNewCommentAuthor(e.target.value)}
                               placeholder="Adınız Soyadınız..."
-                              className="w-full bg-[#0B0B0C] border border-zinc-800 rounded-xl px-3 py-2 text-xs text-white outline-none focus:border-[#D4AF37]"
+                              className="w-full bg-[#0A0E17] border border-zinc-800 rounded-xl px-3 py-2 text-xs text-white outline-none focus:border-[#2563EB]"
                             />
                             <textarea 
                               value={newCommentText}
                               onChange={(e) => setNewCommentText(e.target.value)}
                               placeholder="Düşüncelerinizi ve analizinizi paylaşın..."
                               rows={3}
-                              className="w-full bg-[#0B0B0C] border border-zinc-800 rounded-xl p-3 text-xs text-white outline-none focus:border-[#D4AF37]"
+                              className="w-full bg-[#0A0E17] border border-zinc-800 rounded-xl p-3 text-xs text-white outline-none focus:border-[#2563EB]"
                             />
                             <div className="text-right">
                               <button 
                                 type="submit"
-                                className="px-5 py-2 bg-[#D4AF37] text-black text-xs font-bold rounded-xl hover:brightness-110 transition-all"
+                                className="px-5 py-2 bg-[#2563EB] text-black text-xs font-bold rounded-xl hover:brightness-110 transition-all"
                               >
                                 Yorum Gönder
                               </button>
@@ -4784,7 +4899,7 @@ export default function App() {
                               </p>
                             ) : (
                               commentsList.filter(c => c.newsId === selectedNewsArticle.id).map(comment => (
-                                <div key={comment.id} className="p-3 bg-[#0B0B0C] border border-zinc-800/80 rounded-xl space-y-1.5 text-xs">
+                                <div key={comment.id} className="p-3 bg-[#0A0E17] border border-zinc-800/80 rounded-xl space-y-1.5 text-xs">
                                   <div className="flex items-center justify-between">
                                     <span className="font-bold text-white">{comment.author}</span>
                                     <span className="text-[10px] text-zinc-500 font-mono">{comment.date}</span>
@@ -4807,8 +4922,8 @@ export default function App() {
                     {relatedNews.length > 0 && (
                       <div className="pt-6 border-t border-zinc-800 space-y-4 font-sans">
                         <div className="flex items-center gap-2">
-                          <Sparkles size={16} className="text-[#D4AF37]" />
-                          <h4 className="text-sm font-serif font-bold text-white uppercase tracking-wider text-[#D4AF37]">
+                          <Sparkles size={16} className="text-[#2563EB]" />
+                          <h4 className="text-sm font-serif font-bold text-white uppercase tracking-wider text-[#2563EB]">
                             İlgili Haberler
                           </h4>
                         </div>
@@ -4822,17 +4937,20 @@ export default function App() {
                                 setIsAiSummaryExpanded(false);
                                 window.scrollTo({ top: 0, behavior: 'smooth' });
                               }}
-                              className="bg-[#121215] border border-zinc-800 hover:border-[#D4AF37] p-4 rounded-2xl cursor-pointer space-y-2 transition-all hover:-translate-y-1 group"
+                              className="bg-[#111827] border border-zinc-800 hover:border-[#2563EB] p-4 rounded-2xl cursor-pointer space-y-2 transition-all hover:-translate-y-1 group"
                             >
-                              <img 
-                                src={rel.imageUrl} 
-                                alt={rel.title} 
-                                className="w-full h-28 object-cover rounded-xl group-hover:scale-102 transition-transform"
-                              />
-                              <span className="text-[10px] text-[#D4AF37] font-mono font-bold block">
-                                {rel.subcategory}
-                              </span>
-                              <h5 className="text-xs font-bold text-white line-clamp-2 leading-snug group-hover:text-[#D4AF37] transition-colors">
+                              <div className="relative w-full h-32 rounded-xl overflow-hidden border border-zinc-800">
+                                <NewsImage 
+                                  src={rel.imageUrl} 
+                                  alt={rel.title} 
+                                  category={rel.category}
+                                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                />
+                                <span className="absolute top-2 left-2 px-2 py-0.5 bg-black/80 backdrop-blur-md text-[#2563EB] border border-[#2563EB]/30 text-[9px] font-bold rounded uppercase tracking-wider">
+                                  {getCleanCategoryBadge(rel.category)}
+                                </span>
+                              </div>
+                              <h5 className="text-xs font-semibold text-zinc-100 line-clamp-2 leading-snug group-hover:text-[#2563EB] transition-colors">
                                 {rel.title}
                               </h5>
                               <span className="text-[10px] text-zinc-500 block font-mono">
@@ -4853,7 +4971,7 @@ export default function App() {
                           setAudioProgress(0);
                           stopSpeech();
                         }}
-                        className="px-6 py-3 bg-[#D4AF37] text-black font-extrabold text-xs uppercase rounded-xl hover:brightness-110 shadow-lg transition-all inline-flex items-center gap-2"
+                        className="px-6 py-3 bg-[#2563EB] text-black font-extrabold text-xs uppercase rounded-xl hover:brightness-110 shadow-lg transition-all inline-flex items-center gap-2"
                       >
                         <ArrowLeft size={16} />
                         <span>Tüm Haberlere Dön</span>
@@ -4872,10 +4990,10 @@ export default function App() {
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.95 }}
-                    className="bg-[#121215] border border-[#D4AF37] max-w-md w-full rounded-3xl p-6 space-y-4 shadow-2xl"
+                    className="bg-[#111827] border border-[#2563EB] max-w-md w-full rounded-3xl p-6 space-y-4 shadow-2xl"
                   >
                     <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
-                      <span className="font-mono font-bold text-[#D4AF37] text-sm">
+                      <span className="font-mono font-bold text-[#2563EB] text-sm">
                         {activeGlossaryTerm.term} (Teknik Terim)
                       </span>
                       <button onClick={() => setActiveGlossaryTerm(null)} className="p-1 text-zinc-400 hover:text-white">
@@ -4888,7 +5006,7 @@ export default function App() {
                     <div className="pt-2 text-right">
                       <button 
                         onClick={() => setActiveGlossaryTerm(null)}
-                        className="px-4 py-2 bg-[#D4AF37] text-black font-bold text-xs rounded-xl"
+                        className="px-4 py-2 bg-[#2563EB] text-black font-bold text-xs rounded-xl"
                       >
                         Anladım
                       </button>
@@ -4901,135 +5019,80 @@ export default function App() {
           </div>
         )}
 
-        {/* TAB 2: 18 CORE CATEGORIES FERAH AKORDEON ÇEKMECESİ */}
+        {/* TAB 2: 6 PRESTİJLİ DİKEY KATEGORİ PORTFÖYÜ */}
         {activeTab === 'nav' && (
-          <div className="space-y-6 max-w-5xl mx-auto font-sans">
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-zinc-800/80 pb-6">
+          <div className="space-y-8 max-w-6xl mx-auto font-sans">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-zinc-800 pb-6">
               <div>
-                <span className="px-3.5 py-1 bg-[#D4AF37]/15 border border-[#D4AF37]/40 text-[#D4AF37] text-[10px] font-extrabold rounded-full uppercase tracking-widest inline-flex items-center gap-1.5">
+                <span className="px-3.5 py-1 bg-[#2563EB]/15 border border-[#2563EB]/40 text-[#2563EB] text-[10px] font-extrabold rounded-full uppercase tracking-widest inline-flex items-center gap-1.5">
                   <LayoutGrid size={12} />
-                  <span>18 Ana Kategori & 180 Alt Başlık</span>
+                  <span>TEKNOLOJİ, YAPAY ZEKA & FİNANS</span>
                 </span>
                 <h2 className="text-2xl sm:text-3xl font-serif font-bold text-white mt-2">
-                  Kategori & Yayın Çekmecesi
+                  6 Stratejik Dikey Yayın Kategorisi
                 </h2>
-                <p className="text-xs text-zinc-400 mt-1 font-sans">
-                  Sektör seçerek 10 alt başlığı ferah bir listede açabilir veya doğrudan ilgili kategori haberlerine ulaşabilirsiniz.
+                <p className="text-xs text-zinc-400 mt-1">
+                  DonanımHaber ve ShiftDelete ferahlığında yapılandırılmış prestijli 6 ana dikey kategorimiz.
                 </p>
               </div>
-              <div className="flex items-center gap-2">
-                <button 
-                  onClick={() => setExpandedCategoryNavId(null)} 
-                  className="text-xs text-zinc-400 hover:text-[#D4AF37] border border-zinc-800 bg-[#121215] px-3 py-1.5 rounded-xl font-mono transition-colors"
-                >
-                  Tümünü Kapat
-                </button>
-              </div>
+              <button
+                onClick={() => { setSelectedCategory(null); setSelectedSubcategory(null); setActiveTab('news'); }}
+                className="px-4 py-2 bg-[#2563EB] text-black font-extrabold text-xs rounded-xl hover:brightness-110 transition-all shrink-0 flex items-center gap-1.5"
+              >
+                <span>Tüm Haber Akışını Gör</span>
+                <ArrowRight size={14} />
+              </button>
             </div>
 
-            <div className="space-y-3">
+            {/* 6 Category Bento Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {SITE_STRUCTURE.map((cat, idx) => {
-                const isOpen = expandedCategoryNavId === cat.id;
+                const count = newsList.filter(n => n.category === cat.name).length;
                 return (
-                  <div 
-                    key={cat.id} 
-                    className="bg-[#121215] border border-zinc-800/90 hover:border-[#D4AF37]/50 rounded-2xl overflow-hidden transition-all duration-300 shadow-md"
+                  <div
+                    key={cat.id}
+                    onClick={() => {
+                      setSelectedCategory(cat.name);
+                      setSelectedSubcategory(null);
+                      setActiveTab('news');
+                    }}
+                    className="bg-[#111827] border border-zinc-800/90 hover:border-[#2563EB] rounded-3xl p-6 transition-all hover:-translate-y-1 cursor-pointer flex flex-col justify-between space-y-6 group shadow-xl relative overflow-hidden"
                   >
-                    {/* Akordeon Başlık / Satır */}
-                    <div 
-                      onClick={() => setExpandedCategoryNavId(isOpen ? null : cat.id)}
-                      className="p-4 sm:p-5 cursor-pointer flex items-center justify-between gap-4 hover:bg-zinc-900/60 transition-colors"
-                    >
-                      <div className="flex items-center gap-3.5 min-w-0">
-                        <div className="w-9 h-9 rounded-xl bg-[#0B0B0C] border border-[#D4AF37]/40 text-[#D4AF37] font-serif font-extrabold flex items-center justify-center text-xs sm:text-sm shrink-0 shadow-sm">
-                          {idx + 1}
-                        </div>
-                        <div className="min-w-0">
-                          <div className="flex items-center gap-2 flex-wrap">
-                            <h3 className="text-sm sm:text-base font-serif font-bold text-white tracking-tight hover:text-[#D4AF37] transition-colors">
-                              {cat.name}
-                            </h3>
-                            {cat.badge && (
-                              <span className="px-2 py-0.5 bg-[#D4AF37]/20 text-[#D4AF37] border border-[#D4AF37]/30 text-[9px] font-extrabold rounded uppercase font-mono">
-                                {cat.badge}
-                              </span>
-                            )}
-                          </div>
-                          <span className="text-[11px] text-zinc-500 font-mono block mt-0.5">
-                            10 Özel Alt Başlık & Detaylı Analizler
+                    <div className="absolute top-0 right-0 w-24 h-24 bg-[#2563EB]/5 rounded-full blur-2xl group-hover:bg-[#2563EB]/15 transition-all" />
+                    
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <span className="w-8 h-8 rounded-xl bg-[#0A0E17] border border-[#2563EB]/40 text-[#2563EB] font-mono font-bold flex items-center justify-center text-xs">
+                          0{idx + 1}
+                        </span>
+                        {cat.badge && (
+                          <span className="px-2.5 py-0.5 bg-[#2563EB]/15 text-[#2563EB] border border-[#2563EB]/30 text-[9px] font-bold rounded-full uppercase tracking-wider">
+                            {cat.badge}
                           </span>
-                        </div>
+                        )}
                       </div>
 
-                      <div className="flex items-center gap-3 shrink-0">
-                        <button 
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setSelectedCategory(cat.name);
-                            setSelectedSubcategory(null);
-                            setActiveTab('news');
-                          }}
-                          className="px-3 py-1.5 bg-[#0B0B0C] border border-[#D4AF37]/40 text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black text-xs font-bold rounded-xl transition-all hidden sm:flex items-center gap-1 uppercase font-mono"
-                        >
-                          <span>Akışı Gör</span>
-                          <ChevronRight size={12} />
-                        </button>
+                      <h3 className="text-lg font-serif font-bold text-white group-hover:text-[#2563EB] transition-colors">
+                        {cat.name}
+                      </h3>
 
-                        <div className="w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center text-zinc-400 group-hover:text-[#D4AF37] transition-colors">
-                          {isOpen ? <ChevronUp size={18} className="text-[#D4AF37]" /> : <ChevronDown size={18} />}
-                        </div>
+                      <div className="space-y-1.5 pt-2">
+                        {cat.subcategories.map(sub => (
+                          <div key={sub} className="flex items-center gap-2 text-xs text-zinc-400 group-hover:text-zinc-200">
+                            <span className="text-[#2563EB] text-[10px]">▪</span>
+                            <span className="truncate">{sub}</span>
+                          </div>
+                        ))}
                       </div>
                     </div>
 
-                    {/* Akordeon Açılır İçerik (Alt Başlıklar) */}
-                    <AnimatePresence>
-                      {isOpen && (
-                        <motion.div 
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: 'auto' }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.2 }}
-                          className="border-t border-zinc-800/80 bg-[#0B0B0C]/90 p-4 sm:p-5 space-y-4"
-                        >
-                          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-2.5">
-                            {cat.subcategories.map((sub) => (
-                              <div 
-                                key={sub}
-                                onClick={() => {
-                                  setSelectedCategory(cat.name);
-                                  setSelectedSubcategory(sub);
-                                  setActiveTab('news');
-                                }}
-                                className="p-3 bg-[#121215] border border-zinc-800/90 hover:border-[#D4AF37] rounded-xl flex items-center justify-between text-xs text-zinc-300 hover:text-[#D4AF37] cursor-pointer transition-all group"
-                              >
-                                <span className="font-medium truncate">{sub}</span>
-                                <span className="text-[10px] font-mono text-[#D4AF37] opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1 shrink-0">
-                                  <span>Gör</span>
-                                  <ChevronRight size={10} />
-                                </span>
-                              </div>
-                            ))}
-                          </div>
-
-                          <div className="pt-3 border-t border-zinc-800/60 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
-                            <span className="text-zinc-500 font-mono text-[11px]">
-                              WebdeHepSeek • {cat.name} Sektör Portföyü
-                            </span>
-                            <button 
-                              onClick={() => {
-                                setSelectedCategory(cat.name);
-                                setSelectedSubcategory(null);
-                                setActiveTab('news');
-                              }}
-                              className="text-[#D4AF37] hover:underline font-bold text-xs flex items-center gap-1"
-                            >
-                              <span>Tüm {cat.name} Haberlerini Filtrele</span>
-                              <ChevronRight size={12} />
-                            </button>
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                    <div className="pt-4 border-t border-zinc-800/80 flex items-center justify-between text-xs font-mono text-zinc-400">
+                      <span className="text-zinc-500">{count} Özel Rapor</span>
+                      <span className="text-[#2563EB] font-bold group-hover:underline flex items-center gap-1">
+                        <span>İncele</span>
+                        <ChevronRight size={12} />
+                      </span>
+                    </div>
                   </div>
                 );
               })}
@@ -5055,7 +5118,7 @@ export default function App() {
               </div>
               <button
                 onClick={handleSaveAnalyticsConfig}
-                className="px-5 py-2.5 bg-[#D4AF37] text-black font-extrabold text-xs uppercase rounded-xl hover:brightness-110 transition-all shrink-0 shadow-lg"
+                className="px-5 py-2.5 bg-[#2563EB] text-black font-extrabold text-xs uppercase rounded-xl hover:brightness-110 transition-all shrink-0 shadow-lg"
               >
                 Konfigürasyonu Kaydet
               </button>
@@ -5064,10 +5127,10 @@ export default function App() {
             {/* INTEGRATION INPUT CARDS */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* GA4 */}
-              <div className="bg-[#121215] border border-zinc-800 rounded-3xl p-6 space-y-4 shadow-xl relative overflow-hidden">
+              <div className="bg-[#111827] border border-zinc-800 rounded-3xl p-6 space-y-4 shadow-xl relative overflow-hidden">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <BarChart2 size={20} className="text-[#D4AF37]" />
+                    <BarChart2 size={20} className="text-[#2563EB]" />
                     <h3 className="font-serif font-bold text-white text-base">Google Analytics 4 (GA4)</h3>
                   </div>
                   <span className={cn(
@@ -5078,7 +5141,7 @@ export default function App() {
                   </span>
                 </div>
                 <p className="text-xs text-zinc-400 leading-relaxed">
-                  Google Analytics mülkünüzden aldığınız Measurement ID (Örn: <code className="text-[#D4AF37]">G-J8QMESNXY7</code>) kodunu girin.
+                  Google Analytics mülkünüzden aldığınız Measurement ID (Örn: <code className="text-[#2563EB]">G-J8QMESNXY7</code>) kodunu girin.
                 </p>
                 <div className="space-y-1.5">
                   <label className="text-[10px] font-mono uppercase text-zinc-400 font-bold block">GA4 Measurement ID</label>
@@ -5087,16 +5150,16 @@ export default function App() {
                     value={ga4Id}
                     onChange={(e) => setGa4Id(e.target.value)}
                     placeholder="G-J8QMESNXY7"
-                    className="w-full bg-[#0B0B0C] border border-zinc-700 rounded-xl px-4 py-2.5 text-xs text-white font-mono outline-none focus:border-[#D4AF37]"
+                    className="w-full bg-[#0A0E17] border border-zinc-700 rounded-xl px-4 py-2.5 text-xs text-white font-mono outline-none focus:border-[#2563EB]"
                   />
                 </div>
               </div>
 
               {/* SEARCH CONSOLE */}
-              <div className="bg-[#121215] border border-zinc-800 rounded-3xl p-6 space-y-4 shadow-xl relative overflow-hidden">
+              <div className="bg-[#111827] border border-zinc-800 rounded-3xl p-6 space-y-4 shadow-xl relative overflow-hidden">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <Shield size={20} className="text-[#D4AF37]" />
+                    <Shield size={20} className="text-[#2563EB]" />
                     <h3 className="font-serif font-bold text-white text-base">Google Search Console</h3>
                   </div>
                   <span className={cn(
@@ -5116,15 +5179,15 @@ export default function App() {
                     value={gscTag}
                     onChange={(e) => setGscTag(e.target.value)}
                     placeholder='<meta name="google-site-verification" content="..." />'
-                    className="w-full bg-[#0B0B0C] border border-zinc-700 rounded-xl px-4 py-2.5 text-xs text-white font-mono outline-none focus:border-[#D4AF37]"
+                    className="w-full bg-[#0A0E17] border border-zinc-700 rounded-xl px-4 py-2.5 text-xs text-white font-mono outline-none focus:border-[#2563EB]"
                   />
                 </div>
               </div>
             </div>
 
             {/* GENERATED HEAD SNIPPET CODE BOX */}
-            <div className="bg-[#121215] border border-zinc-800 rounded-3xl p-6 space-y-3 font-mono text-xs shadow-xl">
-              <div className="flex items-center justify-between text-[#D4AF37]">
+            <div className="bg-[#111827] border border-zinc-800 rounded-3xl p-6 space-y-3 font-mono text-xs shadow-xl">
+              <div className="flex items-center justify-between text-[#2563EB]">
                 <span className="font-bold flex items-center gap-2">
                   <FileJson size={16} />
                   <span>Otomatik Oluşturulan Head Etiket Kodları</span>
@@ -5134,12 +5197,12 @@ export default function App() {
                     `<!-- Google Analytics 4 (GA4) -->\n<script async src="https://www.googletagmanager.com/gtag/js?id=${ga4Id || 'G-J8QMESNXY7'}"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n  gtag('config', '${ga4Id || 'G-J8QMESNXY7'}');\n</script>\n${gscTag ? `<!-- Search Console Verification -->\n${gscTag}\n` : ''}`,
                     "Analytics Snippet"
                   )}
-                  className="px-3 py-1 bg-zinc-800 hover:bg-[#D4AF37] hover:text-black rounded text-[10px] font-bold text-white transition-colors"
+                  className="px-3 py-1 bg-zinc-800 hover:bg-[#2563EB] hover:text-black rounded text-[10px] font-bold text-white transition-colors"
                 >
                   Snippet'ı Kopyala
                 </button>
               </div>
-              <pre className="text-emerald-400 bg-[#0B0B0C] p-4 rounded-xl overflow-x-auto text-[11px] leading-relaxed border border-zinc-800">
+              <pre className="text-emerald-400 bg-[#0A0E17] p-4 rounded-xl overflow-x-auto text-[11px] leading-relaxed border border-zinc-800">
 {`<!-- Google Analytics 4 (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=${ga4Id || 'G-J8QMESNXY7'}"></script>
 <script>
@@ -5153,26 +5216,26 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
             </div>
 
             {/* CHECKLIST */}
-            <div className="bg-[#121215] border border-[#D4AF37]/30 rounded-3xl p-6 space-y-3">
-              <h4 className="font-serif font-bold text-white text-sm text-[#D4AF37] flex items-center gap-2">
+            <div className="bg-[#111827] border border-[#2563EB]/30 rounded-3xl p-6 space-y-3">
+              <h4 className="font-serif font-bold text-white text-sm text-[#2563EB] flex items-center gap-2">
                 <Sparkles size={16} />
                 <span>Google Indexing & E-E-A-T Yayıncılık Rehberi</span>
               </h4>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-zinc-300">
                 <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
-                  <span>Sitemap Adresi: <code className="text-[#D4AF37] font-mono">/sitemap.xml</code></span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB]" />
+                  <span>Sitemap Adresi: <code className="text-[#2563EB] font-mono">/sitemap.xml</code></span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
-                  <span>Google News Uyumlu RSS: <code className="text-[#D4AF37] font-mono">/feed.xml</code></span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB]" />
+                  <span>Google News Uyumlu RSS: <code className="text-[#2563EB] font-mono">/feed.xml</code></span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB]" />
                   <span>Schema.org NewsArticle Yapılandırılmış Verisi Entegre</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB]" />
                   <span>Core Web Vitals LCP & CLS Performansı Optimize Edilmiş</span>
                 </li>
               </ul>
@@ -5197,15 +5260,15 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               {SYSTEM_NODES.map((node) => (
-                <div key={node.id} className="bg-[#121215] border border-zinc-800 p-5 rounded-2xl space-y-3 shadow-lg">
+                <div key={node.id} className="bg-[#111827] border border-zinc-800 p-5 rounded-2xl space-y-3 shadow-lg">
                   <div className="flex justify-between items-center">
-                    <span className="font-mono text-[10px] bg-zinc-800 text-[#D4AF37] px-2.5 py-1 rounded-full font-bold">{node.code}</span>
+                    <span className="font-mono text-[10px] bg-zinc-800 text-[#2563EB] px-2.5 py-1 rounded-full font-bold">{node.code}</span>
                     <span className="text-xs font-mono text-emerald-400 font-bold">Performans: %{node.performance}</span>
                   </div>
                   <h4 className="text-base font-bold text-white">{node.name}</h4>
                   <p className="text-xs text-zinc-400">{node.description}</p>
                   <div className="pt-2 border-t border-zinc-800 text-[11px] text-zinc-500 font-mono">
-                    <span className="text-[#D4AF37] font-semibold">Son Durum:</span> {node.lastAction}
+                    <span className="text-[#2563EB] font-semibold">Son Durum:</span> {node.lastAction}
                   </div>
                 </div>
               ))}
@@ -5220,7 +5283,7 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
             <div className="border-b border-zinc-800 pb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
               <div>
                 <h2 className="text-3xl font-serif font-bold text-white flex items-center gap-2.5">
-                  <Sparkles className="text-[#D4AF37] animate-pulse" size={28} />
+                  <Sparkles className="text-[#2563EB] animate-pulse" size={28} />
                   Yapay Zeka & Programmatik SEO Merkezi
                 </h2>
                 <p className="text-zinc-400 text-sm mt-1">
@@ -5230,13 +5293,13 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
               <div className="flex bg-zinc-900 border border-zinc-800 p-1 rounded-xl shrink-0">
                 <button 
                   onClick={() => setSeoActiveTab('reader')} 
-                  className={cn("px-4 py-1.5 rounded-lg text-xs font-bold transition-all", seoActiveTab === 'reader' || !seoResult ? "bg-[#D4AF37] text-black" : "text-zinc-400 hover:text-white")}
+                  className={cn("px-4 py-1.5 rounded-lg text-xs font-bold transition-all", seoActiveTab === 'reader' || !seoResult ? "bg-[#2563EB] text-black" : "text-zinc-400 hover:text-white")}
                 >
                   SEO Editör Ajanı
                 </button>
                 <button 
                   onClick={() => { setSeoResult(null); setSeoActiveTab('eeat'); }} 
-                  className={cn("px-4 py-1.5 rounded-lg text-xs font-bold transition-all", seoActiveTab === 'eeat' && !seoResult ? "bg-[#D4AF37] text-black" : "text-zinc-400 hover:text-white")}
+                  className={cn("px-4 py-1.5 rounded-lg text-xs font-bold transition-all", seoActiveTab === 'eeat' && !seoResult ? "bg-[#2563EB] text-black" : "text-zinc-400 hover:text-white")}
                 >
                   Metin Sınıflandırıcı
                 </button>
@@ -5245,9 +5308,9 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
 
             {/* CASE 1: METIN SINIFLANDIRICI ACTIVE SUB-TAB (WHEN NOT GENERATED/GENERATING OR MANUALLY SELECTED WITHOUT RESULTS) */}
             {seoActiveTab === 'eeat' && !seoResult && (
-              <div className="bg-[#121215] border border-zinc-800 rounded-3xl p-6 space-y-4">
+              <div className="bg-[#111827] border border-zinc-800 rounded-3xl p-6 space-y-4">
                 <div className="flex items-center gap-2 text-white font-serif font-bold text-sm">
-                  <Activity className="text-[#D4AF37]" size={18} />
+                  <Activity className="text-[#2563EB]" size={18} />
                   <h3>AI Metin Analizi & Kategori Sınıflandırma</h3>
                 </div>
                 <p className="text-zinc-400 text-xs">
@@ -5257,9 +5320,9 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
                   value={newsText}
                   onChange={(e) => setNewsText(e.target.value)}
                   placeholder="Kategorize etmek istediğiniz haber veya analiz metnini buraya yapıştırın..."
-                  className="w-full h-40 bg-[#0B0B0C] border border-zinc-700 rounded-xl p-4 text-xs text-white outline-none focus:border-[#D4AF37] resize-none"
+                  className="w-full h-40 bg-[#0A0E17] border border-zinc-700 rounded-xl p-4 text-xs text-white outline-none focus:border-[#2563EB] resize-none"
                 />
-                <button onClick={classifyNewsWithGemini} disabled={isClassifying} className="w-full py-3 bg-[#D4AF37] text-black font-bold text-xs uppercase rounded-xl hover:brightness-110 transition-all flex items-center justify-center gap-2">
+                <button onClick={classifyNewsWithGemini} disabled={isClassifying} className="w-full py-3 bg-[#2563EB] text-black font-bold text-xs uppercase rounded-xl hover:brightness-110 transition-all flex items-center justify-center gap-2">
                   {isClassifying ? (
                     <>
                       <RefreshCw className="animate-spin" size={14} />
@@ -5269,32 +5332,32 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
                 </button>
 
                 {classificationResult && (
-                  <div className="p-5 bg-[#0B0B0C] border border-[#D4AF37]/50 rounded-2xl space-y-4 shadow-xl text-xs">
-                    <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#D4AF37]/20 pb-3">
+                  <div className="p-5 bg-[#0A0E17] border border-[#2563EB]/50 rounded-2xl space-y-4 shadow-xl text-xs">
+                    <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#2563EB]/20 pb-3">
                       <span className="text-[10px] font-mono text-zinc-400 uppercase tracking-widest">Sınıflandırma Raporu</span>
-                      <span className="px-2.5 py-0.5 bg-[#D4AF37]/10 text-[#D4AF37] border border-[#D4AF37]/30 text-[9px] font-mono rounded-full font-bold">
+                      <span className="px-2.5 py-0.5 bg-[#2563EB]/10 text-[#2563EB] border border-[#2563EB]/30 text-[9px] font-mono rounded-full font-bold">
                         Hibrit Motor v2.8
                       </span>
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                      <div className="p-3 bg-[#121215] border border-zinc-800 rounded-xl space-y-1">
+                      <div className="p-3 bg-[#111827] border border-zinc-800 rounded-xl space-y-1">
                         <span className="text-zinc-400 text-[10px] uppercase font-mono block">Eşleşen Kategori</span>
                         <strong className="text-white font-bold text-xs">{classificationResult.category}</strong>
-                        <span className="text-[10px] text-[#D4AF37] block font-mono">{classificationResult.subcategory}</span>
+                        <span className="text-[10px] text-[#2563EB] block font-mono">{classificationResult.subcategory}</span>
                       </div>
 
-                      <div className="p-3 bg-[#121215] border border-zinc-800 rounded-xl space-y-1">
+                      <div className="p-3 bg-[#111827] border border-zinc-800 rounded-xl space-y-1">
                         <span className="text-zinc-400 text-[10px] uppercase font-mono block">Güven Skoru</span>
                         <div className="flex items-center gap-2">
-                          <strong className="text-[#D4AF37] text-sm font-extrabold">%{classificationResult.confidence}</strong>
+                          <strong className="text-[#2563EB] text-sm font-extrabold">%{classificationResult.confidence}</strong>
                           <div className="flex-1 h-1.5 bg-zinc-800 rounded-full overflow-hidden">
-                            <div className="h-full bg-[#D4AF37]" style={{ width: `${classificationResult.confidence}%` }} />
+                            <div className="h-full bg-[#2563EB]" style={{ width: `${classificationResult.confidence}%` }} />
                           </div>
                         </div>
                       </div>
 
-                      <div className="p-3 bg-[#121215] border border-zinc-800 rounded-xl space-y-1">
+                      <div className="p-3 bg-[#111827] border border-zinc-800 rounded-xl space-y-1">
                         <span className="text-zinc-400 text-[10px] uppercase font-mono block">Piyasa Duyarlılığı</span>
                         <span className={cn(
                           "font-extrabold text-xs px-2 py-0.5 rounded-full inline-block border mt-1",
@@ -5309,8 +5372,8 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
                       </div>
                     </div>
 
-                    <div className="p-3.5 bg-[#121215] rounded-xl space-y-1 border border-zinc-800">
-                      <span className="text-[10px] uppercase tracking-wider font-bold text-[#D4AF37] block">🧠 Editoryal Gerekçelendirme (Reasoning):</span>
+                    <div className="p-3.5 bg-[#111827] rounded-xl space-y-1 border border-zinc-800">
+                      <span className="text-[10px] uppercase tracking-wider font-bold text-[#2563EB] block">🧠 Editoryal Gerekçelendirme (Reasoning):</span>
                       <p className="text-zinc-300 leading-relaxed font-sans text-xs italic">
                         {classificationResult.reasoning}
                       </p>
@@ -5322,7 +5385,7 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
 
             {/* CASE 2: SEO EDITÖR AJANI INPUT WORKSPACE (WHEN NOT GENERATING AND NO ACTIVE RESULT) */}
             {(seoActiveTab !== 'eeat' || seoResult) && !seoResult && !isGeneratingSeo && (
-              <div className="bg-[#121215] border border-zinc-800 rounded-3xl p-6 space-y-6">
+              <div className="bg-[#111827] border border-zinc-800 rounded-3xl p-6 space-y-6">
                 <div className="space-y-2">
                   <label className="text-xs font-mono font-bold text-zinc-300 uppercase tracking-wider block">
                     1. İçerik Teması / Anahtar Kelime veya Kıyaslama Girdisi
@@ -5332,7 +5395,7 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
                     value={seoKeyword}
                     onChange={(e) => setSeoKeyword(e.target.value)}
                     placeholder="Örn: Apple Vision Pro vs Meta Quest 4, Bitcoin 2026 Fiyatı, Node.js Kurulumu Rehberi..."
-                    className="w-full bg-[#0B0B0C] border border-zinc-700 rounded-xl p-3.5 text-xs text-white outline-none focus:border-[#D4AF37]"
+                    className="w-full bg-[#0A0E17] border border-zinc-700 rounded-xl p-3.5 text-xs text-white outline-none focus:border-[#2563EB]"
                   />
                   <div className="flex flex-wrap gap-1.5 pt-1.5">
                     <span className="text-[10px] font-mono text-zinc-500 self-center">Hızlı Öneriler:</span>
@@ -5345,7 +5408,7 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
                       <button 
                         key={kw} 
                         onClick={() => setSeoKeyword(kw)} 
-                        className="text-[10px] font-mono bg-zinc-900 hover:bg-zinc-800 hover:text-[#D4AF37] border border-zinc-800 text-zinc-400 px-2 py-0.5 rounded-md transition-colors"
+                        className="text-[10px] font-mono bg-zinc-900 hover:bg-zinc-800 hover:text-[#2563EB] border border-zinc-800 text-zinc-400 px-2 py-0.5 rounded-md transition-colors"
                       >
                         {kw}
                       </button>
@@ -5361,7 +5424,7 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
                     <select 
                       value={seoMode}
                       onChange={(e: any) => setSeoMode(e.target.value)}
-                      className="w-full bg-[#0B0B0C] border border-zinc-700 rounded-xl p-3 text-xs text-white outline-none focus:border-[#D4AF37]"
+                      className="w-full bg-[#0A0E17] border border-zinc-700 rounded-xl p-3 text-xs text-white outline-none focus:border-[#2563EB]"
                     >
                       <option value="auto">🤖 Girdiye Göre Otomatik Seç (Önerilen)</option>
                       <option value="comparison">🔄 MOD 1: \"X vs Y\" Kıyaslama (Özellik, Karar Matrisi)</option>
@@ -5380,14 +5443,14 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
                       value={seoCustomInstructions}
                       onChange={(e) => setSeoCustomInstructions(e.target.value)}
                       placeholder="Örn: 'Tabloda 2026 Türkiye vergi oranlarını yansıt', 'Çok akıcı Türkçe kullan'..."
-                      className="w-full bg-[#0B0B0C] border border-zinc-700 rounded-xl p-3 text-xs text-white outline-none focus:border-[#D4AF37]"
+                      className="w-full bg-[#0A0E17] border border-zinc-700 rounded-xl p-3 text-xs text-white outline-none focus:border-[#2563EB]"
                     />
                   </div>
                 </div>
 
                 <button 
                   onClick={generateProgrammaticSeoContent} 
-                  className="w-full py-4 bg-[#D4AF37] text-black font-extrabold text-xs uppercase rounded-xl hover:brightness-110 transition-all flex items-center justify-center gap-2 shadow-lg shadow-[#D4AF37]/10"
+                  className="w-full py-4 bg-[#2563EB] text-black font-extrabold text-xs uppercase rounded-xl hover:brightness-110 transition-all flex items-center justify-center gap-2 shadow-lg shadow-[#2563EB]/10"
                 >
                   <Sparkles size={16} />
                   Programmatik SEO İçeriği Üret (Google E-E-A-T Uyumlu)
@@ -5397,13 +5460,13 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
 
             {/* GENERATING LOADING SCREEN */}
             {isGeneratingSeo && (
-              <div className="bg-[#121215] border border-zinc-800 rounded-3xl p-12 text-center space-y-6">
-                <div className="w-16 h-16 bg-[#D4AF37]/10 border-2 border-dashed border-[#D4AF37] rounded-full flex items-center justify-center mx-auto animate-spin">
-                  <Sparkles className="text-[#D4AF37]" size={24} />
+              <div className="bg-[#111827] border border-zinc-800 rounded-3xl p-12 text-center space-y-6">
+                <div className="w-16 h-16 bg-[#2563EB]/10 border-2 border-dashed border-[#2563EB] rounded-full flex items-center justify-center mx-auto animate-spin">
+                  <Sparkles className="text-[#2563EB]" size={24} />
                 </div>
                 <div className="space-y-2 max-w-md mx-auto">
                   <h3 className="text-lg font-serif font-bold text-white">Yapay Zeka SEO Ajanı Çalışıyor</h3>
-                  <p className="text-xs text-[#D4AF37] font-mono tracking-widest uppercase animate-pulse">{seoStep}</p>
+                  <p className="text-xs text-[#2563EB] font-mono tracking-widest uppercase animate-pulse">{seoStep}</p>
                   <p className="text-xs text-zinc-400 font-sans leading-relaxed pt-2">
                     Google Helpful Content ve Thin Content filtrelerine takılmayacak şekilde somut veriler, maliyet tabloları, karar şemaları ve JSON-LD yapısal verileri arka planda sentezleniyor. Bu işlem ortalama 15-20 saniye sürebilir.
                   </p>
@@ -5417,7 +5480,7 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
                 {/* Result header & actions */}
                 <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-[#D4AF37]/10 text-[#D4AF37] border border-[#D4AF37]/20 rounded-xl flex items-center justify-center shrink-0 font-bold">
+                    <div className="w-10 h-10 bg-[#2563EB]/10 text-[#2563EB] border border-[#2563EB]/20 rounded-xl flex items-center justify-center shrink-0 font-bold">
                       %{seoResult.eeatScore || 98}
                     </div>
                     <div>
@@ -5438,7 +5501,7 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
                     </button>
                     <button 
                       onClick={publishSeoPostToFeed}
-                      className="px-4 py-2 bg-[#D4AF37] text-black font-extrabold text-xs rounded-xl hover:brightness-110 transition-all flex items-center gap-1.5"
+                      className="px-4 py-2 bg-[#2563EB] text-black font-extrabold text-xs rounded-xl hover:brightness-110 transition-all flex items-center gap-1.5"
                     >
                       <Send size={12} />
                       Sitede Yayınla
@@ -5450,25 +5513,25 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
                 <div className="flex border-b border-zinc-800">
                   <button 
                     onClick={() => setSeoActiveTab('reader')} 
-                    className={cn("px-5 py-3 text-xs font-bold border-b-2 transition-all", seoActiveTab === 'reader' ? "border-[#D4AF37] text-white" : "border-transparent text-zinc-400 hover:text-white")}
+                    className={cn("px-5 py-3 text-xs font-bold border-b-2 transition-all", seoActiveTab === 'reader' ? "border-[#2563EB] text-white" : "border-transparent text-zinc-400 hover:text-white")}
                   >
                     📖 Okuyucu Görünümü
                   </button>
                   <button 
                     onClick={() => setSeoActiveTab('eeat')} 
-                    className={cn("px-5 py-3 text-xs font-bold border-b-2 transition-all", seoActiveTab === 'eeat' ? "border-[#D4AF37] text-white" : "border-transparent text-zinc-400 hover:text-white")}
+                    className={cn("px-5 py-3 text-xs font-bold border-b-2 transition-all", seoActiveTab === 'eeat' ? "border-[#2563EB] text-white" : "border-transparent text-zinc-400 hover:text-white")}
                   >
                     🧠 E-E-A-T Analizi
                   </button>
                   <button 
                     onClick={() => setSeoActiveTab('seo')} 
-                    className={cn("px-5 py-3 text-xs font-bold border-b-2 transition-all", seoActiveTab === 'seo' ? "border-[#D4AF37] text-white" : "border-transparent text-zinc-400 hover:text-white")}
+                    className={cn("px-5 py-3 text-xs font-bold border-b-2 transition-all", seoActiveTab === 'seo' ? "border-[#2563EB] text-white" : "border-transparent text-zinc-400 hover:text-white")}
                   >
                     🌐 Google SERP Önizleme
                   </button>
                   <button 
                     onClick={() => setSeoActiveTab('schema')} 
-                    className={cn("px-5 py-3 text-xs font-bold border-b-2 transition-all", seoActiveTab === 'schema' ? "border-[#D4AF37] text-white" : "border-transparent text-zinc-400 hover:text-white")}
+                    className={cn("px-5 py-3 text-xs font-bold border-b-2 transition-all", seoActiveTab === 'schema' ? "border-[#2563EB] text-white" : "border-transparent text-zinc-400 hover:text-white")}
                   >
                     📄 Schema.org (JSON-LD)
                   </button>
@@ -5476,25 +5539,25 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
 
                 {/* TAB CONTENT 1: OKUYUCU GÖRÜNÜMÜ */}
                 {seoActiveTab === 'reader' && (
-                  <div className="bg-[#121215] border border-zinc-800 rounded-3xl p-6 sm:p-8 space-y-6 font-sans">
+                  <div className="bg-[#111827] border border-zinc-800 rounded-3xl p-6 sm:p-8 space-y-6 font-sans">
                     <h1 className="text-2xl sm:text-3xl font-serif font-black text-white leading-tight border-b border-zinc-800 pb-4">
                       {seoResult.h1}
                     </h1>
                     
-                    <p className="text-zinc-300 text-sm sm:text-base font-medium leading-relaxed border-l-4 border-[#D4AF37] pl-4 italic bg-[#0B0B0C] py-3 rounded-r-xl">
+                    <p className="text-zinc-300 text-sm sm:text-base font-medium leading-relaxed border-l-4 border-[#2563EB] pl-4 italic bg-[#0A0E17] py-3 rounded-r-xl">
                       {seoResult.spot}
                     </p>
 
                     {/* Hızlı Karar Kutusu (Kıyaslama Modu) */}
                     {seoResult.quickDecision && seoResult.quickDecision.winner && (
-                      <div className="p-5 bg-zinc-950 border border-[#D4AF37]/30 rounded-2xl space-y-3">
-                        <span className="px-2 py-0.5 bg-[#D4AF37]/10 text-[#D4AF37] border border-[#D4AF37]/30 text-[9px] font-mono rounded font-extrabold uppercase">HIZLI KARAR KUTUSU</span>
+                      <div className="p-5 bg-zinc-950 border border-[#2563EB]/30 rounded-2xl space-y-3">
+                        <span className="px-2 py-0.5 bg-[#2563EB]/10 text-[#2563EB] border border-[#2563EB]/30 text-[9px] font-mono rounded font-extrabold uppercase">HIZLI KARAR KUTUSU</span>
                         <h3 className="text-sm font-bold text-white flex items-center gap-1.5">
                           <Check className="text-emerald-400" size={16} />
                           {seoResult.quickDecision.title}
                         </h3>
                         <p className="text-xs text-zinc-300 font-semibold">
-                          Kazanan: <span className="text-[#D4AF37]">{seoResult.quickDecision.winner}</span>
+                          Kazanan: <span className="text-[#2563EB]">{seoResult.quickDecision.winner}</span>
                         </p>
                         <ul className="space-y-1 text-xs text-zinc-400 list-disc pl-4 leading-relaxed">
                           {seoResult.quickDecision.points.map((pt: string, idx: number) => (
@@ -5519,7 +5582,7 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
 
                     {/* Veri Tablosu */}
                     {seoResult.table && seoResult.table.headers && (
-                      <div className="overflow-x-auto rounded-2xl border border-zinc-800 bg-[#0B0B0C]">
+                      <div className="overflow-x-auto rounded-2xl border border-zinc-800 bg-[#0A0E17]">
                         <table className="w-full text-left border-collapse text-xs">
                           <thead>
                             <tr className="bg-zinc-900 border-b border-zinc-800 text-zinc-300 font-semibold font-mono">
@@ -5548,7 +5611,7 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
                       {seoResult.sections && seoResult.sections.map((sec: any, idx: number) => (
                         <div key={idx} className="space-y-2.5">
                           <h3 className="text-base sm:text-lg font-serif font-bold text-white flex items-center gap-2">
-                            <span className="w-1.5 h-4 bg-[#D4AF37] rounded-full shrink-0" />
+                            <span className="w-1.5 h-4 bg-[#2563EB] rounded-full shrink-0" />
                             {sec.heading}
                           </h3>
                           <p className="text-zinc-300 text-xs sm:text-sm leading-relaxed font-sans font-normal whitespace-pre-wrap">
@@ -5565,7 +5628,7 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
                           <Scale className="text-rose-400" size={16} />
                           Olası Teknik Engeller ve Çözümleri
                         </h3>
-                        <div className="overflow-x-auto rounded-2xl border border-zinc-800 bg-[#0B0B0C]">
+                        <div className="overflow-x-auto rounded-2xl border border-zinc-800 bg-[#0A0E17]">
                           <table className="w-full text-left border-collapse text-xs">
                             <thead>
                               <tr className="bg-zinc-900 border-b border-zinc-800 text-zinc-300 font-semibold font-mono">
@@ -5608,14 +5671,14 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
                     {/* Sıkça Sorulan Sorular (Faq Page Schema ile eşleşir) */}
                     <div className="border-t border-zinc-800 pt-6 space-y-4">
                       <h3 className="text-sm font-bold text-white flex items-center gap-2 font-serif uppercase tracking-wider">
-                        <HelpCircle className="text-[#D4AF37]" size={16} />
+                        <HelpCircle className="text-[#2563EB]" size={16} />
                         Sıkça Sorulan Sorular (FAQ)
                       </h3>
                       <div className="grid grid-cols-1 gap-4">
                         {seoResult.faq && seoResult.faq.map((q: any, idx: number) => (
-                          <div key={idx} className="p-4 bg-[#0B0B0C] border border-zinc-800 rounded-xl space-y-1.5">
+                          <div key={idx} className="p-4 bg-[#0A0E17] border border-zinc-800 rounded-xl space-y-1.5">
                             <h4 className="text-xs font-bold text-white font-sans flex items-center gap-1.5">
-                              <span className="text-[#D4AF37]">Q:</span> {q.question}
+                              <span className="text-[#2563EB]">Q:</span> {q.question}
                             </h4>
                             <p className="text-zinc-400 text-xs font-sans leading-relaxed">
                               {q.answer}
@@ -5629,9 +5692,9 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
 
                 {/* TAB CONTENT 2: E-E-A-T QUALITY AUDIT */}
                 {seoActiveTab === 'eeat' && (
-                  <div className="bg-[#121215] border border-zinc-800 rounded-3xl p-6 space-y-4 font-sans">
+                  <div className="bg-[#111827] border border-zinc-800 rounded-3xl p-6 space-y-4 font-sans">
                     <div className="flex items-center gap-2 text-white font-serif font-bold text-sm">
-                      <Award className="text-[#D4AF37]" size={18} />
+                      <Award className="text-[#2563EB]" size={18} />
                       <h3>Google E-E-A-T ve Helpful Content Analizi</h3>
                     </div>
                     <p className="text-zinc-400 text-xs leading-relaxed">
@@ -5641,9 +5704,9 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
                     <div className="p-5 bg-zinc-950 border border-zinc-800 rounded-2xl flex items-center justify-between gap-4">
                       <div className="space-y-1">
                         <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block">KALİTE SKORU</span>
-                        <h4 className="text-[#D4AF37] font-serif font-black text-xl">Uluslararası Basın Standartları</h4>
+                        <h4 className="text-[#2563EB] font-serif font-black text-xl">Uluslararası Basın Standartları</h4>
                       </div>
-                      <div className="text-3xl font-mono font-black text-[#D4AF37] bg-[#D4AF37]/10 px-5 py-2.5 rounded-2xl border border-[#D4AF37]/30">
+                      <div className="text-3xl font-mono font-black text-[#2563EB] bg-[#2563EB]/10 px-5 py-2.5 rounded-2xl border border-[#2563EB]/30">
                         {seoResult.eeatScore || 98}/100
                       </div>
                     </div>
@@ -5652,8 +5715,8 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
                       <h4 className="text-xs font-mono font-bold text-zinc-300 uppercase tracking-wide">Analiz Raporu Maddeleri:</h4>
                       <div className="grid grid-cols-1 gap-2.5">
                         {seoResult.eeatReasons && seoResult.eeatReasons.map((reason: string, idx: number) => (
-                          <div key={idx} className="p-3.5 bg-[#0B0B0C] border border-zinc-800/80 rounded-xl flex items-start gap-2.5">
-                            <CheckCircle className="text-[#D4AF37] mt-0.5 shrink-0" size={15} />
+                          <div key={idx} className="p-3.5 bg-[#0A0E17] border border-zinc-800/80 rounded-xl flex items-start gap-2.5">
+                            <CheckCircle className="text-[#2563EB] mt-0.5 shrink-0" size={15} />
                             <span className="text-xs text-zinc-300 leading-relaxed font-sans">{reason}</span>
                           </div>
                         ))}
@@ -5664,16 +5727,16 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
 
                 {/* TAB CONTENT 3: GOOGLE SERP PREVIEW */}
                 {seoActiveTab === 'seo' && (
-                  <div className="bg-[#121215] border border-zinc-800 rounded-3xl p-6 space-y-6 font-sans">
+                  <div className="bg-[#111827] border border-zinc-800 rounded-3xl p-6 space-y-6 font-sans">
                     <div className="flex items-center gap-2 text-white font-serif font-bold text-sm">
-                      <Globe className="text-[#D4AF37]" size={18} />
+                      <Globe className="text-[#2563EB]" size={18} />
                       <h3>Arama Motoru Sonucu Önizlemesi (Google SERP)</h3>
                     </div>
 
                     {/* Google Desktop Snippet Preview */}
-                    <div className="p-6 bg-[#0B0B0C] border border-zinc-800 rounded-2xl space-y-2">
+                    <div className="p-6 bg-[#0A0E17] border border-zinc-800 rounded-2xl space-y-2">
                       <div className="flex items-center gap-1.5 text-xs text-zinc-400 font-sans">
-                        <Globe size={13} className="text-[#D4AF37]" />
+                        <Globe size={13} className="text-[#2563EB]" />
                         <span>webdehepseek.com</span>
                         <span>›</span>
                         <span>makale</span>
@@ -5695,7 +5758,7 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
                           readOnly 
                           value={seoResult.metaTitle} 
                           onClick={(e: any) => handleCopy(e.target.value, "Meta Title")}
-                          className="w-full bg-[#0B0B0C] border border-zinc-800 rounded-lg p-2.5 text-xs font-mono text-[#D4AF37] outline-none cursor-copy"
+                          className="w-full bg-[#0A0E17] border border-zinc-800 rounded-lg p-2.5 text-xs font-mono text-[#2563EB] outline-none cursor-copy"
                         />
                       </div>
                       <div className="space-y-1.5 p-4 bg-zinc-950 border border-zinc-800 rounded-xl">
@@ -5705,7 +5768,7 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
                           readOnly 
                           value={seoResult.metaDescription} 
                           onClick={(e: any) => handleCopy(e.target.value, "Meta Description")}
-                          className="w-full bg-[#0B0B0C] border border-zinc-800 rounded-lg p-2.5 text-xs font-mono text-zinc-300 outline-none cursor-copy"
+                          className="w-full bg-[#0A0E17] border border-zinc-800 rounded-lg p-2.5 text-xs font-mono text-zinc-300 outline-none cursor-copy"
                         />
                       </div>
                     </div>
@@ -5714,15 +5777,15 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
 
                 {/* TAB CONTENT 4: SCHEMA JSON-LD */}
                 {seoActiveTab === 'schema' && (
-                  <div className="bg-[#121215] border border-zinc-800 rounded-3xl p-6 space-y-4 font-sans">
+                  <div className="bg-[#111827] border border-zinc-800 rounded-3xl p-6 space-y-4 font-sans">
                     <div className="flex items-center justify-between gap-4 border-b border-zinc-800 pb-3">
                       <div className="flex items-center gap-2 text-white font-serif font-bold text-sm">
-                        <FileJson className="text-[#D4AF37]" size={18} />
+                        <FileJson className="text-[#2563EB]" size={18} />
                         <h3>Doğrulanmış Schema.org Yapısal Verisi (JSON-LD)</h3>
                       </div>
                       <button 
                         onClick={() => handleCopy(seoResult.schemaJson, "Schema JSON-LD")}
-                        className="px-3 py-1.5 bg-[#D4AF37] hover:brightness-110 text-black font-bold text-[10px] rounded uppercase transition-all"
+                        className="px-3 py-1.5 bg-[#2563EB] hover:brightness-110 text-black font-bold text-[10px] rounded uppercase transition-all"
                       >
                         Şemayı Kopyala
                       </button>
@@ -5731,7 +5794,7 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
                       Aşağıdaki script bloğu, Google Botlarının sayfayı saniyeler içinde anlamlandırması ve arama sonuçlarında Rich Snippets (SSS, Yıldızlı Değerlendirme, Fiyat Şeması) kazanabilmeniz için özel olarak biçimlendirilmiştir.
                     </p>
 
-                    <pre className="p-4 bg-[#0B0B0C] border border-zinc-800 rounded-2xl text-[11px] font-mono text-[#D4AF37] max-h-96 overflow-y-auto overflow-x-auto select-all leading-relaxed whitespace-pre-wrap">
+                    <pre className="p-4 bg-[#0A0E17] border border-zinc-800 rounded-2xl text-[11px] font-mono text-[#2563EB] max-h-96 overflow-y-auto overflow-x-auto select-all leading-relaxed whitespace-pre-wrap">
                       {seoResult.schemaJson}
                     </pre>
                   </div>
@@ -5756,23 +5819,23 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
                   const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">\n${newsList.map(n => `  <url>\n    <loc>${n.canonicalUrl}</loc>\n    <news:news>\n      <news:publication>\n        <news:name>WebdeHepSeeK Journal</news:name>\n        <news:language>tr</news:language>\n      </news:publication>\n      <news:publication_date>2026-10-06</news:publication_date>\n      <news:title>${n.title.replace(/&/g, '&amp;')}</news:title>\n    </news:news>\n  </url>`).join('\n')}\n</urlset>`;
                   handleCopy(xml, "Google News Sitemap.xml");
                 }}
-                className="px-4 py-2 bg-[#D4AF37] text-black font-bold text-xs rounded-xl hover:brightness-110 shrink-0"
+                className="px-4 py-2 bg-[#2563EB] text-black font-bold text-xs rounded-xl hover:brightness-110 shrink-0"
               >
                 Sitemap XML Kopyala
               </button>
             </div>
 
-            <div className="bg-[#121215] border border-zinc-800 rounded-3xl p-6 font-mono text-xs space-y-4">
-              <div className="flex items-center justify-between text-[#D4AF37]">
+            <div className="bg-[#111827] border border-zinc-800 rounded-3xl p-6 font-mono text-xs space-y-4">
+              <div className="flex items-center justify-between text-[#2563EB]">
                 <span>wp_hierarchy_180_subcategories.json</span>
                 <button 
                   onClick={() => handleCopy(JSON.stringify(SITE_STRUCTURE, null, 2), "WP JSON Hiyerarşisi")}
-                  className="px-3 py-1 bg-zinc-800 hover:bg-[#D4AF37] hover:text-black rounded text-[10px] font-bold"
+                  className="px-3 py-1 bg-zinc-800 hover:bg-[#2563EB] hover:text-black rounded text-[10px] font-bold"
                 >
                   Kopyala
                 </button>
               </div>
-              <pre className="text-emerald-400 bg-[#0B0B0C] p-4 rounded-xl overflow-x-auto max-h-96">
+              <pre className="text-emerald-400 bg-[#0A0E17] p-4 rounded-xl overflow-x-auto max-h-96">
                 {JSON.stringify(SITE_STRUCTURE.map(c => ({
                   parent: c.name,
                   slug: c.id,
@@ -5797,8 +5860,8 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {Object.entries(LEGAL_DOCUMENTS).map(([key, doc]) => (
-                <div key={key} className="bg-[#121215] border border-zinc-800 rounded-3xl p-6 space-y-3">
-                  <h3 className="text-base font-serif font-bold text-[#D4AF37]">{doc.title}</h3>
+                <div key={key} className="bg-[#111827] border border-zinc-800 rounded-3xl p-6 space-y-3">
+                  <h3 className="text-base font-serif font-bold text-[#2563EB]">{doc.title}</h3>
                   <p className="text-xs text-zinc-300 leading-relaxed line-clamp-4">{doc.content}</p>
                   <button 
                     onClick={() => setActiveLegalModal(key as any)}
@@ -5815,31 +5878,31 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
       </main>
 
       {/* RESPONSIVE MOBILE BOTTOM ACTION BAR */}
-      <div className="fixed bottom-0 inset-x-0 z-40 bg-[#121215]/95 border-t border-[#D4AF37]/30 backdrop-blur-lg px-2 py-2 flex items-center justify-around text-zinc-400 text-[10px] lg:hidden">
+      <div className="fixed bottom-0 inset-x-0 z-40 bg-[#111827]/95 border-t border-[#2563EB]/30 backdrop-blur-lg px-2 py-2 flex items-center justify-around text-zinc-400 text-[10px] lg:hidden">
         <button 
           onClick={() => { setActiveTab('news'); setSelectedCategory(null); setSelectedSubcategory(null); }}
-          className={cn("flex flex-col items-center gap-1 font-bold", activeTab === 'news' ? "text-[#D4AF37]" : "hover:text-white")}
+          className={cn("flex flex-col items-center gap-1 font-bold", activeTab === 'news' ? "text-[#2563EB]" : "hover:text-white")}
         >
           <Newspaper size={18} />
           <span>Haberler</span>
         </button>
         <button 
           onClick={() => setActiveTab('nav')}
-          className={cn("flex flex-col items-center gap-1 font-bold", activeTab === 'nav' ? "text-[#D4AF37]" : "hover:text-white")}
+          className={cn("flex flex-col items-center gap-1 font-bold", activeTab === 'nav' ? "text-[#2563EB]" : "hover:text-white")}
         >
           <LayoutGrid size={18} />
           <span>Kategoriler</span>
         </button>
         <button 
           onClick={() => setActiveTab('ai')}
-          className={cn("flex flex-col items-center gap-1 font-bold", activeTab === 'ai' ? "text-[#D4AF37]" : "hover:text-white")}
+          className={cn("flex flex-col items-center gap-1 font-bold", activeTab === 'ai' ? "text-[#2563EB]" : "hover:text-white")}
         >
           <Zap size={18} />
           <span>AI Analiz</span>
         </button>
         <button 
           onClick={() => setIsDarkMode(!isDarkMode)}
-          className="flex flex-col items-center gap-1 font-bold hover:text-white text-[#D4AF37]"
+          className="flex flex-col items-center gap-1 font-bold hover:text-white text-[#2563EB]"
         >
           {isDarkMode ? <Sun size={18} className="text-amber-400" /> : <Moon size={18} />}
           <span>Tema</span>
@@ -5848,11 +5911,11 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
 
       {/* Sticky Cookie Consent Banner */}
       {!cookieConsentAccepted && (
-        <div className="fixed bottom-0 inset-x-0 z-50 bg-[#121215] border-t-2 border-[#D4AF37] p-4 shadow-2xl backdrop-blur-xl">
+        <div className="fixed bottom-0 inset-x-0 z-50 bg-[#111827] border-t-2 border-[#2563EB] p-4 shadow-2xl backdrop-blur-xl">
           <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
             <div className="text-zinc-300 space-y-1">
               <span className="font-bold text-white flex items-center gap-2">
-                <Shield size={14} className="text-[#D4AF37]" />
+                <Shield size={14} className="text-[#2563EB]" />
                 Çerez Politikası ve KVKK Aydınlatma Rızası
               </span>
               <p className="text-[11px] text-zinc-400">
@@ -5862,13 +5925,13 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
             <div className="flex items-center gap-3 shrink-0">
               <button 
                 onClick={() => setActiveLegalModal('cookies')}
-                className="text-[#D4AF37] hover:underline text-xs"
+                className="text-[#2563EB] hover:underline text-xs"
               >
                 Çerez Detayları
               </button>
               <button 
                 onClick={handleAcceptCookies}
-                className="px-5 py-2 bg-[#D4AF37] text-black font-extrabold text-xs uppercase rounded-xl hover:brightness-110"
+                className="px-5 py-2 bg-[#2563EB] text-black font-extrabold text-xs uppercase rounded-xl hover:brightness-110"
               >
                 Kabul Et ve Kapat
               </button>
@@ -5885,10 +5948,10 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="bg-[#121215] border border-[#D4AF37] max-w-2xl w-full rounded-3xl p-6 space-y-4 shadow-2xl"
+              className="bg-[#111827] border border-[#2563EB] max-w-2xl w-full rounded-3xl p-6 space-y-4 shadow-2xl"
             >
               <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
-                <h3 className="text-xl font-serif font-bold text-[#D4AF37]">
+                <h3 className="text-xl font-serif font-bold text-[#2563EB]">
                   {LEGAL_DOCUMENTS[activeLegalModal].title}
                 </h3>
                 <button onClick={() => setActiveLegalModal(null)} className="p-1 text-zinc-400 hover:text-white">
@@ -5904,7 +5967,7 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
               <div className="pt-3 border-t border-zinc-800 text-right">
                 <button 
                   onClick={() => setActiveLegalModal(null)}
-                  className="px-5 py-2 bg-[#D4AF37] text-black font-bold text-xs rounded-xl"
+                  className="px-5 py-2 bg-[#2563EB] text-black font-bold text-xs rounded-xl"
                 >
                   Anladım
                 </button>
@@ -5918,19 +5981,19 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
       <AnimatePresence>
         {isProfileModalOpen && (
           <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
-            <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} className="bg-[#121215] border border-[#D4AF37] max-w-lg w-full rounded-3xl p-6 space-y-4 shadow-2xl">
+            <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} className="bg-[#111827] border border-[#2563EB] max-w-lg w-full rounded-3xl p-6 space-y-4 shadow-2xl">
               <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
-                <h3 className="text-lg font-serif font-bold text-[#D4AF37] flex items-center gap-2">
+                <h3 className="text-lg font-serif font-bold text-[#2563EB] flex items-center gap-2">
                   <User size={18} />
                   <span>Yönetici Hesabı & Kontrol Paneli</span>
                 </h3>
                 <button onClick={() => setIsProfileModalOpen(false)} className="p-1 text-zinc-400 hover:text-white"><X size={18} /></button>
               </div>
               <div className="space-y-3 text-xs">
-                <div className="p-4 bg-[#0B0B0C] border border-[#D4AF37]/35 rounded-2xl space-y-1">
+                <div className="p-4 bg-[#0A0E17] border border-[#2563EB]/35 rounded-2xl space-y-1">
                   <div className="flex items-center justify-between">
                     <span className="font-bold text-white text-sm">{userProfile.name}</span>
-                    <span className="px-2 py-0.5 bg-[#D4AF37]/20 text-[#D4AF37] border border-[#D4AF37]/40 text-[9px] font-mono font-bold rounded-full">
+                    <span className="px-2 py-0.5 bg-[#2563EB]/20 text-[#2563EB] border border-[#2563EB]/40 text-[9px] font-mono font-bold rounded-full">
                       {userProfile.badge}
                     </span>
                   </div>
@@ -5950,25 +6013,25 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
                     }}
                     className={cn(
                       "px-3 py-1.5 rounded-lg text-[10px] font-extrabold uppercase transition-all whitespace-nowrap shrink-0",
-                      showAdminTabs ? "bg-[#D4AF37] text-black" : "bg-[#0B0B0C] border border-zinc-800 text-zinc-400 hover:text-white"
+                      showAdminTabs ? "bg-[#2563EB] text-black" : "bg-[#0A0E17] border border-zinc-800 text-zinc-400 hover:text-white"
                     )}
                   >
                     {showAdminTabs ? "Etkin" : "Gizli"}
                   </button>
                 </div>
                 <div className="grid grid-cols-2 gap-3 font-mono">
-                  <div className="p-3 bg-[#0B0B0C] border border-zinc-800 rounded-xl">
+                  <div className="p-3 bg-[#0A0E17] border border-zinc-800 rounded-xl">
                     <span className="text-zinc-500 text-[10px] block">Kaydedilen Haberler</span>
                     <strong className="text-white text-base">{bookmarkedIds.length} Makale</strong>
                   </div>
-                  <div className="p-3 bg-[#0B0B0C] border border-zinc-800 rounded-xl">
+                  <div className="p-3 bg-[#0A0E17] border border-zinc-800 rounded-xl">
                     <span className="text-zinc-500 text-[10px] block">Son Göz Atılanlar</span>
-                    <strong className="text-[#D4AF37] text-base">{recentlyViewedIds.length} Makale</strong>
+                    <strong className="text-[#2563EB] text-base">{recentlyViewedIds.length} Makale</strong>
                   </div>
                 </div>
               </div>
               <div className="pt-2 text-right">
-                <button onClick={() => setIsProfileModalOpen(false)} className="px-5 py-2 bg-[#D4AF37] text-black font-bold text-xs rounded-xl">Kapat</button>
+                <button onClick={() => setIsProfileModalOpen(false)} className="px-5 py-2 bg-[#2563EB] text-black font-bold text-xs rounded-xl">Kapat</button>
               </div>
             </motion.div>
           </div>
@@ -5979,9 +6042,9 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
       <AnimatePresence>
         {isCalcModalOpen && (
           <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
-            <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} className="bg-[#121215] border border-[#D4AF37] max-w-md w-full rounded-3xl p-6 space-y-4 shadow-2xl">
+            <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} className="bg-[#111827] border border-[#2563EB] max-w-md w-full rounded-3xl p-6 space-y-4 shadow-2xl">
               <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
-                <h3 className="text-lg font-serif font-bold text-[#D4AF37] flex items-center gap-2">
+                <h3 className="text-lg font-serif font-bold text-[#2563EB] flex items-center gap-2">
                   <Calculator size={18} />
                   <span>Döviz & Kripto Finans Hesaplayıcı</span>
                 </h3>
@@ -5990,21 +6053,21 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
               <div className="space-y-3 text-xs">
                 <div>
                   <label className="text-zinc-400 block mb-1">Tutar ($ - USD):</label>
-                  <input type="number" value={calcUsdInput} onChange={(e) => setCalcUsdInput(Number(e.target.value))} className="w-full bg-[#0B0B0C] border border-zinc-700 rounded-xl p-2.5 text-white font-mono text-xs outline-none focus:border-[#D4AF37]" />
+                  <input type="number" value={calcUsdInput} onChange={(e) => setCalcUsdInput(Number(e.target.value))} className="w-full bg-[#0A0E17] border border-zinc-700 rounded-xl p-2.5 text-white font-mono text-xs outline-none focus:border-[#2563EB]" />
                 </div>
-                <div className="p-3 bg-[#0B0B0C] border border-zinc-800 rounded-xl space-y-2 font-mono">
+                <div className="p-3 bg-[#0A0E17] border border-zinc-800 rounded-xl space-y-2 font-mono">
                   <div className="flex justify-between">
                     <span className="text-zinc-400">Türk Lirası Karşılığı (USD/TRY 34.35):</span>
                     <strong className="text-white">{(calcUsdInput * 34.35).toLocaleString('tr-TR')} ₺</strong>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-zinc-400">Bitcoin Karşılığı ($152,400):</span>
-                    <strong className="text-[#D4AF37]">{(calcUsdInput / 152400).toFixed(6)} BTC</strong>
+                    <strong className="text-[#2563EB]">{(calcUsdInput / 152400).toFixed(6)} BTC</strong>
                   </div>
                 </div>
               </div>
               <div className="pt-2 text-right">
-                <button onClick={() => setIsCalcModalOpen(false)} className="px-5 py-2 bg-[#D4AF37] text-black font-bold text-xs rounded-xl">Tamam</button>
+                <button onClick={() => setIsCalcModalOpen(false)} className="px-5 py-2 bg-[#2563EB] text-black font-bold text-xs rounded-xl">Tamam</button>
               </div>
             </motion.div>
           </div>
@@ -6022,9 +6085,9 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
       <AnimatePresence>
         {isSupportModalOpen && (
           <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
-            <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} className="bg-[#121215] border border-[#D4AF37] max-w-md w-full rounded-3xl p-6 space-y-4 shadow-2xl">
+            <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} className="bg-[#111827] border border-[#2563EB] max-w-md w-full rounded-3xl p-6 space-y-4 shadow-2xl">
               <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
-                <h3 className="text-lg font-serif font-bold text-[#D4AF37] flex items-center gap-2">
+                <h3 className="text-lg font-serif font-bold text-[#2563EB] flex items-center gap-2">
                   <Coffee size={18} />
                   <span>Bağımsız Gazeteciliği Destekleyin</span>
                 </h3>
@@ -6035,7 +6098,7 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
               </p>
               <div className="grid grid-cols-3 gap-2">
                 {['50 ₺', '100 ₺', '250 ₺'].map(amt => (
-                  <button key={amt} onClick={() => { showToast(`${amt} destek katkınız için teşekkür ederiz!`); setIsSupportModalOpen(false); }} className="py-2.5 bg-[#0B0B0C] border border-[#D4AF37]/50 hover:bg-[#D4AF37] hover:text-black text-[#D4AF37] font-bold text-xs rounded-xl transition-all">{amt}</button>
+                  <button key={amt} onClick={() => { showToast(`${amt} destek katkınız için teşekkür ederiz!`); setIsSupportModalOpen(false); }} className="py-2.5 bg-[#0A0E17] border border-[#2563EB]/50 hover:bg-[#2563EB] hover:text-black text-[#2563EB] font-bold text-xs rounded-xl transition-all">{amt}</button>
                 ))}
               </div>
             </motion.div>
@@ -6047,29 +6110,29 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
       <AnimatePresence>
         {selectedAuthorProfile && (
           <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
-            <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} className="bg-[#121215] border border-[#D4AF37] max-w-lg w-full rounded-3xl p-6 space-y-4 shadow-2xl">
+            <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} className="bg-[#111827] border border-[#2563EB] max-w-lg w-full rounded-3xl p-6 space-y-4 shadow-2xl">
               <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-[#D4AF37] text-black font-serif font-bold flex items-center justify-center text-base">
+                  <div className="w-10 h-10 rounded-full bg-[#2563EB] text-black font-serif font-bold flex items-center justify-center text-base">
                     {selectedAuthorProfile.avatarLetter}
                   </div>
                   <div>
                     <h3 className="text-base font-bold text-white">{selectedAuthorProfile.name}</h3>
-                    <span className="text-[10px] text-[#D4AF37] font-mono">{selectedAuthorProfile.title}</span>
+                    <span className="text-[10px] text-[#2563EB] font-mono">{selectedAuthorProfile.title}</span>
                   </div>
                 </div>
                 <button onClick={() => setSelectedAuthorProfile(null)} className="p-1 text-zinc-400 hover:text-white"><X size={18} /></button>
               </div>
-              <p className="text-xs text-zinc-300 leading-relaxed bg-[#0B0B0C] p-3 rounded-xl border border-zinc-800">
+              <p className="text-xs text-zinc-300 leading-relaxed bg-[#0A0E17] p-3 rounded-xl border border-zinc-800">
                 {selectedAuthorProfile.bio}
               </p>
               <div className="space-y-2">
                 <span className="text-xs font-serif font-bold text-white block">Yazarın Makaleleri ({selectedAuthorProfile.articlesCount}):</span>
                 <div className="space-y-1.5 max-h-48 overflow-y-auto pr-1">
                   {newsList.filter(n => n.author === selectedAuthorProfile.name).map(article => (
-                    <div key={article.id} onClick={() => { handleSelectArticle(article); setSelectedAuthorProfile(null); }} className="p-2 bg-[#0B0B0C] hover:border-[#D4AF37] border border-zinc-800 rounded-lg text-xs cursor-pointer flex justify-between items-center">
+                    <div key={article.id} onClick={() => { handleSelectArticle(article); setSelectedAuthorProfile(null); }} className="p-2 bg-[#0A0E17] hover:border-[#2563EB] border border-zinc-800 rounded-lg text-xs cursor-pointer flex justify-between items-center">
                       <span className="truncate text-zinc-200">{article.title}</span>
-                      <ChevronRight size={12} className="text-[#D4AF37] shrink-0" />
+                      <ChevronRight size={12} className="text-[#2563EB] shrink-0" />
                     </div>
                   ))}
                 </div>
@@ -6084,22 +6147,22 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
         {selectedLightboxImage && (
           <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-xl flex items-center justify-center p-4">
             <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.9 }} className="relative max-w-5xl w-full flex flex-col items-center">
-              <button onClick={() => setSelectedLightboxImage(null)} className="absolute -top-12 right-0 p-2 bg-[#D4AF37] text-black font-bold rounded-full hover:brightness-110">
+              <button onClick={() => setSelectedLightboxImage(null)} className="absolute -top-12 right-0 p-2 bg-[#2563EB] text-black font-bold rounded-full hover:brightness-110">
                 <X size={20} />
               </button>
-              <img src={selectedLightboxImage} alt="Lightbox Fullscreen View" className="max-h-[85vh] w-auto object-contain rounded-2xl border-2 border-[#D4AF37] shadow-2xl" />
+              <img src={selectedLightboxImage} alt="Lightbox Fullscreen View" className="max-h-[85vh] w-auto object-contain rounded-2xl border-2 border-[#2563EB] shadow-2xl" />
             </motion.div>
           </div>
         )}
       </AnimatePresence>
 
       {/* Footer */}
-      <footer className="bg-[#121215] border-t border-[#D4AF37]/25 text-zinc-400 py-12 mt-12 text-xs">
+      <footer className="bg-[#111827] border-t border-[#2563EB]/25 text-zinc-400 py-12 mt-12 text-xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="space-y-3 col-span-1 md:col-span-2">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 bg-[#D4AF37] rounded-lg flex items-center justify-center text-black font-serif font-black italic">
+                <div className="w-8 h-8 bg-[#2563EB] rounded-lg flex items-center justify-center text-black font-serif font-black italic">
                   W
                 </div>
                 <span className="text-lg font-serif font-bold text-white">WebdeHepSeeK Journal</span>
@@ -6109,20 +6172,20 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
               </p>
             </div>
             <div>
-              <h4 className="font-bold text-white uppercase text-[10px] tracking-widest mb-3 text-[#D4AF37]">Kurumsal & Yasal</h4>
+              <h4 className="font-bold text-white uppercase text-[10px] tracking-widest mb-3 text-[#2563EB]">Kurumsal & Yasal</h4>
               <ul className="space-y-2">
                 <li onClick={() => setActiveLegalModal('kvkk')} className="hover:text-white cursor-pointer">KVKK Aydınlatma Metni</li>
                 <li onClick={() => setActiveLegalModal('privacy')} className="hover:text-white cursor-pointer">Gizlilik Politikası</li>
                 <li onClick={() => setActiveLegalModal('terms')} className="hover:text-white cursor-pointer">Kullanım Koşulları</li>
                 <li onClick={() => setActiveLegalModal('cookies')} className="hover:text-white cursor-pointer">Çerez Politikası</li>
-                <li onClick={() => setIsPressReleaseModalOpen(true)} className="text-[#D4AF37] hover:brightness-110 font-semibold cursor-pointer flex items-center gap-1">
+                <li onClick={() => setIsPressReleaseModalOpen(true)} className="text-[#2563EB] hover:brightness-110 font-semibold cursor-pointer flex items-center gap-1">
                   <Send size={11} />
                   <span>Basın Bülteni Gönder</span>
                 </li>
               </ul>
             </div>
             <div>
-              <h4 className="font-bold text-white uppercase text-[10px] tracking-widest mb-3 text-[#D4AF37]">Yayın Standartları</h4>
+              <h4 className="font-bold text-white uppercase text-[10px] tracking-widest mb-3 text-[#2563EB]">Yayın Standartları</h4>
               <ul className="space-y-2">
                 <li>Google News Uyumlu</li>
                 <li>Tarafsız Gazetecilik İlkeleri</li>
@@ -6142,16 +6205,16 @@ ${gscTag ? `\n<!-- Google Search Console Verification -->\n${gscTag}` : ''}`}
 
       {/* Mobil Yapışkan Alt Reklam Barı (Sticky Bottom Banner - 320x50) */}
       {isMobileAdBannerVisible && (
-        <div className="fixed bottom-0 left-0 right-0 z-40 h-[65px] bg-[#0B0B0C]/95 border-t border-[#D4AF37]/40 sm:hidden flex items-center justify-between px-3 shadow-[0_-5px_20px_rgba(212,175,55,0.1)]">
+        <div className="fixed bottom-0 left-0 right-0 z-40 h-[65px] bg-[#0A0E17]/95 border-t border-[#2563EB]/40 sm:hidden flex items-center justify-between px-3 shadow-[0_-5px_20px_rgba(212,175,55,0.1)]">
           <div className="flex-grow flex flex-col justify-center text-left">
-            <span className="text-[7px] font-mono tracking-widest text-[#D4AF37] uppercase font-bold block mb-0.5">SPONSORLU BAĞLANTI</span>
-            <div className="w-[320px] h-[40px] max-w-[75vw] bg-[#121215] border border-zinc-800 rounded flex items-center justify-center">
+            <span className="text-[7px] font-mono tracking-widest text-[#2563EB] uppercase font-bold block mb-0.5">SPONSORLU BAĞLANTI</span>
+            <div className="w-[320px] h-[40px] max-w-[75vw] bg-[#111827] border border-zinc-800 rounded flex items-center justify-center">
               <span className="text-[9px] text-zinc-500 font-mono">Duyarlı Reklam Alanı (320x50 AdSense)</span>
             </div>
           </div>
           <button 
             onClick={() => setIsMobileAdBannerVisible(false)}
-            className="p-1.5 px-2 text-[9px] font-mono font-bold text-black bg-[#D4AF37] hover:brightness-110 rounded-lg shrink-0 transition-all uppercase"
+            className="p-1.5 px-2 text-[9px] font-mono font-bold text-black bg-[#2563EB] hover:brightness-110 rounded-lg shrink-0 transition-all uppercase"
           >
             ✕ Kapat
           </button>

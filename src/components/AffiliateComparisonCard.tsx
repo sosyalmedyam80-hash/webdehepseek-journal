@@ -33,7 +33,7 @@ export const AffiliateComparisonCard: React.FC<AffiliateComparisonCardProps> = (
     }
   });
 
-  const isTechCategory = ['Teknoloji & Dijital Dönüşüm', 'Yapay Zeka & Gelecek', 'Kripto & Web3', 'SaaS & Bulut Yazılımları', 'Otomotiv & Mobilite'].includes(category);
+  const isTechCategory = ['Teknoloji & Dijital Dönüşüm', 'Yapay Zeka & Gelecek', 'Kripto & Web3', 'SaaS & Yazılım', 'Otonom Sistemler & Robotik', 'Siber Güvenlik', 'E-Ticaret & Pazar Yerleri', 'Bulut Bilişim & Altyapı'].includes(category);
 
   if (!isTechCategory) return null;
 
