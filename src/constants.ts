@@ -235,6 +235,22 @@ export const DAILY_POLL: PollData = {
   ]
 };
 
+export const siteKategorileri = [
+  { id: 1, baslik: "Teknoloji & Dijital Dönüşüm" },
+  { id: 2, baslik: "Yapay Zeka & Gelecek" },
+  { id: 3, baslik: "Kripto & Web3" },
+  { id: 4, baslik: "Finans & Küresel Piyasalar" },
+  { id: 6, baslik: "Siber Güvenlik" },
+  { id: 7, baslik: "SaaS & Yazılım" },
+  { id: 8, baslik: "E-Ticaret & Pazar Yerleri" },
+  { id: 9, baslik: "Otonom Sistemler & Robotik" },
+  { id: 10, baslik: "Girişimcilik & Yatırım" },
+  { id: 13, baslik: "Dijital Pazarlama & SEO" },
+  { id: 14, baslik: "Bulut Bilişim & Altyapı" },
+  { id: 15, baslik: "Oyun & MetaEvren" },
+  { id: 16, baslik: "Savunma Sanayi & Havacılık" }
+];
+
 export const SITE_STRUCTURE: Category[] = [
   {
     id: "tech",
@@ -244,13 +260,10 @@ export const SITE_STRUCTURE: Category[] = [
       "Mobil Dünya & 6G",
       "Donanım & Çip Savaşları",
       "Yazılım & Açık Kaynak",
-      "Siber Güvenlik & Kuantum",
-      "IoT & Akıllı Şehirler",
       "Giyilebilir Teknolojiler",
-      "Robotik & Otomasyon",
-      "Bulut Bilişim & Edge",
-      "Big Tech & Regülasyon",
-      "Kuantum Bilgisayarlar"
+      "IoT & Akıllı Şehirler",
+      "Edge Computing",
+      "Big Tech & Regülasyon"
     ]
   },
   {
@@ -264,9 +277,6 @@ export const SITE_STRUCTURE: Category[] = [
       "Görsel & Video Üretimi",
       "AI Etiği & Hukuk",
       "Nöromorfik Çipler",
-      "Yapay Zeka & Tıp",
-      "AI & Finansal Analiz",
-      "Robotik Kodlama",
       "Prompt Mühendisliği"
     ]
   },
@@ -279,11 +289,8 @@ export const SITE_STRUCTURE: Category[] = [
       "Ethereum & Smart Contracts",
       "DeFi & Likidite Havuzları",
       "NFT & Dijital Sanat",
-      "Metaverse Ekosistemi",
       "Layer 2 Ölçekleme",
       "Solana & Altcoinler",
-      "Fan Tokenlar",
-      "Web3 Gaming",
       "Staking & Yield Farming"
     ]
   },
@@ -297,241 +304,114 @@ export const SITE_STRUCTURE: Category[] = [
       "Fed & Merkez Bankaları",
       "Altın & Değerli Madenler",
       "Döviz & Parite (USD/TRY)",
-      "Kişisel Finans & Birikim",
-      "Bankacılık & Kredi",
       "Girişim Sermayesi (VC)",
-      "Makro Ekonomi & Enflasyon",
-      "Fintech Dönüşümü"
-    ]
-  },
-  {
-    id: "politics",
-    name: "Siyaset & Strateji",
-    subcategories: [
-      "Ankara Gündemi & Meclis",
-      "Seçim Analizleri & Anketler",
-      "Dış Politika & Diplomasi",
-      "Dijital Diplomasi",
-      "Yerel Yönetimler",
-      "Siyasi Parti Stratejileri",
-      "Savunma Sanayii (SİHA/Milli)",
-      "Ekonomi Politiği",
-      "İnsan Hakları & Hukuk",
-      "Kamuoyu Araştırmaları"
-    ]
-  },
-  {
-    id: "social",
-    name: "Sosyal Medya & Viral",
-    subcategories: [
-      "Influencer Dünyası",
-      "TikTok & Viral Trendler",
-      "Instagram Algoritmaları",
-      "Yayıncı Ekosistemi (Twitch/Kick)",
-      "Podcast Kültürü",
-      "Creator Economy",
-      "Yapay Zeka Fenomenleri",
-      "Dijital Skandallar & Etik",
-      "Platform Savaşları",
-      "Lansmanlar & Etkinlikler"
-    ]
-  },
-  {
-    id: "sports",
-    name: "Spor & E-Spor",
-    subcategories: [
-      "2026 Dünya Kupası Özel",
-      "Futbol Transfer Hattı",
-      "E-Spor Turnuvaları",
-      "Formula 1 & Motor Sporları",
-      "Basketbol (NBA/EuroLeague)",
-      "Web3 Gaming Ligleri",
-      "Tenis & Grand Slam",
-      "Spor Teknolojileri",
-      "Fan Token Analizleri",
-      "Fitness & Akıllı Yaşam"
-    ]
-  },
-  {
-    id: "business",
-    name: "Girişimcilik & Startup",
-    subcategories: [
-      "Startup Hikayeleri & Unicorns",
-      "E-Ticaret & Dropshipping",
-      "AI İş Modelleri",
-      "Yatırım Turları & Seed",
-      "Freelance & Remote Çalışma",
-      "Pazarlama & Branding",
-      "SaaS Girişimciliği",
-      "Dijital Göçebelik (Nomad)",
-      "Liderlik & Yönetim",
-      "Geleceğin Meslekleri"
-    ]
-  },
-  {
-    id: "lifestyle",
-    name: "Yaşam & Sağlık",
-    subcategories: [
-      "Giyilebilir Sağlık Teknolojisi",
-      "Longevity (Uzun Yaşam)",
-      "Biohacking & Biyoloji",
-      "Zihinsel Sağlık & Odak",
-      "Beslenme & Fonksiyonel Tıp",
-      "Biyoteknoloji Gelişmeleri",
-      "Akıllı Ev & Yaşam",
-      "Sürdürülebilirlik & Yeşil",
-      "Dijital Detoks & Minimalizm",
-      "VR Fitness & Spor"
-    ]
-  },
-  {
-    id: "gaming",
-    name: "Oyun & Eğlence",
-    subcategories: [
-      "PS5 & Xbox Gündemi",
-      "Mobil Oyun Sektörü",
-      "Cloud Gaming (GeForce NOW)",
-      "VR / AR Oyun Deneyimi",
-      "Oyun Geliştirme (Unreal/Unity)",
-      "Sinema & Marvel/DC",
-      "Streaming (Netflix/Disney+)",
-      "Indie Oyun İncelemeleri",
-      "Retro Gaming Nostalji",
-      "Metaverse Oyun Dünyası"
-    ]
-  },
-  {
-    id: "science",
-    name: "Bilim & Uzay",
-    subcategories: [
-      "Mars Kolonisi & Starship",
-      "SpaceX & NASA Görevleri",
-      "Kuantum Fiziği & Bilgisayar",
-      "İnsansı Robotlar (Humanoid)",
-      "Nükleer Füzyon Enerjisi",
-      "Derin Uzay Teleskopları",
-      "Modern Arkeoloji",
-      "Genetik & CRISPR",
-      "İklim Teknolojileri",
-      "Nörobilim & Neuralink"
-    ]
-  },
-  {
-    id: "education",
-    name: "Eğitim & Kariyer",
-    subcategories: [
-      "AI Eğitim Programları",
-      "Uzaktan Çalışma İmkanları",
-      "No-Code / Low-Code",
-      "Uluslararası Sertifikalar",
-      "Kariyer Dönüşüm Rehberi",
-      "Dil Öğrenme Uygulamaları",
-      "Mülakat & CV Stratejileri",
-      "LinkedIn Algoritma Taktikleri",
-      "Burs & Fon İmkanları",
-      "Hibrit Ofis Trendleri"
-    ]
-  },
-  {
-    id: "realestate",
-    name: "Emlak & Lüks Yatırım",
-    badge: "Yeni",
-    subcategories: [
-      "Lüks Gayrimenkul Trendleri",
-      "Dijital Emlak & Metaverse",
-      "REIT & Gayrimenkul Fonları",
-      "Şehir Planlama & Akıllı Kent",
-      "Akıllı Binalar & Enerji",
-      "Turizm & Otel Yatırımları",
-      "Ticari Emlak Piyasası",
-      "Arsa & Arazi Değerleme",
-      "Vadeli Konut Satışları",
-      "PropTech Teknolojileri"
-    ]
-  },
-  {
-    id: "automotive",
-    name: "Otomotiv & Mobilite",
-    badge: "Yeni",
-    subcategories: [
-      "Elektrikli Araçlar (EV)",
-      "Otonom Sürüş (L4/L5)",
-      "Togg & Yerli Otomobil",
-      "Formula 1 Mühendisliği",
-      "Batarya Teknolojileri",
-      "Hidrojen Yakıt Hücreleri",
-      "Uçan Arabalar & eVTOL",
-      "Toplu Taşıma Otomasyonu",
-      "Mikro-Mobilite (Scooter)",
-      "Araç İçi Bilgi-Eğlence"
-    ]
-  },
-  {
-    id: "saas",
-    name: "SaaS & Bulut Yazılımları",
-    badge: "Yüksek Kazanç",
-    subcategories: [
-      "CRM Sistemleri",
-      "Bulut Sunucu & Hosting",
-      "E-Ticaret Altyapıları",
-      "API Entegrasyonları",
-      "Bulut Veri Depolama",
-      "Hizmet Olarak Yazılım (SaaS)",
-      "Veri Analitiği",
-      "Micro-SaaS Çözümleri",
-      "İş Akışı Otomasyonu",
-      "Bulut Güvenliği"
-    ]
-  },
-  {
-    id: "personalfinance",
-    name: "Kişisel Finans & Sigorta",
-    badge: "Yüksek Kazanç",
-    subcategories: [
-      "Bireysel Krediler",
-      "Mevduat Faiz Oranları",
-      "Kasko & Trafik Sigortası",
-      "BES Fonları & Emeklilik",
-      "Bireysel Yatırım Stratejileri",
-      "Vergi Planlaması",
-      "Borç Yapılandırma",
-      "Kredi Skoru Yönetimi",
-      "Altın & Gümüş Birikimi",
-      "Hayat Sigortası"
+      "Makro Ekonomi & Enflasyon"
     ]
   },
   {
     id: "cybersecurity",
-    name: "Siber Güvenlik & Veri Koruma",
+    name: "Siber Güvenlik",
     badge: "Premium",
     subcategories: [
-      "Antivirüs Yazılımları",
-      "VPN & Güvenli Bağlantı",
       "Kurumsal Veri Güvenliği",
       "Tehdit İzleme & Analiz",
       "Kimlik Avı (Phishing) Koruması",
       "Sıfır Güven (Zero Trust)",
       "Penetrasyon Testleri",
       "KVKK & GDPR Uyumluluğu",
-      "Fidye Yazılımı (Ransomware) Koruması",
-      "Mobil Cihaz Güvenliği"
+      "Fidye Yazılımı Koruması"
     ]
   },
   {
-    id: "aitools",
-    name: "Yapay Zeka Araç Rehberi",
-    badge: "Sıcak",
+    id: "saas",
+    name: "SaaS & Yazılım",
+    badge: "Yüksek Kazanç",
     subcategories: [
-      "AI Metin Yazma Araçları",
-      "AI Görsel Oluşturucular",
-      "AI Video Üretim Teknolojileri",
-      "AI Kodlama Asistanları",
-      "AI Ses & Müzik Üretimi",
-      "AI Sunum & Tasarım Araçları",
-      "AI Veri Analiz Robotları",
-      "AI Çeviri & Dil Araçları",
-      "AI Verimlilik Uygulamaları",
-      "AI Arama & Keşif Motorları"
+      "CRM Sistemleri",
+      "E-Ticaret Altyapıları",
+      "API Entegrasyonları",
+      "Micro-SaaS Çözümleri",
+      "İş Akışı Otomasyonu",
+      "Low-Code / No-Code"
+    ]
+  },
+  {
+    id: "ecommerce",
+    name: "E-Ticaret & Pazar Yerleri",
+    badge: "Trend",
+    subcategories: [
+      "Pazar Yeri Entegrasyonu",
+      "Sınır Ötesi E-Ticaret (E-İhracat)",
+      "Lojistik & Akıllı Depolama",
+      "Ödeme Sistemleri & POS",
+      "Müşteri Sadakat Programları"
+    ]
+  },
+  {
+    id: "autonomous",
+    name: "Otonom Sistemler & Robotik",
+    badge: "Yeni",
+    subcategories: [
+      "Elektrikli Araçlar (EV)",
+      "Otonom Sürüş (L4/L5)",
+      "İnsansı Robotlar (Humanoid)",
+      "Endüstriyel Otomasyon",
+      "eVTOL & Uçan Araçlar"
+    ]
+  },
+  {
+    id: "startup",
+    name: "Girişimcilik & Yatırım",
+    subcategories: [
+      "Startup Hikayeleri & Unicorns",
+      "Yatırım Turları & Seed",
+      "Melek Yatırımcı Ağı",
+      "Pazarlama & Branding",
+      "Liderlik & Yönetim"
+    ]
+  },
+  {
+    id: "seo",
+    name: "Dijital Pazarlama & SEO",
+    subcategories: [
+      "AEO / GEO Optimizasyonu",
+      "Arama Motoru Optimizasyonu (SEO)",
+      "İçerik Pazarlaması",
+      "Performans Pazarlaması",
+      "Dönüşüm Oranı Optimizasyonu (CRO)"
+    ]
+  },
+  {
+    id: "cloud",
+    name: "Bulut Bilişim & Altyapı",
+    subcategories: [
+      "AWS / Azure / GCP",
+      "Kubernetes & Docker",
+      "Serverless Mimariler",
+      "Veri Depolama & CDN",
+      "Bulut Güvenliği"
+    ]
+  },
+  {
+    id: "gaming",
+    name: "Oyun & MetaEvren",
+    subcategories: [
+      "Mobil Oyun Sektörü",
+      "Cloud Gaming",
+      "VR / AR Deneyimi",
+      "Unreal / Unity Geliştirme",
+      "Metaverse Dijital Varlıklar"
+    ]
+  },
+  {
+    id: "defense",
+    name: "Savunma Sanayi & Havacılık",
+    subcategories: [
+      "Milli İHA / SİHA Teknolojileri",
+      "5. Nesil Savaş Uçakları",
+      "Uydu & Uzay Sistemleri",
+      "Radar & Elektronik Harp",
+      "Otonom Deniz Araçları"
     ]
   }
 ];

@@ -71,6 +71,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { GoogleGenAI } from "@google/genai";
 import { 
   SITE_STRUCTURE, 
+  siteKategorileri,
   MOCK_NEWS, 
   LEGAL_DOCUMENTS,
   SYSTEM_NODES,
